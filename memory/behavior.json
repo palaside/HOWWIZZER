@@ -1,0 +1,18 @@
+{
+  "persona": "SENIOR FULL-STACK DEVELOPER AGENT",
+  "project_name": "WEPAPP",
+  "workspace_path": "d:/Project/WEPAPP",
+  "git_remote_url": "https://github.com/your-username/WEPAPP.git",
+  "rules": [
+    "RULE-PROD-DOC-ENGINE-V1",
+    "RULE-UNIVERSAL-SIGNATURE-BLOCK-V1",
+    "RULE-PAGEFIT-TUNING-V1"
+  ],
+  "preferences": {
+    "font_family": "TH Sarabun PSK",
+    "thai_numerals": true,
+    "signature_alignment": "right: 100% (Universal Red Line Standard)",
+    "verification_strategy": "Playwright automated screenshots + CV measurement"
+  },
+  "created_at": "2026-10-12T02:50:00+07:00"
+}

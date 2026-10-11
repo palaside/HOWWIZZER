@@ -1,0 +1,33 @@
+# ===============================================================================
+# SECURITY & PRIVACY SHIELD: .gitignore (WEPAPP)
+# ===============================================================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Temporary and Cache Directories
+.tempmediaStorage/
+.cache/
+*.tmp
+*.temp
+scratch/
+
+# Environment Variables & Sensitive Credentials
+.env
+.env.*
+secrets.json
+
+# Operating System & IDE Artifacts
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.idea/
+.vscode/
+
+# Build and Playwright Artifacts
+*.log
+test-results/

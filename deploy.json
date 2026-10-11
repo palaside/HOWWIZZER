@@ -1,0 +1,42 @@
+{
+  "project_name": "WEPAPP",
+  "version": "1.0.0",
+  "type": "Production-Grade Document & Forensic Engine",
+  "architecture": {
+    "engine": "SUPERCLONE Production Engine",
+    "signature_system": "Universal Red Line Standard (signature_engine.py)",
+    "data_protocol": "Single Source of Truth (table_layout.json)",
+    "page_fit": "Zero-Overflow Micro-Tuning Budget 4D"
+  },
+  "runtime": {
+    "python": "3.12+",
+    "launcher": "run_superclone.bat",
+    "build_command": "python build_superclone_weekly_inspection.py"
+  },
+  "git": {
+    "branch": "main",
+    "remote_url": "https://github.com/your-username/WEPAPP.git",
+    "backup_strategy": "Off-site Git Remote Mirror + state/ directory"
+  },
+  "active_references": [
+    "REF-PBK-95-V1",
+    "REF-TB-400-012-V1",
+    "REF-TB-468-204-V1",
+    "REF-GUN-HIST-V1",
+    "REF-GUN-BOOK-V1",
+    "REF-SURVEY-SP-V1",
+    "REF-MEMO-LATEST-V1",
+    "REF-TB-400-005-V1",
+    "REF-TB-CAT2-4-V1",
+    "REF-TB-468-360-V1",
+    "REF-QUARTERLY-REPORT-V1",
+    "REF-MEMO-90-V1",
+    "REF-MEMO-INQUIRY-90-V1",
+    "REF-MEMO-INQUIRY-45-V1",
+    "REF-SD1-WEEKLY-REPORT-V1",
+    "REF-REPAIR-TRACK-A-V1",
+    "REF-INSP-GEN2-V1",
+    "REF-WEEKLY-INSPECTION-JUN-V1"
+  ],
+  "last_saved": "2026-10-12T02:49:00+07:00"
+}
