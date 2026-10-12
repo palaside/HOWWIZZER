@@ -1,0 +1,71 @@
+{
+  "items": [
+    {
+      "item_id": "GUN-105-01",
+      "model_key": "GUN-105",
+      "name": "ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑",
+      "serial_no": "54231",
+      "status": "BORROWED",
+      "category": "อาวุธหลัก",
+      "history": [
+        {
+          "action": "LOAN_APPROVED",
+          "request_id": "LOAN-5CFB64E5",
+          "borrower": "ส.อ. สมเกียรติ สุขใจ",
+          "by": "owner_commander",
+          "timestamp": "2026-10-12T18:12:57.160247",
+          "notes": "อนุมัติการยืม: ยิงสนับสนุนการฝึก"
+        }
+      ]
+    },
+    {
+      "item_id": "GUN-105-02",
+      "model_key": "GUN-105",
+      "name": "ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑",
+      "serial_no": "SN-NEW-9988",
+      "status": "AVAILABLE",
+      "category": "อาวุธหลัก",
+      "history": [
+        {
+          "action": "ITEM_RETURNED",
+          "loan_id": "loan_test_dam",
+          "is_damaged": true,
+          "damage_notes": "ศูนย์เล็งแตกร้าว",
+          "receiver": "owner_commander",
+          "timestamp": "2026-10-12T18:12:57.175406",
+          "notes": "รับคืนสิ่งอุปกรณ์: ศูนย์เล็งแตกร้าว"
+        },
+        {
+          "action": "ITEM_REPLACED",
+          "old_serial_no": "54232",
+          "new_serial_no": "SN-NEW-9988",
+          "replaced_by": "owner_commander",
+          "timestamp": "2026-10-12T18:12:57.188346",
+          "notes": "เปลี่ยนทดแทนหมายเลขยุทโธปกรณ์: เดิม 54232 เป็น SN-NEW-9988"
+        }
+      ]
+    },
+    {
+      "item_id": "GUN-105-03",
+      "model_key": "GUN-105",
+      "name": "ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑",
+      "serial_no": "54233",
+      "status": "AVAILABLE",
+      "category": "อาวุธหลัก",
+      "history": []
+    }
+  ],
+  "loan_requests": [
+    {
+      "request_id": "LOAN-5CFB64E5",
+      "item_id": "GUN-105-01",
+      "borrower_name": "ส.อ. สมเกียรติ สุขใจ",
+      "purpose": "ยิงสนับสนุนการฝึก",
+      "requested_by": "admin_warehouse",
+      "requested_at": "2026-10-12T18:12:57.147947",
+      "status": "BORROWED",
+      "approved_by": "owner_commander",
+      "approved_at": "2026-10-12T18:12:57.160232"
+    }
+  ]
+}
