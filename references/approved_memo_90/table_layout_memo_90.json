@@ -1,0 +1,75 @@
+{
+  "document_title": "บันทึกข้อความ ขอส่งใบติดตามใบส่งซ่อมเกิน ๙๐ วัน",
+  "document_code": "MEMO-90-DAYS",
+  "page_type": "A4 Portrait",
+  "orientation": "portrait",
+  "dimensions": {
+    "width_mm": 210,
+    "height_mm": 297,
+    "margins_mm": {
+      "top": 20,
+      "left": 25,
+      "right": 15,
+      "bottom": 15
+    }
+  },
+  "typography": {
+    "font_family": "TH Sarabun PSK",
+    "fallback_fonts": ["THSarabunNew", "Sarabun", "sans-serif"],
+    "font_size_pt": 12,
+    "font_weight": 300,
+    "line_height": 1.5,
+    "header_title_size_pt": 24,
+    "label_size_pt": 14
+  },
+  "content": {
+    "copy_type": "(สำเนาคู่ฉบับ)",
+    "title": "บันทึกข้อความ",
+    "official_department": "ส่วนราชการ",
+    "department_value": "ป.๔ พัน.๔ ร้อย.๒  (โทร ๓๑๑๙๓)",
+    "doc_number_label": "ที่",
+    "doc_number_value": "กห ๐๔๘๓.๑.๔.๑/",
+    "doc_date_label": "วันที่",
+    "doc_date_spaces": 10,
+    "doc_date_month_year": "ก.ย. ๖๙",
+    "subject_label": "เรื่อง",
+    "subject_value": "ขอส่งใบติดตามใบส่งซ่อมเกิน ๙๐ วัน",
+    "recipient_label": "เรียน",
+    "recipient_value": "ผบ.ป.๔ พัน.๔ (ผ่าน หมู่ส่งกำลังบำรุงฯ)",
+    "reference_label": "อ้างถึง",
+    "reference_value": "๑. ระเบียบ ทบ. ว่าด้วยส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ. ๒๕๓๔",
+    "attachments_label": "สิ่งที่ส่งมาด้วย",
+    "attachments": [
+      {
+        "index": "๑.",
+        "title": "ใบติดตามใบส่งซ่อม สิ่งอุปกรณ์ ทบ.๔๐๐-๐๗๑",
+        "quantity": "จำนวน  ๑  ฉบับ"
+      }
+    ],
+    "paragraphs": [
+      "ป.๔ พัน.๔ ร้อย.๒ ขอติดตามใบส่งซ่อมเกิน ๙๐ วัน สิ่งอุปกรณ์ของ ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม.๑๐๑ เอ.๑ ปรับปรุง รายละเอียดตามสิ่งที่ส่งมาด้วย",
+      "จึงเรียนมาเพื่อกรุณาพิจารณา"
+    ],
+    "signature": {
+      "rank": "ร.อ.",
+      "name": "กฤติน  นราพงษ์",
+      "position": "ผบ.ป.๔ พัน.๔ ร้อย.๒",
+      "rule_spacing_enters": 5,
+      "rule_coordinate_left_mm": 130
+    },
+    "routing_footer": [
+      {
+        "rank": "จ.ส.อ.",
+        "action": "ร่าง/ตรวจ",
+        "date": "ก.ย. ๖๙"
+      },
+      {
+        "rank": "ส.อ.",
+        "name": "อวิวัฒน์ฯ",
+        "action": "พิมพ์/ทาน",
+        "day": "๑๘",
+        "date": "ก.ย. ๖๙"
+      }
+    ]
+  }
+}

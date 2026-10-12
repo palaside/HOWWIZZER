@@ -54,3 +54,51 @@ def get_next_business_day(target_date: date) -> date:
     while not is_business_day(current):
         current += timedelta(days=1)
     return current
+
+THAI_MONTHS_SHORT = [
+    "", "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.",
+    "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."
+]
+
+def get_weekly_cycle_range(target_date: date) -> dict:
+    """
+    Computes the weekly cycle date range (Monday to Friday or adjusted for holidays).
+    - Monday of the week is start date.
+    - Friday of the week is baseline end date.
+    - If Friday is a holiday/non-business day, rolls backward to the last business day of the week (e.g. Thursday).
+    - Formats Thai Buddhist era string: e.g. '12 - 16 ต.ค. 69' or '12 - 15 ต.ค. 69'.
+    """
+    monday = target_date - timedelta(days=target_date.weekday())
+    friday = monday + timedelta(days=4)
+    
+    end_date = friday
+    while end_date > monday and not is_business_day(end_date):
+        end_date -= timedelta(days=1)
+        
+    end_b_year = (end_date.year + 543) % 100
+    start_day = str(monday.day)
+    end_day = str(end_date.day)
+    
+    if monday.month == end_date.month and monday.year == end_date.year:
+        range_text = f"{start_day} - {end_day} {THAI_MONTHS_SHORT[end_date.month]} {end_b_year:02d}"
+    else:
+        range_text = f"{start_day} {THAI_MONTHS_SHORT[monday.month]} - {end_day} {THAI_MONTHS_SHORT[end_date.month]} {end_b_year:02d}"
+        
+    target_b_year = (target_date.year + 543) % 100
+    target_date_thai = f"{target_date.day:02d}/{target_date.month:02d}/{target_b_year:02d}"
+    
+    sub_date = get_weekly_submission_date(friday)
+    sub_b_year = (sub_date.year + 543) % 100
+    sub_date_thai = f"{sub_date.day} {THAI_MONTHS_SHORT[sub_date.month]} {sub_b_year:02d}"
+
+    return {
+        "target_date_iso": target_date.isoformat(),
+        "target_date_thai": target_date_thai,
+        "start_date": monday.isoformat(),
+        "end_date": end_date.isoformat(),
+        "range_text": range_text,
+        "submission_date": sub_date.isoformat(),
+        "submission_date_thai": sub_date_thai,
+        "is_friday_holiday": not is_business_day(friday),
+        "friday_date": friday.isoformat()
+    }

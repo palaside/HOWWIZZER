@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทบ.๔๐๐-๐๑๒ ใบรายงานผลเปรียบเทียบการตรวจสอบสิ่งอุปกรณ์</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: legal landscape;
+            margin: 6mm 8mm;
+        }
+        * {
+            box-sizing: border-box;
+            font-family: 'TH Sarabun PSK', Sarabun, sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #e2e8f0;
+            color: #000;
+            font-size: 14pt;
+            line-height: 1.15;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            font-feature-settings: "locl" 1, "numr" 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .sheet-container {
+            width: 340mm;
+            min-height: 205mm;
+            margin: 0 auto 30px auto;
+            background: #fff;
+            padding: 8mm 10mm;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
+            page-break-after: always;
+        }
+
+        .top-form-id {
+            text-align: right;
+            font-size: 14pt;
+            font-weight: bold;
+            margin-bottom: 2px;
+            padding-right: 2px;
+        }
+
+        /* Master Header Table */
+        .header-master-table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            border: 1.5px solid #000;
+            margin-bottom: 0;
+            font-size: 13.5pt;
+        }
+        .header-master-table td {
+            border: 1px solid #000;
+            padding: 4px 6px;
+            vertical-align: top;
+        }
+        .hdr-title {
+            font-weight: bold;
+            font-size: 13.5pt;
+            line-height: 1.2;
+            vertical-align: middle !important;
+            padding: 4px 6px;
+        }
+        .lbl { 
+            font-weight: bold; 
+            font-size: 13pt;
+        }
+        .val { 
+            font-weight: normal; 
+            font-size: 12pt;
+        }
+        .font-bold { font-weight: bold; }
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        /* Left Column (Surveyor & Order) */
+        .hdr-col-surveyor {
+            padding: 0 !important;
+            vertical-align: top;
+        }
+        .survey-unit-box {
+            padding: 5px 6px;
+            border-bottom: 1px solid #000;
+            min-height: 48px;
+        }
+        .order-box {
+            padding: 5px 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 102px;
+        }
+        .order-title {
+            white-space: nowrap;
+            line-height: 1.3;
+        }
+        .order-title .val {
+            font-size: 12pt;
+            white-space: nowrap;
+        }
+        .order-pos-sig .val {
+            font-size: 12pt;
+        }
+        .sig-space-small { height: 26px; }
+        .sig-space-large { height: 35px; }
+
+        /* Cert Column */
+        .hdr-col-cert {
+            padding: 6px 8px !important;
+            vertical-align: top;
+        }
+        .cert-inner {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 148px;
+        }
+        .cert-body {
+            line-height: 1.25;
+            font-size: 12pt;
+        }
+        .cert-date-row {
+            margin-top: 18px;
+        }
+        .cert-date-row .val {
+            font-size: 12pt;
+        }
+
+        /* Inspectors Column */
+        .hdr-col-inspectors {
+            padding: 0 !important;
+            vertical-align: top;
+        }
+        .box-counters {
+            border-bottom: 1px solid #000;
+            padding: 4px 6px;
+            min-height: 78px;
+            position: relative;
+        }
+        .box-tag {
+            font-size: 13.5pt;
+            margin-bottom: 2px;
+        }
+        .counter-ranks {
+            padding-left: 28px;
+            line-height: 1.15;
+            font-size: 12pt;
+        }
+        .box-date-line {
+            text-align: right;
+            padding-right: 6px;
+            font-size: 12pt;
+            margin-top: 4px;
+        }
+        .box-verifier {
+            padding: 4px 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 85px;
+        }
+        .box-verifier .sig-name-pos-group {
+            margin-top: 12px;
+            margin-left: 36px;
+        }
+        .box-verifier .sig-name-wrapper {
+            margin-top: 16px;
+        }
+        .box-verifier .sig-rank-anchor {
+            position: absolute;
+            right: 100%;
+            bottom: calc(100% + 6px);
+            white-space: nowrap;
+            font-size: 12pt;
+            line-height: 1.0;
+        }
+        .box-verifier .box-date-line {
+            margin-top: 4px;
+            text-align: center;
+        }
+
+        /* Approve Column */
+        .hdr-col-approve {
+            padding: 6px 8px !important;
+            vertical-align: top;
+        }
+        .approve-tag {
+            font-size: 13.5pt;
+        }
+        .approve-sig-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            min-height: 125px;
+        }
+        .approve-sig-area .sig-name-pos-group {
+            margin-left: 36px;
+            margin-bottom: 4px;
+        }
+        .approve-date-line {
+            font-size: 12pt;
+            margin-top: 6px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        /* Universal Signature Engine (RULE-UNIVERSAL-SIGNATURE-BLOCK-V1) */
+        .sig-name-pos-group {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin-left: 45px;
+        }
+        .sig-name-wrapper {
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+            margin-top: 24px;
+        }
+        .sig-rank-anchor {
+            position: absolute;
+            right: 100%;
+            bottom: calc(100% + 14px);
+            white-space: nowrap;
+            font-size: 12pt;
+            line-height: 1.0;
+        }
+        .sig-name {
+            margin: 0;
+            line-height: 1.15;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 12pt;
+            display: block;
+        }
+
+        /* Admin Info Column */
+        .hdr-col-admin {
+            padding: 0 !important;
+            font-size: 11pt;
+            line-height: 1.15;
+        }
+        .admin-row {
+            padding: 5px 6px 4px 6px;
+            font-size: 11pt;
+        }
+        .admin-row .lbl {
+            font-size: 11pt;
+            padding-top: 2px;
+        }
+        .admin-row .val {
+            font-size: 10.5pt;
+        }
+        .border-b {
+            border-bottom: 1px solid #000;
+        }
+
+        /* Main Data Table */
+        .military-data-table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            border: 1.5px solid #000;
+            border-top: none;
+            font-size: 11.5pt;
+        }
+        .military-data-table th, .military-data-table td {
+            border: 1px solid #000;
+            padding: 4px 2px 2px 2px;
+            vertical-align: middle;
+            line-height: 1.1;
+        }
+        .military-data-table thead th {
+            background-color: #fafafa;
+            font-weight: normal;
+            font-size: 11pt;
+            text-align: center;
+            padding: 4px 1px 2px 1px;
+            line-height: 1.1;
+        }
+        .military-data-table tbody td {
+            height: 24px;
+            font-size: 11.5pt;
+            font-weight: normal;
+        }
+        .item-code {
+            font-family: 'TH Sarabun PSK', Sarabun, monospace;
+            display: inline-block;
+            margin-right: 4px;
+            font-feature-settings: "locl" 0, "numr" 0;
+            font-size: 11.5pt;
+            font-weight: normal;
+        }
+        .item-desc {
+            display: inline-block;
+            font-size: 11.5pt;
+            font-weight: normal;
+        }
+        .total-row td {
+            font-weight: bold;
+            font-size: 13pt;
+            height: 26px;
+        }
+
+        .doc-reg-footer {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 12pt;
+        }
+
+        @media print {
+            body { background: transparent; padding: 0; }
+            .sheet-container {
+                box-shadow: none;
+                margin: 0;
+                padding: 4mm 6mm;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="sheet-container">
+        <!-- รหัสแบบฟอร์มมุมบนขวา -->
+        <div class="top-form-id font-bold">ทบ.๔๐๐ - ๐๑๒</div>
+
+        <!-- กล่องหัวเอกสารและคณะกรรมการตรวจสอบ (Header Master Table: Grid Aligned to 61.5%) -->
+        <table class="header-master-table">
+            <colgroup>
+                <col style="width: 26.0%;">
+                <col style="width: 19.0%;">
+                <col style="width: 16.5%;">
+                <col style="width: 18.5%;">
+                <col style="width: 20.0%;">
+            </colgroup>
+            <!-- แถวที่ 1: ชื่อรายงาน, นามหน่วย/ที่ตั้ง, วันที่, แผ่นที่ -->
+            <tr>
+                <td class="hdr-title text-center font-bold">
+                    ใบรายงานผลเปรียบเทียบการตรวจสอบสิ่งอุปกรณ์
+                </td>
+                <td class="hdr-unit-info">
+                    <div><span class="lbl font-bold">นามหน่วย</span> &nbsp; <span class="val">ป.๔ พัน.๔</span></div>
+                    <div><span class="lbl font-bold">ที่ตั้ง</span> &nbsp; <span class="val">๘๐๗ ม.๒ ค่ายจิรประวัติ ต.นครสวรรค์ออก อ.เมือง จ.นครสวรรค์</span></div>
+                </td>
+                <td class="hdr-date text-center">
+                    <div><span class="lbl font-bold">วันที่รายงาน</span></div>
+                    <div class="val">พ.ย.๖๖</div>
+                </td>
+                <td colspan="2" class="hdr-page text-center">
+                    <span class="lbl font-bold">แผ่นที่</span> &nbsp; <span class="val">๑</span> &nbsp; <span class="lbl font-bold">ในจำนวน</span> &nbsp; <span class="val">๒</span> &nbsp; <span class="lbl font-bold">แผ่น</span>
+                </td>
+            </tr>
+
+            <!-- แถวที่ 2: เนื้อหาคณะกรรมการ และผู้มีอำนาจลงนาม -->
+            <tr>
+                <!-- คอลัมน์ 1: หน่วยสำรวจ + ผู้สั่งการสำรวจ (ชื่อ นามสกุล อยู่บรรทัดเดียวกัน) -->
+                <td class="hdr-col-surveyor">
+                    <div class="survey-unit-box">
+                        <span class="lbl font-bold">หน่วยสำรวจ</span> &nbsp; <span class="val">ป.๔ พัน.๔ ร้อย.๒</span>
+                    </div>
+                    <div class="order-box">
+                        <div class="order-title">
+                            <span class="lbl font-bold">ผู้สั่งการสำรวจ</span> &nbsp; <span class="val">พ.ท. พรชัย  มากเทพพงษ์</span>
+                        </div>
+                        <div class="order-pos-sig">
+                            <div class="sig-space-small"></div>
+                            <div class="text-center val">ผบ.ป.๔ พัน.๔</div>
+                        </div>
+                    </div>
+                </td>
+
+                <!-- คอลัมน์ 2: คำรับรองผลเปรียบเทียบ -->
+                <td class="hdr-col-cert">
+                    <div class="cert-inner">
+                        <div class="cert-body val">
+                            ขอรับรองว่าผลเปรียบเทียบการตรวจสอบ<br>
+                            ตามยอดต่อไปนี้ คือยอดแตกต่างระหว่าง<br>
+                            ยอดในบัญชีคุม และยอดที่ตรวจนับได้จริง
+                        </div>
+                        <div class="cert-date-row">
+                            <span class="lbl font-bold">เมื่อ</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="val">๑๗ / พ.ย. / ๖๖</span>
+                        </div>
+                    </div>
+                </td>
+
+                <!-- คอลัมน์ 3: ผู้ตรวจนับ & ผู้ตรวจสอบ (Universal Signature Engine) -->
+                <td class="hdr-col-inspectors">
+                    <!-- ส่วนผู้ตรวจนับ -->
+                    <div class="box-counters">
+                        <div class="box-tag font-bold">ผู้ตรวจนับ</div>
+                        <div class="counter-ranks val">
+                            <div>ร.ท.</div>
+                            <div>จ.ส.อ.</div>
+                            <div>จ.ส.อ.</div>
+                        </div>
+                        <div class="box-date-line val">๑๗ / พ.ย. / ๖๖</div>
+                    </div>
+                    <!-- ส่วนผู้ตรวจสอบ (Universal Red Line Standard) -->
+                    <div class="box-verifier">
+                        <div class="box-tag font-bold">ผู้ตรวจสอบ</div>
+                        <div class="sig-name-pos-group">
+                            <div class="sig-name-wrapper">
+                                <span class="sig-rank-anchor val">พ.ท.</span>
+                                <div class="sig-name val">(พรชัย   มากเทพพงษ์)</div>
+                            </div>
+                            <div class="box-date-line val">๑๗ / พ.ย. / ๖๖</div>
+                        </div>
+                    </div>
+                </td>
+
+                <!-- คอลัมน์ 4: อนุมัติ (Universal Red Line Standard + Shared Axis Date) -->
+                <td class="hdr-col-approve">
+                    <div class="approve-tag font-bold">อนุมัติ</div>
+                    <div class="approve-sig-area">
+                        <div class="sig-space-large"></div>
+                        <div class="sig-name-pos-group">
+                            <div class="sig-name-wrapper">
+                                <span class="sig-rank-anchor val">พ.ท.</span>
+                                <div class="sig-name val">( พรชัย   มากเทพพงษ์ )</div>
+                            </div>
+                            <div class="approve-date-line val">๑๗ / พ.ย. / ๖๔</div>
+                        </div>
+                    </div>
+                </td>
+
+                <!-- คอลัมน์ 5: ข้อมูลทะเบียนและหลักฐานการรายงาน -->
+                <td class="hdr-col-admin">
+                    <div class="admin-row border-b"><span class="lbl font-bold">สายงานที่ควบคุม</span> &nbsp; <span class="val">สาย สพ.</span></div>
+                    <div class="admin-row border-b"><span class="lbl font-bold">ทะเบียน</span> &nbsp; <span class="val">ใบสำรวจสิ่งอุปกรณ์ ที่ ๑ - ๒๓</span></div>
+                    <div class="admin-row border-b"><div class="lbl font-bold">หลักฐานการรายงาน</div><div class="val" style="margin-top: 2px;">คำสั่ง ป.๔ พัน.๔ ที่ ๑๕๐/๒๕๖๖ ลง ๑๗ พ.ย. ๖๖</div></div>
+                    <div class="admin-row"><div class="lbl font-bold">ที่เก็บหลักฐานการตรวจสอบ</div><div class="val" style="margin-top: 14px;">ป.๔ พัน.๔ ร้อย.๒</div></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- ตารางข้อมูลหลัก 14 คอลัมน์ (Data Grid: เส้นตรงแนวเดียวกับกล่องบน 100%) -->
+        <table class="military-data-table">
+            <colgroup>
+                <col style="width: 4.0%;">  <!-- ลำดับ -->
+                <col style="width: 5.5%;">  <!-- ใบสำรวจที่ -->
+                <col style="width: 35.0%;"> <!-- หมายเลขสิ่งอุปกรณ์ -->
+                <col style="width: 4.5%;">  <!-- หน่วยนับ (รวม 4 คอลัมน์แรก = 49.0%) -->
+                <col style="width: 4.3%;">  <!-- ประเภทสิ่งอุปกรณ์ -->
+                <col style="width: 4.1%;">  <!-- นับได้ -->
+                <col style="width: 4.1%;">  <!-- บัญชีคุม (รวมสะสม 61.5% ตรงแนวผู้ตรวจสอบ/อนุมัติ เป๊ะ!) -->
+                <col style="width: 4.5%;">  <!-- เปรียบเทียบ ขาด -->
+                <col style="width: 4.5%;">  <!-- เปรียบเทียบ เกิน -->
+                <col style="width: 9.5%;">  <!-- ราคาหน่วยละ (รวมสะสม 80.0% ตรงแนวอนุมัติ/สายงาน เป๊ะ!) -->
+                <col style="width: 5.0%;">  <!-- เปรียบเทียบราคารวม ขาด -->
+                <col style="width: 5.0%;">  <!-- เปรียบเทียบราคารวม เกิน -->
+                <col style="width: 4.5%;">  <!-- ประเภทเงิน -->
+                <col style="width: 5.5%;">  <!-- หมายเหตุ (รวมสะสม 100.0%) -->
+            </colgroup>
+            <thead>
+                <tr>
+                    <th rowspan="2">ลำดับ</th>
+                    <th rowspan="2">ใบสำรวจที่</th>
+                    <th rowspan="2">หมายเลขสิ่งอุปกรณ์และรายการ</th>
+                    <th rowspan="2">หน่วย<br>นับ</th>
+                    <th rowspan="2">ประเภท<br>สิ่งอุปกรณ์</th>
+                    <th colspan="2">จำนวนสิ่งอุปกรณ์</th>
+                    <th colspan="2">เปรียบเทียบ</th>
+                    <th rowspan="2">ราคา<br>หน่วยละ</th>
+                    <th colspan="2">เปรียบเทียบราคารวม</th>
+                    <th rowspan="2">ประเภท<br>เงิน</th>
+                    <th rowspan="2">หมายเหตุ</th>
+                </tr>
+                <tr>
+                    <th>นับได้</th>
+                    <th>บัญชีคุม</th>
+                    <th>ขาด</th>
+                    <th>เกิน</th>
+                    <th>ขาด</th>
+                    <th>เกิน</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑/๖๖</td>
+            <td class="text-left"><span class='item-code'>1015-00-722-9752</span> <span class='item-desc'>ปบค.๙๕ ขนาด ๑๐๕ มม.</span></td>
+            <td class="text-center">กระบอก</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๖</td>
+            <td class="text-center">๖</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">๓๓๒,๗๑๒.๐๐</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๒</td>
+            <td class="text-center">๒/๖๖</td>
+            <td class="text-left"><span class='item-code'>5180-00-757-7727</span> <span class='item-desc'>เครื่องชุดช่างซ่อมปืนใหญ่</span></td>
+            <td class="text-center">ชุด</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๓</td>
+            <td class="text-center">๓</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">๑๗,๔๙๖.๐๐</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๓</td>
+            <td class="text-center">๓/๖๖</td>
+            <td class="text-left"><span class='item-code'>66885-00-3444613</span> <span class='item-desc'>เครื่องวัดอุณหภูมิส่วนบรรจุ</span></td>
+            <td class="text-center">ชุด</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">๑,๖๙๔.๐๐</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๔</td>
+            <td class="text-center">๔/๖๖</td>
+            <td class="text-left"><span class='item-code'>1230-35-165-0005</span> <span class='item-desc'>กล้องพาโนรามิค</span></td>
+            <td class="text-center">ตัว</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">๙</td>
+            <td class="text-center">๙</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๕</td>
+            <td class="text-center">๕/๖๖</td>
+            <td class="text-left"><span class='item-desc'>กล้องข้อศอก</span></td>
+            <td class="text-center">ตัว</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">๗</td>
+            <td class="text-center">๗</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๖</td>
+            <td class="text-center">๖/๖๖</td>
+            <td class="text-left"><span class='item-desc'>เครื่องตั้งมุมยิงประณีต</span></td>
+            <td class="text-center">ตัว</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">๖</td>
+            <td class="text-center">๖</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๗</td>
+            <td class="text-center">๗/๖๖</td>
+            <td class="text-left"><span class='item-code'>6685-xx-165-1315</span> <span class='item-desc'>เครื่องวัดอุณหภูมิดินส่ง แบบดิจิตอล</span></td>
+            <td class="text-center">ตัว</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">๓</td>
+            <td class="text-center">๓</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๘</td>
+            <td class="text-center">๘/๖๖</td>
+            <td class="text-left"><span class='item-desc'>ฐานกล้องเล็ง</span></td>
+            <td class="text-center">ตัว</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">๖</td>
+            <td class="text-center">๖</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๙</td>
+            <td class="text-center">๙/๖๖</td>
+            <td class="text-left"><span class='item-code'>1240-006-6065</span> <span class='item-desc'>กล้องคอลลิเมเตอร์</span></td>
+            <td class="text-center">ตัว</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">๕</td>
+            <td class="text-center">๕</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๑๐</td>
+            <td class="text-center">๑๐/๖๖</td>
+            <td class="text-left"><span class='item-code'>1015-00-712-0207</span> <span class='item-desc'>เครื่องอะไหล่บำรุงขั้น ๒</span></td>
+            <td class="text-center">ชุด</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๑๑</td>
+            <td class="text-center">๑๑/๖๖</td>
+            <td class="text-left"><span class='item-desc'>ชุดตรวจและเติมแก๊ส</span></td>
+            <td class="text-center">ชุด</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">๑,๙๔๔.๐๐</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๑๒</td>
+            <td class="text-center">๑๒/๖๖</td>
+            <td class="text-left"><span class='item-desc'>ลำกล้องปืนเครื่องประกอบ</span></td>
+            <td class="text-center">ชุด</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+                <!-- แถวรวมเงิน -->
+                <tr class="total-row font-bold">
+                    <td colspan="3" class="text-center font-bold">รวมเงิน</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-right font-bold"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ข้อความกำกับระเบียบด้านล่าง -->
+        <div class="doc-reg-footer val">
+            ( พิมพ์ตามระเบียบกองทัพบก ว่าด้วย การส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔ )
+        </div>
+    </div>
+    
+    
+    <div class="sheet-container">
+        <!-- รหัสแบบฟอร์มมุมบนขวา -->
+        <div class="top-form-id font-bold">ทบ.๔๐๐ - ๐๑๒</div>
+
+        <!-- กล่องหัวเอกสารและคณะกรรมการตรวจสอบ (Header Master Table: Grid Aligned to 61.5%) -->
+        <table class="header-master-table">
+            <colgroup>
+                <col style="width: 26.0%;">
+                <col style="width: 19.0%;">
+                <col style="width: 16.5%;">
+                <col style="width: 18.5%;">
+                <col style="width: 20.0%;">
+            </colgroup>
+            <!-- แถวที่ 1: ชื่อรายงาน, นามหน่วย/ที่ตั้ง, วันที่, แผ่นที่ -->
+            <tr>
+                <td class="hdr-title text-center font-bold">
+                    ใบรายงานผลเปรียบเทียบการตรวจสอบสิ่งอุปกรณ์
+                </td>
+                <td class="hdr-unit-info">
+                    <div><span class="lbl font-bold">นามหน่วย</span> &nbsp; <span class="val">ป.๔ พัน.๔</span></div>
+                    <div><span class="lbl font-bold">ที่ตั้ง</span> &nbsp; <span class="val">๘๐๗ ม.๒ ค่ายจิรประวัติ ต.นครสวรรค์ออก อ.เมือง จ.นครสวรรค์</span></div>
+                </td>
+                <td class="hdr-date text-center">
+                    <div><span class="lbl font-bold">วันที่รายงาน</span></div>
+                    <div class="val">พ.ย.๖๖</div>
+                </td>
+                <td colspan="2" class="hdr-page text-center">
+                    <span class="lbl font-bold">แผ่นที่</span> &nbsp; <span class="val">๒</span> &nbsp; <span class="lbl font-bold">ในจำนวน</span> &nbsp; <span class="val">๒</span> &nbsp; <span class="lbl font-bold">แผ่น</span>
+                </td>
+            </tr>
+
+            <!-- แถวที่ 2: เนื้อหาคณะกรรมการ และผู้มีอำนาจลงนาม -->
+            <tr>
+                <!-- คอลัมน์ 1: หน่วยสำรวจ + ผู้สั่งการสำรวจ (ชื่อ นามสกุล อยู่บรรทัดเดียวกัน) -->
+                <td class="hdr-col-surveyor">
+                    <div class="survey-unit-box">
+                        <span class="lbl font-bold">หน่วยสำรวจ</span> &nbsp; <span class="val">ป.๔ พัน.๔ ร้อย.๒</span>
+                    </div>
+                    <div class="order-box">
+                        <div class="order-title">
+                            <span class="lbl font-bold">ผู้สั่งการสำรวจ</span> &nbsp; <span class="val">พ.ท. พรชัย  มากเทพพงษ์</span>
+                        </div>
+                        <div class="order-pos-sig">
+                            <div class="sig-space-small"></div>
+                            <div class="text-center val">ผบ.ป.๔ พัน.๔</div>
+                        </div>
+                    </div>
+                </td>
+
+                <!-- คอลัมน์ 2: คำรับรองผลเปรียบเทียบ -->
+                <td class="hdr-col-cert">
+                    <div class="cert-inner">
+                        <div class="cert-body val">
+                            ขอรับรองว่าผลเปรียบเทียบการตรวจสอบ<br>
+                            ตามยอดต่อไปนี้ คือยอดแตกต่างระหว่าง<br>
+                            ยอดในบัญชีคุม และยอดที่ตรวจนับได้จริง
+                        </div>
+                        <div class="cert-date-row">
+                            <span class="lbl font-bold">เมื่อ</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="val">๑๗ / พ.ย. / ๖๖</span>
+                        </div>
+                    </div>
+                </td>
+
+                <!-- คอลัมน์ 3: ผู้ตรวจนับ & ผู้ตรวจสอบ (Universal Signature Engine) -->
+                <td class="hdr-col-inspectors">
+                    <!-- ส่วนผู้ตรวจนับ -->
+                    <div class="box-counters">
+                        <div class="box-tag font-bold">ผู้ตรวจนับ</div>
+                        <div class="counter-ranks val">
+                            <div>ร.ท.</div>
+                            <div>จ.ส.อ.</div>
+                            <div>จ.ส.อ.</div>
+                        </div>
+                        <div class="box-date-line val">๑๗ / พ.ย. / ๖๖</div>
+                    </div>
+                    <!-- ส่วนผู้ตรวจสอบ (Universal Red Line Standard) -->
+                    <div class="box-verifier">
+                        <div class="box-tag font-bold">ผู้ตรวจสอบ</div>
+                        <div class="sig-name-pos-group">
+                            <div class="sig-name-wrapper">
+                                <span class="sig-rank-anchor val">พ.ท.</span>
+                                <div class="sig-name val">(พรชัย   มากเทพพงษ์)</div>
+                            </div>
+                            <div class="box-date-line val">๑๗ / พ.ย. / ๖๖</div>
+                        </div>
+                    </div>
+                </td>
+
+                <!-- คอลัมน์ 4: อนุมัติ (Universal Red Line Standard + Shared Axis Date) -->
+                <td class="hdr-col-approve">
+                    <div class="approve-tag font-bold">อนุมัติ</div>
+                    <div class="approve-sig-area">
+                        <div class="sig-space-large"></div>
+                        <div class="sig-name-pos-group">
+                            <div class="sig-name-wrapper">
+                                <span class="sig-rank-anchor val">พ.ท.</span>
+                                <div class="sig-name val">( พรชัย   มากเทพพงษ์ )</div>
+                            </div>
+                            <div class="approve-date-line val">๑๗ / พ.ย. / ๖๔</div>
+                        </div>
+                    </div>
+                </td>
+
+                <!-- คอลัมน์ 5: ข้อมูลทะเบียนและหลักฐานการรายงาน -->
+                <td class="hdr-col-admin">
+                    <div class="admin-row border-b"><span class="lbl font-bold">สายงานที่ควบคุม</span> &nbsp; <span class="val">สาย สพ.</span></div>
+                    <div class="admin-row border-b"><span class="lbl font-bold">ทะเบียน</span> &nbsp; <span class="val">ใบสำรวจสิ่งอุปกรณ์ ที่ ๑ - ๒๓</span></div>
+                    <div class="admin-row border-b"><div class="lbl font-bold">หลักฐานการรายงาน</div><div class="val" style="margin-top: 2px;">คำสั่ง ป.๔ พัน.๔ ที่ ๑๕๐/๒๕๖๖ ลง ๑๗ พ.ย. ๖๖</div></div>
+                    <div class="admin-row"><div class="lbl font-bold">ที่เก็บหลักฐานการตรวจสอบ</div><div class="val" style="margin-top: 14px;">ป.๔ พัน.๔ ร้อย.๒</div></div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- ตารางข้อมูลหลัก 14 คอลัมน์ (Data Grid: เส้นตรงแนวเดียวกับกล่องบน 100%) -->
+        <table class="military-data-table">
+            <colgroup>
+                <col style="width: 4.0%;">  <!-- ลำดับ -->
+                <col style="width: 5.5%;">  <!-- ใบสำรวจที่ -->
+                <col style="width: 35.0%;"> <!-- หมายเลขสิ่งอุปกรณ์ -->
+                <col style="width: 4.5%;">  <!-- หน่วยนับ (รวม 4 คอลัมน์แรก = 49.0%) -->
+                <col style="width: 4.3%;">  <!-- ประเภทสิ่งอุปกรณ์ -->
+                <col style="width: 4.1%;">  <!-- นับได้ -->
+                <col style="width: 4.1%;">  <!-- บัญชีคุม (รวมสะสม 61.5% ตรงแนวผู้ตรวจสอบ/อนุมัติ เป๊ะ!) -->
+                <col style="width: 4.5%;">  <!-- เปรียบเทียบ ขาด -->
+                <col style="width: 4.5%;">  <!-- เปรียบเทียบ เกิน -->
+                <col style="width: 9.5%;">  <!-- ราคาหน่วยละ (รวมสะสม 80.0% ตรงแนวอนุมัติ/สายงาน เป๊ะ!) -->
+                <col style="width: 5.0%;">  <!-- เปรียบเทียบราคารวม ขาด -->
+                <col style="width: 5.0%;">  <!-- เปรียบเทียบราคารวม เกิน -->
+                <col style="width: 4.5%;">  <!-- ประเภทเงิน -->
+                <col style="width: 5.5%;">  <!-- หมายเหตุ (รวมสะสม 100.0%) -->
+            </colgroup>
+            <thead>
+                <tr>
+                    <th rowspan="2">ลำดับ</th>
+                    <th rowspan="2">ใบสำรวจที่</th>
+                    <th rowspan="2">หมายเลขสิ่งอุปกรณ์และรายการ</th>
+                    <th rowspan="2">หน่วย<br>นับ</th>
+                    <th rowspan="2">ประเภท<br>สิ่งอุปกรณ์</th>
+                    <th colspan="2">จำนวนสิ่งอุปกรณ์</th>
+                    <th colspan="2">เปรียบเทียบ</th>
+                    <th rowspan="2">ราคา<br>หน่วยละ</th>
+                    <th colspan="2">เปรียบเทียบราคารวม</th>
+                    <th rowspan="2">ประเภท<br>เงิน</th>
+                    <th rowspan="2">หมายเหตุ</th>
+                </tr>
+                <tr>
+                    <th>นับได้</th>
+                    <th>บัญชีคุม</th>
+                    <th>ขาด</th>
+                    <th>เกิน</th>
+                    <th>ขาด</th>
+                    <th>เกิน</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr>
+            <td class="text-center">๑๓</td>
+            <td class="text-center">๑๓/๖๖</td>
+            <td class="text-left"><span class='item-code'>6240-155-7864</span> <span class='item-desc'>LAMP M.19 หลอดไฟหลักเล็ง</span></td>
+            <td class="text-center">ชิ้น</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๑๔</td>
+            <td class="text-center">๑๔/๖๖</td>
+            <td class="text-left"><span class='item-code'>6240-635-9800</span> <span class='item-desc'>LAMP M.14 หลอดไฟกล้องเล็ง</span></td>
+            <td class="text-center">ชิ้น</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๑๕</td>
+            <td class="text-center">๑๕/๖๖</td>
+            <td class="text-left"><span class='item-code'>1240-769-1521</span> <span class='item-desc'>CHEST,PACKING M.27 กล่องใส่กล้องเล็ง</span></td>
+            <td class="text-center">ชิ้น</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๑๖</td>
+            <td class="text-center">๑๖/๖๖</td>
+            <td class="text-left"><span class='item-code'>2610-262-6877</span> <span class='item-desc'>TIRE,PNEUMATIC 900-20 ยางนอก</span></td>
+            <td class="text-center">อัน</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๑๗</td>
+            <td class="text-center">๑๗/๖๖</td>
+            <td class="text-left"><span class='item-code'>26103500-944</span> <span class='item-desc'>INNER TUBE 900-20 ยางใน</span></td>
+            <td class="text-center">อัน</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๑๘</td>
+            <td class="text-center">๑๘/๖๖</td>
+            <td class="text-left"><span class='item-code'>2530-738-9618</span> <span class='item-desc'>WHEEL AND RIM กระทะล้อ</span></td>
+            <td class="text-center">อัน</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๑๙</td>
+            <td class="text-center">๑๙/๖๖</td>
+            <td class="text-left"><span class='item-code'>1015-615-7208</span> <span class='item-desc'>BRUSH,SECTION แปลงดอกแส้</span></td>
+            <td class="text-center">ชิ้น</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๒๐</td>
+            <td class="text-center">๒๐/๖๖</td>
+            <td class="text-left"><span class='item-code'>1290-824-7245</span> <span class='item-desc'>CASE,CARRYNG กล่องใส่เครื่องตั้งหัวชนวน</span></td>
+            <td class="text-center">อัน</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">๑</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๒๑</td>
+            <td class="text-center">๒๑/๖๖</td>
+            <td class="text-left"><span class='item-code'>8340-35-229-0026</span> <span class='item-desc'>กระโจมประจำหมู่ปืน</span></td>
+            <td class="text-center">กระโจม</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๖</td>
+            <td class="text-center">๖</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">๑๗,๔๐๐.๐๐</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๒๒</td>
+            <td class="text-center">๒๒/๖๖</td>
+            <td class="text-left"><span class='item-code'>8340-35-229-0025</span> <span class='item-desc'>กระโจมกระสุน</span></td>
+            <td class="text-center">กระโจม</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">๔</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">๑๗,๔๘๐.๐๐</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+        <tr>
+            <td class="text-center">๒๓</td>
+            <td class="text-center">๒๓/๖๖</td>
+            <td class="text-left"><span class='item-code'>8340-35-229-0058</span> <span class='item-desc'>กระโจมส่วนบรรจุ</span></td>
+            <td class="text-center">กระโจม</td>
+            <td class="text-center">๒</td>
+            <td class="text-center">๖</td>
+            <td class="text-center">๖</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-right">๑,๙๔๔.๐๐</td>
+            <td class="text-center">-</td>
+            <td class="text-center">-</td>
+            <td class="text-center">บาท</td>
+            <td class="text-center">-</td>
+        </tr>
+                <!-- แถวรวมเงิน -->
+                <tr class="total-row font-bold">
+                    <td colspan="3" class="text-center font-bold">รวมเงิน</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="text-right font-bold"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- ข้อความกำกับระเบียบด้านล่าง -->
+        <div class="doc-reg-footer val">
+            ( พิมพ์ตามระเบียบกองทัพบก ว่าด้วย การส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔ )
+        </div>
+    </div>
+    
+</body>
+</html>

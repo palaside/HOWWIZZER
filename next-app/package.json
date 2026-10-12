@@ -1,0 +1,37 @@
+{
+  "name": "next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "vitest run --config vitest.simple.config.ts --cwd ./ --no-vite"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.117.3",
+    "eventsource-polyfill": "^0.9.6",
+    "next": "16.4.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-router-dom": "^6.30.6"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.0.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "axios": "^1.7.2",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "^1.0.0"
+
+  },
+  "vitest": {
+    "globals": true,
+    "environment": "happy-dom",
+    "include": [
+      "src/**/*.test.{ts,tsx}"
+    ]
+  }
+}

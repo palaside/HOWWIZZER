@@ -1,0 +1,111 @@
+import pdfplumber, json
+
+pdf_path = r'docs\thai-docx.skill\ระบบเอกสาร\6.สมุดประวัติการใช้ปืนใหญ่.pdf'
+
+# Build SSOT Blueprint for 5-page Artillery Gun History Book (1 page per topic)
+blueprint = {
+    "metadata": {
+        "form_name": "สมุดประวัติการใช้ปืนใหญ่",
+        "category": "สมุดประวัติการใช้งานและซ่อมบำรุงปืนใหญ่ประจำหน่วย",
+        "orientation": "landscape",
+        "page_size": "A4",
+        "total_pages": 5,
+        "topics": [
+            "หน้าปก",
+            "ประวัติอาวุธ (ป.๖)",
+            "การคำนวณอายุลำกล้อง",
+            "ประวัติการใช้ปืนใหญ่",
+            "บันทึกหลักฐานการยิง"
+        ]
+    },
+    "pages": [
+        {
+            "page_num": 1,
+            "topic_id": "cover",
+            "title": "สมุดประวัติการใช้ปืนใหญ่",
+            "unit": "หน่วย ป.๔ พัน.๔ ร้อย.๒",
+            "gun_type": "ปบค.๙๕ ขนาด ๑๐๕ มม.",
+            "gun_model": "แบบ M.101 A.1 ปรับปรุง",
+            "gun_serial": "๘๕๑๖",
+            "gun_status": "พร้อมใช้งาน",
+            "emblem_path": "artillery_emblem.png"
+        },
+        {
+            "page_num": 2,
+            "topic_id": "weapon_history",
+            "form_code": "ป.๖",
+            "title": "ประวัติอาวุธ",
+            "items": [
+                {"no": "๑.", "label": "ชนิดอาวุธ", "value": "ปบค.๙๕ ขนาด ๑๐๕ มม."},
+                {"no": "๒.", "label": "แบบ", "value": "M.101 A.1 ปรับปรุง"},
+                {"no": "๓.", "label": "หมายเลข", "value": "๘๕๑๖"},
+                {"no": "๔.", "label": "ค่า ตร.", "value": "-๙.๑๒"},
+                {"no": "๕.", "label": "บริษัทผู้สร้าง", "value": "...................................................."}
+            ]
+        },
+        {
+            "page_num": 3,
+            "topic_id": "barrel_life",
+            "title": "การคำนวณอายุลำกล้อง",
+            "left_info": [
+                {"label": "ชนิดลำกล้อง", "value": "M2A2"},
+                {"label": "หมายเลขลำกล้อง", "value": "๑๔๐๓๖"},
+                {"label": "อายุลำกล้องสูงสุด", "value": "๗,๕๐๐", "unit": "นัด"}
+            ],
+            "table": {
+                "title": "อัตราการคำนวณกระสุน",
+                "columns": [
+                    {"id": "propellant", "label": "ดินส่งกระสุน", "width_pct": 30.0},
+                    {"id": "charge", "label": "ส่วนบรรจุ", "width_pct": 25.0},
+                    {"id": "efc", "label": "ค่า EFC", "width_pct": 20.0},
+                    {"id": "remark", "label": "หมายเหตุ", "width_pct": 25.0}
+                ],
+                "rows_count": 12
+            }
+        },
+        {
+            "page_num": 4,
+            "topic_id": "operation_maintenance",
+            "title": "ประวัติการใช้ปืนใหญ่",
+            "sub_header": {
+                "gun_info": "ปบค.๙๕ ขนาด ๑๐๕ มม. แบบ M.101 A.1 ปรับปรุง หมายเลข ๘๕๑๖",
+                "unit": "หน่วย ป.๔ พัน.๔ ร้อย.๒"
+            },
+            "table": {
+                "columns": [
+                    {"id": "date", "label": "วัน/เดือน/ปี", "width_pct": 12.0},
+                    {"id": "mission", "label": "ภารกิจ/การปฏิบัติ", "width_pct": 34.0},
+                    {"id": "issue", "label": "ปัญหาข้อขัดข้อง", "width_pct": 20.0},
+                    {"id": "action_repair", "label": "แก้ไข", "parent_label": "การดำเนินการ", "width_pct": 11.0},
+                    {"id": "action_evac", "label": "ส่งซ่อม", "parent_label": "การดำเนินการ", "width_pct": 11.0},
+                    {"id": "remark", "label": "หมายเหตุ", "width_pct": 12.0}
+                ],
+                "rows_count": 13
+            }
+        },
+        {
+            "page_num": 5,
+            "topic_id": "firing_record",
+            "title": "บันทึกหลักฐานการยิง",
+            "table": {
+                "columns": [
+                    {"id": "date", "label": "วัน/เดือน/ปี", "width_pct": 8.0},
+                    {"id": "ammo_type", "label": "ชนิดกระสุน", "width_pct": 12.0},
+                    {"id": "charge", "label": "ส่วนบรรจุ", "width_pct": 10.0},
+                    {"id": "rounds", "label": "จำนวนนัด", "width_pct": 7.0},
+                    {"id": "efc", "label": "ค่า EFC", "width_pct": 6.0},
+                    {"id": "efc_total", "label": "ค่า EFC X จำนวนนัด", "width_pct": 11.0},
+                    {"id": "barrel_life", "label": "อายุลำกล้อง", "width_pct": 9.0},
+                    {"id": "signature", "label": "ลายเซ็น", "width_pct": 17.0},
+                    {"id": "remark", "label": "หมายเหตุ", "width_pct": 20.0}
+                ],
+                "rows_count": 13
+            }
+        }
+    ]
+}
+
+with open(r'd:\Project\WEPAPP\table_layout_gun_book.json', 'w', encoding='utf-8') as f:
+    json.dump(blueprint, f, ensure_ascii=False, indent=2)
+
+print("Saved SSOT Blueprint table_layout_gun_book.json successfully!")

@@ -1,0 +1,535 @@
+{
+  "metadata": {
+    "form_name": "ประวัติการใช้อาวุธ",
+    "category": "ทะเบียนประวัติการใช้อาวุธประจำหมู่ปืนใหญ่",
+    "signer": {
+      "cert": "ตรวจถูกต้อง",
+      "rank": "ร.อ.",
+      "name": "(กฤติน  นราพงษ์)",
+      "position": "ผบ.ป.๔ พัน.๔ ร้อย.๒"
+    },
+    "firing_record": {
+      "line1": "วัน เดือน ปี ที่ยิงครั้งสุดท้าย   ........./............../............../",
+      "line2": "จำนวนนัดที่ยิงมาแล้ว ............  นัด"
+    },
+    "columns": [
+      {
+        "id": "part",
+        "label": "ส่วนประกอบ",
+        "width_pct": 30.0
+      },
+      {
+        "id": "model",
+        "label": "หมายเลขแบบ",
+        "width_pct": 24.0
+      },
+      {
+        "id": "serial",
+        "label": "หมายเลข",
+        "width_pct": 23.0
+      },
+      {
+        "id": "remark",
+        "label": "หมายเหตุ",
+        "width_pct": 23.0
+      }
+    ]
+  },
+  "pages": [
+    {
+      "page_num": 1,
+      "squad_num": 2,
+      "squad_th": "๒",
+      "title": "ประวัติการใช้อาวุธ ป.หมู่ ๒",
+      "items": [
+        {
+          "part": "ตัวปืน",
+          "model": "M2A2",
+          "serial": "๑๙๖๐๙",
+          "raw_serial": "19609",
+          "remark": ""
+        },
+        {
+          "part": "ลำกล้องปืน",
+          "model": "M2A2",
+          "serial": "๑๔๐๔๑",
+          "raw_serial": "14041",
+          "remark": ""
+        },
+        {
+          "part": "รถรองปืน",
+          "model": "M2A2",
+          "serial": "๓๑๖๖",
+          "raw_serial": "3166",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องรับแรงถอย",
+          "model": "M2A2",
+          "serial": "๑๓๗๔๐",
+          "raw_serial": "13740",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องให้ระยะยิง",
+          "model": "M4A1",
+          "serial": "๑๙๓๒",
+          "raw_serial": "1932",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องตั้งมุมยิงประณีต",
+          "model": "M1A1",
+          "serial": "๓๐๑๙๒",
+          "raw_serial": "30192",
+          "remark": ""
+        },
+        {
+          "part": "ฐานกล้องเล็ง",
+          "model": "M21A1",
+          "serial": "๐๒๘๓",
+          "raw_serial": "0283",
+          "remark": ""
+        },
+        {
+          "part": "กล้องเล็งพาโนรามิค",
+          "model": "M12A7",
+          "serial": "๐๒๙๖",
+          "raw_serial": "0296",
+          "remark": ""
+        },
+        {
+          "part": "ฐานกล้องข้อศอก",
+          "model": "M23",
+          "serial": "๙๒๘๒",
+          "raw_serial": "9282",
+          "remark": ""
+        },
+        {
+          "part": "กล้องข้อศอก",
+          "model": "M16A1D",
+          "serial": "๒๖๕๓",
+          "raw_serial": "2653",
+          "remark": ""
+        },
+        {
+          "part": "ยางขวา",
+          "model": "Superstone",
+          "serial": "LA070147",
+          "raw_serial": "LA070147",
+          "remark": ""
+        },
+        {
+          "part": "ยางซ้าย",
+          "model": "Superstone",
+          "serial": "LA070706",
+          "raw_serial": "LA070706",
+          "remark": ""
+        },
+        {
+          "part": "ค่า ตร.",
+          "model": "",
+          "serial": "-๗.๙๐",
+          "raw_serial": "-7.90",
+          "remark": ""
+        }
+      ]
+    },
+    {
+      "page_num": 2,
+      "squad_num": 3,
+      "squad_th": "๓",
+      "title": "ประวัติการใช้อาวุธ ป.หมู่ ๓",
+      "items": [
+        {
+          "part": "ตัวปืน",
+          "model": "M2A2",
+          "serial": "๒๐๖๗๐",
+          "raw_serial": "20670",
+          "remark": ""
+        },
+        {
+          "part": "ลำกล้องปืน",
+          "model": "M2A2",
+          "serial": "๑๔๑๓๙",
+          "raw_serial": "14139",
+          "remark": ""
+        },
+        {
+          "part": "รถรองปืน",
+          "model": "M2A2",
+          "serial": "๑๒๔๐๕",
+          "raw_serial": "12405",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องรับแรงถอย",
+          "model": "M2A2",
+          "serial": "๘๓๙",
+          "raw_serial": "839",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องให้ระยะยิง",
+          "model": "M4A1",
+          "serial": "๒๑๕๑๐",
+          "raw_serial": "21510",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องตั้งมุมยิงประณีต",
+          "model": "M1A1",
+          "serial": "๒๘๑๘๙",
+          "raw_serial": "28189",
+          "remark": ""
+        },
+        {
+          "part": "ฐานกล้องเล็ง",
+          "model": "M21A1",
+          "serial": "๐๒๙๐",
+          "raw_serial": "0290",
+          "remark": ""
+        },
+        {
+          "part": "กล้องเล็งพาโนรามิค",
+          "model": "M12A7",
+          "serial": "๐๒๙๘",
+          "raw_serial": "0298",
+          "remark": ""
+        },
+        {
+          "part": "ฐานกล้องข้อศอก",
+          "model": "M23",
+          "serial": "๑๑๒๒",
+          "raw_serial": "1122",
+          "remark": ""
+        },
+        {
+          "part": "กล้องข้อศอก",
+          "model": "M16A1D",
+          "serial": "๓๕๘๙๗",
+          "raw_serial": "35897",
+          "remark": ""
+        },
+        {
+          "part": "ยางขวา",
+          "model": "Superstone",
+          "serial": "NP090049",
+          "raw_serial": "NP090049",
+          "remark": ""
+        },
+        {
+          "part": "ยางซ้าย",
+          "model": "Superstone",
+          "serial": "NP090297",
+          "raw_serial": "NP090297",
+          "remark": ""
+        },
+        {
+          "part": "ค่า ตร.",
+          "model": "",
+          "serial": "-๘.๒๑",
+          "raw_serial": "-8.21",
+          "remark": ""
+        }
+      ]
+    },
+    {
+      "page_num": 3,
+      "squad_num": 4,
+      "squad_th": "๔",
+      "title": "ประวัติการใช้อาวุธ ป.หมู่ ๔",
+      "items": [
+        {
+          "part": "ตัวปืน",
+          "model": "M2A2",
+          "serial": "๒๓๕๕๔",
+          "raw_serial": "23554",
+          "remark": ""
+        },
+        {
+          "part": "ลำกล้องปืน",
+          "model": "M2A2",
+          "serial": "๑๔๑๘๐",
+          "raw_serial": "14180",
+          "remark": ""
+        },
+        {
+          "part": "รถรองปืน",
+          "model": "M2A2",
+          "serial": "๑๐๗๘๐",
+          "raw_serial": "10780",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องรับแรงถอย",
+          "model": "M2A2",
+          "serial": "๑๒๓๑",
+          "raw_serial": "1231",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องให้ระยะยิง",
+          "model": "M4A1",
+          "serial": "๒๔๐๙๙",
+          "raw_serial": "24099",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องตั้งมุมยิงประณีต",
+          "model": "M1A1",
+          "serial": "๙๖๑๕๗",
+          "raw_serial": "96157",
+          "remark": ""
+        },
+        {
+          "part": "ฐานกล้องเล็ง",
+          "model": "M21A1",
+          "serial": "๐๔๒๔",
+          "raw_serial": "0424",
+          "remark": ""
+        },
+        {
+          "part": "กล้องเล็งพาโนรามิค",
+          "model": "M12A7",
+          "serial": "๐๒๙๙",
+          "raw_serial": "0299",
+          "remark": ""
+        },
+        {
+          "part": "ฐานกล้องข้อศอก",
+          "model": "M23",
+          "serial": "๒๐๙๒๕",
+          "raw_serial": "20925",
+          "remark": ""
+        },
+        {
+          "part": "กล้องข้อศอก",
+          "model": "M16A1D",
+          "serial": "๓๖๐๐๘",
+          "raw_serial": "36008",
+          "remark": ""
+        },
+        {
+          "part": "ยางขวา",
+          "model": "Superstone",
+          "serial": "HC070147",
+          "raw_serial": "HC070147",
+          "remark": ""
+        },
+        {
+          "part": "ยางซ้าย",
+          "model": "Superstone",
+          "serial": "HC090119",
+          "raw_serial": "HC090119",
+          "remark": ""
+        },
+        {
+          "part": "ค่า ตร.",
+          "model": "",
+          "serial": "-๘.๔๑",
+          "raw_serial": "-8.41",
+          "remark": ""
+        }
+      ]
+    },
+    {
+      "page_num": 4,
+      "squad_num": 5,
+      "squad_th": "๕",
+      "title": "ประวัติการใช้อาวุธ ป.หมู่ ๕",
+      "items": [
+        {
+          "part": "ตัวปืน",
+          "model": "M2A2",
+          "serial": "๒๔๒๘๐",
+          "raw_serial": "24280",
+          "remark": ""
+        },
+        {
+          "part": "ลำกล้องปืน",
+          "model": "M2A2",
+          "serial": "๑๕๓๒๕",
+          "raw_serial": "15325",
+          "remark": ""
+        },
+        {
+          "part": "รถรองปืน",
+          "model": "M2A2",
+          "serial": "๑๒๕๙๕",
+          "raw_serial": "12595",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องรับแรงถอย",
+          "model": "M2A2",
+          "serial": "๓๔๕๖",
+          "raw_serial": "3456",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องให้ระยะยิง",
+          "model": "M4A1",
+          "serial": "๒๓๑๗๓",
+          "raw_serial": "23173",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องตั้งมุมยิงประณีต",
+          "model": "M1A1",
+          "serial": "๑๔๗๘๓๐",
+          "raw_serial": "147830",
+          "remark": ""
+        },
+        {
+          "part": "ฐานกล้องเล็ง",
+          "model": "M21A1",
+          "serial": "๐๔๓๕",
+          "raw_serial": "0435",
+          "remark": ""
+        },
+        {
+          "part": "กล้องเล็งพาโนรามิค",
+          "model": "M12A7",
+          "serial": "๒๔๑๖๕",
+          "raw_serial": "24165",
+          "remark": ""
+        },
+        {
+          "part": "ฐานกล้องข้อศอก",
+          "model": "M23",
+          "serial": "๘๓๑๒",
+          "raw_serial": "8312",
+          "remark": ""
+        },
+        {
+          "part": "กล้องข้อศอก",
+          "model": "M16A1D",
+          "serial": "๓๔๖๗๔",
+          "raw_serial": "34674",
+          "remark": ""
+        },
+        {
+          "part": "ยางขวา",
+          "model": "Superstone",
+          "serial": "AA030298",
+          "raw_serial": "AA030298",
+          "remark": ""
+        },
+        {
+          "part": "ยางซ้าย",
+          "model": "Superstone",
+          "serial": "AA020358",
+          "raw_serial": "AA020358",
+          "remark": ""
+        },
+        {
+          "part": "ค่า ตร.",
+          "model": "",
+          "serial": "-๙.๐๖",
+          "raw_serial": "-9.06",
+          "remark": ""
+        }
+      ]
+    },
+    {
+      "page_num": 5,
+      "squad_num": 6,
+      "squad_th": "๖",
+      "title": "ประวัติการใช้อาวุธ ป.หมู่ ๖",
+      "items": [
+        {
+          "part": "ตัวปืน",
+          "model": "M2A2",
+          "serial": "๘๕๑๖",
+          "raw_serial": "8516",
+          "remark": ""
+        },
+        {
+          "part": "ลำกล้องปืน",
+          "model": "M2A2",
+          "serial": "๑๔๐๓๖",
+          "raw_serial": "14036",
+          "remark": ""
+        },
+        {
+          "part": "รถรองปืน",
+          "model": "M2A2",
+          "serial": "๖๙๕๕",
+          "raw_serial": "6955",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องรับแรงถอย",
+          "model": "M2A2",
+          "serial": "๑๒๐๙",
+          "raw_serial": "1209",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องให้ระยะยิง",
+          "model": "M4A1",
+          "serial": "๒๔๙๖๑",
+          "raw_serial": "24961",
+          "remark": ""
+        },
+        {
+          "part": "เครื่องตั้งมุมยิงประณีต",
+          "model": "M1A1",
+          "serial": "๑๔๗๓๔๙",
+          "raw_serial": "147349",
+          "remark": ""
+        },
+        {
+          "part": "ฐานกล้องเล็ง",
+          "model": "M21A1",
+          "serial": "๐๔๓๑",
+          "raw_serial": "0431",
+          "remark": ""
+        },
+        {
+          "part": "กล้องเล็งพาโนรามิค",
+          "model": "M12A7",
+          "serial": "๕๗๗๕๖",
+          "raw_serial": "57756",
+          "remark": ""
+        },
+        {
+          "part": "ฐานกล้องข้อศอก",
+          "model": "M23",
+          "serial": "๒๑๙๖๗",
+          "raw_serial": "21967",
+          "remark": ""
+        },
+        {
+          "part": "กล้องข้อศอก",
+          "model": "M16A1D",
+          "serial": "๒๓๓๒",
+          "raw_serial": "2332",
+          "remark": ""
+        },
+        {
+          "part": "ยางขวา",
+          "model": "Superstone",
+          "serial": "AA030345",
+          "raw_serial": "AA030345",
+          "remark": ""
+        },
+        {
+          "part": "ยางซ้าย",
+          "model": "Superstone",
+          "serial": "AA030290",
+          "raw_serial": "AA030290",
+          "remark": ""
+        },
+        {
+          "part": "ค่า ตร.",
+          "model": "",
+          "serial": "-๙.๑๒",
+          "raw_serial": "-9.12",
+          "remark": ""
+        }
+      ]
+    }
+  ]
+}

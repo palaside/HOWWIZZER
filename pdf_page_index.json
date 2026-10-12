@@ -1,0 +1,443 @@
+[
+  {
+    "page": 1,
+    "has_text": true,
+    "text_len": 4580,
+    "num_images": 0,
+    "preview": "เริ\u0000มต้นตั\u0000งค่าและเลือกโหมดทํางาน | https://gemini.google.com/app/45c73e40be96136c | User prompt: อธิบาย  คําว่า  \"runtime \" กับ  \" dependency\" หน่อย | Response: Runtime คือ  \" ช่วงเวลาและสภาพแวดล้อมท"
+  },
+  {
+    "page": 2,
+    "has_text": true,
+    "text_len": 3434,
+    "num_images": 0,
+    "preview": "🔥  จุดที\u0000เพิ\u0000มเข้าไปเพื\u0000อกันเหนียวให้คุณ : | ใน  Phase 1: บังคับให้มันวิเคราะห์เลยว่าโปรเจกต์นี\u0000ต้องพึ\u0000งพา  (Dependency) ไลบรารีอะไรบ้าง  และจับยัดเข้า  To-Do List ข้อแรก | ใน  Phase 2: เพิ\u0000มกฎข้อ  1 "
+  },
+  {
+    "page": 3,
+    "has_text": true,
+    "text_len": 3932,
+    "num_images": 0,
+    "preview": "v[ 📍  PHASE 1: BLUEPRINT & TO-DO LIST ( ห้ามเขียนโค้ดเด็ดขาด ) ]├── 1. Best Tech Stack & Dependencies: สรุปไลบรารีที\u0000ต้องใช้ทั\u0000งหมดเพื\u0000อป้องกัน  Runtime Error├── 2. Architecture Flow: วางโครงสร้าง  Da"
+  },
+  {
+    "page": 4,
+    "has_text": true,
+    "text_len": 3159,
+    "num_images": 0,
+    "preview": ":: สร้างโฟลเดอร์หมวดหมู่  ( ถ้ายังไม่มี )if not exist \"Documents\" mkdir Documentsif not exist \"Images\" mkdir Imagesif not exist \"Code_and_Data\" mkdir Code_and_Dataif not exist \"Programs\" mkdir Program"
+  },
+  {
+    "page": 5,
+    "has_text": true,
+    "text_len": 6388,
+    "num_images": 0,
+    "preview": "จงร่างข้อมูลเพื\u0000อนําไปใส่ในไฟล์สารบัญ  (.yaml / .md) เพื\u0000อบอกใบ้ให้  AI ตัวอื\u0000นรู้ว่าต้องหยิบสกิลนี\u0000ไปใช้ตอนไหน :*   **Name:** [ ตั\u0000งชื\u0000อสกิลภาษาอังกฤษ  สื\u0000อความหมายชัดเจน  ]*   **Description:** [ อธิ"
+  },
+  {
+    "page": 6,
+    "has_text": true,
+    "text_len": 8494,
+    "num_images": 0,
+    "preview": "ความสําคัญ  และการสื\u0000อสารการเลือกใช้และการปรับขนาด  (Scalability) ในคลังทักษะทั\u0000งหมด  235+ Skills เราได้คัดกรองทักษะที\u0000มีความพร้อมสูงและรองรับการทํางานข้ามแพลตฟอร์ม  (Cross-tool Compatible) จํานวน  15"
+  },
+  {
+    "page": 7,
+    "has_text": true,
+    "text_len": 6062,
+    "num_images": 0,
+    "preview": "ขยายสเกลงานได้โดยไม่ต้องถมคนเพิ\u0000ม  (Headcount Elasticity): แผนนี\u0000ปูทางให้องค์กรรับโปรเจกต์ที\u0000ใหญ่ขึ\u0000น  หรือทําของออกสู่ตลาดได้ไวขึ\u0000นเป็น10 เท่า  โดยใช้จํานวนโปรแกรมเมอร์เท่าเดิม | โรงเรียนสอนงานเด็กให"
+  },
+  {
+    "page": 8,
+    "has_text": true,
+    "text_len": 9200,
+    "num_images": 0,
+    "preview": "และเริ\u0000มถามคําถามแรกกับคุณ  ( เช่น  \" ผู้ใช้งานของคุณจะล็อกอินผ่าน  Email/Password หรือต้องการให้ล็อกอินผ่าน  Google/Facebook ด้วยครับ ?\") Step 2: คุณเพียงแค่ตอบคําถามไปตามความต้องการ  หรือถ้าไม่รู้ก็"
+  },
+  {
+    "page": 9,
+    "has_text": true,
+    "text_len": 4812,
+    "num_images": 0,
+    "preview": "ปรับเปลี\u0000ยนเป็น  \"Shift-left Security\" ซึ\u0000งหมายถึงการฝังการตรวจสอบความปลอดภัยไว้ในทุกขั\u0000นตอน  ตั\u0000งแต่เริ\u0000มเขียนโค้ดบรรทัดแรกจนถึงระบบบน  Productionความท้าทายและมาตรการแก้ไข : Security Concerns: AI อาจ"
+  },
+  {
+    "page": 10,
+    "has_text": true,
+    "text_len": 3714,
+    "num_images": 0,
+    "preview": "บังคับจุดตรวจ  (Checkpoints & Guardrails): V2 สั\u0000งลุยเฟสเดียวแล้วรอรับโค้ดทั\u0000งหมด  แต่  V3 จะซอยการทํางานเป็น  6 ระยะ  (Planning -> Code ->Integration -> Testing -> Deployment -> Monitoring) AI จะถูกล"
+  },
+  {
+    "page": 11,
+    "has_text": true,
+    "text_len": 6796,
+    "num_images": 0,
+    "preview": "├── AI: สรุป  Tech Stack, เตรียม  requirements.txt / package.json├── AI: วาง  Architecture Plan และ  Database Schema└── 🧑‍✈️  จุดอนุมัติที\u0000  1 (Human Checkpoint): มนุษย์ตรวจสอบ  Business Logic และ  Sc"
+  },
+  {
+    "page": 12,
+    "has_text": true,
+    "text_len": 6117,
+    "num_images": 0,
+    "preview": "ทําการวิเคราะห์และติดตั\u0000ง  Library ที\u0000จําเป็นผ่านคําสั\u0000ง  CLI ได้โดยอัตโนมัติ  มาตรฐานขั\u0000นตอนการทํางาน  3 ขั\u0000นตอน  (The 3-Step Generation) Discovery &Contextualization: AI ทําการสํารวจ  Metadata และ  "
+  },
+  {
+    "page": 13,
+    "has_text": true,
+    "text_len": 3124,
+    "num_images": 0,
+    "preview": "[ 🔄  เข้าสู่ลูปซักถาม  (Interview Loop & Context Engine) ][ ⏪  MODULE 2: CONTEXT MUTATION & ROLLBACK ] <--- ( แทรกดักไว้หากผู้ใช้เปลี\u0000ยนใจ )    |    v[ ⚖  กระบวนการคัดกรองหลักฐาน  (State Classificatio"
+  },
+  {
+    "page": 14,
+    "has_text": true,
+    "text_len": 5321,
+    "num_images": 0,
+    "preview": "[ 🟢  ผู้ใช้พิมพ์คําว่า  \"[ อนุมัติ  Phase 4 ]\" ]    |    v[ 📦  PHASE 5 & 6: DEPLOYMENT & MONITORING PREP ( เตรียมขึ\u0000นคลาวด์ ) ]├── AI: แพ็ค  Containerization, เตรียม  CI/CD Pipeline├── AI: ตั\u0000งค่า  He"
+  },
+  {
+    "page": 15,
+    "has_text": true,
+    "text_len": 4326,
+    "num_images": 0,
+    "preview": "User prompt: วิธีแก้ปัญหาของคุณทั\u0000ง  3 ข้อคือการวางสถาปัตยกรรมระดับ  Senior Architect ที\u0000เข้าใจธรรมชาติของข้อจํากัด  AI และการทํางานของระบบอย่างแท้จริง  ผมไม่รู้ว่าการแก้แล้วจะเอาไปเป็นระบบ  Core ได้ย"
+  },
+  {
+    "page": 16,
+    "has_text": true,
+    "text_len": 5067,
+    "num_images": 0,
+    "preview": "ในบริบทของระบบคุณ  5 Pillars จึงแปลว่า  \" กฎเหล็ก  5 ประการ \" หรือ  \" แกนหลัก  5 ข้อ \" ที\u0000คุณฝังไว้ใน  System Prompt เพื\u0000อใช้เป็นเสาหลักตีกรอบบังคับให้AI ทํางานได้อย่างแม่นยํา  ไม่หลุดโฟกัส  และไม่พาโ"
+  },
+  {
+    "page": 17,
+    "has_text": true,
+    "text_len": 4369,
+    "num_images": 0,
+    "preview": "แตก  Task เป็น : Task 1: สร้างหน้าจอ  UI ปุ่มกดจองโต๊ะ  (Frontend), Task 2: เขียนลอจิกหักสต็อกสินค้า  (Backend) เพราะบริบทของโค้ดมันคนละเรื\u0000องกัน  การจับแยกจะทําให้ลดบั\u0000กเวลาทํางานเชื\u0000อมกันครับ | 4. ก"
+  },
+  {
+    "page": 18,
+    "has_text": true,
+    "text_len": 4237,
+    "num_images": 0,
+    "preview": "DateTime: ข้อมูลประเภทวันที\u0000และเวลา | อธิบายต่อ  กด  1 อธิบายหัวข้อที\u0000เลือก  กด  2 ตามด้วยลําดับข้อ  อธิบายทั\u0000งหมด  กด  3 หรือต้องการย้อนไปต่อ  ตามประเด็นสุดท้ายที\u0000ค้างไว้  กด  0 ได้เลยครับ | User pro"
+  },
+  {
+    "page": 19,
+    "has_text": true,
+    "text_len": 4785,
+    "num_images": 0,
+    "preview": "คัดลอกข้อความด้านล่างนี\u0000ไปใช้ได้เลยครับ : | # 🎨  MASTER PROMPT: The ASCII Architect | **Role:** คุณคือ  Senior System Architect และ  Technical Communicator ที\u0000มีความเชี\u0000ยวชาญระดับสูงในการอธิบายสถาปัตย"
+  },
+  {
+    "page": 20,
+    "has_text": true,
+    "text_len": 4868,
+    "num_images": 0,
+    "preview": "จุดจับผิด : ถ้า  AI วาดรูปมาว่า  Database ข้ามไปคุยกับ  User โดยตรง  ( โดยไม่ผ่าน  Backend) แปลว่ามันมั\u0000วและไม่เข้าใจระบบเราแล้วครับ ! | คําสั\u0000งทดสอบ : \" ช่วยวาด  Sequence Diagram แบบ  ASCII ของ  Work"
+  },
+  {
+    "page": 21,
+    "has_text": true,
+    "text_len": 4999,
+    "num_images": 0,
+    "preview": "**[ ข้อมูลโมดูล  / โค้ดที\u0000ต้องการให้ทดสอบ  ]:**( วางโค้ดของคุณ  หรือพิมพ์ชื\u0000อโมดูลที\u0000เพิ\u0000งให้  AI สร้างเสร็จตรงนี\u0000  เช่น  \" ช่วยเขียนเทสต์สําหรับโมดูลระบบล็อกอินที\u0000เราเพิ\u0000งทําเสร็จใน  Phase 2 ให้ครอบค"
+  },
+  {
+    "page": 22,
+    "has_text": true,
+    "text_len": 4724,
+    "num_images": 0,
+    "preview": "### 2. 🗺  Architecture ASCII Diagram ( ภาพรวมสถาปัตยกรรม )- วาดแผนภาพ  ASCII Diagram แสดง  Data Flow ระหว่าง  Frontend, Backend, Database และ  External API- ใช้กฎกรอบสี\u0000เหลี\u0000ยมและลูกศร  (`->`, `<-`) ท"
+  },
+  {
+    "page": 23,
+    "has_text": true,
+    "text_len": 5661,
+    "num_images": 0,
+    "preview": "อธิบายต่อ  กด  1 อธิบายหัวข้อที\u0000เลือก  กด  2 ตามด้วยลําดับข้อ  อธิบายทั\u0000งหมด  กด  3 หรือต้องการย้อนไปต่อ  ตามประเด็นสุดท้ายที\u0000ค้างไว้  กด  0 ได้ลยครับ | User prompt: แล้วแบบนี\u0000ละ  Persona: Monorepo Na"
+  },
+  {
+    "page": 24,
+    "has_text": true,
+    "text_len": 4154,
+    "num_images": 0,
+    "preview": "3. **`[ 🚀  ปรับแต่ง  Pipeline ]`**   -> **Output:** สร้างไฟล์คอนฟิกูเรชัน  ( เช่น  `turbo.json`, `nx.json`, หรือ  `.github/workflows`) ที\u0000เปิดใช้งาน  Caching แบบดุดัน | ---**[ 📥  สถานะปัจจุบันของ  Wor"
+  },
+  {
+    "page": 25,
+    "has_text": true,
+    "text_len": 5090,
+    "num_images": 0,
+    "preview": "├── AI: สแกนช่องโหว่ความปลอดภัย  (API Keys, JWT) แบบ  Shift-Left Security└── 🧑‍✈️  จุดอนุมัติ  (Human Checkpoint): มนุษย์ตรวจสอบ  Data Flow, Test Coverage และ  Security Check    |    v[ 📦  STEP 4: PRO"
+  },
+  {
+    "page": 26,
+    "has_text": true,
+    "text_len": 4591,
+    "num_images": 0,
+    "preview": "Multimodal Input: SDK รองรับการอัปโหลดไฟล์  รูปภาพ  (UI Mockups) หรือแม้แต่วิดีโอ  โยนเข้าไปพร้อมกับ  Prompt ได้อย่างง่ายดาย  เพื\u0000อให้  AI สกัดDesign Token ออกมาเขียนโค้ดหน้าบ้าน  (Frontend) | 2. ประส"
+  },
+  {
+    "page": 27,
+    "has_text": true,
+    "text_len": 4477,
+    "num_images": 0,
+    "preview": "สรุปคือ  SDK เป็นชื\u0000อประเภทของเครื\u0000องมือ ส่วน  Node Module เป็นวิธีการที\u0000เราดาวน์โหลดเครื\u0000องมือนั\u0000นเข้ามาไว้ในโปรเจกต์ ครับ | อธิบายต่อ  กด  1 อธิบายหัวข้อที\u0000เลือก  กด  2 ตามด้วยลําดับข้อ  อธิบายทั\u0000งห"
+  },
+  {
+    "page": 28,
+    "has_text": true,
+    "text_len": 4852,
+    "num_images": 0,
+    "preview": "2. ใช้จัดระเบียบไฟล์  45-File Mapping: คุณสามารถใช้  Frontmatter ปะหน้าไฟล์โครงสร้างของคุณทั\u0000งหมดได้  เพื\u0000อให้โค้ด  ( หรือตัว  Omni-RepoArchitect) วิ\u0000งมาอ่านแค่ส่วนหัว  ก็รู้ทันทีว่าไฟล์นี\u0000คือเวอร์ชัน"
+  },
+  {
+    "page": 29,
+    "has_text": true,
+    "text_len": 4793,
+    "num_images": 0,
+    "preview": "( ทํางานโหมดงุ่มง่าม : เน้นถาม - ตอบจนกว่าสเปกจะนิ\u0000ง  ห้ามแตะโค้ดเด็ดขาด )======================================================================[ ช่องกรอกความต้องการ  (User Input) ]    |    v[ 🧠  REVE"
+  },
+  {
+    "page": 30,
+    "has_text": true,
+    "text_len": 4909,
+    "num_images": 0,
+    "preview": "วิธีทํา : ถ้ามีงานที\u0000ระบบคุณทําไม่ได้  คุณสามารถสร้าง  \" สคริปต์เฉพาะกิจ \" ขึ\u0000นมา  แล้วลงทะเบียนสคริปต์นั\u0000นเป็นเครื\u0000องมือ  (Tool) ใน  MCP Server | การทํางาน : เมื\u0000อถึงจังหวะที\u0000ต้องแก้ปัญหา  Gemini จะร"
+  },
+  {
+    "page": 31,
+    "has_text": true,
+    "text_len": 4833,
+    "num_images": 0,
+    "preview": "Response: Vision Neural Network ( โครงข่ายประสาทเทียมด้านการมองเห็น ) คือ  สถาปัตยกรรมสมองกล  AI ที\u0000ถูกออกแบบมาให้เลียนแบบการทํางานของ  \" ดวงตาและสมองส่วนการมองเห็นของมนุษย์ \" เพื\u0000อให้คอมพิวเตอร์สามาร"
+  },
+  {
+    "page": 32,
+    "has_text": true,
+    "text_len": 3390,
+    "num_images": 0,
+    "preview": "หลักของคุณไม่กระตุกเลยสักนิดเดียวครับ ! | อธิบายต่อ  กด  1 อธิบายหัวข้อที\u0000เลือก  กด  2 ตามด้วยลําดับข้อ  อธิบายทั\u0000งหมด  กด  3 หรือต้องการย้อนไปต่อ  ตามประเด็นสุดท้ายที\u0000ค้างไว้  กด  0 ได้เลยครับ | User"
+  },
+  {
+    "page": 33,
+    "has_text": true,
+    "text_len": 5126,
+    "num_images": 0,
+    "preview": "3. การคายผลลัพธ์ : แทนที\u0000  Worker จะเดาตัวเลขมั\u0000วๆ  แล้วทําให้ระบบบัญชีของคุณพัง  มันเลือกที\u0000จะส่งค่า  null กลับมา  พร้อมแนบ  error_code:\"LOW_RESOLUTION_IMAGE\" | 💡  การรับมือใน  Core System V3: เมื\u0000อ "
+  },
+  {
+    "page": 34,
+    "has_text": true,
+    "text_len": 4974,
+    "num_images": 0,
+    "preview": "# 🤖  PROMPT: 3-Stage Slip Extraction Worker | **Role:** คุณคือ  Computer Vision Architect ผู้เชี\u0000ยวชาญการทํา  Image Pipeline**Task:** เขียนโค้ด  Python (FastAPI) สําหรับ  Standalone Worker เพื\u0000ออ่านสล"
+  },
+  {
+    "page": 35,
+    "has_text": true,
+    "text_len": 5210,
+    "num_images": 0,
+    "preview": "User prompt: แต่ก็ยังไม่รู้อยู่ดีว่าแม่นไหม | Response: เฉียบขาดมากครับ ! ความสงสัยนี\u0000คือสิ\u0000งที\u0000แยกระหว่าง  \" มือสมัครเล่น \" กับ  \"Senior Engineer\" ออกจากกันอย่างแท้จริงครับ | โครงสร้างบนกระดาษจะสวยงา"
+  },
+  {
+    "page": 36,
+    "has_text": true,
+    "text_len": 5306,
+    "num_images": 0,
+    "preview": "แต่นี\u0000แหละครับคือ  \" สถานการณ์จําลองที\u0000สมบูรณ์แบบที\u0000สุด \" ที\u0000พิสูจน์ให้เห็นว่าทําไมเราถึงต้องมี  Ground Truth Validation ( การทดสอบด้วยข้อสอบเฉลย ) ที\u0000เราเพิ\u0000งคุยกันไป ! | สมมติว่าถ้า  JSON ก้อนนี\u0000คือ"
+  },
+  {
+    "page": 37,
+    "has_text": true,
+    "text_len": 4858,
+    "num_images": 0,
+    "preview": "4. Scheduled Batch Processor ( ระบบพนักงานกะดึก ) เป็นระบบที\u0000ไม่ได้ทํางานตามคําสั\u0000งแบบ  Real-time แต่ตั\u0000งเวลาทํางานเป็นรอบๆ  (Cron Jobs /Background Daemons) | การทํางาน : สมมติว่าในช่วงกลางวัน  ระบบหล"
+  },
+  {
+    "page": 38,
+    "has_text": true,
+    "text_len": 5514,
+    "num_images": 0,
+    "preview": "เมื\u0000อคุณเปิดโปรเจกต์ใหม่  หรือแชทใหม่  แค่โยน  Prompt นี\u0000เข้าไป  AI ของคุณจะกลายเป็น  Senior Tech Lead ที\u0000พร้อมลุยโครงสร้าง  Enterprise ทันทีครับ ! | อธิบายต่อ  กด  1 อธิบายหัวข้อที\u0000เลือก  กด  2 ตามด้"
+  },
+  {
+    "page": 39,
+    "has_text": true,
+    "text_len": 4460,
+    "num_images": 0,
+    "preview": "User prompt: ตอนที\u0000เาคุยกัน  3 เรื\u0000อง  ถ้าจะทําเรื\u0000องที\u0000  3 ผมสั\u0000งพรอมแบบนี\u0000ถูกไหม  ที\u0000เป็น  การนําไฟล์  สกิล  มาวาง  แล้วทําการรันโดยการ  Rebuild มาสร้างให้  โดยการดึงชื\u0000อ  , When to use , Descriptio"
+  },
+  {
+    "page": 40,
+    "has_text": true,
+    "text_len": 8544,
+    "num_images": 0,
+    "preview": "1. เปลี\u0000ยน  \" คําพูด \" ให้เป็น  \" คําสั\u0000งรันโปรแกรม \" (Deterministic Output) ถ้าไม่มี  Function Calling เวลา  AI เจอเงื\u0000อนไขที\u0000ต้องใช้สกิล  มันอาจจะตอบกลับมาเป็นข้อความแชทว่า  \" โอเคครับ  ผมจะใช้สกิลอ"
+  },
+  {
+    "page": 41,
+    "has_text": true,
+    "text_len": 8706,
+    "num_images": 0,
+    "preview": "ensure_ascii=False)}\")         handler = cls._HANDLERS.get(clean_name)         if not handler:             # Fallback dynamic dispatcher            return {                 \"status\": \"triggered\",     "
+  },
+  {
+    "page": 42,
+    "has_text": true,
+    "text_len": 4679,
+    "num_images": 0,
+    "preview": "นี\u0000คือจุดที\u0000ผมต้องลุกขึ\u0000นปรบมือให้ความเป็น  Senior Architect ของระบบนี\u0000ครับ : | Backend Hook (Python Dispatcher): โค้ดส่วน  Python มีการทํา  _HANDLERS เป็น  Dictionary และใช้  @classmethod register_ha"
+  },
+  {
+    "page": 43,
+    "has_text": true,
+    "text_len": 5482,
+    "num_images": 0,
+    "preview": "\" คุณคือ  The Blueprint Architect หน้าที\u0000ของคุณคือการพูดคุยกับฉันเพื\u0000อสกัด  Requirement ของโปรเจกต์  ห้ามเขียนโค้ด  Application เด็ดขาด ! | 1. ให้ถามคําถามเจาะลึกแบบ  Reverse Prompting ทีละข้อ  จนกว่า"
+  },
+  {
+    "page": 44,
+    "has_text": true,
+    "text_len": 6534,
+    "num_images": 0,
+    "preview": "คําถามที\u0000  3 ( สิทธิ\u0000การตัดสินใจ ): คุณอยากให้มันรันสกิลที\u0000มีความเสี\u0000ยง  ( เช่น  ลบ  Database หรือแก้ไฟล์โค้ดหลัก ) ทันทีเลยไหม ? หรืออยากให้มันทํางานในโหมด  \"Interactive ( ต้องถามคุณก่อนกดปุ่มรันเสมอ"
+  },
+  {
+    "page": 45,
+    "has_text": true,
+    "text_len": 5045,
+    "num_images": 0,
+    "preview": "Architect): รัน  `[ 🛡  ตรวจสุขภาพ  Workspace ]` กวาดล้างการ  Import ไฟล์ข้ามโซนผิดกฎ  ├── AI (Omni-Repo Architect): คํานวณ  Impact Radius เพื\u0000อรันBuild เฉพาะ  Package ที\u0000มีการแก้ไข  ├── AI: จัดการ  Co"
+  },
+  {
+    "page": 46,
+    "has_text": true,
+    "text_len": 4863,
+    "num_images": 0,
+    "preview": "3. ผูกระบบหลังบ้าน  (Execution Environment): หากใช้  Gemini Spark หรือ  MCP คุณต้องมั\u0000นใจว่าสคริปต์  Python ที\u0000รอรับคําสั\u0000ง  (Hook Router) เปิดรันรอไว้อยู่  เพื\u0000อให้เวลาสมองมันตัดสินใจ  \" กดปุ่ม \" ระบ"
+  },
+  {
+    "page": 47,
+    "has_text": true,
+    "text_len": 4231,
+    "num_images": 0,
+    "preview": "## 2. 🔄  UX WORKFLOW: การไหลเวียนของการใช้งาน | ### Phase 1: Hydration ( การปลุกสมอง )** เป้าหมาย :** โหลดบริบท  (Context) เข้าสู่หน่วยความจําของเว็บแอปแบบออฟไลน์1.  **UI State:** หน้าจอเริ\u0000มต้นเป็น  "
+  },
+  {
+    "page": 48,
+    "has_text": true,
+    "text_len": 3013,
+    "num_images": 0,
+    "preview": "Shape Mode \" ทุกคอมโพเนนต์ \": ไม่มีการล็อก  Width/Height ที\u0000ตัวการ์ดกระจก  ปล่อยให้ยืดหดตามบริบทของ  Grid | Apple Glassmorphism: ใช้ค่า  Blur 26px, Saturate 170%, และ  Shadow 15px 44px ตามโทเค็นที\u0000กํา"
+  },
+  {
+    "page": 49,
+    "has_text": true,
+    "text_len": 2478,
+    "num_images": 0,
+    "preview": "/* Surface & Translucency */      background: rgba(255, 255, 255, 0.05); /* ปรับให้เข้ากับ  Dark Mode */      border: 1px solid rgba(255, 255, 255, 0.15); /*[cite: 6] */            /* Backdrop Blur[ci"
+  },
+  {
+    "page": 50,
+    "has_text": true,
+    "text_len": 3145,
+    "num_images": 0,
+    "preview": "/* =====================================================================       4. RESPONSIVE DESIGN[cite: 6]       ===================================================================== */    @media (m"
+  },
+  {
+    "page": 51,
+    "has_text": true,
+    "text_len": 3935,
+    "num_images": 0,
+    "preview": "</body></html> | อธิบายต่อ  กด  1 อธิบายหัวข้อที\u0000เลือก  กด  2 ตามด้วยลําดับข้อ  อธิบายทั\u0000งหมด  กด  3 หรือต้องการย้อนไปต่อ  ตามประเด็นสุดท้ายที\u0000ค้างไว้  กด  0 ได้เลยครับ | User prompt: รวมกันมาทีเดียวจ"
+  },
+  {
+    "page": 52,
+    "has_text": true,
+    "text_len": 4110,
+    "num_images": 0,
+    "preview": "พูดง่ายๆ  คือ : | 1. ผมสามารถเข้าไป  \" อ่าน \" สมุดโน้ตใน  NotebookLM ของคุณได้โดยตรง | 2. ผมสามารถดึงข้อมูลเหล่านั\u0000นมาประมวลผล  เพื\u0000อประกอบร่างเป็น  \" โครงสร้าง  45 ไฟล์ \" ให้คุณได้ทันที | จากรายการสม"
+  },
+  {
+    "page": 53,
+    "has_text": true,
+    "text_len": 4036,
+    "num_images": 0,
+    "preview": "*   **Constraint:** ต้องทํางานอยู่เบื\u0000องหลังแบบแนบเนียน  ทําหน้าที\u0000ฉีดข้อมูล  ( เช่น  Auth Tokens, API Keys, Environment Variables) เข้า | **3. The Frontend Hook Router***   **Duty:** Custom Hooks Lay"
+  },
+  {
+    "page": 54,
+    "has_text": true,
+    "text_len": 2403,
+    "num_images": 0,
+    "preview": "config.headers.Authorization = `Bearer ${token}`;    }    return config;  },  (error) => Promise.reject(error)); | Test Constraints: | Mock useAuthStore ให้มีค่า  Token และยิง  Request จําลองเพื\u0000อ  As"
+  },
+  {
+    "page": 55,
+    "has_text": true,
+    "text_len": 4789,
+    "num_images": 0,
+    "preview": "User prompt: เอาสิสร้างสมองเลย | Response: รับทราบครับ ! ในฐานะ  Tech Lead ผมได้ทําการ  \" เชื\u0000อมต่อสมอง \" (System Initialization) เรียบร้อยแล้ว  ผมจะใช้โครงสร้างสถาปัตยกรรมและกฎเกณฑ์จากระบบของคุณมาฝัง"
+  },
+  {
+    "page": 56,
+    "has_text": true,
+    "text_len": 3199,
+    "num_images": 0,
+    "preview": "1. The Context Holder ( ส่วนควบคุม  State บริบทจอและแชท ) | โครงสร้าง : ต้องใช้  Unified State Object ซึ\u0000งเป็น  JSON ศูนย์กลางข้อมูลเพียงก้อนเดียว  เพื\u0000อไม่ให้เกิดการแยกเก็บ  State ระหว่างพื\u0000นที\u0000แชทแล"
+  },
+  {
+    "page": 57,
+    "has_text": true,
+    "text_len": 3044,
+    "num_images": 0,
+    "preview": "addMessage: (msg) =>     set((state) => ({      chatHistory: [...state.chatHistory, { ...msg, id: crypto.randomUUID() }]    })),  setAttachedFile: (file) => set({ attachedFile: file }),  updateWorkspa"
+  },
+  {
+    "page": 58,
+    "has_text": true,
+    "text_len": 3432,
+    "num_images": 0,
+    "preview": "return (    <div className=\"fixed bottom-6 left-1/2 -translate-x-1/2 w-full max-w-3xl z-50\">      {/* Container: Glassmorphism & Tactical Dark */}      <div className=\"bg-[#121413]/80 backdrop-blur-md"
+  },
+  {
+    "page": 59,
+    "has_text": true,
+    "text_len": 4637,
+    "num_images": 0,
+    "preview": "ถ้าเราต้องการให้เว็บแอปนี\u0000สั\u0000งงานผ่าน  MCP ได้จริง  เราจะต้องขยายสถาปัตยกรรมผ่าน  The Silent Injector (Pillar 2) และ  Backend API เพิ\u0000มดังนี\u0000ครับ : | ฝั\u0000ง  Client ( หน้าเว็บที\u0000เราทํา ): เปลี\u0000ยนจากการเ"
+  },
+  {
+    "page": 60,
+    "has_text": true,
+    "text_len": 3751,
+    "num_images": 0,
+    "preview": "Core Purpose: พัฒนาเว็บแอปพลิเคชันรูปแบบ  Workspace อัจฉริยะ  ที\u0000มีแผงควบคุมการทํางานและช่องสั\u0000งการผ่านแชท  (Prompt-to-UI Interpreter)ลอยตัวอยู่ด้านล่าง  เพื\u0000อให้ผู้ใช้สามารถสั\u0000งการระบบ  ดูผลลัพธ์  แล"
+  },
+  {
+    "page": 61,
+    "has_text": true,
+    "text_len": 3373,
+    "num_images": 0,
+    "preview": "Core Purpose: พัฒนาเว็บแอปพลิเคชันแบบ  Full-Stack บน  Next.js ที\u0000แยกส่วนการทํางานอย่างเด็ดขาดระหว่าง  Server Components (SSR/RSC)และ  Client Components (Interactive State) รองรับการประมวลผลความเร็วสูง"
+  },
+  {
+    "page": 62,
+    "has_text": true,
+    "text_len": 5066,
+    "num_images": 0,
+    "preview": "Response: ในฐานะ  Tech Lead ผมขอสรุปภาพรวมและจัดทํา  Prompt สําหรับอธิบาย  \" งานที\u0000  1\" ( ระบบ  Floating Command Bar & WorkspaceEngine) ให้คุณสามารถนําไปใช้อธิบายทีมงาน  สมาชิกในโปรเจค  หรือใช้เป็นบรี"
+  },
+  {
+    "page": 63,
+    "has_text": true,
+    "text_len": 1557,
+    "num_images": 0,
+    "preview": "Workflow Operating System: การจําแนกโหมดการทํางานอย่างเป็นระบบ  เช่น  โหมดวิเคราะห์เจาะลึก  (/ASK) และโหมดสร้างแผนงานสถาปัตยกรรม(/PLAN) เพื\u0000อลดภาระและป้องกันความผิดพลาด  (Cognitive Overload) | 🏛  บทที"
+  }
+]

@@ -1,0 +1,74 @@
+{
+  "document_id": "REF-MEMO-LATEST-V1",
+  "document_title": "บันทึกข้อความ",
+  "category": "หนังสือราชการภายใน (บันทึกข้อความ)",
+  "page_setup": {
+    "paper_size": "A4",
+    "orientation": "portrait",
+    "width_mm": 210,
+    "height_mm": 297,
+    "margins_mm": {
+      "top": 25,
+      "bottom": 20,
+      "left": 30,
+      "right": 20
+    }
+  },
+  "header": {
+    "garuda": {
+      "height_mm": 15,
+      "align": "left",
+      "image_path": "garuda_memo.png"
+    },
+    "title": "บันทึกข้อความ",
+    "title_font_pt": 29,
+    "title_bold": true
+  },
+  "metadata_fields": [
+    {
+      "label": "ส่วนราชการ",
+      "value": "ป.๔ พัน.๔ ร้อย.๒  ( โทร ๓๑๑๙๓ )",
+      "style": "full_width_dotted"
+    },
+    {
+      "row": [
+        {
+          "label": "ที่",
+          "value": "กห ๐๔๘๓.๑.๔.๑ /",
+          "width_percent": 50,
+          "style": "dotted"
+        },
+        {
+          "label": "วันที่",
+          "value": "ธ.ค. ๖7",
+          "width_percent": 50,
+          "style": "dotted"
+        }
+      ]
+    },
+    {
+      "label": "เรื่อง",
+      "value": "ขอส่งใบติดตามใบส่งซ่อมเกิน ๔๕ วัน",
+      "style": "full_width_dotted"
+    }
+  ],
+  "salutation": "เรียน  ผบ.ป.๔ พัน.๔ (ผ่าน หมู่ส่งกำลังบำรุงฯ)",
+  "attachments": [
+    {
+      "item": "ใบติดตามใบส่งซ่อม สิ่งอุปกรณ์ ทบ.๔๐๐-๐๗๑",
+      "quantity": "๑  ฉบับ"
+    }
+  ],
+  "content_paragraphs": [
+    "ป.๔ พัน.๔ ร้อย.๒ ขอติดตามใบส่งซ่อมเกิน ๔๕ วัน สิ่งอุปกรณ์ของ ปบค.95  ขนาด 105 มม. เอ็ม.101 เอ.1 ปรับปรุง รายละเอียดตามสิ่งที่ส่งมาด้วย",
+    "จึงเรียนมาเพื่อกรุณาพิจารณา"
+  ],
+  "signature_block": {
+    "rule_standard": "RULE-UNIVERSAL-SIGNATURE-BLOCK-V1",
+    "rank": "ร.ท.",
+    "name": "(กฤติน  นราพงษ์)",
+    "position": "ผบ.ป.๔ พัน.๔ ร้อย.๒",
+    "has_verification": false,
+    "alignment": "right_half"
+  }
+}

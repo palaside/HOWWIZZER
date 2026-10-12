@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>กำหนดการปรนนิบัติบำรุงยุทธภัณฑ์ (ทบ. ๔๖๘ – ๓๖๐ / สพ. ๔๖๐)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 0;
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        body {
+            margin: 0;
+            padding: 20px 0;
+            background-color: #525659;
+            font-family: 'TH Sarabun PSK', 'THSarabunNew', 'Sarabun', sans-serif;
+            font-feature-settings: "locl" 1, "numr" 1;
+            font-variant-numeric: tabular-nums;
+            color: #000000;
+            line-height: 1.25;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page {
+            width: 297mm;
+            height: 210mm;
+            background-color: #ffffff;
+            margin-bottom: 20mm;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            position: relative;
+            page-break-after: always;
+            padding: 12mm 16mm 10mm 16mm;
+            overflow: hidden;
+        }
+        @media print {
+            body {
+                background-color: #ffffff;
+                padding: 0;
+            }
+            .page {
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+        }
+
+        /* Universal Typography */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+        .font-bold { font-weight: 700; }
+        
+        /* PAGE 1: COVER */
+        .p1-header {
+            text-align: right;
+            font-size: 20pt;
+            font-weight: 700;
+            margin-top: 5mm;
+            margin-right: 5mm;
+        }
+        .p1-title-container {
+            text-align: center;
+            margin-top: 16mm;
+            margin-bottom: 12mm;
+        }
+        .p1-title {
+            font-size: 38pt;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .p1-slogans {
+            text-align: center;
+            font-size: 20pt;
+            font-weight: 700;
+            line-height: 1.6;
+            margin-bottom: 10mm;
+        }
+        .p1-box-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15mm;
+        }
+        .p1-box-table {
+            border-collapse: collapse;
+            border: 1.5px solid #000;
+            width: 95mm;
+            text-align: center;
+        }
+        .p1-box-table td {
+            padding: 4mm 6mm;
+            border: 1px solid #000;
+        }
+        .p1-box-unit {
+            font-size: 19pt;
+            font-weight: 700;
+        }
+        .p1-box-month {
+            font-size: 18pt;
+            font-weight: 700;
+        }
+        .p1-footer {
+            position: absolute;
+            bottom: 12mm;
+            left: 16mm;
+            right: 16mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .p1-sub-id {
+            font-size: 20pt;
+            font-weight: 700;
+        }
+        .p1-authority {
+            font-size: 15pt;
+            font-weight: 700;
+        }
+
+        /* PAGE 2: EQUIPMENT TABLE */
+        .page-2-container {
+            padding-top: 6mm;
+        }
+        .equip-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1.5px solid #000;
+            table-layout: fixed;
+        }
+        .equip-table th, .equip-table td {
+            border: 1px solid #000;
+            padding: 2px 3px;
+            font-size: 14pt;
+            vertical-align: middle;
+            font-weight: normal; /* ตัวบางตามคำสั่ง */
+        }
+        .equip-table th {
+            background-color: #fafafa;
+            font-weight: normal; /* หัวตารางตัวบาง */
+            font-size: 11.5pt;   /* บรรทัดเดียว */
+            text-align: center;
+            height: 11mm;
+            line-height: 1.0;
+            white-space: nowrap; /* บรรทัดเดียว */
+            padding: 2px 2px;
+        }
+        .equip-table td {
+            height: 22mm;
+        }
+
+        /* PAGE 3: CALENDAR MATRIX */
+        .p3-title {
+            text-align: center;
+            font-size: 16pt;
+            font-weight: 700;
+            margin-bottom: 4mm;
+            margin-top: 4mm;
+        }
+        .dotted-fill {
+            display: inline-block;
+            border-bottom: 1.5px dotted #000;
+            padding: 0 4px;
+        }
+        .cal-table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1.5px solid #000;
+            table-layout: fixed;
+        }
+        .cal-table th, .cal-table td {
+            border: 1px solid #000;
+            padding: 0;
+            text-align: center;
+            vertical-align: middle;
+            font-weight: normal; /* ตัวบางตามคำสั่ง */
+        }
+        .cal-seq-col {
+            width: 32px;
+            height: 10mm;
+            background-color: #f7f7f7;
+        }
+        .cal-day-col {
+            width: calc((100% - 64px) / 31);
+            font-size: 11pt;     /* ขนาดพอดี 1 บรรทัด */
+            font-weight: normal; /* ตัวบางตามคำสั่ง */
+            height: 10mm;
+            background-color: #fafafa;
+            white-space: nowrap; /* บรรทัดเดียว */
+        }
+        .d-single {
+            display: block;
+            line-height: 1.0;
+        }
+        .cal-seq-cell {
+            font-size: 14pt;
+            font-weight: normal; /* ตัวบาง */
+            background-color: #f7f7f7;
+        }
+        .cal-table tr td {
+            height: 24mm;
+        }
+
+        /* PAGE 4: INSTRUCTIONS */
+        .p4-title {
+            text-align: center;
+            font-size: 26pt;
+            font-weight: 700;
+            margin-top: 3mm;
+            margin-bottom: 6mm;
+        }
+        .inst-rule {
+            margin-bottom: 4mm;
+            font-size: 15pt;
+            line-height: 1.35;
+        }
+        .inst-p {
+            margin: 0 0 2mm 0;
+            text-align: justify;
+            text-indent: 12mm;
+        }
+        .abbr-list {
+            margin-left: 20mm;
+            margin-bottom: 2mm;
+        }
+        .abbr-item {
+            display: flex;
+            margin-bottom: 1mm;
+            line-height: 1.25;
+        }
+        .abbr-code {
+            width: 55mm;
+            flex-shrink: 0;
+        }
+        .abbr-desc {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: COVER -->
+    <div class="page" id="page-1">
+        <div class="p1-header">ทบ. ๔๖๘ – ๓๖๐</div>
+        
+        <div class="p1-title-container">
+            <div class="p1-title">กำหนดการปรนนิบัติบำรุงยุทธภัณฑ์</div>
+        </div>
+
+        <div class="p1-slogans">
+            <div>๑. จงกำหนดการปรนนิบัติบำรุงยุทธภัณฑ์ไว้ล่วงหน้า</div>
+            <div>๒. จงทำการปรนนิบัติบำรุงตามกำหนดเวลาที่วางไว้</div>
+        </div>
+
+        <div class="p1-box-wrapper">
+            <table class="p1-box-table">
+                <tr>
+                    <td class="p1-box-unit">หน่วย  ป.๔ พัน.๔ ร้อย.๒</td>
+                </tr>
+                <tr>
+                    <td class="p1-box-month">เดือน    มิถุนายน ปี ๒๕๖๙</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="p1-footer">
+            <div class="p1-sub-id">สพ. ๔๖๐</div>
+            <div class="p1-authority">( พิมพ์ตามคำสั่ง ทบ.ที่ ๔๐๐/๒๕๐๗ ลง ๙ พ.ย. ๐๗ )</div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: EQUIPMENT TABLE (ลบ - ๒ - ออกแล้ว, ตัวบาง, หัวตารางบรรทัดเดียว) -->
+    <div class="page" id="page-2">
+        <div class="page-2-container">
+            <table class="equip-table">
+                <thead>
+                    <tr>
+                        <th style="width: 4.0%;">ลำดับ</th>
+<th style="width: 8.0%;">พลขับ</th>
+<th style="width: 12.0%;">ผู้รับผิดชอบ</th>
+<th style="width: 11.0%;">ชื่อยุทธภัณฑ์</th>
+<th style="width: 20.0%;">วัน (หรือไมล์) ปบ. ครั้งหลังสุด</th>
+<th style="width: 14.0%;">หมายเลขภายในหน่วย</th>
+<th style="width: 13.0%;">ปบ.  ครั้งต่อไป</th>
+<th style="width: 18.0%;">หมายเลขทะเบียน</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr>
+            <td class="text-center">๑.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-center">๒๔๐๘๐</td>
+        </tr>
+        
+        <tr>
+            <td class="text-center">๒.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-center">๑๙๖๐๙</td>
+        </tr>
+        
+        <tr>
+            <td class="text-center">๓.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-center">๒๐๖๗๐</td>
+        </tr>
+        
+        <tr>
+            <td class="text-center">๔.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-center">๒๓๕๕๔</td>
+        </tr>
+        
+        <tr>
+            <td class="text-center">๕.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-center">๒๔๒๘๐</td>
+        </tr>
+        
+        <tr>
+            <td class="text-center">๖.</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-center">๘๕๑๖</td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- PAGE 3: CALENDAR MATRIX (ตัวบาง, หัวตาราง ๑ ถึง ๓๑ บรรทัดเดียว) -->
+    <div class="page" id="page-3">
+        <div class="p3-title">ตารางการปรนนิบัติบำรุงประจำ <span class="dotted-fill">ปบค.๙๕ เอ็ม. ๑๐๑ เอ. ๑</span> เดือน <span class="dotted-fill">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;พ.ค.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> พ.ศ. <span class="dotted-fill">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;๒๕๖๙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> .</div>
+
+        <table class="cal-table">
+            <thead>
+                <tr>
+                    <th class="cal-seq-col"></th><th class="cal-day-col"><span class="d-single">๑</span></th><th class="cal-day-col"><span class="d-single">๒</span></th><th class="cal-day-col"><span class="d-single">๓</span></th><th class="cal-day-col"><span class="d-single">๔</span></th><th class="cal-day-col"><span class="d-single">๕</span></th><th class="cal-day-col"><span class="d-single">๖</span></th><th class="cal-day-col"><span class="d-single">๗</span></th><th class="cal-day-col"><span class="d-single">๘</span></th><th class="cal-day-col"><span class="d-single">๙</span></th><th class="cal-day-col"><span class="d-single">๑๐</span></th><th class="cal-day-col"><span class="d-single">๑๑</span></th><th class="cal-day-col"><span class="d-single">๑๒</span></th><th class="cal-day-col"><span class="d-single">๑๓</span></th><th class="cal-day-col"><span class="d-single">๑๔</span></th><th class="cal-day-col"><span class="d-single">๑๕</span></th><th class="cal-day-col"><span class="d-single">๑๖</span></th><th class="cal-day-col"><span class="d-single">๑๗</span></th><th class="cal-day-col"><span class="d-single">๑๘</span></th><th class="cal-day-col"><span class="d-single">๑๙</span></th><th class="cal-day-col"><span class="d-single">๒๐</span></th><th class="cal-day-col"><span class="d-single">๒๑</span></th><th class="cal-day-col"><span class="d-single">๒๒</span></th><th class="cal-day-col"><span class="d-single">๒๓</span></th><th class="cal-day-col"><span class="d-single">๒๔</span></th><th class="cal-day-col"><span class="d-single">๒๕</span></th><th class="cal-day-col"><span class="d-single">๒๖</span></th><th class="cal-day-col"><span class="d-single">๒๗</span></th><th class="cal-day-col"><span class="d-single">๒๘</span></th><th class="cal-day-col"><span class="d-single">๒๙</span></th><th class="cal-day-col"><span class="d-single">๓๐</span></th><th class="cal-day-col"><span class="d-single">๓๑</span></th><th class="cal-seq-col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td class="text-center cal-seq-cell">๑</td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="text-center cal-seq-cell">๑</td></tr>
+<tr><td class="text-center cal-seq-cell">๒</td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="text-center cal-seq-cell">๒</td></tr>
+<tr><td class="text-center cal-seq-cell">๓</td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="text-center cal-seq-cell">๓</td></tr>
+<tr><td class="text-center cal-seq-cell">๔</td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="text-center cal-seq-cell">๔</td></tr>
+<tr><td class="text-center cal-seq-cell">๕</td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="text-center cal-seq-cell">๕</td></tr>
+<tr><td class="text-center cal-seq-cell">๖</td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="cal-cell"></td><td class="text-center cal-seq-cell">๖</td></tr>
+
+            </tbody>
+        </table>
+    </div>
+
+    <!-- PAGE 4: INSTRUCTIONS -->
+    <div class="page" id="page-4">
+        <div class="p4-title">คำแนะนำ</div>
+        
+        <div class="inst-rule">
+            <p class="inst-p">
+                <span class="font-bold">๑. การใช้ – </span>
+                <span>การปรนนิบัติบำรุงยุทธภัณฑ์นั้นจะต้องกระทำในระยะเวลาต่าง ๆ ( ประจำวัน ประจำสัปดาห์ ประจำเดือน    รอบ ๔ เดือน และ รอบ ๖ เดือน ) และให้ใช้แบบฟอร์มนี้ จงกำหนดเวลาการปรนนิบัติบำรุงของยานยนต์ล้อ  ยานยนต์สายพาน และเครื่องยนต์ หรืออาวุธยุทโธปกรณ์ใด ๆ ก็ตามที่มีเครื่องยนต์ติดตั้งอยู่</span>
+            </p>
+        </div>
+
+        <div class="inst-rule">
+            <p class="inst-p">
+                <span class="font-bold">๒. วิธีลงกำหนดการปรนนิบัติบำรุง – </span>
+                <span>ให้ลงกำหนดการปรนนิบัติบำรุง  พร้อมทั้งประเภทของการปรนนิบัติบำรุงไว้ล่วงหน้า ด้วยดินสอตลอดทั้งเดือน เมื่อได้ทำการปรนนิบัติบำรุงไปแล้วจึงลงหมึก ให้พยายามแบ่งเฉลี่ยการปรนนิบัติบำรุง แต่ละประเภทให้ดีพอที่จะทำให้จำนวนยานยนต์หรือยุทโธปกรณ์ ที่เข้ารับการปรนนิบัติบำรุงแต่ละวันนั้น มีจำนวน     เท่า ๆ กันไม่แตกต่างกันมากเกินไปการใช้อักษรย่อบอกประกอบของการซ่อมบำรุงนั้นให้ปฏิบัติดังนี้. –</span>
+            </p>
+        <div class="abbr-list">
+
+                <div class="abbr-item">
+                    <span class="abbr-code font-bold">ส ๑ ส ๒ ส ๓</span>
+                    <span class="abbr-desc">หมายถึงการปรนนิบัติบำรุงรอบสัปดาห์ที่ ๑ – ๒ และ ๓ ตามลำดับ</span>
+                </div>
+                
+                <div class="abbr-item">
+                    <span class="abbr-code font-bold">ด ๑ ด ๒ ด ๓ ด ๔ ด ๕</span>
+                    <span class="abbr-desc">หมายถึงการปรนนิบัติบำรุงรอบเดือนที่ ๑ – ๒ – ๓ – ๔ และ ๕ ตามลำดับ</span>
+                </div>
+                
+                <div class="abbr-item">
+                    <span class="abbr-code font-bold">๓</span>
+                    <span class="abbr-desc">หมายถึงการปรนนิบัติบำรุงรอบ ๓ เดือน</span>
+                </div>
+                
+                <div class="abbr-item">
+                    <span class="abbr-code font-bold">๖</span>
+                    <span class="abbr-desc">หมายถึงการปรนนิบัติบำรุงรอบ ๖ เดือน</span>
+                </div>
+                
+                <div class="abbr-item">
+                    <span class="abbr-code font-bold">ชช.</span>
+                    <span class="abbr-desc">หมายถึงยานยนต์ชำรุดเพราะขาดชิ้นอะไหล่</span>
+                </div>
+                
+                <div class="abbr-item">
+                    <span class="abbr-code font-bold">ชอ.</span>
+                    <span class="abbr-desc">หมายถึงยานยนต์ชำรุดเพราะอุปัทวเหตุ</span>
+                </div>
+                
+                <div class="abbr-item">
+                    <span class="abbr-code font-bold">ชส.</span>
+                    <span class="abbr-desc">หมายถึงยานยนต์ และยุทโธปกรณ์ที่ชำรุดส่งซ่อม</span>
+                </div>
+                </div>
+</div>
+
+        <div class="inst-rule">
+            <p class="inst-p">
+                <span class="font-bold">๓. การปฏิบัติงาน – </span>
+                <span>นายทหารยานยนต์ นายสิบยานยนต์ หรือผู้มีหน้าที่รับผิดชอบควบคุมการปรนนิบัติบำรุง จะต้องตรวจการปรนนิบัติบำรุงทุก ๆ วัน ว่าได้ มีการปรนนิบัติบำรุงถูกต้องตามที่ได้กำหนดไว้หรือไม่ และลงนามกำกับไว้ใน ช่องผู้ควบคุมความรับผิดชอบ แล้วลงหมึกทับตัวดินสอเพื่อแสดงให้เห็นว่าได้ปฏิบัติการซ่อมบำรุงไปเป็นการเสร็จสิ้นเรียบร้อยแล้ว ในกรณีที่ไม่สามารถจะทำการปรนนิบัติได้ตามกำหนดเวลาให้ใช้หมึกเขียนวงกลมล้อมรอบอักษรย่อไว้ และให้รีบทำการปรนนิบัติบำรุงทันทีเมื่อสามารถทำได้ และห้ามมิให้เลื่อนกำหนดการปรนนิบัติบำรุงครั้งต่อไปออกไป ไม่ว่าการปรนนิบัติบำรุงครั้งที่ต้องเลื่อนนั้น จะเลื่อนเข้าไปใกล้กับการปรนนิบัติบำรุงครั้งต่อไป      สักเท่าใด</span>
+            </p>
+        </div>
+
+        <div class="inst-rule">
+            <p class="inst-p">
+                <span class="font-bold">๔. การเก็บหลักฐาน – </span>
+                <span>ให้เก็บกำหนดการปรนนิบัติไว้เป็นเวลา ๖ เดือนแล้วจึงทำลาย</span>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

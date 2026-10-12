@@ -194,6 +194,122 @@ body {
   border-color: var(--accent-cyan);
 }
 
+/* Date Picker & Floating Cycle Pill Component */
+.cycle-date-control-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.thai-date-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.thai-date-display {
+  width: 125px;
+  text-align: center;
+  font-family: 'Inter', 'Sarabun', monospace, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 9px 36px 9px 14px;
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.thai-date-display:hover, .thai-date-wrapper:hover .thai-date-display {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 14px rgba(0, 212, 170, 0.25);
+}
+
+.calendar-icon-btn {
+  position: absolute;
+  right: 12px;
+  font-size: 16px;
+  pointer-events: none;
+  opacity: 0.85;
+  transition: transform 0.2s ease;
+}
+
+.thai-date-wrapper:hover .calendar-icon-btn {
+  transform: scale(1.15);
+  opacity: 1;
+}
+
+.native-date-hidden {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}
+
+/* Floating Cycle Badge / Pill (ตัวอักษรลอย แสดงวงรอบ) */
+.floating-cycle-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.18) 0%, rgba(0, 212, 170, 0.14) 100%);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3), 0 0 16px rgba(56, 189, 248, 0.22);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  animation: float-chip 3s ease-in-out infinite alternate;
+}
+
+.floating-cycle-chip:hover {
+  transform: translateY(-2px) scale(1.02);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 6px 24px rgba(0, 212, 170, 0.3), 0 0 22px rgba(0, 212, 170, 0.35);
+}
+
+@keyframes float-chip {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-2px); }
+}
+
+.chip-icon {
+  font-size: 15px;
+}
+
+.chip-label {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.chip-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.3px;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+  font-family: 'Sarabun', sans-serif;
+}
+
+.chip-holiday-alert {
+  border-color: rgba(245, 158, 11, 0.6) !important;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(239, 68, 68, 0.15) 100%) !important;
+}
+
+.chip-holiday-alert .chip-value {
+  color: #fbbf24 !important;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.5) !important;
+}
+
 .btn-primary {
   background: linear-gradient(135deg, #00d4aa 0%, #0ea5e9 100%);
   color: #05101a;

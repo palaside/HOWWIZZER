@@ -1,0 +1,38 @@
+import sys
+import os
+
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8')
+    sys.stderr.reconfigure(encoding='utf-8')
+
+from playwright.sync_api import sync_playwright
+
+output_dir = 'C:/Users/EVE/.gemini/antigravity-ide/brain/7ca9cd9b-6ae7-44b7-ab50-280c021eef14'
+html_path = os.path.abspath('ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.html')
+file_url = f'file:///{html_path.replace("\\", "/")}'
+
+with sync_playwright() as p:
+    browser = p.chromium.launch()
+    page = browser.new_page(viewport={"width": 1600, "height": 1200}, device_scale_factor=2)
+    page.goto(file_url)
+    page.wait_for_timeout(1000)
+
+    # Screenshot Page 1 (Memo)
+    p1 = page.locator('#page-1')
+    p1_file = os.path.join(output_dir, 'memo_inquiry_45_playwright_p1.png')
+    p1.screenshot(path=p1_file)
+    print(f"Captured: {p1_file}")
+
+    # Screenshot Page 2 (Tracking 1)
+    p2 = page.locator('#page-2')
+    p2_file = os.path.join(output_dir, 'memo_inquiry_45_playwright_p2.png')
+    p2.screenshot(path=p2_file)
+    print(f"Captured: {p2_file}")
+
+    # Screenshot Page 3 (Tracking 2)
+    p3 = page.locator('#page-3')
+    p3_file = os.path.join(output_dir, 'memo_inquiry_45_playwright_p3.png')
+    p3.screenshot(path=p3_file)
+    print(f"Captured: {p3_file}")
+
+    browser.close()

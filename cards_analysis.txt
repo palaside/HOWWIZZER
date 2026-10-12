@@ -1,0 +1,35 @@
+P01: Head=True Back=False TOC=False | Tbls=['27r x 9c'] | NSN= | Name=
+P02: Head=False Back=False TOC=False | Tbls=['4r x 5c'] | NSN=หมายเลขสิ่งอุปกรณ์  66885 – 00 – 344 - 4613 | Name=ชื่อสิ่งอุปกรณ์  เครื่องวัดอุณภูหมิส่วนบรรจุ
+P03: Head=True Back=False TOC=False | Tbls=['27r x 9c'] | NSN= | Name=
+P04: Head=False Back=False TOC=False | Tbls=['4r x 5c'] | NSN=หมายเลขสิ่งอุปกรณ์   1015 – 00 – 712 - 0207 | Name=ชื่อสิ่งอุปกรณ์  เครื่องอะไหล่ส าหรับซ่อมบ ารุงขั้น 2 ปบค.95 ขนาด 105 มม.
+P05: Head=True Back=False TOC=False | Tbls=['27r x 9c'] | NSN= | Name=
+P06: Head=True Back=False TOC=False | Tbls=['27r x 8c'] | NSN=หมายเลขสิ่งอุปกรณ์   5180 – 00 – 757 - 7727 | Name=ชื่อสิ่งอุปกรณ์  เครื่องมือชุดช่างซ่อมปืนใหญ่
+P07: Head=False Back=False TOC=True | Tbls=['6r x 10c', '15r x 3c'] | NSN=หมายเลขสิ่งอุปกรณ์   1015 – 00 – 722 - 9752 | Name=ชื่อสิ่งอุปกรณ์  ปบค. 95  ขนาด 105 มม.  พร้อมรถรอง เอ็ม.2 เอ.2
+P08: Head=False Back=True TOC=False | Tbls=['3r x 4c'] | NSN= | Name=
+P09: Head=False Back=False TOC=False | Tbls=['15r x 7c'] | NSN= | Name=
+P10: Head=False Back=False TOC=True | Tbls=['12r x 8c', '2r x 3c'] | NSN= | Name=
+P11: Head=False Back=False TOC=False | Tbls=['8r x 3c'] | NSN= | Name=
+P12: Head=False Back=False TOC=False | Tbls=[] | NSN= | Name=
+P13: Head=False Back=False TOC=False | Tbls=[] | NSN= | Name=
+P14: Head=False Back=False TOC=False | Tbls=[] | NSN= | Name=
+P15: Head=True Back=False TOC=False | Tbls=['26r x 7c'] | NSN= | Name=
+P16: Head=False Back=False TOC=False | Tbls=['5r x 6c'] | NSN=หมายเลขสิ่งอุปกรณ์   - | Name=ชื่อสิ่งอุปกรณ์  ล ากล้องปืนหลอดพร้อมเครื่องประกอบ
+P17: Head=False Back=False TOC=False | Tbls=[] | NSN= | Name=
+P18: Head=True Back=False TOC=False | Tbls=['26r x 9c'] | NSN=หมายเลขสิ่งอุปกรณ์   1240 – 006 - 6065 | Name=
+P19: Head=False Back=False TOC=False | Tbls=['2r x 2c'] | NSN= | Name=ชื่อสิ่งอุปกรณ์  กล้องคอลลิเมเตอร์
+P20: Head=True Back=False TOC=False | Tbls=['27r x 7c'] | NSN= | Name=
+P21: Head=False Back=False TOC=False | Tbls=['5r x 6c'] | NSN=หมายเลขสิ่งอุปกรณ์   6685 – xx – 165 - 1315 | Name=ชื่อสิ่งอุปกรณ์  เครื่องวัดอุณหภูมิดินส่ง ( แบบดิจิตอล )
+P22: Head=True Back=False TOC=False | Tbls=['28r x 9c'] | NSN= | Name=
+P23: Head=True Back=False TOC=False | Tbls=['28r x 10c'] | NSN=หมายเลขสิ่งอุปกรณ์   1230 – 35 – 165 - 0005 | Name=ชื่อสิ่งอุปกรณ์  กล้องพาโนรามิค
+P24: Head=True Back=False TOC=False | Tbls=['26r x 10c'] | NSN=หมายเลขสิ่งอุปกรณ์   - | Name=ชื่อสิ่งอุปกรณ์  กล้องข้อศอก
+P25: Head=True Back=False TOC=False | Tbls=['26r x 10c'] | NSN=หมายเลขสิ่งอุปกรณ์   - | Name=ชื่อสิ่งอุปกรณ์ เครื่องตั้งมุมยิงประณีต
+P26: Head=False Back=False TOC=False | Tbls=['18r x 10c'] | NSN=หมายเลขสิ่งอุปกรณ์   - | Name=ชื่อสิ่งอุปกรณ์ ฐานกล้องเล็ง
+P27: Head=False Back=True TOC=False | Tbls=['3r x 4c'] | NSN= | Name=
+P28: Head=False Back=True TOC=False | Tbls=['5r x 4c'] | NSN= | Name=
+P29: Head=False Back=False TOC=False | Tbls=['1r x 2c'] | NSN= | Name=
+P30: Head=True Back=False TOC=False | Tbls=['26r x 9c'] | NSN= | Name=
+P31: Head=True Back=False TOC=False | Tbls=['26r x 8c'] | NSN=หมายเลขสิ่งอุปกรณ์   8340 – 35 – 229 - 0026 | Name=ชื่อสิ่งอุปกรณ์ กระโจมประจ าหมู่
+P32: Head=True Back=False TOC=False | Tbls=['23r x 10c'] | NSN=หมายเลขสิ่งอุปกรณ์   8340 – 35 – 229 - 0025 | Name=ชื่อสิ่งอุปกรณ์ กระโจมกระสุน
+P33: Head=False Back=False TOC=False | Tbls=['12r x 10c'] | NSN=หมายเลขสิ่งอุปกรณ์   8340 – 35 – 229 – 0058 | Name=ชื่อสิ่งอุปกรณ์  กระโจมส่วนบรรจุ
+P34: Head=True Back=False TOC=False | Tbls=['26r x 7c'] | NSN= | Name=
+P35: Head=False Back=False TOC=False | Tbls=['4r x 5c'] | NSN=หมายเลขสิ่งอุปกรณ์ | Name=ชื่อสิ่งอุปกรณ์  ชุดตรวจและเติมแก๊ส

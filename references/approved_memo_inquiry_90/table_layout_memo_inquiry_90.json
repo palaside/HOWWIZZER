@@ -1,0 +1,237 @@
+{
+  "document_title": "ขอส่งใบติดตามทวงถาม ๙๐ วัน (บันทึกข้อความ และ ทบ.๔๐๐-๐๗๑ ใบติดตามใบเบิก)",
+  "pages": [
+    {
+      "page_number": 1,
+      "page_type": "memo",
+      "orientation": "portrait",
+      "paper_size": "A4",
+      "dimensions": { "width_mm": 210, "height_mm": 297 },
+      "margins_mm": { "top": 20, "right": 15, "bottom": 15, "left": 25 },
+      "garuda": {
+        "width_mm": 30,
+        "height_mm": 30
+      },
+      "content": {
+        "title": "บันทึกข้อความ",
+        "official_department": "ส่วนราชการ",
+        "department_value": "ป.พัน.๔ ร้อย.๒  ( โทร. ๓๑๑๙๓ )",
+        "doc_number_label": "ที่",
+        "doc_number_value": "กห ๐๔๘๓.๑.๔.๑ /",
+        "doc_date_label": "วันที่",
+        "doc_date_spaces": 10,
+        "doc_date_month_year": "มิ.ย. ๕๔",
+        "subject_label": "เรื่อง",
+        "subject_value": "ขอส่งใบติดตามใบเบิก",
+        "recipient_label": "เรียน",
+        "recipient_value": "ผบ.ป.พัน.๔ ( ผ่าน ฝกบ. )",
+        "reference_label": "อ้างถึง",
+        "reference_value": "ระเบียบ ทบ. ว่าด้วยการส่งกำลัง สิ่งอุปกรณ์ ประเภท ๒ และ ๔ พ.ศ. ๒๕๓๔",
+        "attachments_label": "สิ่งที่ส่งมาด้วย",
+        "attachments": [
+          {
+            "title": "- ใบติดตามใบเบิก",
+            "quantity": "จำนวน ๒ ฉบับ"
+          }
+        ],
+        "paragraphs": [
+          "ตามอ้างถึง ป.พัน.๔ ร้อย.๒ ขอส่งใบติดตามใบเบิก ตามห้วงระยะเวลาการเบิกเกิน ๙๐ วัน ซึ่งหน่วยได้ปฏิบัติตามระเบียบกองทัพบก ว่าด้วยการส่งกำลังสิ่งอุปกรณ์ ประเภท ๒ และ ๔ รายละเอียดตามสิ่งที่ส่งมาด้วย",
+          "จึงเรียนมาเพื่อกรุณาพิจารณาดำเนินการต่อไป"
+        ],
+        "signature": {
+          "rule": "RULE-UNIVERSAL-SIGNATURE-BLOCK-V1",
+          "enters_from_last_line": 5,
+          "left_pos_mm": 130,
+          "rank": "ร.อ.",
+          "name": "กฤติน  นราพงษ์",
+          "position": "ผบ.ป.พัน.๔ ร้อย.๒"
+        }
+      }
+    },
+    {
+      "page_number": 2,
+      "page_type": "tracking_form",
+      "form_code": "ทบ. ๔๐๐ - ๐๗๑",
+      "form_subcode": "แบบ ข การเบิกเกิน ๙๐ วัน",
+      "title": "ใบติดตามใบเบิก",
+      "orientation": "landscape",
+      "paper_size": "Legal",
+      "dimensions": { "width_mm": 355.6, "height_mm": 215.9 },
+      "margins_mm": { "top": 15, "right": 15, "bottom": 15, "left": 15 },
+      "header": {
+        "doc_number": "ที่…………………………………………….",
+        "subject": "เรื่อง      ขอทราบผลการเบิก สป.",
+        "to_label": "ถึง",
+        "to_value": "ป.พัน.๔",
+        "from_label": "จาก",
+        "from_value": "ป.พัน.๔ ร้อย.๒",
+        "instruction": "กรุณาดำเนินการตรวจสอบใบเบิกข้างล่างนี้ ซึ่งหน่วยได้ส่งใบเบิก และได้ติดตาม ครั้งที่ ๑ ไว้เรียบร้อยแล้ว"
+      },
+      "table": {
+        "columns": [
+          { "index": 0, "name": "ลำดับ", "width_pct": 5, "align": "center" },
+          { "index": 1, "name": "รายการ สป.", "width_pct": 20, "align": "left" },
+          { "index": 2, "name": "หมายเลข สป.", "width_pct": 18, "align": "center" },
+          { "index": 3, "name": "ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย", "width_pct": 14, "align": "center" },
+          { "index": 4, "name": "วันที่ส่งหรือวางใบเบิก", "width_pct": 13, "align": "center" },
+          { "index": 5, "name": "วันติดตามใบเบิกครั้งที่ ๒๐", "width_pct": 14, "align": "center" },
+          { "index": 6, "name": "หมายเหตุ (บันทึกโดยหน่วยจ่าย)", "width_pct": 16, "align": "left" }
+        ],
+        "rows": [
+          {
+            "no": "๑.",
+            "item_name": "ด้ามแส้ท่อนกกและปลาย",
+            "stock_no": "B ๙๗๒๔๒ - B ๑๙๗๒๔๒",
+            "voucher_no": "๕๐ / ๔๗",
+            "submitted_date": "๒๐ ก.พ. ๔๗",
+            "tracked_date": "๑ มิ.ย. ๕๔",
+            "note": ""
+          },
+          {
+            "no": "๒.",
+            "item_name": "ไฟหลักเล็ง อันใกล้อันไกล",
+            "stock_no": "๑๒๙๐ – ๕๓๕ – ๗๖๒๙",
+            "voucher_no": "๕๑ / ๔๗",
+            "submitted_date": "๒๐ ก.พ. ๔๗",
+            "tracked_date": "๑ มิ.ย. ๕๔",
+            "note": ""
+          },
+          {
+            "no": "๓.",
+            "item_name": "ซองหนังเครื่องตั้งมุมยิงประณีต",
+            "stock_no": "๑๒๙๐ – ๘๙๑ – ๙๙๙๙",
+            "voucher_no": "๕๓ / ๔๗",
+            "submitted_date": "๒๐ ก.พ. ๔๗",
+            "tracked_date": "๑ มิ.ย. ๕๔",
+            "note": ""
+          },
+          {
+            "no": "๔.",
+            "item_name": "ยางนอก",
+            "stock_no": "๒๖๑๐ – ๒๖๒ – ๘๘๑๖",
+            "voucher_no": "๕๔ / ๔๗",
+            "submitted_date": "๒๐ ก.พ. ๔๗",
+            "tracked_date": "๑ มิ.ย. ๕๔",
+            "note": ""
+          },
+          {
+            "no": "๕.",
+            "item_name": "แผ่นเป้าทดสอบ",
+            "stock_no": "๖๙๒๐ – ๗๑๔ – ๘๙๐๗",
+            "voucher_no": "๗๐ / ๔๗",
+            "submitted_date": "๑๗ มิ.ย. ๔๗",
+            "tracked_date": "๑ มิ.ย. ๕๔",
+            "note": ""
+          },
+          {
+            "no": "๖.",
+            "item_name": "น๊อตน้ำมันรับแรง",
+            "stock_no": "๔๗๓๐ – ๕๐๑ - ๘๔๙๕",
+            "voucher_no": "๖๙ / ๔๗",
+            "submitted_date": "๑๐ มิ.ย. ๔๗",
+            "tracked_date": "๒ มิ.ย. ๕๒",
+            "note": ""
+          }
+        ]
+      },
+      "signatures": [
+        {
+          "role_key": "commander",
+          "label": "ผู้บังคับกองร้อย",
+          "rank": "ร.อ.",
+          "name": "กฤติน  นราพงษ์",
+          "position": "ผบ.ป.พัน.๔ ร้อย.๒",
+          "date": "มิ.ย. ๕๔"
+        },
+        {
+          "role_key": "inspector",
+          "label": "ผู้ตรวจสอบ",
+          "rank": "จ.ส.อ.",
+          "name": "ณัฐชัย  รักษาวงษ์",
+          "position": "ส.หน.สย. ป.๔ พัน.๔ ร้อย.๒",
+          "date": "มิ.ย. ๕๔"
+        }
+      ],
+      "footer_note": "( พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ ประเภท ๒ และ ๔ พ.ศ. ๒๕๓๔ )"
+    },
+    {
+      "page_number": 3,
+      "page_type": "tracking_form",
+      "form_code": "ทบ. ๔๐๐ - ๐๗๑",
+      "form_subcode": "แบบ ข การเบิกเกิน ๙๐ วัน",
+      "title": "ใบติดตามใบเบิก",
+      "orientation": "landscape",
+      "paper_size": "Legal",
+      "dimensions": { "width_mm": 355.6, "height_mm": 215.9 },
+      "margins_mm": { "top": 15, "right": 15, "bottom": 15, "left": 15 },
+      "header": {
+        "doc_number": "ที่…………………………………………….",
+        "subject": "เรื่อง      ขอทราบผลการเบิก สป.",
+        "to_label": "ถึง",
+        "to_value": "ป.พัน.๔",
+        "from_label": "จาก",
+        "from_value": "ป.พัน.๔ ร้อย.๒",
+        "instruction": "กรุณาดำเนินการตรวจสอบใบเบิกข้างล่างนี้ ซึ่งหน่วยได้ส่งใบเบิก และได้ติดตาม ครั้งที่ ๑ ไว้เรียบร้อยแล้ว"
+      },
+      "table": {
+        "columns": [
+          { "index": 0, "name": "ลำดับ", "width_pct": 5, "align": "center" },
+          { "index": 1, "name": "รายการ สป.", "width_pct": 20, "align": "left" },
+          { "index": 2, "name": "หมายเลข สป.", "width_pct": 18, "align": "center" },
+          { "index": 3, "name": "ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย", "width_pct": 14, "align": "center" },
+          { "index": 4, "name": "วันที่ส่งหรือวางใบเบิก", "width_pct": 13, "align": "center" },
+          { "index": 5, "name": "วันติดตามใบเบิกครั้งที่ ๘", "width_pct": 14, "align": "center" },
+          { "index": 6, "name": "หมายเหตุ (บันทึกโดยหน่วยจ่าย)", "width_pct": 16, "align": "left" }
+        ],
+        "rows": [
+          {
+            "no": "๑.",
+            "item_name": "ยางใน",
+            "stock_no": "-",
+            "voucher_no": "๒๓ / ๕๑",
+            "submitted_date": "๑๓ มี.ค. ๕๑",
+            "tracked_date": "๑ มิ.ย. ๕๔",
+            "note": ""
+          },
+          {
+            "no": "๒.",
+            "item_name": "ผ้าคลุมฐานกล้องเล็ง",
+            "stock_no": "๓๒๔๐ – ๐๐ – ๖๕๘ - ๒๘๒๒",
+            "voucher_no": "๒๔ / ๕๑",
+            "submitted_date": "๑๓ มี.ค. ๕๑",
+            "tracked_date": "๑ มิ.ย. ๕๔",
+            "note": ""
+          },
+          {
+            "no": "๓.",
+            "item_name": "ผ้าคลุมฐานกล้องข้อศอก",
+            "stock_no": "๑๒๔๐ – ๐๐ – ๖๕๘ - ๒๘๒๓",
+            "voucher_no": "๒๕ / ๕๑",
+            "submitted_date": "๑๓ มี.ค. ๕๑",
+            "tracked_date": "๑ มิ.ย. ๕๔",
+            "note": ""
+          }
+        ]
+      },
+      "signatures": [
+        {
+          "role_key": "commander",
+          "label": "ผู้บังคับกองร้อย",
+          "rank": "ร.อ.",
+          "name": "กฤติน  นราพงษ์",
+          "position": "ผบ.ป.พัน.๔ ร้อย.๒",
+          "date": "มิ.ย. ๕๔"
+        },
+        {
+          "role_key": "inspector",
+          "label": "ผู้ตรวจสอบ",
+          "rank": "จ.ส.อ.",
+          "name": "ณัฐชัย  รักษาวงษ์",
+          "position": "ส.หน.สย. ป.๔ พัน.๔ ร้อย.๒",
+          "date": "มิ.ย. ๕๔"
+        }
+      ],
+      "footer_note": "( พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ ประเภท ๒ และ ๔ พ.ศ. ๒๕๓๔ )"
+    }
+  ]
+}

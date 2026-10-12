@@ -4,7 +4,8 @@ from backend.services.business_day_engine import (
     is_business_day,
     get_adjusted_cycle_date,
     get_weekly_submission_date,
-    get_next_business_day
+    get_next_business_day,
+    get_weekly_cycle_range
 )
 
 def test_weekend_detection():
@@ -37,3 +38,23 @@ def test_weekly_submission_date_holiday_rollback():
     assert sub_date == date(2026, 12, 9)
     assert sub_date.weekday() == 2  # Wednesday
     assert is_business_day(sub_date) is True
+
+def test_weekly_cycle_range_normal():
+    # Friday 2026-10-16 is a normal working day
+    res = get_weekly_cycle_range(date(2026, 10, 16))
+    assert res["start_date"] == "2026-10-12"
+    assert res["end_date"] == "2026-10-16"
+    assert res["range_text"] == "12 - 16 ต.ค. 69"
+    assert res["target_date_thai"] == "16/10/69"
+    assert res["is_friday_holiday"] is False
+
+def test_weekly_cycle_range_holiday_rollback():
+    # Friday 2026-10-23 is Chulalongkorn Day (National Holiday)
+    # The weekly cycle must roll back to Thursday 2026-10-22: '19 - 22 ต.ค. 69'
+    res = get_weekly_cycle_range(date(2026, 10, 23))
+    assert res["start_date"] == "2026-10-19"
+    assert res["end_date"] == "2026-10-22"
+    assert res["range_text"] == "19 - 22 ต.ค. 69"
+    assert res["target_date_thai"] == "23/10/69"
+    assert res["is_friday_holiday"] is True
+

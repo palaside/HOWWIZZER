@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Meta Box Preview</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            font-weight: normal !important; /* ฟอนต์ตัวบางทั้งหมด */
+        }
+        
+        body {
+            margin: 30px;
+            background: #eef1f5;
+            font-family: 'TH Sarabun PSK', 'TH Sarabun New', 'Sarabun', sans-serif;
+            font-size: 14pt;
+        }
+        
+        .preview-card {
+            background: white;
+            padding: 20px;
+            width: 500px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .thai-numeral {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "locl" 1, "numr" 1;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .meta-box-table {
+            border: 1px solid #000;
+        }
+        
+        .meta-box-table td {
+            border: 1px solid #000;
+            padding: 2px 3px;
+            vertical-align: top;
+            text-align: center;
+            height: 14mm;
+        }
+        
+        .meta-lbl {
+            font-size: 13pt;
+            line-height: 1.15;
+        }
+        
+        .meta-val {
+            font-size: 13.5pt;
+            line-height: 1.2;
+        }
+        
+        .meta-date {
+            margin-left: 18px; /* เลื่อนไปทางขวา 4 เคาะ */
+        }
+    </style>
+</head>
+<body>
+    <div class="preview-card" id="preview-meta">
+        <table class="meta-box-table">
+            <tr>
+                <td style="width: 44%;">
+                    <div class="meta-lbl">ที่เก็บ</div>
+                    <div class="meta-val">โรงเก็บปืนใหญ่</div>
+                    <div class="meta-val">ป.4 พัน.4 ร้อย.2</div>
+                </td>
+                <td style="width: 28%;">
+                    <div class="meta-lbl">ที่ใบสำรวจ</div>
+                    <div class="meta-val thai-numeral">1/66</div>
+                </td>
+                <td style="width: 28%;">
+                    <div class="meta-lbl">วันสำรวจ</div>
+                    <div class="meta-val meta-date thai-numeral">พ.ย. 66</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

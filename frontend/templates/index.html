@@ -48,7 +48,22 @@
     <div class="glass-panel action-bar">
       <div class="action-bar-left">
         <span class="action-title">วงรอบเอกสารเป้าหมาย:</span>
-        <input type="date" id="targetCycleDate" class="input-field" value="2026-10-16">
+        <div class="cycle-date-control-group">
+          <!-- Thai Date Input Wrapper (วว/ดด/ปป พุทธศักราช) -->
+          <div class="thai-date-wrapper" onclick="triggerNativeDatePicker()" title="คลิกเพื่อเลือกวันที่จากปฏิทิน">
+            <input type="text" id="targetCycleDateDisplay" class="input-field thai-date-display" placeholder="วว/ดด/ปป" value="16/10/69">
+            <input type="date" id="targetCycleDate" class="native-date-hidden" value="2026-10-16">
+            <span class="calendar-icon-btn">📅</span>
+          </div>
+
+          <!-- Floating Cycle Pill Badge (ตัวอักษรลอย แสดงช่วงวงรอบ เช่น 12 - 16 ต.ค. 69) -->
+          <div class="floating-cycle-chip" id="floatingCycleChip" title="ช่วงวันทำการในวงรอบสัปดาห์">
+            <span class="chip-icon">🗓️</span>
+            <span class="chip-label">วงรอบ:</span>
+            <span class="chip-value" id="cycleRangeDisplay">12 - 16 ต.ค. 69</span>
+          </div>
+        </div>
+
         <button id="btnTriggerGen" onclick="triggerDocGeneration()" class="btn-primary">
           ⚡ สั่งประมวลผลและสร้างแพ็กเกจคู่ขนาน ๒ ชุด
         </button>

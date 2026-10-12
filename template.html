@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 8mm 10mm;
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        body {
+            font-family: 'TH Sarabun PSK', 'TH Sarabun New', 'Sarabun', 'Angsana New', sans-serif;
+            font-size: 16pt;
+            line-height: 1.25;
+            color: #000;
+            background-color: #f5f5f7;
+            margin: 0;
+            padding: 20px;
+            font-feature-settings: "locl" 1, "numr" 1;
+            -webkit-font-smoothing: antialiased;
+        }
+        .page-landscape {
+            width: 297mm;
+            min-height: 210mm;
+            margin: 0 auto;
+            padding: 12mm 14mm 10mm 14mm;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        .doc-header {
+            text-align: center;
+            margin-bottom: 0;
+        }
+        .doc-title {
+            font-size: 18pt;
+            font-weight: bold;
+            margin: 0 0 2px 0;
+            letter-spacing: 0.3px;
+        }
+        .doc-unit {
+            font-size: 16pt;
+            font-weight: bold;
+            margin: 0 0 18px 0; /* ห่าง 1 เคาะ (1 บรรทัด) กับหัวตาราง */
+            line-height: 1.3;
+        }
+        table.military-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin-bottom: 20px;
+            border: 1px solid #000;
+        }
+        table.military-table th,
+        table.military-table td {
+            border: 1px solid #000;
+            padding: 4px 2px;
+            vertical-align: middle;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        table.military-table th {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14pt;
+            background-color: #fff;
+            line-height: 1.2;
+            height: 64px;
+        }
+        table.military-table td {
+            font-size: 14pt;
+            height: 46px;
+            text-align: center;
+            line-height: 1.25;
+        }
+        .tire-cell {
+            padding: 2px 2px !important;
+        }
+        .tire-text {
+            font-size: 12.5pt;
+            line-height: 1.18;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: clip;
+        }
+
+        /* ========================================================= */
+        /* SIGNATURE BLOCK ENGINE v1.0 — TRUE RED LINE ALIGNMENT     */
+        /* ท้ายยศชนวงเล็บเปิด: จุด . ของ จ.ส.อ. ชนเส้นแนวดิ่งเดียวกับ ( ของชื่อ */
+        /* ========================================================= */
+        .doc-footer-grid {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 25px;
+            padding: 0 45px 0 0;
+        }
+        .sig-block {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 16pt;
+            line-height: 1.0;
+        }
+        .sig-verify {
+            margin-bottom: 8px;
+            font-size: 16pt;
+            line-height: 1.0;
+        }
+        
+        /* กล่องชื่อและตำแหน่ง */
+        .sig-name-pos-group {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin-left: 95px;
+        }
+
+        /* กรอบชื่อ: ตัวยึดแนววงเล็บเปิด ( */
+        .sig-name-wrapper {
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+            margin-top: 30px; /* พื้นที่สำหรับลงลายมือชื่อจริง */
+        }
+
+        /* บรรทัดยศ: จุด . ท้ายยศ ชนขอบซ้ายของกรอบชื่อ ซึ่งคือ ( พอดีเป๊ะ 100% */
+        .sig-rank-anchor {
+            position: absolute;
+            right: 100%; /* ชนแนวเส้นดิ่งเดียวกับ ( พอดีเป๊ะ */
+            bottom: calc(100% + 20px);
+            white-space: nowrap;
+            font-size: 16pt;
+            line-height: 1.0;
+        }
+
+        /* ชื่อและตำแหน่ง: จัดกึ่งกลางร่วมกัน 1 enter ไม่มีระยะย่อหน้า */
+        .sig-name {
+            margin: 0;
+            line-height: 1.15;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 16pt;
+            display: block;
+        }
+        .sig-pos {
+            margin: 0;
+            line-height: 1.15;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 16pt;
+            display: block;
+        }
+
+        @media print {
+            body { background: transparent; padding: 0; }
+            .page-landscape { padding: 0; width: 100%; box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-landscape">
+        {{content}}
+    </div>
+</body>
+</html>

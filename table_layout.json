@@ -1,0 +1,215 @@
+{
+  "document_metadata": {
+    "id": "PBK-95-105MM",
+    "title_th": "บัญชีรายละเอียดหมายเลข ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑ ปรับปรุง",
+    "unit_th": "ป.๔ พัน.๔ ร้อย.๒",
+    "paper_size": "A4",
+    "orientation": "landscape",
+    "page_dimensions_pt": {
+      "width": 842.04,
+      "height": 595.32
+    },
+    "margins_pt": {
+      "top": 35.0,
+      "bottom": 35.0,
+      "left": 25.0,
+      "right": 25.0
+    },
+    "default_font": "TH Sarabun PSK",
+    "primary_font_size_pt": 15
+  },
+  "signature_block": {
+    "verification_text": "ตรวจถูกต้อง",
+    "rank": "จ.ส.อ.",
+    "full_name": "(ณัฐชัย   รักษาวงษ์)",
+    "position": "ส.หน.สย. ป.๔ พัน.๔ ร้อย.๒",
+    "alignment_standard": "rank_endpoint_to_open_parenthesis",
+    "description": "ท้ายยศชนวงเล็บเปิด: จุด . สุดท้ายของ จ.ส.อ. แตะแนวเส้นดิ่งเดียวกับ ( ของชื่อ",
+    "name_position_shared_center": true,
+    "name_position_spacing_pt": 0
+  },
+  "columns": [
+    {
+      "id": "col_seq",
+      "header_th": "ลำดับ",
+      "width_pt": 38,
+      "width_percent": 4.74,
+      "align": "center",
+      "data_type": "integer"
+    },
+    {
+      "id": "col_gun_no",
+      "header_th": "หมายเลข\nปบค.๙๕",
+      "width_pt": 57,
+      "width_percent": 7.12,
+      "align": "center",
+      "data_type": "code_string"
+    },
+    {
+      "id": "col_barrel",
+      "header_th": "ลำกล้อง\nปืน",
+      "width_pt": 47,
+      "width_percent": 5.87,
+      "align": "center",
+      "data_type": "code_string"
+    },
+    {
+      "id": "col_carriage",
+      "header_th": "รถรองปืน\n(เปลปืน)",
+      "width_pt": 56,
+      "width_percent": 6.99,
+      "align": "center",
+      "data_type": "code_string"
+    },
+    {
+      "id": "col_recoil",
+      "header_th": "เครื่องรับ\nแรงถอย",
+      "width_pt": 57,
+      "width_percent": 7.12,
+      "align": "center",
+      "data_type": "code_string"
+    },
+    {
+      "id": "col_tire_left",
+      "header_th": "ยางซ้าย",
+      "width_pt": 142,
+      "width_percent": 17.73,
+      "align": "center",
+      "data_type": "text"
+    },
+    {
+      "id": "col_tire_right",
+      "header_th": "ยางขวา",
+      "width_pt": 135,
+      "width_percent": 16.85,
+      "align": "center",
+      "data_type": "text"
+    },
+    {
+      "id": "col_mount_m21",
+      "header_th": "ฐานกล้อง\nเล็ง\nM.๒๑ A.๑",
+      "width_pt": 57,
+      "width_percent": 7.12,
+      "align": "center",
+      "data_type": "code_string"
+    },
+    {
+      "id": "col_device_m4",
+      "header_th": "เครื่องให้\nระยิง\nM.๔ A.๑",
+      "width_pt": 49,
+      "width_percent": 6.12,
+      "align": "center",
+      "data_type": "code_string"
+    },
+    {
+      "id": "col_mount_m23",
+      "header_th": "ฐานกล้อง\nข้อศอก M.๒๓",
+      "width_pt": 64,
+      "width_percent": 7.99,
+      "align": "center",
+      "data_type": "code_string"
+    },
+    {
+      "id": "col_drift",
+      "header_th": "ค่า ตร.",
+      "width_pt": 43,
+      "width_percent": 5.37,
+      "align": "center",
+      "data_type": "decimal"
+    },
+    {
+      "id": "col_remark",
+      "header_th": "หมายเหตุ",
+      "width_pt": 56,
+      "width_percent": 6.99,
+      "align": "center",
+      "data_type": "text"
+    }
+  ],
+  "rows": [
+    {
+      "seq": 1,
+      "gun_no": "24080",
+      "barrel": "",
+      "carriage": "",
+      "recoil": "",
+      "tire_left": "",
+      "tire_right": "",
+      "mount_m21": "",
+      "device_m4": "",
+      "mount_m23": "",
+      "drift": "",
+      "remark": "ส่งซ่อม"
+    },
+    {
+      "seq": 2,
+      "gun_no": "19609",
+      "barrel": "14041",
+      "carriage": "3166",
+      "recoil": "13740",
+      "tire_left": "Superstone  LA070706\n(28  19)",
+      "tire_right": "SuperstoneLA070147\n(29  19)",
+      "mount_m21": "0283",
+      "device_m4": "1932",
+      "mount_m23": "9282",
+      "drift": "-7.90",
+      "remark": ""
+    },
+    {
+      "seq": 3,
+      "gun_no": "20670",
+      "barrel": "14139",
+      "carriage": "12405",
+      "recoil": "839",
+      "tire_left": "Superstone NP090297\n(38  23)",
+      "tire_right": "Superstone NP090049\n(36  23)",
+      "mount_m21": "0290",
+      "device_m4": "21510",
+      "mount_m23": "1122",
+      "drift": "-8.21",
+      "remark": ""
+    },
+    {
+      "seq": 4,
+      "gun_no": "23554",
+      "barrel": "14180",
+      "carriage": "10780",
+      "recoil": "1231",
+      "tire_left": "Superstone HC090119\n(38  21)",
+      "tire_right": "Superstone HC070147\n(38  21)",
+      "mount_m21": "0424",
+      "device_m4": "24099",
+      "mount_m23": "20925",
+      "drift": "-8.41",
+      "remark": ""
+    },
+    {
+      "seq": 5,
+      "gun_no": "24280",
+      "barrel": "15325",
+      "carriage": "12595",
+      "recoil": "3456",
+      "tire_left": "Superstone AA020358\n(09  14)",
+      "tire_right": "Superstone AA030298\n(10  14)",
+      "mount_m21": "0435",
+      "device_m4": "23173",
+      "mount_m23": "8312",
+      "drift": "-9.06",
+      "remark": ""
+    },
+    {
+      "seq": 6,
+      "gun_no": "8516",
+      "barrel": "14036",
+      "carriage": "6955",
+      "recoil": "1209",
+      "tire_left": "Superstone AA030290\n(11  14)",
+      "tire_right": "Superstone AA030345\n(11  14)",
+      "mount_m21": "0431",
+      "device_m4": "24961",
+      "mount_m23": "21967",
+      "drift": "-9.12",
+      "remark": ""
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "doc_id": "REF-REPAIR-TRACK-B-V1",
+  "title": "ทบ.๔๐๐-๐๗๑ แบบ ข ใบติดตามใบส่งซ่อม (การเบิกเกิน ๙๐ วัน)",
+  "page_setup": {
+    "page_1": {
+      "type": "A4_landscape",
+      "width_mm": 297,
+      "height_mm": 210,
+      "margin_mm": {
+        "top": 8,
+        "bottom": 6,
+        "left": 15,
+        "right": 12
+      }
+    }
+  },
+  "page_1_form": {
+    "form_code": "ทบ. ๔๐๐ - ๐๗๑",
+    "form_type": "แบบ  ข  การเบิกเกิน  ๙๐  วัน",
+    "title": "ใบติดตามใบส่งซ่อม",
+    "header_fields": {
+      "doc_number": "ที่…………………………………………….",
+      "subject": "เรื่อง      ขอทราบผลการเบิกส่งซ่อม  สป.",
+      "to": "ป.๔ พัน.๔",
+      "from": "ป.๔ พัน.๔ ร้อย.๒"
+    },
+    "instruction": "กรุณาดำเนินการตรวจสอบใบส่งซ่อมข้างล่างนี้   ซึ่งหน่วยได้ส่งใบส่งซ่อม และได้ติดตาม ครั้งที่ ๓ ไว้เรียบร้อยแล้ว",
+    "table": {
+      "columns": [
+        { "id": "seq", "title": "ลำดับ", "width_pct": 5, "align": "center" },
+        { "id": "item_desc", "title": "รายการ สป.", "width_pct": 19, "align": "left" },
+        { "id": "item_number", "title": "หมายเลข สป.", "width_pct": 15, "align": "center" },
+        { "id": "doc_ref", "title": "ที่ใบส่งซ่อม<br>ที่ทะเบียนหน่วยจ่าย", "width_pct": 16, "align": "center" },
+        { "id": "doc_date", "title": "วันที่ส่งหรือวาง<br>ใบส่งซ่อม", "width_pct": 14, "align": "center" },
+        { "id": "track_date", "title": "วันติดตามใบส่งซ่อม<br>ครั้งที่ ๓", "width_pct": 15, "align": "center" },
+        { "id": "notes", "title": "หมายเหตุ<br>(บันทึกโดยหน่วยจ่าย)", "width_pct": 16, "align": "left" }
+      ],
+      "rows": [
+        {
+          "seq": "๑.",
+          "item_desc": "ปบค.๙๕ ขนาด ๑๐๕ มม.<br>เอ็ม.๑๐๑ เอ.๑ ปรับปรุง",
+          "item_number": "๒๔๐๘๐",
+          "doc_ref": "๐๑ / ๖๔",
+          "doc_date": "๖ พ.ย. ๖๓",
+          "track_date": "๑๕ มิ.ย. ๖๙",
+          "notes": ""
+        }
+      ],
+      "blank_rows_count": 9
+    },
+    "signatures": [
+      {
+        "position_side": "left",
+        "role_key": "commander",
+        "type": "signature_block",
+        "label": "",
+        "rank": "ร.อ.",
+        "name": "(กฤติน  นราพงษ์)",
+        "position": "ผบ.ป.๔ พัน.๔ ร้อย.๒",
+        "date": "/ ก.ย. / ๖๙"
+      },
+      {
+        "position_side": "right",
+        "role_key": "inspector",
+        "type": "signature_block",
+        "label": "",
+        "rank": "จ.ส.อ.",
+        "name": "(ณัฐชัย  รักษาวงษ์)",
+        "position": "ส.หน.สย. ป.๔ พัน.๔ ร้อย.๒",
+        "date": "/ ก.ย. / ๖๙"
+      }
+    ],
+    "footer_note": "( พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์  ประเภท  ๒ และ ๔  พ.ศ.  ๒๕๓๔ )"
+  }
+}

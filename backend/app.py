@@ -25,6 +25,9 @@ from backend.services.inventory_service import (
     replace_damaged_item,
     get_item_history
 )
+from backend.services.business_day_engine import (
+    get_weekly_cycle_range
+)
 from backend.services.external_intake_service import (
     scan_and_ingest_hotfolder,
     classify_external_doc,
@@ -112,6 +115,18 @@ def get_checklist(period_key: Optional[str] = None):
     p_key = period_key or datetime.now().strftime("%Y-%m")
     return get_generation_checklist(p_key)
 
+@app.get("/api/v1/cycle/info")
+def get_cycle_info(target_date: Optional[str] = None):
+    from backend.services.business_day_engine import get_weekly_cycle_range
+    if target_date:
+        try:
+            t_date = date.fromisoformat(target_date)
+        except ValueError:
+            t_date = date.today()
+    else:
+        t_date = date.today()
+    return get_weekly_cycle_range(t_date)
+
 @app.post("/api/v1/docs/generate")
 def generate_docs(payload: dict = Body(...)):
     target_date_str = payload.get("target_date")
@@ -133,6 +148,15 @@ def get_doc_preview(filename: str):
     if not file_path.exists():
         raise HTTPException(status_code=404, detail="Preview file not found")
     return FileResponse(file_path)
+
+# --- Weekly Cycle Engine ---
+@app.get("/api/v1/cycle/info")
+def get_cycle_info(target_date: Optional[str] = None):
+    try:
+        c_date = date.fromisoformat(target_date) if target_date else date.today()
+        return get_weekly_cycle_range(c_date)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 # --- Armory Custody & Inventory Engine ---
 @app.get("/api/v1/inventory/balance")

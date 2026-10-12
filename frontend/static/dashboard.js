@@ -28,10 +28,147 @@ function initTabs() {
 
 function initDateDefaults() {
   const targetDateInput = document.getElementById('targetCycleDate');
+  const targetDisplay = document.getElementById('targetCycleDateDisplay');
+  
+  // Default to 2026-10-16 for military testing cycle or current date
+  const initialDate = targetDateInput?.value || '2026-10-16';
   if (targetDateInput) {
-    const today = new Date();
-    targetDateInput.value = today.toISOString().split('T')[0];
+    targetDateInput.value = initialDate;
+    targetDateInput.addEventListener('change', (e) => onNativeDateChanged(e.target.value));
   }
+  
+  if (targetDisplay) {
+    targetDisplay.value = formatToThaiBE(initialDate);
+    targetDisplay.addEventListener('change', (e) => onThaiDateInputChanged(e.target.value));
+    targetDisplay.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        onThaiDateInputChanged(e.target.value);
+        targetDisplay.blur();
+      }
+    });
+  }
+
+  updateCycleInfo(initialDate);
+}
+
+function triggerNativeDatePicker() {
+  const nativeInput = document.getElementById('targetCycleDate');
+  if (nativeInput) {
+    if (typeof nativeInput.showPicker === 'function') {
+      nativeInput.showPicker();
+    } else {
+      nativeInput.focus();
+    }
+  }
+}
+
+function onNativeDateChanged(isoDate) {
+  if (!isoDate) return;
+  const targetDisplay = document.getElementById('targetCycleDateDisplay');
+  if (targetDisplay) {
+    targetDisplay.value = formatToThaiBE(isoDate);
+  }
+  updateCycleInfo(isoDate);
+}
+
+function onThaiDateInputChanged(thaiStr) {
+  const iso = parseThaiBEToIso(thaiStr);
+  if (iso) {
+    const targetDateInput = document.getElementById('targetCycleDate');
+    if (targetDateInput) {
+      targetDateInput.value = iso;
+    }
+    const targetDisplay = document.getElementById('targetCycleDateDisplay');
+    if (targetDisplay) {
+      targetDisplay.value = formatToThaiBE(iso);
+    }
+    updateCycleInfo(iso);
+  } else {
+    // Revert to current valid date if invalid format
+    const targetDateInput = document.getElementById('targetCycleDate');
+    const targetDisplay = document.getElementById('targetCycleDateDisplay');
+    if (targetDateInput && targetDisplay) {
+      targetDisplay.value = formatToThaiBE(targetDateInput.value);
+    }
+  }
+}
+
+function formatToThaiBE(isoDateStr) {
+  if (!isoDateStr) return '';
+  const parts = isoDateStr.split('-');
+  if (parts.length !== 3) return '';
+  const y = parseInt(parts[0], 10);
+  const m = parseInt(parts[1], 10);
+  const d = parseInt(parts[2], 10);
+  const beYear = (y + 543) % 100;
+  return `${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}/${String(beYear).padStart(2, '0')}`;
+}
+
+function parseThaiBEToIso(thaiStr) {
+  if (!thaiStr) return null;
+  const parts = thaiStr.trim().split(/[\/\-\.]/);
+  if (parts.length === 3) {
+    const d = parseInt(parts[0], 10);
+    const m = parseInt(parts[1], 10);
+    let y = parseInt(parts[2], 10);
+    if (isNaN(d) || isNaN(m) || isNaN(y)) return null;
+    if (d < 1 || d > 31 || m < 1 || m > 12) return null;
+    
+    // Support 2 digits BE (e.g. 69 -> 2569) or 4 digits BE (2569)
+    if (y < 100) {
+      y = y + 2500;
+    }
+    const ceYear = y - 543;
+    return `${ceYear}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+  }
+  return null;
+}
+
+async function updateCycleInfo(targetIsoDate) {
+  const displayElem = document.getElementById('cycleRangeDisplay');
+  const chipElem = document.getElementById('floatingCycleChip');
+  if (!displayElem) return;
+
+  try {
+    const res = await fetch(`${API_BASE}/cycle/info?target_date=${targetIsoDate}`);
+    if (!res.ok) throw new Error('API Error');
+    const data = await res.json();
+    
+    displayElem.innerText = data.range_text;
+    
+    if (chipElem) {
+      if (data.is_friday_holiday) {
+        chipElem.classList.add('chip-holiday-alert');
+        chipElem.title = `⚠️ วันศุกร์เป็นวันหยุดราชการ วงรอบสัปดาห์ปรับร่นเป็น: ${data.range_text}`;
+      } else {
+        chipElem.classList.remove('chip-holiday-alert');
+        chipElem.title = `ช่วงวันทำการในวงรอบสัปดาห์: ${data.range_text}`;
+      }
+    }
+  } catch (err) {
+    console.warn('Failed to fetch cycle info, using client fallback:', err);
+    // Instant fallback calculation
+    calculateClientCycleRange(targetIsoDate);
+  }
+}
+
+function calculateClientCycleRange(isoDateStr) {
+  const displayElem = document.getElementById('cycleRangeDisplay');
+  if (!displayElem || !isoDateStr) return;
+  
+  const TH_MONTHS = ['', 'ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+  const d = new Date(isoDateStr);
+  const day = d.getDay(); // 0=Sun, 1=Mon, ..., 5=Fri
+  const diffToMon = day === 0 ? -6 : 1 - day;
+  
+  const mon = new Date(d);
+  mon.setDate(d.getDate() + diffToMon);
+  
+  const fri = new Date(mon);
+  fri.setDate(mon.getDate() + 4);
+  
+  const beYear = (fri.getFullYear() + 543) % 100;
+  displayElem.innerText = `${mon.getDate()} - ${fri.getDate()} ${TH_MONTHS[fri.getMonth() + 1]} ${String(beYear).padStart(2, '0')}`;
 }
 
 // ==========================================

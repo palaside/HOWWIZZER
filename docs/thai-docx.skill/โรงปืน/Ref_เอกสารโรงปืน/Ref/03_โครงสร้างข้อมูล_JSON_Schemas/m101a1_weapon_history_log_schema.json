@@ -1,0 +1,383 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RTA_M101A1_Weapon_History_Log_Schema",
+  "description": "โครงสร้างข้อมูลและจุดอ้างอิงของ สมุด/แผ่นประวัติการใช้อาวุธ ปืนใหญ่ ปบค.95 (105 มม. M101A1) ประจำ ป.หมู่ ๒ ถึง ป.หมู่ ๖ ของ หน่วย ป.๔ พัน.๔ ร้อย.๒ ตามระเบียบกองทัพบก ว่าด้วยงานสารบรรณ พ.ศ. ๒๕๖๓",
+  "reference_regulation": "ระเบียบกองทัพบก ว่าด้วยงานสารบรรณ พ.ศ. ๒๕๖๓ และ ระเบียบการคุมและปรนนิบัติบำรุงยุทโธปกรณ์ สาย สพ.",
+  "document_metadata": {
+    "document_type": "ประวัติการใช้อาวุธ (แบบพิมพ์บันทึกประวัติยุทโธปกรณ์ประจำหมู่ปืนใหญ่)",
+    "unit_owner": "ป.๔ พัน.๔ ร้อย.๒",
+    "weapon_type": "ปืนใหญ่ต่อสู้อากาศยาน/ปืนใหญ่สนาม ปบค.95 ขนาด 105 มม. M101A1 ปรับปรุง",
+    "squads_covered": [
+      "ป.หมู่ ๒",
+      "ป.หมู่ ๓",
+      "ป.หมู่ ๔",
+      "ป.หมู่ ๕",
+      "ป.หมู่ ๖"
+    ],
+    "inspector": {
+      "rank_name": "ร.อ. กฤติน นราพงษ์",
+      "position": "ผบ.ป.4 พัน.4 ร้อย.2",
+      "verification_status": "ตรวจถูกต้อง"
+    }
+  },
+  "table_structure": {
+    "columns": [
+      "ส่วนประกอบ",
+      "หมายเลขแบบ",
+      "หมายเลข",
+      "หมายเหตุ"
+    ]
+  },
+  "squad_records": [
+    {
+      "squad_id": "ป.หมู่ ๒",
+      "components": [
+        {
+          "name": "ตัวปืน",
+          "model": "M2A2",
+          "serial_no": "19609"
+        },
+        {
+          "name": "ลำกล้องปืน",
+          "model": "M2A2",
+          "serial_no": "14041"
+        },
+        {
+          "name": "รถรองปืน",
+          "model": "M2A2",
+          "serial_no": "3166"
+        },
+        {
+          "name": "เครื่องรับแรงถอย",
+          "model": "M2A2",
+          "serial_no": "13740"
+        },
+        {
+          "name": "เครื่องให้ระยะยิง",
+          "model": "M4A1",
+          "serial_no": "1932"
+        },
+        {
+          "name": "เครื่องตั้งมุมยิงประณีต",
+          "model": "M1A1",
+          "serial_no": "30192"
+        },
+        {
+          "name": "ฐานกล้องเล็ง",
+          "model": "M21A1",
+          "serial_no": "0283"
+        },
+        {
+          "name": "กล้องเล็งพาโนรามิค",
+          "model": "M12A7",
+          "serial_no": "0296"
+        },
+        {
+          "name": "ฐานกล้องข้อศอก",
+          "model": "M23",
+          "serial_no": "9282"
+        },
+        {
+          "name": "กล้องข้อศอก",
+          "model": "M16A1D",
+          "serial_no": "2653"
+        },
+        {
+          "name": "ยางขวา",
+          "model": "Superstone",
+          "serial_no": "LA070147"
+        },
+        {
+          "name": "ยางซ้าย",
+          "model": "Superstone",
+          "serial_no": "LA070706"
+        },
+        {
+          "name": "ค่า ตร.",
+          "model": "-",
+          "serial_no": "-7.90"
+        }
+      ]
+    },
+    {
+      "squad_id": "ป.หมู่ ๓",
+      "components": [
+        {
+          "name": "ตัวปืน",
+          "model": "M2A2",
+          "serial_no": "20670"
+        },
+        {
+          "name": "ลำกล้องปืน",
+          "model": "M2A2",
+          "serial_no": "14139"
+        },
+        {
+          "name": "รถรองปืน",
+          "model": "M2A2",
+          "serial_no": "12405"
+        },
+        {
+          "name": "เครื่องรับแรงถอย",
+          "model": "M2A2",
+          "serial_no": "839"
+        },
+        {
+          "name": "เครื่องให้ระยะยิง",
+          "model": "M4A1",
+          "serial_no": "21510"
+        },
+        {
+          "name": "เครื่องตั้งมุมยิงประณีต",
+          "model": "M1A1",
+          "serial_no": "28189"
+        },
+        {
+          "name": "ฐานกล้องเล็ง",
+          "model": "M21A1",
+          "serial_no": "0290"
+        },
+        {
+          "name": "กล้องเล็งพาโนรามิค",
+          "model": "M12A7",
+          "serial_no": "0298"
+        },
+        {
+          "name": "ฐานกล้องข้อศอก",
+          "model": "M23",
+          "serial_no": "1122"
+        },
+        {
+          "name": "กล้องข้อศอก",
+          "model": "M16A1D",
+          "serial_no": "35897"
+        },
+        {
+          "name": "ยางขวา",
+          "model": "Superstone",
+          "serial_no": "NP090049"
+        },
+        {
+          "name": "ยางซ้าย",
+          "model": "Superstone",
+          "serial_no": "NP090297"
+        },
+        {
+          "name": "ค่า ตร.",
+          "model": "-",
+          "serial_no": "-8.21"
+        }
+      ]
+    },
+    {
+      "squad_id": "ป.หมู่ ๔",
+      "components": [
+        {
+          "name": "ตัวปืน",
+          "model": "M2A2",
+          "serial_no": "23554"
+        },
+        {
+          "name": "ลำกล้องปืน",
+          "model": "M2A2",
+          "serial_no": "14180"
+        },
+        {
+          "name": "รถรองปืน",
+          "model": "M2A2",
+          "serial_no": "10780"
+        },
+        {
+          "name": "เครื่องรับแรงถอย",
+          "model": "M2A2",
+          "serial_no": "1231"
+        },
+        {
+          "name": "เครื่องให้ระยะยิง",
+          "model": "M4A1",
+          "serial_no": "24099"
+        },
+        {
+          "name": "เครื่องตั้งมุมยิงประณีต",
+          "model": "M1A1",
+          "serial_no": "96157"
+        },
+        {
+          "name": "ฐานกล้องเล็ง",
+          "model": "M21A1",
+          "serial_no": "0424"
+        },
+        {
+          "name": "กล้องเล็งพาโนรามิค",
+          "model": "M12A7",
+          "serial_no": "0299"
+        },
+        {
+          "name": "ฐานกล้องข้อศอก",
+          "model": "M23",
+          "serial_no": "20925"
+        },
+        {
+          "name": "กล้องข้อศอก",
+          "model": "M16A1D",
+          "serial_no": "36008"
+        },
+        {
+          "name": "ยางขวา",
+          "model": "Superstone",
+          "serial_no": "HC070147"
+        },
+        {
+          "name": "ยางซ้าย",
+          "model": "Superstone",
+          "serial_no": "HC090119"
+        },
+        {
+          "name": "ค่า ตร.",
+          "model": "-",
+          "serial_no": "-8.41"
+        }
+      ]
+    },
+    {
+      "squad_id": "ป.หมู่ ๕",
+      "components": [
+        {
+          "name": "ตัวปืน",
+          "model": "M2A2",
+          "serial_no": "24280"
+        },
+        {
+          "name": "ลำกล้องปืน",
+          "model": "M2A2",
+          "serial_no": "15325"
+        },
+        {
+          "name": "รถรองปืน",
+          "model": "M2A2",
+          "serial_no": "12595"
+        },
+        {
+          "name": "เครื่องรับแรงถอย",
+          "model": "M2A2",
+          "serial_no": "3456"
+        },
+        {
+          "name": "เครื่องให้ระยะยิง",
+          "model": "M4A1",
+          "serial_no": "23173"
+        },
+        {
+          "name": "เครื่องตั้งมุมยิงประณีต",
+          "model": "M1A1",
+          "serial_no": "147830"
+        },
+        {
+          "name": "ฐานกล้องเล็ง",
+          "model": "M21A1",
+          "serial_no": "0435"
+        },
+        {
+          "name": "กล้องเล็งพาโนรามิค",
+          "model": "M12A7",
+          "serial_no": "24165"
+        },
+        {
+          "name": "ฐานกล้องข้อศอก",
+          "model": "M23",
+          "serial_no": "8312"
+        },
+        {
+          "name": "กล้องข้อศอก",
+          "model": "M16A1D",
+          "serial_no": "34674"
+        },
+        {
+          "name": "ยางขวา",
+          "model": "Superstone",
+          "serial_no": "AA030298"
+        },
+        {
+          "name": "ยางซ้าย",
+          "model": "Superstone",
+          "serial_no": "AA020358"
+        },
+        {
+          "name": "ค่า ตร.",
+          "model": "-",
+          "serial_no": "-9.06"
+        }
+      ]
+    },
+    {
+      "squad_id": "ป.หมู่ ๖",
+      "components": [
+        {
+          "name": "ตัวปืน",
+          "model": "M2A2",
+          "serial_no": "8516"
+        },
+        {
+          "name": "ลำกล้องปืน",
+          "model": "M2A2",
+          "serial_no": "14036"
+        },
+        {
+          "name": "รถรองปืน",
+          "model": "M2A2",
+          "serial_no": "6955"
+        },
+        {
+          "name": "เครื่องรับแรงถอย",
+          "model": "M2A2",
+          "serial_no": "1209"
+        },
+        {
+          "name": "เครื่องให้ระยะยิง",
+          "model": "M4A1",
+          "serial_no": "24961"
+        },
+        {
+          "name": "เครื่องตั้งมุมยิงประณีต",
+          "model": "M1A1",
+          "serial_no": "147349"
+        },
+        {
+          "name": "ฐานกล้องเล็ง",
+          "model": "M21A1",
+          "serial_no": "0431"
+        },
+        {
+          "name": "กล้องเล็งพาโนรามิค",
+          "model": "M12A7",
+          "serial_no": "57756"
+        },
+        {
+          "name": "ฐานกล้องข้อศอก",
+          "model": "M23",
+          "serial_no": "21967"
+        },
+        {
+          "name": "กล้องข้อศอก",
+          "model": "M16A1D",
+          "serial_no": "2332"
+        },
+        {
+          "name": "ยางขวา",
+          "model": "Superstone",
+          "serial_no": "AA030345"
+        },
+        {
+          "name": "ยางซ้าย",
+          "model": "Superstone",
+          "serial_no": "AA030290"
+        },
+        {
+          "name": "ค่า ตร.",
+          "model": "-",
+          "serial_no": "-9.12"
+        }
+      ]
+    }
+  ]
+}

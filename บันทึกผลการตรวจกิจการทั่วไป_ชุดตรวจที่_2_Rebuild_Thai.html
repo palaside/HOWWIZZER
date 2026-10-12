@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บันทึกผลการตรวจกิจการทั่วไป (ชุดตรวจที่ ๒) - SUPERCLONE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap');
+
+        @page {
+            size: A4 portrait;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #525659;
+            font-family: 'TH Sarabun New', 'TH Sarabun PSK', 'Sarabun', sans-serif;
+            font-size: 15.5pt;
+            font-weight: 400;
+            line-height: 1.24;
+            color: #000;
+        }
+
+        .page-portrait {
+            width: 210mm;
+            min-height: 297mm;
+            height: 297mm;
+            background: #ffffff;
+            margin: 15px auto;
+            padding: 12mm 18mm 10mm 22mm;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        @media print {
+            body {
+                background-color: transparent;
+            }
+            .page-portrait {
+                margin: 0;
+                box-shadow: none;
+                width: 210mm;
+                height: 297mm;
+                page-break-after: always;
+            }
+        }
+
+        /* MEMO PAGE 1 STYLES */
+        .memo-header-container {
+            position: relative;
+            width: 100%;
+            height: 26mm;
+            margin-bottom: 2mm;
+        }
+
+        .garuda-img {
+            position: absolute;
+            left: 0;
+            top: -2mm;
+            height: 18mm;
+            width: auto;
+        }
+
+        .memo-stamps-container {
+            position: absolute;
+            right: 0;
+            top: -5mm;
+            display: flex;
+            gap: 2.5mm;
+            z-index: 5;
+        }
+
+        .stamp-box {
+            border: 1.5px solid #1a3c87;
+            color: #1a3c87;
+            font-size: 8.5pt;
+            line-height: 1.2;
+            padding: 1.2mm 2mm;
+            border-radius: 3px;
+            background: rgba(235, 243, 255, 0.4);
+            min-width: 33mm;
+        }
+
+        .stamp-title {
+            font-weight: bold;
+            font-size: 8.5pt;
+            text-align: center;
+            border-bottom: 0.5px solid #1a3c87;
+            padding-bottom: 1px;
+            margin-bottom: 1px;
+        }
+
+        .stamp-row {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .stamp-val {
+            font-weight: bold;
+        }
+
+        .memo-doc-title {
+            font-size: 29pt;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.1;
+            padding-top: 3mm;
+            letter-spacing: 0.5px;
+            margin-left: 15mm;
+            margin-right: 68mm;
+        }
+
+        .memo-meta-section {
+            width: 100%;
+            margin-bottom: 2.5mm;
+        }
+
+        .memo-meta-row {
+            display: flex;
+            align-items: flex-end;
+            margin-bottom: 2mm;
+            font-size: 15.5pt;
+        }
+
+        .memo-meta-label {
+            font-weight: bold;
+            font-size: 17.5pt;
+            line-height: 1.0;
+            white-space: nowrap;
+            margin-right: 2.5mm;
+            padding-bottom: 1px;
+        }
+
+        .memo-meta-fill {
+            flex: 1;
+            border-bottom: 1px dotted #444;
+            display: flex;
+            align-items: flex-end;
+            padding-bottom: 1px;
+            font-size: 15.5pt;
+            line-height: 1.15;
+        }
+
+        .memo-body {
+            font-size: 15.5pt;
+            line-height: 1.30;
+            text-align: justify;
+            text-justify: inter-cluster;
+            margin-top: 2.5mm;
+        }
+
+        .memo-para {
+            text-indent: 25mm;
+            margin-bottom: 3mm;
+        }
+
+        /* SIGNATURE ENGINE RED LINE CSS */
+        .sig-block {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 15.5pt;
+            line-height: 1.2;
+        }
+        .sig-name-pos-group {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+        .sig-name-wrapper {
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+        }
+        .sig-rank-anchor {
+            position: absolute;
+            right: 100%;
+            bottom: 0;
+            white-space: nowrap;
+            padding-right: 2px;
+        }
+        .sig-name {
+            white-space: nowrap;
+            text-align: center;
+        }
+        .sig-pos {
+            white-space: nowrap;
+            text-align: center;
+            margin-top: 1px;
+        }
+
+        /* REPORT PAGES 2-18 STYLES (ทบ. ๑๐๕-๐๐๙) */
+        .report-form-code {
+            text-align: right;
+            font-size: 13.5pt;
+            font-weight: bold;
+            margin-bottom: 0.6mm;
+        }
+
+        .report-title {
+            text-align: center;
+            font-size: 16.5pt;
+            font-weight: bold;
+            line-height: 1.15;
+            margin-bottom: 0.8mm;
+        }
+
+        .report-subtitle {
+            text-align: center;
+            font-size: 15pt;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-bottom: 1.5mm;
+        }
+
+        .report-meta-grid {
+            width: 100%;
+            font-size: 14.5pt;
+            line-height: 1.22;
+            margin-bottom: 1.2mm;
+        }
+
+        .meta-line {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 0.8mm;
+        }
+
+        .meta-lbl {
+            white-space: nowrap;
+        }
+
+        .meta-val-dots {
+            border-bottom: 1px dotted #333;
+            padding: 0 4px;
+            display: inline-block;
+            vertical-align: bottom;
+            line-height: 1.10;
+            min-height: 4.8mm;
+        }
+
+        .report-subnote {
+            text-align: center;
+            font-size: 12.5pt;
+            margin-top: 0.4mm;
+            margin-bottom: 1.2mm;
+        }
+
+        .report-divider {
+            border-top: 1.5px solid #000;
+            margin-bottom: 1.5mm;
+        }
+
+        /* SECTION 1: 4 COMMANDERS */
+        .sec1-title {
+            font-size: 14.5pt;
+            font-weight: bold;
+            margin-top: 0.8mm;
+            margin-bottom: 0.8mm;
+        }
+
+        .cmd-list {
+            margin-left: 10mm;
+            margin-bottom: 1.5mm;
+        }
+
+        .cmd-row {
+            display: flex;
+            font-size: 14.5pt;
+            line-height: 1.22;
+            margin-bottom: 0.5mm;
+        }
+
+        .cmd-unit {
+            width: 60mm;
+        }
+
+        .cmd-rank-name {
+            width: 42mm;
+        }
+
+        .cmd-surname {
+            width: 45mm;
+        }
+
+        /* SECTION 2: CASCADE HIERARCHY */
+        .sec2-title {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-top: 1mm;
+            margin-bottom: 0.6mm;
+        }
+
+        .tier2-title {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-left: 8mm;
+            margin-top: 0.6mm;
+            margin-bottom: 0.5mm;
+        }
+
+        .tier2-text {
+            font-size: 13.5pt;
+            line-height: 1.18;
+            text-align: justify;
+            text-justify: inter-cluster;
+            text-indent: 10mm;
+            margin-left: 8mm;
+            margin-bottom: 1mm;
+        }
+
+        .tier2-subitem {
+            font-size: 13.5pt;
+            line-height: 1.18;
+            text-align: justify;
+            text-justify: inter-cluster;
+            margin-left: 14mm;
+            margin-bottom: 0.6mm;
+        }
+
+        .finding-block {
+            margin-left: 8mm;
+            margin-bottom: 1mm;
+            font-size: 13.5pt;
+            line-height: 1.18;
+            text-align: justify;
+            text-justify: inter-cluster;
+        }
+
+        .finding-code-title {
+            font-weight: bold;
+        }
+
+        .rec-container {
+            margin-top: 0.5mm;
+            margin-bottom: 0.6mm;
+        }
+
+        .rec-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 13.5pt;
+            margin-top: 0.4mm;
+            margin-bottom: 0.4mm;
+            margin-left: 15mm;
+            margin-right: 15mm;
+        }
+
+        .rec-item {
+            margin-left: 14mm;
+            margin-bottom: 0.6mm;
+            font-size: 13.5pt;
+            line-height: 1.18;
+            text-align: justify;
+            text-justify: inter-cluster;
+        }
+
+        .rec-subitem-deep {
+            margin-left: 32mm;
+            margin-bottom: 0.6mm;
+            font-size: 14pt;
+            line-height: 1.22;
+        }
+
+        .deficiencies-block {
+            margin-left: 8mm;
+            margin-top: 1.5mm;
+            margin-bottom: 1.5mm;
+            font-size: 14pt;
+        }
+
+        .def-row {
+            display: flex;
+            width: 55mm;
+            justify-content: space-between;
+            margin-bottom: 0.6mm;
+        }
+
+        .legal-disclaimer {
+            font-size: 12.5pt;
+            line-height: 1.22;
+            margin-top: 1.5mm;
+            margin-bottom: 1.5mm;
+            text-align: justify;
+            text-justify: inter-cluster;
+            border-top: 0.5px solid #999;
+            padding-top: 1.2mm;
+        }
+
+        /* BOTTOM SIGNATURE BLOCK (ทบ. ๑๐๕-๐๐๙) */
+        .bottom-sig-container {
+            width: 100%;
+            margin-top: auto;
+            padding-top: 1mm;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            font-size: 13.5pt;
+            line-height: 1.18;
+        }
+
+        .slug-line {
+            font-size: 12.5pt;
+            margin-bottom: 0.8mm;
+            font-style: italic;
+        }
+
+        .bottom-sig-line {
+            white-space: nowrap;
+            margin-bottom: 0.5mm;
+        }
+
+        .bottom-date-line {
+            white-space: nowrap;
+            margin-right: 16mm;
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- PAGE 1: OFFICIAL MEMO -->
+    <div class="page-portrait" id="page-1">
+        <div>
+            <div class="memo-header-container">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHYAAACCCAAAAAC2z2PCAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAGcklEQVR4nNWYjW7sOgiEef+X5h51A8wMOHa27VZ3K1XZxOaD4cdpzeNj5r/8sUJY3fp1LHDtg1Tg2vX7I1TB/vvyEepXfID9ULAVoF3Xf4H9RPcUtpCfqWN/dczfYL/C/Q72jT12JdRecb+DfXOPJfa9aN/d8wV8/cwm7u1uZsxkMyK90NMa26l/g7XF5hcxJe4mDD4r0yusLTcXtvhlzqvO7rHzI9hqUbrlKWIhXHT0XuO7okIwnLLmDZtHrzc3F9jbmkrV+FCXOrZ6mL7eGK2JvgsYTzlqnwr3+HSoiX4PBg9jLCI2B0fa2sSa020vSb5KZLAGbqcRWHuD3bQXhlu98TIM2Az/QbCx4yRcqCBLrAU77eytHb0gENYZW9zq1EPsg9IKqmCjondYnia7BEdyoX8BG618EC0UcRbhFhuTIiK0EEo8XxnSMEGrhY+1ujjxduFiaun/gL1bD8+vaiUs6Lyz42gJ4ziiJra4EsRatXa0rZLSDPKbBQqwxaq662g7Na4gUc3q2hJPx83iWFIVXU1c7tSgnExRQtn9kYpRoQPNqXudq03R1ogdkmG4HJHb/MLcLtOTMkMU0K3iuJVuGVcLt/d4W5c7R6rMTNRhwW0ejhVlpAc3nGDH2T4Y5NnicEgP1OHkKCzkSJOqXJhsuUmxQpU9iY1+icfOXBOTmTZo+zUVi6tGpEe4MAqcDUn0sT+ckKSQC/FMqPly7OUWrNbdVyiQDZ4ssg/WVFyExZfY1X6MD+pDp07bFvlM6w55AjlawvCmyQrTj2qEhqEsJKBy0eRhH2E0O8RyilJawBCpRTkEqNk4Z9cCOesddWzjKUsBmgJ9Y8e5juLywmICw+l82qistkarSa3raxZ5hkW1i3eNhMcrTgB6zetE2xqjOgDGdfhBPxULRynvU5Gl8KDdY4aBwJ5uaIwgc+nfBKKybjJiqsDlGCapy4B1DGgIGyxDvJSzgphsxsQKtoUo+2JH6ltKa/lqhqrqRuw4dhQrSyBzvNZQ/FssL5UAdJSa0YsV9T1RaW/HypBAmWUCBUaM6/zEwmOQ89eh7Wq6KpZ1I4U1M8px+c7pCFdT0XmtSAPLMfk32FVZSVsNe0mcvAE2b7HejFN3tOVE9Zqx7ExbPeyvSVD2OHHdBi/i0miZnbAyrLg2VgGXm2b16pxq9/WzjTKW6Wov0eDC4GDwZj/nZKl15jOExFyofIgdFJ5Nrijl0sL+fFvEsdUU8Yakx2vrqwc0djSaVXhD3I+xPrdFo6ywt4ZvsZCjwZxcP6CeYff2eIHdVdMW+2LUoXrDrSdmOSruRuk99dpsNYDAWDut3LW8n2Mrq4Al83od2yJSePM4xqZWni8H7S+f1rqhMbzEP8OSpSvcqb74g9hbnQ+HY/+LamImNSVZFfQSmyV8RUH/SkqhyTPEotIPsa/H2YZQVavxZZ5J0WPysch5dGdpGQiBpidnnkare6kuR7tEhVZ4gHV31irUfj2dsOhdJuQxtoJEoKVTWTyQ9WjkfkIdYvsnvYHY0mplQhLzRm4jxTToL3BCiwXeOjTCe32LKb7iKkWnOS23H02p1SwsRR3VpcOhiEuNNzMZq0OtZFHLhtqpfxMeYHM0Xps1ZEOsRllD9TEWz5BJ7ghycy6tjC+xOupkYs4nUpttz7GegyBjCvUqpd6Y8I+NG8t32KGaq3Zkhc7xjd37x2iZpmA7FLxGyIHNE2waF0zjnkKfYRGS5vn7z2OVokmvEfZj2CHWFbfFO7oxnw9D+nbUkcv52GC1PODihp3GcN8q4AE7VGmMYe5O54Ky6CvaNZfZiIVNCsjDYRS5BSoe7LCtBQ0Sp6N34mGYZ9GCymQCxaB3D/Sw+M3lo2jVA8dUaRIgj2jF5OkWO6xXjuqciwjyEDv4cV221Fq8Xq4wE6PfkpRaFNiVpPXbBruH9w+xqrJaRjT4wdUlp8QWqyvRaJ63LLHc2k7lRbT6TXUkUJzv6eFg4Airsffx4NdPtG8TYLK7wYqrxtCgwi9zXfQDWAg47yQb6gi8+iksDCm4LxlIcb6P9URikfJA5lbppfwO1isOGJB8DlgJfGTy+F1KonbBWur9k9jQ0ouu2GyoI4uHWC9svlxQbuPZqbnjlZ4YrNUaFb+KzVMIsXD3N7Awmh0yfNo1b2MvdoWLRfbIxnOs15DMjnps4g2s4N/a+v/DfmPzH2H/A8cXNu6c3nCuAAAAAElFTkSuQmCC" alt="Garuda" class="garuda-img">
+                <div class="memo-doc-title">บันทึกข้อความ</div>
+                <div class="memo-stamps-container">
+                    <div class="stamp-box">
+                        <div class="stamp-title">หมู่ธุรการและกำลังพล ป.๔ พัน.๔</div>
+                        <div class="stamp-row"><span>เลขที่รับ</span><span class="stamp-val">๑๑๓๖</span></div>
+                        <div class="stamp-row"><span>วันที่</span><span class="stamp-val">๑๓ ก.ค. ๖๙</span></div>
+                        <div class="stamp-row"><span>เวลา</span><span class="stamp-val">๑๒.๐๔</span></div>
+                    </div>
+                    <div class="stamp-box">
+                        <div class="stamp-title">กองพันทหารปืนใหญ่ที่ ๔<br>กรมทหารปืนใหญ่ที่ ๔</div>
+                        <div class="stamp-row"><span>เลขที่รับ</span><span class="stamp-val">๑๗๗๕</span></div>
+                        <div class="stamp-row"><span>วันที่</span><span class="stamp-val">๑๓ ก.ค. ๖๙</span></div>
+                        <div class="stamp-row"><span>เวลา</span><span class="stamp-val">๑๒ : ๐๕</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="memo-meta-section">
+                <div class="memo-meta-row">
+                    <span class="memo-meta-label">ส่วนราชการ</span>
+                    <div class="memo-meta-fill">จบ. (ชุดตรวจกิจการทั่วไป (ชุดตรวจที่ ๒) โทร. ๐ ๒๒๙๗ ๘๘๕๐ โทร.ทบ. ๙๘๘๕๐)</div>
+                </div>
+                <div class="memo-meta-row">
+                    <div style="flex: 1.1; display: flex; align-items: flex-end; margin-right: 4mm;">
+                        <span class="memo-meta-label">ที่</span>
+                        <div class="memo-meta-fill">กห ๐๔๒๓/พ.</div>
+                    </div>
+                    <div style="flex: 0.9; display: flex; align-items: flex-end;">
+                        <span class="memo-meta-label">วันที่</span>
+                        <div class="memo-meta-fill">๑๐  ก.ค. ๖๙</div>
+                    </div>
+                </div>
+                <div class="memo-meta-row">
+                    <span class="memo-meta-label">เรื่อง</span>
+                    <div class="memo-meta-fill">ขอส่งบันทึกผลการตรวจกิจการทั่วไป (ชุดตรวจที่ ๒) ประจำปี ๒๕๖๙</div>
+                </div>
+                <div class="memo-meta-row">
+                    <span class="memo-meta-label">เรียน</span>
+                    <div class="memo-meta-fill">ผบ.ป.๔ พัน.๔</div>
+                </div>
+                <div class="memo-meta-row" style="align-items: flex-start;">
+                    <span class="memo-meta-label">อ้างถึง</span>
+                    <div class="memo-meta-fill" style="flex-direction: column; align-items: flex-start; border-bottom: none;">
+                        <div>๑. คำสั่ง ทบ. ที่ ๓๓๓/๒๕๖๘ ลง ๑๒ ก.ย. ๖๘</div>
+                        <div>๒. คำสั่ง จบ. ที่ ๑๘๑/๒๕๖๙ ลง ๒๕ พ.ค. ๖๙</div>
+                    </div>
+                </div>
+                <div class="memo-meta-row">
+                    <span class="memo-meta-label">สิ่งที่ส่งมาด้วย</span>
+                    <div class="memo-meta-fill">บันทึกผลการตรวจของนายทหารจเร ทบ. ๑๐๕-๐๐๙    จำนวน  ๖  ชุด</div>
+                </div>
+            </div>
+
+            <div class="memo-body">
+                <div class="memo-para">จบ. ขอส่งบันทึกผลการตรวจกิจการทั่วไปหน่วยใช้ (ชุดตรวจที่ ๒) ประจำปีงบประมาณ ๒๕๖๙ เพื่อแก้ไขและเก็บไว้เป็นหลักฐาน โดยมีรายละเอียดตามสิ่งที่ส่งมาด้วย</div>
+                <div class="memo-para">จึงเรียนมาเพื่อกรุณาพิจารณาและดำเนินการต่อไป</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 18mm; margin-bottom: 20mm;">
+            <div class="sig-block" style="font-size: 12pt; line-height: 1.0;">
+        
+        <div class="sig-name-pos-group" style="margin-left: 55px;">
+            <div class="sig-name-wrapper" style="margin-top: 22pt;">
+                <span class="sig-rank-anchor">พ.อ.</span>
+                <div class="sig-name">(ณรงฤทธิ์  สายใยทอง)</div>
+            </div>
+            <div class="sig-pos">หน.ชุดตรวจกิจการทั่วไป (ชุดตรวจที่ ๒) ประจำปี ๒๕๖๙</div>
+            
+        </div>
+    </div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 2: SET 1 SHEET 1/2 -->
+    <div class="page-portrait" id="page-2">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร</div>
+            <div class="report-subtitle">เรื่อง การปฏิบัติตามมาตรการประหยัดใน ทบ.</div>
+            
+            <div class="report-meta-grid">
+                <div class="meta-line">
+                    <span class="meta-lbl">หน่วย</span>
+                    <span class="meta-val-dots" style="width: 50mm;">ป.๔ พัน.๔</span>
+                    <span class="meta-lbl" style="margin-left: auto;">ชื่อ ผบ.หน่วย</span>
+                    <span class="meta-val-dots" style="width: 55mm;">พ.ท. พรชัย  มากเทพพงษ์</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ตรวจเมื่อวันที่</span>
+                    <span class="meta-val-dots" style="width: 25mm; text-align: center;">๒๔</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">เดือน</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">มิ.ย.</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">พ.ศ.</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">๒๕๖๙</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้รับตรวจ</span>
+                    <span class="meta-val-dots" style="width: 48mm;">จ.ส.อ. มงคล  เผยสิริ</span>
+                    <span class="meta-lbl" style="margin-left: 4mm;">ตำแหน่ง</span>
+                    <span class="meta-val-dots" style="flex: 1;">ผช.นายสิบกิจการพลเรือน หมู่ กร.ร้อย.บก. และ บร.ป.๔ พัน.๔</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้ตรวจ</span>
+                    <span class="meta-val-dots" style="width: 65mm;">พ.อ. ณรงฤทธิ์  สายใยทอง</span>
+                    <div style="margin-left: auto; display: flex; align-items: baseline;">
+                        <span class="meta-lbl">แผ่นที่</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๑</span>
+                        <span class="meta-lbl" style="margin: 0 2mm;">ในจำนวน</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๒</span>
+                        <span class="meta-lbl">แผ่น</span>
+                    </div>
+                </div>
+            </div>
+            <div class="report-subnote">(เก็บหลักฐานนี้ไว้เพื่อดำเนินการแก้ไขและแสดงต่อ นายทหารจเรในการตรวจครั้งต่อไป)</div>
+            <div class="report-divider"></div>
+
+
+            <div class="sec1-title">๑. หน่วยรับตรวจและชื่อ ผบ.หน่วยรับตรวจ (ระดับกองร้อยหรือเทียบเท่าขึ้นไป)</div>
+            <div class="cmd-list">
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๑ ร้อย.บก.และ บร.ป.๔ พัน.๔</span>
+                    <span class="cmd-rank-name">ร.อ. ภานุวัฒน์</span>
+                    <span class="cmd-surname">สามเกษร</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๒ ป.๔ พัน.๔ ร้อย.๑</span>
+                    <span class="cmd-rank-name">ร.ท. พิชญะ</span>
+                    <span class="cmd-surname">ดีประสิทธิ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๓ ป.๔ พัน.๔ ร้อย.๒</span>
+                    <span class="cmd-rank-name">ร.อ. กฤติน</span>
+                    <span class="cmd-surname">นราพงษ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๔ ป.๔ พัน.๔ ร้อย.๓</span>
+                    <span class="cmd-rank-name">ร.อ. ดำรงฤทธิ์</span>
+                    <span class="cmd-surname">ศิริวังไชย</span>
+                </div>
+
+            </div>
+
+            <div class="sec2-title">๒. สิ่งที่ตรวจพบ ข้อเสนอแนะให้แก้ไขและหลักฐานอ้างอิง</div>
+            <div class="tier2-title">๒.๑ แนวทางและวิธีการตรวจ</div>
+
+            <div class="tier2-text">ทำการตรวจประเมินผลการจัดทำแผนการปฏิบัติตามมาตรการประหยัดของหน่วยโดยมุ่งเน้นในรายละเอียดแต่ละด้านให้บังเกิดผลอย่างเป็นรูปธรรม และเป็นระบบ มีการแต่งตั้งคณะทำงาน มีการกำกับดูแล/การรายงานและการประเมินผล การรณรงค์สร้างจิตสำนึกในการประหยัด และการประหยัดตามมาตรการที่ ทบ. กำหนดในแต่ละด้านโดยเพ่งเล็งเป็นพิเศษเกี่ยวกับการปรนนิบัติบำรุง และการดูแลรักษาเพื่อให้เกิดการประหยัดอย่างแท้จริง</div>
+            <div class="tier2-title">๒.๒ ข้อบกพร่องเล็กน้อย</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๑ มาตรการประหยัดพลังงาน</span> เรื่อง การกำกับดูแลและรายงานผลการปฏิบัติ ตรวจพบ รายการตรวจสอบในรายงานผลการปฏิบัติตามมาตรการประหยัดพลังงานของหน่วย ไม่ครบถ้วนตามคำสั่งมาตรการประหยัดพลังงานของหน่วยที่กำหนดไว้</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">๑. ให้ปฏิบัติตาม คำสั่ง ทบ. ที่ ๒๒๐/๒๕๕๒ ลง ๒๘ ก.ค. ๕๒ เรื่อง มาตรการประหยัดในกองทัพบก ข้อ ๒.๖.๔ และข้อ ๓</div>
+                    <div class="rec-item">๒. ให้ผู้บังคับหน่วยกำหนดแผนปฏิบัติการของหน่วย และมาตรการเสริมตามแนวทางที่ ทบ. กำหนด และตามความริเริ่ม ความจำเป็นของหน่วย โดยแต่งตั้งผู้รับผิดชอบในการตรวจความเรียบร้อยด้านการประหยัด เพื่อเป็นตัวแทนของผู้บังคับหน่วย ในการกำกับดูแลให้มีการประหยัดอย่างแท้จริง รวมทั้ง ให้ผู้บังคับหน่วยทุกระดับชั้น กวดขัน กำกับดูแลผู้ใต้บังคับบัญชา ให้ถือปฏิบัติตามมาตรประหยัดในคำสั่งนี้อย่างเคร่งครัด</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๒ การใช้โทรศัพท์</span> ตรวจพบ บันทึกข้อมูลการใช้โทรศัพท์ประจำวันในสมุดควบคุมการใช้โทรศัพท์ประเภท ค ไม่ครบถ้วนตามการใช้งานจริง</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">๑. ให้ปฏิบัติตาม คำสั่ง ทบ. ที่ ๒๒๐/๒๕๕๒ เรื่อง มาตรการประหยัดในกองทัพบก ข้อ ๒.๔.๓</div>
+                    <div class="rec-item">๒. การใช้โทรศัพท์ของบริษัท ทีโอที จำกัด มหาชน ให้หน่วยใช้เท่าที่จำเป็นในการปฏิบัติราชการ โดยเฉพาะโทรศัพท์พื้นฐาน ประเภท ค (ทางไกลภายในประเทศ) หน่วยใช้จะต้องมีการควบคุมและบันทึกการใช้งาน โดยหลีกเลี่ยงการใช้โทรศัพท์ที่นานเกินควร หรือเพื่อการส่วนตัว</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            <div class="slug-line">/๒.๒.๓ การใช้วัสดุ...</div>
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 3: SET 1 SHEET 2/2 -->
+    <div class="page-portrait" id="page-3">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙-๑</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร (ต่อ)</div>
+            <div style="display: flex; justify-content: flex-end; align-items: baseline; font-size: 15pt; margin-bottom: 2mm;">
+                <span>แผ่นที่</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๒</span>
+                <span>ในจำนวน</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๒</span>
+                <span>แผ่น</span>
+            </div>
+            <div class="report-divider"></div>
+
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๓ การใช้วัสดุเครื่องใช้สำนักงาน</span> ตรวจพบ จัดทำบัญชีคุมวัสดุเครื่องใช้สำนักงานตามแบบพิมพ์ ทบ. ๔๐๐ - ๐๖๘ ไม่ครบถ้วนทุกรายการ</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">๑. ให้ปฏิบัติตามคำสั่ง ทบ. ที่ ๒๒๐/๒๕๕๒ ลง ๒๘ ก.ค. ๕๒ เรื่องมาตรการประหยัดในกองทัพบก ข้อ ๒.๕.๔ และระเบียบ ทบ. ว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ. ๒๕๓๔ ลง ๓๐ ธ.ค. ๓๔ ข้อ ๓๙.๒.๓.๒ และข้อ ๓๙.๒.๓.๒.๒</div>
+                    <div class="rec-item">๒. ให้กำหนดเจ้าหน้าที่รับผิดชอบที่ชัดเจนในการบันทึกการใช้วัสดุประจำสำนักงาน ประเภทต่าง ๆ เพื่อเป็นมาตรการในการตรวจสอบ และจัดทำบัญชีคุมสิ่งอุปกรณ์ใช้สิ้นเปลืองเป็นหลักฐานในการควบคุม โดยใช้แบบพิมพ์ ทบ.๔๐๐ - ๐๖๘ สำหรับวัสดุสำนักงาน ให้เป็นไปตามการดำเนินการควบคุมตามมาตรการประหยัดพลังงาน</div>
+                </div>
+            </div>
+            <div class="deficiencies-block">
+                <div class="def-row"><span style="font-weight: bold;">๒.๓ ข้อบกพร่องสำคัญ</span><span>- ไม่มี</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๔ ข้อบกพร่องสำคัญมาก</span><span>- ไม่มี</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๕ ข้อบกพร่องซ้ำ</span><span>- ไม่มี</span></div>
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 4: SET 2 SHEET 1/5 -->
+    <div class="page-portrait" id="page-4">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร</div>
+            <div class="report-subtitle">เรื่อง การบริการกำลังพล การรักษาความปลอดภัย และการเลี้ยงดูทหาร</div>
+            
+            <div class="report-meta-grid">
+                <div class="meta-line">
+                    <span class="meta-lbl">หน่วย</span>
+                    <span class="meta-val-dots" style="width: 50mm;">ป.๔ พัน.๔</span>
+                    <span class="meta-lbl" style="margin-left: auto;">ชื่อ ผบ.หน่วย</span>
+                    <span class="meta-val-dots" style="width: 55mm;">พ.ท. พรชัย  มากเทพพงษ์</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ตรวจเมื่อวันที่</span>
+                    <span class="meta-val-dots" style="width: 25mm; text-align: center;">๒๔</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">เดือน</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">มิ.ย.</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">พ.ศ.</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">๒๕๖๙</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้รับตรวจ</span>
+                    <span class="meta-val-dots" style="width: 48mm;">ร.ต. มานพ  นามมาตย์</span>
+                    <span class="meta-lbl" style="margin-left: 4mm;">ตำแหน่ง</span>
+                    <span class="meta-val-dots" style="flex: 1;">นขง.ป.๔ พัน.๔ รรก.นายสิบกำลังพล ร้อย.บก.และ บร.ป.๔ พัน.๔</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้ตรวจ</span>
+                    <span class="meta-val-dots" style="width: 65mm;">พ.อ. ณรงฤทธิ์  สายใยทอง</span>
+                    <div style="margin-left: auto; display: flex; align-items: baseline;">
+                        <span class="meta-lbl">แผ่นที่</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๑</span>
+                        <span class="meta-lbl" style="margin: 0 2mm;">ในจำนวน</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๕</span>
+                        <span class="meta-lbl">แผ่น</span>
+                    </div>
+                </div>
+            </div>
+            <div class="report-subnote">(เก็บหลักฐานนี้ไว้เพื่อดำเนินการแก้ไขและแสดงต่อ นายทหารจเรในการตรวจครั้งต่อไป)</div>
+            <div class="report-divider"></div>
+
+
+            <div class="sec1-title">๑. หน่วยรับตรวจและชื่อ ผบ.หน่วยรับตรวจ (ระดับกองร้อยหรือเทียบเท่าขึ้นไป)</div>
+            <div class="cmd-list">
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๑ ร้อย.บก.และ บร.ป.๔ พัน.๔</span>
+                    <span class="cmd-rank-name">ร.อ. ภานุวัฒน์</span>
+                    <span class="cmd-surname">สามเกษร</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๒ ป.๔ พัน.๔ ร้อย.๑</span>
+                    <span class="cmd-rank-name">ร.ท. พิชญะ</span>
+                    <span class="cmd-surname">ดีประสิทธิ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๓ ป.๔ พัน.๔ ร้อย.๒</span>
+                    <span class="cmd-rank-name">ร.อ. กฤติน</span>
+                    <span class="cmd-surname">นราพงษ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๔ ป.๔ พัน.๔ ร้อย.๓</span>
+                    <span class="cmd-rank-name">ร.อ. ดำรงฤทธิ์</span>
+                    <span class="cmd-surname">ศิริวังไชย</span>
+                </div>
+
+            </div>
+
+            <div class="sec2-title">๒. สิ่งที่ตรวจพบ ข้อเสนอแนะให้แก้ไขและหลักฐานอ้างอิง</div>
+            <div class="tier2-title">๒.๑ แนวทางและวิธีการตรวจ</div>
+
+            <div class="tier2-subitem">๒.๑.๑ การตรวจการปฏิบัติงานทางด้านเอกสาร หลักฐานของหน่วยตามหัวข้อการตรวจกิจการทั่วไป ประจำปี ๒๕๖๙ เรื่อง การบริการกำลังพล การรักษาความปลอดภัย และการเลี้ยงดูทหาร โดยตรวจการปฏิบัติของหน่วยว่ามีความถูกต้อง สมบูรณ์ ครบถ้วนตามระเบียบ คำสั่ง คำชี้แจงที่เกี่ยวข้อง</div>
+            <div class="tier2-subitem">๒.๑.๒ สุ่มตรวจประวัติรับราชการ และตรวจโรงประกอบเลี้ยง อาคาร สำนักงาน โรงนอนทหาร รวมทั้งการรักษาความปลอดภัยของหน่วย</div>
+            <div class="tier2-title">๒.๒ ข้อบกพร่องเล็กน้อย</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๑ การรับ - ส่งหน้าที่</span> ตรวจพบ ผบ.ป.๔ พัน.๔ ร้อย.๑ รับ - ส่งหน้าที่ล่าช้า กล่าวคือ มีคำสั่งแต่งตั้งให้นายทหารสัญญาบัตรรักษาการตำแหน่ง ผบ.ป.๔ พัน.๔ ร้อย.๑ ตั้งแต่ ๙ ม.ค. ๖๙ มีการรับ - ส่งหน้าที่ วันที่ ๒๖ ม.ค. ๖๙</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">๑. ให้ปฏิบัติตามระเบียบ ทบ. ว่าด้วยการรับ-ส่งหน้าที่ในเวลาย้าย เลื่อน ลด ปลด และบรรจุ พ.ศ. ๒๕๔๐ ข้อ ๗</div>
+                    <div class="rec-item">๒. เมื่อมีคำสั่งย้ายข้าราชการหรือให้ข้าราชการออกจากราชการ ให้ผู้บังคับบัญชาจัดให้มีการรับ - ส่งหน้าที่กันโดยเร็ว โดยให้เริ่มออกเดินทางไปรับ - ส่งหน้าที่ซึ่งกันและกันภายใน ๗ วัน นับแต่วันที่ได้รับทราบคำสั่งอย่างเป็นทางการ ต่อจากนั้นให้ทำการรับ - ส่งหน้าที่ต่อกันให้แล้วเสร็จตามกำหนดเวลา ดังนี้</div>
+                    <div class="rec-subitem-deep">ข้าราชการที่มีตำแหน่งตั้งแต่ผู้บังคับหมวด หรือเทียบเท่าลงไป ภายใน ๒ วัน</div>
+                    <div class="rec-subitem-deep">ข้าราชการที่มีตำแหน่งตั้งแต่ผู้บังคับกองร้อย หรือเทียบเท่า ภายใน ๓ วัน</div>
+                    <div class="rec-subitem-deep">ข้าราชการที่มีตำแหน่งตั้งแต่ผู้บังคับกองพัน ผู้บังคับการกรม หรือเทียบเท่า ภายใน ๕ วัน</div>
+                    <div class="rec-subitem-deep">ข้าราชการที่มีตำแหน่งตั้งแต่ผู้บัญชาการกองพลขึ้นไปหรือเทียบเท่า ภายใน ๗ วัน</div>
+                    <div class="rec-subitem-deep">เว้นแต่ผู้ครองตำแหน่งดังกล่าวเป็นเจ้าหน้าที่คลังซึ่งรับผิดชอบบัญชีพัสดุและพัสดุในคลังโดยตรง จึงให้ยืดเวลาในการรับ - ส่งหน้าที่ออกไปได้ไม่เกิน ๑๕ วัน</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            <div class="slug-line">/ถ้ารายใด...</div>
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 5: SET 2 SHEET 2/5 -->
+    <div class="page-portrait" id="page-5">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙-๑</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร (ต่อ)</div>
+            <div style="display: flex; justify-content: flex-end; align-items: baseline; font-size: 15pt; margin-bottom: 2mm;">
+                <span>แผ่นที่</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๒</span>
+                <span>ในจำนวน</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๕</span>
+                <span>แผ่น</span>
+            </div>
+            <div class="report-divider"></div>
+
+
+            <div class="finding-block">
+                <div><span class="finding-code-title"> </span> ถ้ารายใดมีความจำเป็นจะต้องใช้เวลาในการรับ - ส่งหน้าที่เกินกำหนดในข้อนี้ ก็ให้รายงานขออนุมัติต่อผู้สั่งย้ายเป็นราย ๆ ไป ถ้าผู้สั่งย้ายมีตำแหน่งสูงกว่าผู้บัญชาการทหารบก ให้รายงานขออนุมัติต่อผู้บัญชาการทหารบก โดยในรายงานจะต้องแจ้งกำหนดเวลาในการรับ - ส่งหน้าที่ว่าจะแล้วเสร็จเมื่อไร</div>
+
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๒ การรายงานยอดกำลังพลประจำวัน (กร.๓)</span> ตรวจพบ การรายงานยอดกำลังพลของวันที่ ๑๕ และทุกสิ้นเดือน ให้กับหน่วยเหนือ และรายงานยอดกำลังพลประจำวัน (กร.๓) ไม่ถูกต้อง กล่าวคือ รายงานก่อนสิ้นสุดระยะเวลารายงาน (เวลา ๒๔๐๐)</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">๑. ให้ปฏิบัติตามคำแนะนำใช้แบบรายงานยอดกำลังพลประจำวัน ประกอบคำสั่ง ทบ. (คำสั่งชี้แจง) ที่ ๑๕๔/๒๕๕๘ ลง ๑๗ มิ.ย. ๕๘ เรื่อง ให้ใช้แบบรายงานยอดกำลังพลประจำวัน (แบบ กร.๓ ลง ๑ พ.ค. ๔๘) ข้อ ๘, ๙ ก และข้อ ๑๐ ก</div>
+                    <div class="rec-item">๒. การเสนอรายงานยอดกำลังพลแบบ กร.๓ รายงานยอดกำลังจะต้องทำเป็นวัน ๆ ไป สำเนาของรายงานที่สำเร็จรูปแล้วสำหรับวันที่ ๑๕ กับวันสิ้นเดือนทุกเดือนให้เสนอไปตามสายการบังคับบัญชาถึง กพ.ทบ. รายงานดังกล่าวนี้ต้องมิให้ชักช้าโดยไม่จำเป็น</div>
+                    <div class="rec-item">๓. วันรายงานยอดกำลัง คือ ระยะเวลา ๒๔ ชั่วโมง เริ่มตั้งแต่ ๐๐๐๐ จนเมื่อ ๒๔๐๐ ของวันนั้น ๆ โดยรายงานยอดประจำวันหนึ่ง ๆ จะต้องจัดทำภายใน ๑๐๐๐ ของวันถัดจากการสิ้นสุดแห่งวันรายงานยอดกำลังพล</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๓ ประวัติรับราชการ</span> ได้สุ่มตรวจประวัติรับราชการรูปแบบเอกสารและระบบสารสนเทศ (PDX) รวมทั้งหนังสือแสดงเจตนาระบุตัวผู้รับเงินประเภทต่าง ๆ ตรวจพบ รูปประวัติรับราชการในรูปแบบสารสนเทศ (PDX) เกิน ๖ เดือน ไม่บันทึกเลขประจำตัวประชาชนของเจ้าของประวัติต้นเลขประจำตัวทหารในประวัติรับราชการหน้าแรก รายการเครื่องราชอิสริยาภรณ์บันทึกในรูปแบบเอกสารไม่ครบถ้วน รายการยศทหารไม่บันทึกหลักฐาน (รกจ.) ในระบบสารสนเทศ (PDX) ไม่บันทึกการแต่งกายเหล่าใดในชั้นยศแรกบรรจุ รายการตำแหน่งบันทึกไม่ครบถ้วน และรายการเงินเดือน เบี้ยหวัด บำเหน็จ บำนาญ ไม่บันทึกการยกเลิกคำสั่งรับเงินเดือนเดิม เมื่อมีคำสั่งปรับเป็นรับเงินเดือนใหม่</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">๑. ให้ปฏิบัติตามระเบียบ ทบ. ว่าด้วยประวัติ พ.ศ. ๒๕๖๔ ข้อ ๑๑, ๑๕, ๑๖, ๒๑, ๒๒, ผนวก ก คำชี้แจงการบันทึกข้อความลงในประวัติรับราชการ ประกอบระเบียบ ทบ. ว่าด้วยประวัติรับราชการ พ.ศ. ๒๕๖๔ ข้อ ๒๓, ๒๔, ๒๕, คำอธิบายเพิ่มเติม ข้อ ๒, ๓ และผนวก ข ข้อ ๖ เอกสารประกอบประวัติรับราชการ ประกอบระเบียบ ทบ. ว่าด้วยประวัติรับราชการ พ.ศ. ๒๕๖๔, หนังสือ กพ.ทบ. ด่วนมาก ที่ กห ๐๔๐๑/๓๒๙๙ ลง ๑๖ พ.ย. ๖๔ เรื่อง กำหนดแบบฟอร์มรายการตรวจสอบประวัติและเอกสารประกอบการจัดทำหนังสือแสดงเจตนา และวิทยุราชการ กพ.ทบ. ที่ กห ๐๔๐๑/๔๙๒ ลง ๑๐ เม.ย. ๖๖</div>
+                    <div class="rec-item">๒. การจัดทำประวัติรับราชการด้วยรูปแบบเอกสาร ให้หน่วยที่รับผิดชอบดำเนินการจัดทำให้กับกำลังพลแต่ละประเภท จำนวน ๑ ชุด เสร็จแล้วส่งตามสายงานไปยังหน่วยเก็บรักษาตามที่กำหนด และประวัติรับราชการของกำลังพล ทบ. ถือเป็นเอกสารลับของทางราชการและเป็นข้อมูลส่วนบุคคล นอกจากเจ้าหน้าที่ หรือเจ้าของประวัติรับราชการแล้ว ห้ามมิให้ผู้อื่นทำการตรวจสอบหรือขอดูและนำออกจากสำนักงานหรือสถานที่เก็บรักษาประวัติรับราชการโดยเด็ดขาด และถือว่าเป็นความรับผิดชอบร่วมกันระหว่างเจ้าของประวัติและเจ้าหน้าที่ที่รับผิดชอบ ซึ่งกำลังพลทุกนายมีหน้าที่ตรวจสอบประวัติรับราชการของตนเองทั้งในรูปแบบเอกสารและระบบสารสนเทศ ให้มีความถูกต้อง ครบถ้วน และทันสมัยอย่างต่อเนื่อง หากมีการเปลี่ยนแปลงหรือพบว่ามีความคลาดเคลื่อนให้นำหลักฐานแสดงต่อเจ้าหน้าที่ที่รับผิดชอบดำเนินการบันทึก หรือแก้ไขให้ถูกต้องครบถ้วนตามความเป็นจริง และต้องบันทึกตามแนวทางที่กำหนดไว้</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            <div class="slug-line">/ตามผนวก...</div>
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 6: SET 2 SHEET 3/5 -->
+    <div class="page-portrait" id="page-6">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙-๑</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร (ต่อ)</div>
+            <div style="display: flex; justify-content: flex-end; align-items: baseline; font-size: 15pt; margin-bottom: 2mm;">
+                <span>แผ่นที่</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๓</span>
+                <span>ในจำนวน</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๕</span>
+                <span>แผ่น</span>
+            </div>
+            <div class="report-divider"></div>
+
+            <div class="tier2-text" style="text-indent: 0;">ตามผนวก ก ท้ายระเบียบนี้ สำหรับการบันทึกยศทหารให้ลงยศและหลักฐานการได้ยศทุกชั้นยศ ตามลำดับจนถึงปัจจุบัน การบันทึกตำแหน่ง ให้ลงตำแหน่งรับราชการตามหลักฐาน กรณีมีการพักราชการและกลับเข้ารับราชการให้บันทึกรายละเอียดตามหลักฐาน การบันทึกเงินเดือน ให้ลงเงินเดือน เงินเพิ่มพิเศษ รายเดือนที่ได้รับ ตั้งแต่รับราชการครั้งแรกตามลำดับจนถึงปัจจุบัน รูปถ่ายประวัติรับราชการในรูปแบบเอกสารให้ใช้รูปถ่ายสี ขนาด ๓ ซม. X ๔ ซม. หรือขนาด ๑.๕ นิ้ว แต่งกาย ชุดเครื่องแบบ หน้าตรงไม่สวมแว่นตา ติดรูปถ่ายทุกชั้นยศ ๆ ละ ๑ รูป หากรูปชั้นยศใดไม่มีให้เว้นไว้และติดรูปชั้นยศปัจจุบัน สำหรับรูปประวัติรับราชการในรูปแบบสารสนเทศ (PDX) ใช้เครื่องแบบปกติขาวประดับเครื่องหมายต่าง ๆ ให้ครบถ้วนถูกต้อง ใช้ฉากพื้นหลังสีขาวเท่านั้น เป็นรูปถ่าย หน้าตรง ขนาด ๓ ซม. X ๔ ซม. หรือขนาด ๑.๕ นิ้ว ไม่สวมแว่น ให้เห็นครึ่งลำตัวด้านบน (เห็นกระดุมเม็ดที่ ๑ ถึงกระดุมเม็ดที่ ๔) ทรงผมตัดให้สั้นด้านข้างขาว ด้านหลังตัดเกรียนขาวด้านบนยาว ๒ - ๓ ซม. และไม่แรเงาในลักษณะรองทรงสูง ต้องถ่ายภายในเวลา ๑ - ๒ วัน หลังจากดำเนินการตัดผม ห้ามมีการแก้ไขปรับแต่งรูปภาพโดยคอมพิวเตอร์โดยเด็ดขาด และเมื่อได้ทำการบันทึกรายการในประวัติรับราชการรูปแบบเอกสารแล้ว ให้เจ้าหน้าที่ที่บันทึกลงลายมือชื่อด้วยตัวบรรจง และวัน เดือน ปี กำกับไว้ด้วยทุกครั้ง และเจ้าของประวัติต้องแนบหลักฐานประกอบประวัติรับราชการตามผนวก ข ท้ายระเบียบนี้ และต้องใช้แบบฟอร์มต่าง ๆ ที่เป็นปัจจุบัน ซึ่งผู้บังคับบัญชาต้องกวดขันในการติดตามทวงถามเจ้าของประวัติ ให้นำเอกสารหลักฐานมาประกอบประวัติ รับราชการเพื่อการตรวจสอบได้เสมอ ทั้งนี้เพื่อให้การจัดเก็บเอกสารประกอบประวัติรับราชการของข้าราชการในสังกัดเป็นไปในแนวทางเดียวกัน และสามารถนำไปใช้เป็นหลักฐานประกอบการขอรับสิทธิกำลังพล ในด้านต่าง ๆ ให้กับข้าราชการในสังกัดและทายาทได้อย่างครบถ้วน ถูกต้อง และรวดเร็ว</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๔ การตรวจสถานภาพสมาชิกฌาปนกิจสงเคราะห์ ทบ.</span> ได้สุ่มตรวจสอบข้อมูลในระบบตรวจสอบสถานภาพสมาชิกฌาปนกิจสงเคราะห์ ทบ. ตรวจพบ ข้อมูลของสมาชิกฌาปนกิจสงเคราะห์ ทบ. ไม่เป็นปัจจุบัน กล่าวคือ นามสกุลของกำลังพลในระบบตรวจสอบสถานภาพสมาชิกฌาปนกิจสงเคราะห์ ทบ. ไม่เป็นปัจจุบัน</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">๑. ให้ปฏิบัติตามระเบียบ ทบ. ว่าด้วยการฌาปนกิจสงเคราะห์ พ.ศ. ๒๕๕๓ ข้อ ๓๔</div>
+                    <div class="rec-item">๒. สมาชิกต้องแจ้งให้สำนักงานกองฌาปนกิจ สก.ทบ. ทราบภายในสามสิบวัน เมื่อได้ย้ายที่อยู่หรือสถานที่ทำงาน เปลี่ยนชื่อตัวหรือชื่อสกุล และอื่น ๆ โดยสมาชิกสังกัดหน่วยสามารถยื่นเรื่องผ่านสำนักงานกองการฌาปนกิจ สก.ทบ. หน่วยสังกัด หรือเจ้าหน้าที่ที่สำนักงานแต่งตั้ง และให้หน่วยกวดขันกำลังพล และครอบครัวให้ดำเนินการเกี่ยวกับการตรวจสอบสถานภาพการเป็นสมาชิกฌาปนกิจสงเคราะห์ ทบ. ก่อนที่จะดำเนินการยื่นเอกสาร เพื่อขอเปลี่ยนแปลงข้อมูลต่าง ๆ</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๕ การรักษาความปลอดภัยเกี่ยวกับข้อมูลข่าวสารลับ</span> เรื่อง การทะเบียนข้อมูลข่าวสารลับ ตรวจพบ ไม่แสดงชั้นความลับที่ปกหลังของทะเบียนรับ (ทขล.๑) ทะเบียนส่ง (ทขล.๒) และทะเบียนควบคุมข้อมูลข่าวสารลับ (ทขล.๓) และไม่จัดทำบันทึกของผู้รับผิดชอบหรือได้รับมอบหมายในการกำหนดชั้นความลับ</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">๑. ให้ปฏิบัติตามระเบียบ ทบ. ว่าด้วยการรักษาความปลอดภัยของ ทบ. พ.ศ. ๒๕๖๓ ข้อ ๒๔, ๓๐, ๓๐.๑, ผนวก ข แบบเอกสารที่ใช้ในการรักษาความปลอดภัยเกี่ยวกับข้อมูลข่าวสารลับ และคำแนะนำการปฏิบัติตามระเบียบ ทบ. ว่าด้วยการรักษาความปลอดภัยของ ทบ. พ.ศ. ๒๕๖๓ บทที่ ๔ ข้อ ๑, ๑.๓, ๔ และข้อ ๔.๓</div>
+                    <div class="rec-item">๒. ให้ผู้กำหนดชั้นความลับ หรือผู้ทำการแทน หรือผู้ที่ได้รับมอบหมายของหน่วยเจ้าของเรื่อง บันทึกเหตุผลประกอบการกำหนดชั้นความลับของข้อมูลข่าวสารลับนั้นด้วยว่า เป็นข้อมูลข่าวสารลับชั้นใดและเพราะเหตุผลใด</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            <div class="slug-line">/ลงใน...</div>
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 7: SET 2 SHEET 4/5 -->
+    <div class="page-portrait" id="page-7">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙-๑</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร (ต่อ)</div>
+            <div style="display: flex; justify-content: flex-end; align-items: baseline; font-size: 15pt; margin-bottom: 2mm;">
+                <span>แผ่นที่</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๔</span>
+                <span>ในจำนวน</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๕</span>
+                <span>แผ่น</span>
+            </div>
+            <div class="report-divider"></div>
+
+            <div class="tier2-text" style="text-indent: 0;">ลงใน “บันทึกของผู้รับผิดชอบหรือได้รับมอบหมายในการกำหนดชั้นความลับ” แนบเก็บไว้กับคู่ฉบับของข้อมูลข่าวสารลับนั้น และแจ้งให้นายทะเบียนข้อมูลข่าวสารลับของหน่วยตนบันทึกในช่องการดำเนินการท้ายทะเบียนควบคุมข้อมูลข่าวสารลับด้วย<br>๓. การแสดงชั้นความลับ ข้อมูลข่าวสารที่มีสภาพเป็นเอกสาร ให้แสดงชั้นความลับที่กลางหน้ากระดาษทั้งด้านบนและด้านล่างของทุกหน้าเอกสารนั้น ถ้าเอกสารเข้าปกให้แสดงไว้ที่ด้านนอกของปกหน้าและปกหลัง</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๖ การเลี้ยงดูทหาร เรื่องการเสนอความต้องการ</span> ตรวจพบ การเสนอความต้องการข้าวสาร และเชื้อเพลิงประจำเดือน (แบบ ก) และเสนอความต้องการรับการเลี้ยงดูประจำวัน (แบบ ข) ล่าช้า</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">๑. ให้ปฏิบัติตามระเบียบ ทบ. ว่าด้วยการเลี้ยงดูทหาร พ.ศ. ๒๕๔๙ ข้อ ๒๑, ๒๑.๑, ๒๑.๒ และข้อ ๒๑.๓</div>
+                    <div class="rec-item">๒. หน่วยรับการเลี้ยงดูเสนอความต้องการเลี้ยงดู ไปยังเจ้าหน้าที่ประกอบเลี้ยง (ผ่านเจ้าหน้าที่ตรวจสอบยอดกำลังพลที่ได้รับการเลี้ยงดูของหน่วยประกอบเลี้ยง) เสนอความต้องการข้าวสาร และเชื้อเพลิง โดยประมาณการเป็นจำนวนทหารที่รับการเลี้ยงดู ในรอบ ๑ เดือน ตามแบบ ก และเสนอความต้องการอาหารโดยประมาณเป็นจำนวนทหารที่รับการเลี้ยงดูในทุกห้วงวันที่ ๑ - ๑๐, วันที่ ๑๑ - ๒๐, วันที่ ๒๑ - ๓๐ หรือ ๓๑ ของเดือนตามแบบ ข ทั้งนี้ ให้เสนอความต้องการถึงเจ้าหน้าที่ประกอบเลี้ยงล่วงหน้า ก่อนถึงวันที่รับการเลี้ยงดูวันแรก อย่างน้อย ๕ วันทำการ</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๗ การเลี้ยงดูทหาร เรื่อง การประกอบเลี้ยง</span> ตรวจพบ ไม่จัดทำหลักฐานคุมยอดข้าวสารและเชื้อเพลิง มีเฉพาะการเขียนยอดจ่ายวันนี้ ยอดจ่ายข้าวสารสะสมเดือนปัจจุบัน และยอดข้าวสารคงคลังที่กระดานบอร์ด รวมทั้งการตัดจ่ายยอดข้าวสารไม่ตรงกับปริมาณการใช้ข้าวสารจริง</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">๑. ให้ปฏิบัติตามระเบียบ ทบ. ว่าด้วยการเลี้ยงดูทหาร พ.ศ. ๒๕๔๙ ข้อ ๒๖ และข้อ ๒๖.๑</div>
+                    <div class="rec-item">๒. การปฏิบัติ ณ โรงประกอบเลี้ยง หน่วยประกอบเลี้ยงกำหนดระเบียบปฏิบัติประจำ เพื่อควบคุมการปฏิบัติ ณ โรงประกอบเลี้ยง เช่น การปฏิบัติหน้าที่ของเจ้าหน้าที่ประกอบเลี้ยง การควบคุมมิให้ ข้าวสาร เชื้อเพลิง อาหาร ภาชนะ เครื่องใช้ในการเลี้ยงดูสูญหาย เป็นต้น</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๘ การเลี้ยงดูทหาร เรื่องการประกอบเลี้ยง</span> ตรวจพบ เจ้าหน้าที่ประกอบเลี้ยง ไม่ผ่านการตรวจโรคก่อนแต่งตั้งเป็นเจ้าหน้าที่ประกอบเลี้ยง กล่าวคือ แต่งตั้งเจ้าหน้าที่ประกอบเลี้ยง เมื่อ ๒๗ พ.ค. ๖๙ พบหลักฐานส่งตรวจโรคของเจ้าหน้าที่ประกอบเลี้ยง วันที่ ๘ ก.ค. ๖๙</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">๑. ให้ปฏิบัติตามคำสั่ง ทบ. ที่ ๒๒๔๘/๒๕๖๑ ลง ๑๘ พ.ค. ๖๑ เรื่อง ชี้แจงการปฏิบัติการสุขาภิบาลในที่ตั้งปกติ ณ โรงเลี้ยงและโรงประกอบอาหาร ข้อ ๑</div>
+                    <div class="rec-item">๒. เจ้าหน้าที่โรงเลี้ยงและโรงประกอบอาหาร ต้องผ่านการตรวจสุขภาพจากแพทย์ทุก ๖ เดือน และรับรองผลว่าไม่เป็นพาหะของโรคติดต่อทางเดินอาหาร เช่น อุจจาระร่วง บิด ไทฟอยด์ และโรคทางระบบหายใจ เช่น หวัด วัณโรค ตับอักเสบชนิดเอ ตรวจการมองเห็น จะต้องไม่พบสายตาผิดปกติ หากมีสายตาผิดปกติจะต้องได้รับการแก้ไขโดยใช้แว่นสายตา หรือคอนแท็คเลนส์ ตรวจการได้ยินจะต้องไม่พบภาวการณ์ได้ยินผิดปกติ โดยการได้ยินจะต้องไม่ต่ำกว่า ๔๕ เดซิเบลของหูแต่ละข้าง ตรวจผิวหนัง ไม่พบการติดเชื้อราหรือผิวหนังอักเสบ เป็นต้น หากตรวจพบจะต้องสั่งให้หยุดทำงานทันที และรีบส่งให้แพทย์ ตรวจรักษา โดยหัวหน้าโรงเลี้ยงต้องคอยสังเกตการเจ็บป่วยเจ้าหน้าที่ของตนทุกวัน</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            <div class="slug-line">/๒.๓ ข้อบกพร่อง...</div>
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 8: SET 2 SHEET 5/5 -->
+    <div class="page-portrait" id="page-8">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙-๑</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร (ต่อ)</div>
+            <div style="display: flex; justify-content: flex-end; align-items: baseline; font-size: 15pt; margin-bottom: 2mm;">
+                <span>แผ่นที่</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๕</span>
+                <span>ในจำนวน</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๕</span>
+                <span>แผ่น</span>
+            </div>
+            <div class="report-divider"></div>
+
+            <div class="deficiencies-block">
+                <div class="def-row"><span style="font-weight: bold;">๒.๓ ข้อบกพร่องสำคัญ</span><span>- ไม่มี</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๔ ข้อบกพร่องสำคัญมาก</span><span>- ไม่มี</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๕ ข้อบกพร่องซ้ำ</span><span>- ไม่มี</span></div>
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 9: SET 3 SHEET 1/4 -->
+    <div class="page-portrait" id="page-9">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร</div>
+            <div class="report-subtitle">เรื่อง อาวุธประจำกาย ประจำหน่วย และเครื่องควบคุมการยิง</div>
+            
+            <div class="report-meta-grid">
+                <div class="meta-line">
+                    <span class="meta-lbl">หน่วย</span>
+                    <span class="meta-val-dots" style="width: 50mm;">ป.๔ พัน.๔</span>
+                    <span class="meta-lbl" style="margin-left: auto;">ชื่อ ผบ.หน่วย</span>
+                    <span class="meta-val-dots" style="width: 55mm;">พ.ท. พรชัย  มากเทพพงษ์</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ตรวจเมื่อวันที่</span>
+                    <span class="meta-val-dots" style="width: 25mm; text-align: center;">๒๔</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">เดือน</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">มิ.ย.</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">พ.ศ.</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">๒๕๖๙</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้รับตรวจ</span>
+                    <span class="meta-val-dots" style="width: 48mm;">จ.ส.อ. ธนพนธ์  เชื้อเพาะ</span>
+                    <span class="meta-lbl" style="margin-left: 4mm;">ตำแหน่ง</span>
+                    <span class="meta-val-dots" style="flex: 1;">ผบ.หมู่ ป.</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้ตรวจ</span>
+                    <span class="meta-val-dots" style="width: 65mm;">พ.อ. อภิชาติ  บานเช้า</span>
+                    <div style="margin-left: auto; display: flex; align-items: baseline;">
+                        <span class="meta-lbl">แผ่นที่</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๑</span>
+                        <span class="meta-lbl" style="margin: 0 2mm;">ในจำนวน</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๔</span>
+                        <span class="meta-lbl">แผ่น</span>
+                    </div>
+                </div>
+            </div>
+            <div class="report-subnote">(เก็บหลักฐานนี้ไว้เพื่อดำเนินการแก้ไขและแสดงต่อ นายทหารจเรในการตรวจครั้งต่อไป)</div>
+            <div class="report-divider"></div>
+
+
+            <div class="sec1-title">๑. หน่วยรับตรวจและชื่อ ผบ.หน่วยรับตรวจ (ระดับกองร้อยหรือเทียบเท่าขึ้นไป)</div>
+            <div class="cmd-list">
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">ร้อย.บก.และ บร.ป.๔ พัน.๔</span>
+                    <span class="cmd-rank-name">ร.อ. ภานุวัฒน์</span>
+                    <span class="cmd-surname">สามเกษร</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">ป.๔ พัน ๔ ร้อย.๑</span>
+                    <span class="cmd-rank-name">ร.ท. พิชญะ</span>
+                    <span class="cmd-surname">ดีประสิทธิ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">ป.๔ พัน ๔ ร้อย.๒</span>
+                    <span class="cmd-rank-name">ร.อ. กฤติน</span>
+                    <span class="cmd-surname">นราพงษ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">ป.๔ พัน ๔ ร้อย.๓</span>
+                    <span class="cmd-rank-name">ร.อ. ดำรงฤทธิ์</span>
+                    <span class="cmd-surname">ศิริวังไชย</span>
+                </div>
+
+            </div>
+
+            <div class="sec2-title">๒. สิ่งที่ตรวจพบ ข้อเสนอแนะให้แก้ไขและหลักฐานอ้างอิง</div>
+            <div class="tier2-title">๒.๑ แนวทางและวิธีการตรวจ</div>
+
+            <div class="tier2-subitem">๒.๑.๑ การตรวจการปฏิบัติงานทางด้านเอกสารหลักฐานของหน่วยตรงตามหัวข้อการตรวจกิจการทั่วไป จบ. ประจำปี ๒๕๖๙ เรื่องอาวุธประจำกายประจำหน่วยและเครื่องควบคุมการยิง โดยตรวจการปฏิบัติของหน่วยว่ามีความถูกต้อง สมบูรณ์ ครบถ้วนตามระเบียบ คำสั่ง คำชี้แจงที่เกี่ยวข้อง</div>
+            <div class="tier2-subitem">๒.๑.๒ การตรวจอาวุธยุทโธปกรณ์และการตรวจคลัง สุ่มตรวจนับจำนวนอาวุธยุทโธปกรณ์ตามบัญชีคุม ยอดคงเหลือภายในคลัง และสุ่มตรวจหมายเลขอาวุธที่หน่วยมีอยู่ ต้องตรงกับบัญชีหมายเลขอาวุธของหน่วย (คส.๔ หรือใบแจ้งชุดสรรพาวุธ) สุ่มตรวจการบันทึกข้อมูลอาวุธในระบบสารสนเทศของ ทบ. (LOGSMIS) และสุ่มตรวจการปรนนิบัติบำรุงอาวุธที่มีอยู่ การตรวจสภาพคลังมีความมั่นคงแข็งแรงของคลัง การรักษาความปลอดภัยคลังและความสะอาด</div>
+            <div class="tier2-subitem">๒.๑.๓ ตรวจตามข้อมูลที่ต้องการทราบประกอบการรับตรวจ<br>๒.๑.๓.๑ อนุผนวก ๒<br>๒.๑.๓.๒ อนุผนวก ๒-๑ บัญชีอาวุธในอัตราและนอกอัตรา<br>๒.๑.๓.๓ อนุผนวก ๒-๒ บัญชีชิ้นส่วนซ่อมตามอัตราพิกัดของอาวุธ<br>๒.๑.๓.๔ อนุผนวก ๒-๓ บัญชีอาวุธและเครื่องควบคุมการยิงงดใช้การ<br>๒.๑.๓.๕ อนุผนวก ๒-๔ บัญชีอาวุธและเครื่องควบคุมการยิงไปราชการเกิน ๒๔ ชั่วโมง</div>
+            <div class="tier2-title">๒.๒ ข้อบกพร่องเล็กน้อย</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๑ การตรวจการสำรวจพิเศษเมื่อมีการรับ-ส่งหน้าที่ ผบ.หน่วย</span> ผลการตรวจพบว่า หน่วยไม่ทำการสำรวจพิเศษ สป.รายการชิ้นส่วนซ่อมตามอัตราพิกัด ปบค.๙๕ ของหน่วย เมื่อมีการรับ-ส่งหน้าที่ ผบ.ป.๔ พัน.๔</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ ให้ปฏิบัติตามระเบียบ ทบ.ว่าด้วยการส่งกำลัง สป.๒ และ ๔ พ.ศ. ๒๕๓๔ ลง ๓๐ ธ.ค.๓๔ ข้อ ๔๑.๑ และ ๔๒.๓</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            <div class="slug-line">/...๑. ข้อ ๔๑.๑ การสำรวจสิ่งอุปกรณ์</div>
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 10: SET 3 SHEET 2/4 -->
+    <div class="page-portrait" id="page-10">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙-๑</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร (ต่อ)</div>
+            <div style="display: flex; justify-content: flex-end; align-items: baseline; font-size: 15pt; margin-bottom: 2mm;">
+                <span>แผ่นที่</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๒</span>
+                <span>ในจำนวน</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๔</span>
+                <span>แผ่น</span>
+            </div>
+            <div class="report-divider"></div>
+
+            <div class="tier2-text" style="text-indent: 0;">๑. ข้อ ๔๑.๑ การสำรวจสิ่งอุปกรณ์ ได้แก่ การนับจำนวนและการตรวจสภาพสิ่งอุปกรณ์ในที่เก็บให้ตรงกับหลักฐานบัญชีคุม<br>๒. ข้อ ๔๒.๓ การสำรวจพิเศษ ได้แก่ การสำรวจสิ่งอุปกรณ์เป็นครั้งคราวตามความจำเป็น โดยปิดการเบิกจ่ายเฉพาะรายการที่สำรวจนั้น เว้นกรณีเร่งด่วน การสำรวจประเภทนี้จะสำรวจสิ่งอุปกรณ์จำพวกใด ชนิดใด หรือรายการใดนั้น ขึ้นอยู่กับกรณีดังต่อไปนี้<br>๔๒.๓.๑ เมื่ออันตรายเกิดขึ้นกับสิ่งอุปกรณ์     ๔๒.๓.๒ เมื่อหน่วยบัญชีคุมต้องการทราบจำนวน<br>๔๒.๓.๓ เมื่อยอดคงคลังในบัตรบัญชีคุมเป็นศูนย์     ๔๒.๓.๔ เมื่อมีการยับยั้งการจ่าย<br>๔๒.๓.๕ เมื่อพบสิ่งอุปกรณ์ตกหล่น     ๔๒.๓.๖ เมื่อมีการรับส่งหน้าที่<br>๔๒.๓.๗ เมื่อสิ่งอุปกรณ์ในที่เก็บเป็นศูนย์</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๒ ตรวจหลักฐานการจ่ายอาวุธภายในหน่วยป้องกันการรั่วไหล</span> ผลการตรวจพบว่า หลักฐานการเบิกจ่ายอาวุธของ ร้อย.นขต.ฯ ไม่บันทึกข้อมูลวันที่, เวลา ที่เบิกจ่ายและรับคืนลงในสมุดจ่ายอาวุธประจำวัน</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ ให้ปฏิบัติตามข้อบังคับทหารที่ ๕/๒๒๑๘๐/๒๔๘๖ ลง ๑๐ ก.ย.๘๖ มาตรา ๕(๒) -มาตรา ๕ ให้เป็นหน้าที่ของผู้บังคับบัญชา ตั้งแต่ชั้นผู้บังคับกองพัน ผู้บังคับการเรือ หรือผู้บังคับกองบินน้อยขึ้นไปวางระเบียบเกี่ยวกับการปฏิบัติในการเก็บรักษา รับและจ่ายศาสตราวุธในหน่วยของตนดังต่อไปนี้</div>
+                    <div class="rec-subitem-deep">(๑) กำหนดที่เก็บรักษาให้อยู่ในความปลอดภัยด้วยประการทั้งปวง</div>
+                    <div class="rec-subitem-deep">(๒) การรับ-จ่าย ทั้งที่นำไปใช้ราชการประจำ และราชการชั่วคราว ให้รัดกุมเคร่งครัดไม่เกิดการรั่วไหล โดยให้มีบัญชีแสดงหลักฐานการรับ-จ่าย วัน เดือน ปี เวลาที่จ่าย เหตุผลที่จ่าย ผู้อนุมัติให้จ่าย และวัน เดือน ปี เวลาที่นำส่งคืนไว้ให้ชัดเจนแน่นอนทุก ๆ ครั้งที่มีการรับ-จ่าย</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๓ ตรวจการนำและ/หรือ การยืมอาวุธฯ ไปปฏิบัติราชการ(เกิน ๒๔ ชั่วโมง)</span> เพื่อป้องกันการรั่วไหล ผลการตรวจพบว่า เอกสารการรายงานขออนุมัติยืมอาวุธไปปฏิบัติราชการเกิน ๒๔ ชั่วโมง ไม่กำหนดวันส่งคืนในรายงานการขออนุมัติยืม</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ ให้ปฏิบัติตามระเบียบ ทบ.ว่าด้วยการส่งกำลัง สป.๒ และ ๔ พ.ศ. ๒๕๓๔ ลง ๓๐ ธ.ค.๓๔ ข้อ ๒๒.๑, ๒๒.๑.๑, ๒๒.๑.๓ และ ๒๒.๑.๕</div>
+                    <div class="rec-subitem-deep">ข้อ ๒๒.๑ หน่วยใช้</div>
+                    <div class="rec-subitem-deep">๒๒.๑.๑ ทำรายงานขอยืมสิ่งอุปกรณ์เป็นลายลักษณ์อักษรเสนอตามสายส่งกำลัง ในรายงานให้แจ้งเหตุผลและรายละเอียดในการใช้สิ่งอุปกรณ์ให้ชัดเจนพอที่จะเป็นข้อมูลในการพิจารณาตกลงใจของผู้มีอำนาจอนุมัติให้ยืมได้ ทั้งนี้ให้กำหนดวันส่งคืนในรายงานนั้นด้วย</div>
+                    <div class="rec-subitem-deep">๒๒.๑.๓ เมื่อครบกำหนดเวลาที่ได้รับอนุมัติให้ยืมตามที่บ่งไว้ในใบเบิก ต้องนำส่งคืนภายใน ๗ วัน</div>
+                    <div class="rec-subitem-deep">๒๒.๑.๕ เมื่อมีการโยกย้ายหรือสับเปลี่ยนตำแหน่งผู้เบิกยืม ให้แจ้งยกเลิกใบเบิกเดิม พร้อมกับทำใบเบิกเสนอไปใหม่</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๔ ตรวจการเก็บอาวุธและเครื่องประกอบในคลัง</span> ผลการตรวจพบว่า ป.๔ พัน.๔ ร้อย.๓ ไม่เก็บสายสะพายปืนติดไว้กับตัวปืน</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ ให้ปฏิบัติตามคำสั่ง ทบ. (คำชี้แจง) ที่ ๔๗/๙๖๗๑ เรื่องการระวังรักษาสายสะพายอาวุธเบาที่ทำด้วยผ้าใบ ลง ๒ ส.ค. ๑๔ ข้อ ๒ ก. และ ข.</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            <div class="slug-line">/...ข้อ ๒. วิธีระวังรักษา</div>
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 11: SET 3 SHEET 3/4 -->
+    <div class="page-portrait" id="page-11">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙-๑</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร (ต่อ)</div>
+            <div style="display: flex; justify-content: flex-end; align-items: baseline; font-size: 15pt; margin-bottom: 2mm;">
+                <span>แผ่นที่</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๓</span>
+                <span>ในจำนวน</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๔</span>
+                <span>แผ่น</span>
+            </div>
+            <div class="report-divider"></div>
+
+            <div class="tier2-text" style="text-indent: 0;">ข้อ ๒. วิธีระวังรักษา<br>ก. หลังจากนำปืนออกใช้งาน ก่อนนำปืนเข้าเก็บให้ตรวจดูว่าสายสะพายเปียกชื้นหรือไม่ ถ้าหากสายสะพายเปียกชื้นให้ถอดออกจากปืนผึ่งให้แห้งเสียก่อน จึงจะนำไปติดกับปืน<br>ข. ในกรณีที่สายสะพายเปียกชื้น หรือเปรอะเปื้อนน้ำมันต่าง ๆ หรือสายสะพายสกปรกจะด้วยกรณีใดๆ ก็ตามให้ซักสายสะพายด้วยสบู่เพื่อชำระสิ่งสกปรกต่าง ๆ ออกให้หมด เสร็จแล้วล้างด้วยน้ำเปล่าจนหมดสบู่ ผึ่งให้แห้ง แล้วจึงนำไปประกอบกับตัวปืน</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๕ ตรวจการซักซ้อมแผนเผชิญเหตุและรายงานผลการซักซ้อม</span> ผลการตรวจพบว่า หน่วยไม่ทำการซักซ้อมแผนเผชิญเหตุการป้องกันการบุกรุกปล้นชิงอาวุธและการก่อการร้าย</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ ให้ปฏิบัติตามวิทยุราชการทหาร กบ.ทบ.ที่ กห ๐๔๐๔/๔๙๕ ลง ๑๘ ก.พ.๖๓ ข้อ ๒, ๒.๑ และ ๒.๒</div>
+                    <div class="rec-subitem-deep">-ข้อ ๒ ตามที่ได้มีผู้บุกรุกปล้นชิงอาวุธ และกระสุนของหน่วยทหารนำไปใช้ก่อความรุนแรง สร้างความสูญเสียให้กับชีวิตและทรัพย์สินของ ทบ. และประชาชนทั่วไปในห้วงเวลาที่ผ่านมา เพื่อเป็นการกวดขันการปฏิบัติตามข้อบังคับทหาร ระเบียบ และคำสั่งฯ ที่เกี่ยวข้องกับการเก็บรักษาอาวุธ/ยุทโธปกรณ์ และ สป.๕ ของ ทบ. ให้เป็นไปด้วยความเรียบร้อย ปลอดภัยจากการรั่วไหล/นำออกไปก่อเหตุร้าย และอยู่ในสภาพพร้อมใช้งานตามความมุ่งหมายของ ทบ. ได้อย่างมีประสิทธิภาพ ผบ.ทบ.(๒) ได้กรุณาสั่งการให้ กบ.ทบ. แจ้งให้ทุกหน่วยรับทราบและยึดถือปฏิบัติดังนี้</div>
+                    <div class="rec-subitem-deep">๒.๑ ให้ ผบ.หน่วยทุกระดับ เน้นย้ำการปฏิบัติตามข้อบังคับทหาร ระเบียบ และคำสั่งฯ รวมถึงมาตรการและ รปจ. ในการรักษาความปลอดภัย คลังอาวุธ คลังกระสุน และคลัง สป.๕ ที่หน่วยกำหนดขึ้นเพิ่มเติม เพื่อให้ ผบ.หน่วยรอง และกำลังพลทุกนาย โดยเฉพาะอย่างยิ่งเจ้าหน้าที่เวร-ยาม/กองรักษาการณ์ของหน่วย รับทราบและปฏิบัติอย่างเคร่งครัด</div>
+                    <div class="rec-subitem-deep">๒.๒ ให้ทุกหน่วยจัดทำแผนเผชิญเหตุ และบัญชีการติดต่อสื่อสารกับ ผบ.หน่วย หรือผู้บังคับบัญชาที่สะดวก/รวดเร็วที่สุด ในกรณีเกิดเหตุความไม่สงบ/เหตุร้าย รวมทั้งจัดให้มีการซักซ้อมการปฏิบัติอย่างจริงจัง/สม่ำเสมอ เพื่อให้กำลังพลทุกนายที่ปฏิบัติหน้าที่เวร/ยาม/กองรักษาการณ์ เข้าใจขั้นตอนและสามารถปฏิบัติในสถานการณ์จริงได้อย่างเป็นอัตโนมัติ</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๖ ตรวจการปรนนิบัติบำรุงและการซ่อมบำรุง</span> ผลการตรวจพบว่า กล้องส่องสองตา ขนาด ๖X๓๐ หมายเลข ๒๗๕๙๙๖ ของ ป.๔ พัน.๔ ร้อย.๑ ชำรุดเลนส์เป็นเชื้อรา ผู้รับผิดชอบไม่รายงานการชำรุดตามลำดับชั้นจนถึงผู้มีอำนาจสั่งการ เพื่อดำเนินการส่งซ่อมขึ้นเหนือไปส่งหน่วยสนับสนุนโดยตรง</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ ให้ปฏิบัติตามคำสั่ง ทบ. (คำสั่งชี้แจง) ที่ ๓๒๐/๒๓๖๓๐ ลง ๙ พ.ย. ๙๘ เรื่องวิธีการซ่อมบำรุงยุทโธปกรณ์ สาย สพ. ข้อ ๔, ๕</div>
+                    <div class="rec-subitem-deep">๑.ข้อ ๔ การปฏิบัติเมื่อยุทโธปกรณ์ชำรุดหรือชะงักใช้ราชการ เมื่อยุทโธปกรณ์ชำรุดหรือชะงักใช้ราชการ ให้ผู้รับผิดชอบรายงานตามลำดับชั้นจนถึงผู้มีอำนาจสั่งการในการซ่อมบำรุงประจำหน่วยภายใน ๒๔ ชั่วโมง</div>
+                    <div class="rec-subitem-deep">๒.ข้อ ๕. การปฏิบัติการซ่อมบำรุงของหน่วยใช้ เมื่อได้รับรายงานว่ายุทโธปกรณ์ชะงักใช้ราชการ ให้ผู้มีอำนาจสั่งการในการซ่อมบำรุงประจำหน่วยปฏิบัติดังนี้</div>
+                    <div class="rec-subitem-deep">ก. เมื่อชำรุดตามสภาพ สั่งการให้เจ้าหน้าที่ซ่อมบำรุงประจำหน่วยจัดการซ่อมทันที โดยใช้เครื่องอะไหล่ประจำหน่วยซึ่งได้เบิกขึ้นต้นมาจาก คส.สพ.ทบ.ถ้าการชำรุดนั้นต้องการเครื่องอะไหล่ซึ่งยังอยู่ในประเภทการซ่อมบำรุงประจำหน่วย (ชั้นที่ ๑-๒) แต่หน่วยนั้นไม่ได้รับอนุมัติให้เบิกไว้ประจำหน่วยได้ ก็ให้ทำการเบิกไปยังกองสรรพาวุธที่ให้การสนับสนุนทันที เพื่อนำมาทำการซ่อมต่อไป</div>
+                </div>
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            <div class="slug-line">/...ข. เมื่อชำรุดผิดปกติหรือสูญหาย</div>
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 12: SET 3 SHEET 4/4 -->
+    <div class="page-portrait" id="page-12">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙-๑</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร (ต่อ)</div>
+            <div style="display: flex; justify-content: flex-end; align-items: baseline; font-size: 15pt; margin-bottom: 2mm;">
+                <span>แผ่นที่</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๔</span>
+                <span>ในจำนวน</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๔</span>
+                <span>แผ่น</span>
+            </div>
+            <div class="report-divider"></div>
+
+            <div class="tier2-text" style="text-indent: 0;">ข. เมื่อชำรุดผิดปกติหรือสูญหาย สั่งตั้งคณะกรรมการขึ้นสอบสวน สาเหตุแห่งการชำรุดหรือสูญหายนั้นเพื่อเก็บรายงานการสอบสวนไว้เป็นหลักฐานในการเบิกทดแทนหรือการนำส่งซ่อมภายหลังแล้วสั่งการเกี่ยวกับการซ่อมบำรุงดังเช่นในข้อ ก. ต่อไป<br>ค.ถ้าการชำรุดของยุทโธปกรณ์อยู่ในประเภทการซ่อมบำรุงในสนาม (ชั้นที่ ๓-๔) ให้เจ้าหน้าที่นำยุทโธปกรณ์นั้นส่งซ่อมไปยังกองสรรพาวุธ ทั้งนี้ห้ามไม่ให้หน่วยใช้ทำการซ่อมบำรุงเกินขั้นเป็นอันขาด ในการที่จะพิจารณาว่าการชำรุดของยานยนต์อยู่ในประเภทการซ่อมบำรุงชั้นใดและเป็นหน้าที่ของหน่วยใดนั้น ให้ปฏิบัติตามคำสั่งชี้แจงกองทัพบกที่ ๑๘๗/๑๔๓๕๓ เรื่อง การแบ่งขั้นการซ่อมบำรุงยานยนต์สายสรรพาวุธ ลง ๒๒ ก.ค.๙๘ โดยเคร่งครัด</div>
+            <div class="deficiencies-block">
+                <div class="def-row"><span style="font-weight: bold;">๒.๓ ข้อบกพร่องสำคัญ</span><span>- ไม่มี</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๔ ข้อบกพร่องสำคัญมาก</span><span>- ไม่มี</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๕ ข้อบกพร่องซ้ำ</span><span>- ไม่มี</span></div>
+            </div>
+            <div class="legal-disclaimer">หมายเหตุ - เอกสารการตรวจฉบับนี้ไม่อาจอ้างเป็นพยานหลักฐานที่สมบูรณ์ได้ เพราะได้กระทำขึ้นในเวลา และสภาพการณ์ที่จำกัดเป็นเพียงเอกสารที่ได้มาโดยอาศัยข้อมูลคำบอกเล่าที่เกิดขึ้น หรือได้มาตรวจสอบ และสอบถามเจ้าหน้าที่ในขั้นต้นเพียงสังเขปเท่านั้น ซึ่งไม่ครบทุกประเด็น ในทางคดีแพ่งหรือทางคดีอาญาจะรับฟังเป็นข้อยุติไม่ได้</div>
+
+        </div>
+        <div class="bottom-sig-container">
+            
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 13: SET 4 SHEET 1/3 -->
+    <div class="page-portrait" id="page-13">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร</div>
+            <div class="report-subtitle">เรื่อง การส่งกำลังสิ่งอุปกรณ์ประเภท ๕ (หน่วยใช้)</div>
+            
+            <div class="report-meta-grid">
+                <div class="meta-line">
+                    <span class="meta-lbl">หน่วย</span>
+                    <span class="meta-val-dots" style="width: 50mm;">ป.๔ พัน.๔</span>
+                    <span class="meta-lbl" style="margin-left: auto;">ชื่อ ผบ.หน่วย</span>
+                    <span class="meta-val-dots" style="width: 55mm;">พ.ท. พรชัย  มากเทพพงษ์</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ตรวจเมื่อวันที่</span>
+                    <span class="meta-val-dots" style="width: 25mm; text-align: center;">๒๔</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">เดือน</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">มิถุนายน</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">พ.ศ.</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">๒๕๖๙</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้รับตรวจ</span>
+                    <span class="meta-val-dots" style="width: 48mm;">จ.ส.อ. สราวุธ  เชิดศรี</span>
+                    <span class="meta-lbl" style="margin-left: 4mm;">ตำแหน่ง</span>
+                    <span class="meta-val-dots" style="flex: 1;">หน.นายสิบกระสุน ฯ</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้ตรวจ</span>
+                    <span class="meta-val-dots" style="width: 65mm;">พ.อ. สามารถ  ไชยศิรินทร์</span>
+                    <div style="margin-left: auto; display: flex; align-items: baseline;">
+                        <span class="meta-lbl">แผ่นที่</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๑</span>
+                        <span class="meta-lbl" style="margin: 0 2mm;">ในจำนวน</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๓</span>
+                        <span class="meta-lbl">แผ่น</span>
+                    </div>
+                </div>
+            </div>
+            <div class="report-subnote">(เก็บหลักฐานนี้ไว้เพื่อดำเนินการแก้ไขและแสดงต่อ นายทหารจเรในการตรวจครั้งต่อไป)</div>
+            <div class="report-divider"></div>
+
+
+            <div class="sec1-title">๑. หน่วยรับตรวจและชื่อ ผบ.หน่วยรับตรวจ (ระดับกองร้อยหรือเทียบเท่าขึ้นไป)</div>
+            <div class="cmd-list">
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑. ร้อย.บก.และ บร.ป.๔ พัน.๔</span>
+                    <span class="cmd-rank-name">ร.อ. ภานุวัฒน์</span>
+                    <span class="cmd-surname">สามเกษร</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๒. ป.๔ พัน.๔ ร้อย.๑</span>
+                    <span class="cmd-rank-name">ร.ท. พิชญะ</span>
+                    <span class="cmd-surname">ดีประสิทธิ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๓. ป.๔ พัน.๔ ร้อย.๒</span>
+                    <span class="cmd-rank-name">ร.อ. กฤติน</span>
+                    <span class="cmd-surname">นราพงษ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๔. ป.๔ พัน.๔ ร้อย.๓</span>
+                    <span class="cmd-rank-name">ร.อ. ดำรงฤทธิ์</span>
+                    <span class="cmd-surname">ศิริวังไชย</span>
+                </div>
+
+            </div>
+
+            <div class="sec2-title">๒. สิ่งที่ตรวจพบ ข้อเสนอแนะให้แก้ไขและหลักฐานอ้างอิง</div>
+            <div class="tier2-title">๒.๑ แนวทางและวิธีการตรวจ</div>
+
+            <div class="tier2-subitem">๒.๑.๑ ตรวจตามหัวข้อการตรวจกิจการทั่วไป ประจำปี ๒๕๖๙</div>
+            <div class="tier2-subitem">๒.๑.๒ ตรวจตามข้อมูลที่ต้องการทราบประกอบการรับตรวจที่หน่วยจัดทำ ได้แก่<br>๒.๑.๒.๑ อนุผนวก ๓ (หน่วยรับตรวจและหน่วยรอง)<br>๒.๑.๒.๒ อนุผนวก ๓-๑ (ข้อมูลกระสุนมูลฐาน,กระสุนเผชิญเหตุ) ตรวจบัญชีคุมกระสุนมูลฐาน ,กระสุนเผชิญเหตุ ตรวจหลักฐานการนำกระสุนมูลฐานและกระสุนเผชิญเหตุออกไปปฏิบัติราชการ<br>๒.๑.๒.๓ อนุผนวก ๓-๒ (ข้อมูลกระสุนฝึก-ศึกษา) ตรวจบัญชีคุมฯ , ตรวจหลักฐานการแจกจ่าย (สุ่มตรวจใบเบิก ป.๔ พัน.๔ ที่ ๐๑/๖๙ ลง ๑๘ พ.ย.๖๘ เบิกกรณีการฝึกทหารใหม่ผลัดที่ ๒/๖๘)<br>๒.๑.๒.๔ ตรวจการบันทึกบัญชีคุมกระสุน (ทบ.๔๖๘ - ๕๑๔) ตามข้อมูลที่หน่วยได้ยืนยันในระบบ LOGSMIS</div>
+            <div class="tier2-subitem">๒.๑.๓ ตรวจคลังกระสุนและวัตถุระเบิด โดยทำการสุ่มตรวจนับกระสุนและวัตถุระเบิดที่อยู่ในความครอบครอง ของหน่วย</div>
+            <div class="tier2-title">๒.๒ ข้อบกพร่องเล็กน้อย</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๑ ตรวจการรับ สป.๕ ของหน่วยเบิก ตามใบเบิก ป.๔ พัน.๔ ที่ ๐๑/๖๙ ลง ๑๘ พ.ย.๖๘</span> ผลการตรวจพบว่าผู้รับคือ ร.ท. กษิดิ์เดช สุขใจ ซึ่งจากการตรวจสอบไม่พบรายชื่อในบัญชีผู้มีสิทธิรับสิ่งอุปกรณ์ของหน่วย</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ ให้ปฏิบัติตามระเบียบกองทัพบกว่าด้วยการส่งสายมือชื่อผู้มีสิทธิเบิกและผู้รับสิ่งอุปกรณ์ พ.ศ.๒๕๑๐ ข้อ ๕ เมื่อผู้มีสิทธิเบิกสิ่งอุปกรณ์ ประสงค์จะให้ผู้อื่นรับสิ่งอุปกรณ์แทน ก็ให้ส่งลายมือชื่อของผู้รับสิ่งอุปกรณ์แทน ไปยังสถานการณ์ส่งกำลังบำรุงที่สนับสนุน แห่งละ ๑๐ ชุด เฉพาะ สพ.ทบ. ๑๖ ชุด การเปลี่ยนตัวบุคคลให้ปฏิบัติทำนองเดียวกันกับ ข้อ ๔</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๒ ตรวจการรับ-จ่ายกระสุนของหน่วยรอง (ร้อย.นขต.) ในกรณีฝึกทหารใหม่ ผลัด ๒/๖๘</span> ผลการตรวจพบว่า ใบเบิกใบส่งคืน เป็นการจัดทำเอกสารขึ้นภายหลังการฝึก ซึ่งไม่เป็นไปตามลำดับเหตุการณ์ที่เกิดขึ้นจริง</div>
+
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            <div class="slug-line">/...ข้อเสนอแนะ</div>
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิถุนายน......../........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 14: SET 4 SHEET 2/3 -->
+    <div class="page-portrait" id="page-14">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙-๑</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร (ต่อ)</div>
+            <div style="display: flex; justify-content: flex-end; align-items: baseline; font-size: 15pt; margin-bottom: 2mm;">
+                <span>แผ่นที่</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๒</span>
+                <span>ในจำนวน</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๓</span>
+                <span>แผ่น</span>
+            </div>
+            <div class="report-divider"></div>
+
+            <div class="tier2-text" style="text-indent: 0;">ข้อเสนอแนะ<br>๑.ให้ปฏิบัติตามระเบียบกองทัพบกว่าด้วยการส่งกำลัง สป.๕ พ.ศ.๒๕๒๗ ข้อ ๕๙ ผู้บังคับหน่วยทุกระดับที่มีกระสุนในครอบครอง เป็นผู้รับผิดชอบในการควบคุมกระสุนในทุกกรณี โดยให้ผู้บังคับหน่วยสามารถกำหนดระเบียบหรือคำสั่งมาตรการควบคุมสิ่งอุปกรณ์ประเภท ๕ พร้อมทั้งจัดทำหลักฐานหรือเอกสารเพิ่มเติมจากบัญชีคุมที่กองทัพบกกำหนด เพื่อควบคุมการใช้สิ่งอุปกรณ์ประเภท ๕ โดยต้องสามารถตรวจสอบการใช้สิ่งอุปกรณ์ประเภท ๕ ได้อย่างละเอียด จนถึงผู้ใช้สิ่งอุปกรณ์ประเภท ๕ คนสุดท้ายของหน่วย เช่น สมุดคุมกุญแจคลัง สมุดเปิด - ปิดคลัง สมุดรับจ่ายรายบุคคลเป็นต้น<br>๒.ให้ปฏิบัติตามคำสั่ง ทบ.ที่ ๖๗๒/๒๕๒๔ ลง ๑๗ ธ.ค. ๒๔ เรื่อง กวดขันมิให้ลักลอบนำกระสุนและวัตถุระเบิดในความครอบครองออกจากหน่วย ทุกหน่วยตั้งแต่ระดับกองร้อยหรือเทียบเท่าขึ้นไปที่มีกระสุนและวัตถุระเบิดในครอบครองกำหนดมาตรการควบคุมขึ้นใช้เป็นการภายในหรือกำหนดมาตรการเพิ่มเติมระเบียบของหน่วยที่มีอยู่แล้วตามความเหมาะสมเพื่อความมั่นใจในการป้องกันการลักลอบนำออกจากหน่วย และให้หน่วยระดับต่ำกว่ากองร้อย ถือปฏิบัติตามมาตรการที่หน่วยบังคับบัญชาโดยตรงกำหนด<br>๓.ให้ปฏิบัติตามข้อบังคับทหารที่ ๕/๒๒๑๘๐/๒๔๘๖ ลง ๑๐ ก.ย. ๘๖ ว่าด้วยการควบคุมศาสตราภัณฑ์ประจำกายและประจำหน่วย มาตรา ๕ (๒) การรับ-จ่าย ทั้งที่นำไปใช้ราชการประจำและราชการชั่วคราว ให้รัดกุมเคร่งครัดไม่เกิดการรั่วไหล โดยให้มีบัญชีแสดงการรับ-จ่าย วัน เดือน ปี เวลาที่จ่าย เหตุผลที่จ่าย และ วัน เดือน ปี เวลาที่นำส่งคืนไว้ให้ชัดเจนแน่นอนทุกๆครั้ง ที่มีการรับ-จ่าย (๔) กำหนดตัวข้าราชการชั้นสัญญาบัตรอย่างน้อย ๑ คน ให้เป็นพยานในการตรวจสอบทุกๆครั้งที่มีการรับ-จ่าย และ ต้องลงชื่อกำกับไว้ ในเอกสารรับ-จ่าย ทุกครั้งไป ในหน่วยที่ไม่มีข้าราชการชั้นสัญญาบัตรเป็นเจ้าหน้าที่ชั้นรอง ให้ใช้ข้าราชการต่ำกว่าชั้นสัญญาบัตรได้</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๓ ตรวจการสำรวจกระสุนประจำเดือน</span> ผลการตรวจพบว่า หน่วยไม่ได้ทำการสำรวจกระสุนเป็นประจำในทุกรอบเดือน หากแต่หน่วยทำการสำรวจกระสุนในบางรอบเดือนเท่านั้น</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ ให้ปฏิบัติตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๕ พ.ศ.๒๕๒๗ ข้อ ๖๓ และ ๖๘.๔</div>
+                    <div class="rec-subitem-deep">ข้อ ๖๓ การสำรวจคือ การตรวจจำนวน ณ คลังกระสุน เพื่อป้องกันและแก้ไข ความคลาดเคลื่อนทางบัญชี ที่เก็บ การทุจริต กระสุนเกินต้องการและผลการรับ-ส่งหน้าที่</div>
+                    <div class="rec-subitem-deep">ข้อ ๖๘.๔ หน่วยใช้ผู้บังคับหน่วยหรือผู้รับมอบอำนาจ เป็นผู้สั่งสำรวจอย่างน้อยเดือนละครั้ง</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๔ ตรวจการตรวจคลังกระสุนและวัตถุระเบิดประจำเดือน</span> ผลการตรวจพบว่า หน่วยไม่ได้ทำการตรวจคลังกระสุนเป็นประจำในทุกรอบเดือน หากแต่หน่วยทำการตรวจคลังกระสุนในบางรอบเดือนเท่านั้น</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ ให้ปฏิบัติตามระเบียบกองทัพบกว่าด้วยการเก็บรักษากระสุนและวัตถุระเบิด พ.ศ.๒๕๔๕ ข้อ ๒๑.๑หน่วยที่มีกระสุนและวัตถุระเบิดในครอบครองต้องแต่งตั้งคณะกรรมการตรวจคลังกระสุนและวัตถุระเบิด เพื่อทำการตรวจคลังกระสุน และวัตถุระเบิด ทุกรอบ ๑ เดือน ตามผนวก ค</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๕ ตรวจการรายงานสถานภาพสมบูรณ์ (รอบ ๖ เดือน) ห้วง ต.ค.๖๘ - มี.ค.๖๙</span> ผลการตรวจพบว่า หน่วยบันทึกข้อมูล ไม่ถูกต้อง เช่น ช่องที่ ๘</div>
+
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            <div class="slug-line">/...ข้อเสนอแนะ</div>
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิถุนายน......../........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 15: SET 4 SHEET 3/3 -->
+    <div class="page-portrait" id="page-15">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙-๑</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร (ต่อ)</div>
+            <div style="display: flex; justify-content: flex-end; align-items: baseline; font-size: 15pt; margin-bottom: 2mm;">
+                <span>แผ่นที่</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๓</span>
+                <span>ในจำนวน</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๓</span>
+                <span>แผ่น</span>
+            </div>
+            <div class="report-divider"></div>
+
+            <div class="tier2-text" style="text-indent: 0;">ข้อเสนอแนะ ให้ปฏิบัติตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๕ พ.ศ.๒๕๒๗ แบบและวิธีเขียนแบบพิมพ์ ทบ.๔๖๘-๕๒๑ แบบ ๑ ผนวก ม</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๖ ตรวจผังแสดงการเก็บรักษากระสุนและวัตถุระเบิด ที่คลังเก็บรักษาของหน่วย</span> ผลการตรวจพบว่า ผังแสดงการเก็บรักษากระสุนและวัตถุระเบิดไม่ตรงกับกองกระสุน</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ ให้ปฏิบัติ ตามระเบียบกองทัพบกว่าด้วยการเก็บรักษากระสุนและวัตถุระเบิด พ.ศ.๒๕๔๕ ข้อ ๙.๑๓ ต้องมีผังแสดงการเก็บรักษากระสุนและวัตถุระเบิดที่ทันสมัยอยู่เสมอติดไว้ให้เห็นได้ชัดภายในคลัง และ ต้องมีสำเนาที่ตรงกันเก็บไว้ที่ส่วนควบคุมทางบัญชีของหน่วย</div>
+                </div>
+            </div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๗ ตรวจการเก็บรักษา</span> ผลการตรวจพบว่า กองกระสุน หน่วยไม่จัดทำเครื่องหมายหีบพร่อง</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ ให้ปฏิบัติตามระเบียบกองทัพบก ว่าด้วยการเก็บรักษากระสุน และ วัตถุระเบิด พ.ศ.๒๕๔๕ ข้อ ๙.๕ หีบพร่องควรปิดให้สนิท ต้องทำเครื่องหมายคำว่า “หีบพร่อง”พร้อมระบุรหัส เลขงานและจำนวนกระสุน และวัตถุระเบิดให้ชัดเจนวางไว้ด้านบนสุดของกอง เลขงานหนึ่งๆ ให้มีหีบพร่องได้เพียงหีบเดียวเท่านั้น</div>
+                </div>
+            </div>
+            <div class="deficiencies-block">
+                <div class="def-row"><span style="font-weight: bold;">๒.๓ ข้อบกพร่องสำคัญ</span><span>- ไม่มี</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๔ ข้อบกพร่องสำคัญมาก</span><span>- ไม่มี</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๕ ข้อบกพร่องซ้ำ</span><span>- ไม่มี</span></div>
+            </div>
+            <div class="legal-disclaimer">หมายเหตุ -เอกสารการตรวจฉบับนี้ไม่อาจอ้างเป็นพยานหลักฐานที่สมบูรณ์ได้ เพราะได้กระทำขึ้นในเวลา และ สภาพการณ์ที่จำกัดเป็นเพียงเอกสารที่ได้มาโดยอาศัยข้อมูลคำบอกเล่าที่เกิดขึ้นหรือได้มาตรวจสอบและสอบถามเจ้าหน้าที่ในขั้นต้นเพียงสังเขปเท่านั้นซึ่งไม่ครบทุกประเด็นในทางคดีแพ่งหรือทางคดีอาญาจะรับฟังเป็นข้อยุติไม่ได้</div>
+
+        </div>
+        <div class="bottom-sig-container">
+            
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิถุนายน......../........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 16: SET 5 SHEET 1/1 -->
+    <div class="page-portrait" id="page-16">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร</div>
+            <div class="report-subtitle">เรื่อง การส่งกำลัง สป.๒ และ ๔ สาย พธ. (หน่วยใช้)</div>
+            
+            <div class="report-meta-grid">
+                <div class="meta-line">
+                    <span class="meta-lbl">หน่วย</span>
+                    <span class="meta-val-dots" style="width: 50mm;">ป.๔ พัน.๔</span>
+                    <span class="meta-lbl" style="margin-left: auto;">ชื่อ ผบ.หน่วย</span>
+                    <span class="meta-val-dots" style="width: 55mm;">พ.ท. พรชัย  มากเทพพงษ์</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ตรวจเมื่อวันที่</span>
+                    <span class="meta-val-dots" style="width: 25mm; text-align: center;">๒๔</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">เดือน</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">มิ.ย.</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">พ.ศ.</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">๖๙</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้รับตรวจ</span>
+                    <span class="meta-val-dots" style="width: 48mm;">จ.ส.อ. ธนิตศร  น้อยสว่าง</span>
+                    <span class="meta-lbl" style="margin-left: 4mm;">ตำแหน่ง</span>
+                    <span class="meta-val-dots" style="flex: 1;">นายสิบส่งกำลัง ป.๔ พัน.๔</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้ตรวจ</span>
+                    <span class="meta-val-dots" style="width: 65mm;">พ.อ. ณัครพล  บุศยกุล</span>
+                    <div style="margin-left: auto; display: flex; align-items: baseline;">
+                        <span class="meta-lbl">แผ่นที่</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๑</span>
+                        <span class="meta-lbl" style="margin: 0 2mm;">ในจำนวน</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๑</span>
+                        <span class="meta-lbl">แผ่น</span>
+                    </div>
+                </div>
+            </div>
+            <div class="report-subnote">(เก็บหลักฐานนี้ไว้เพื่อดำเนินการแก้ไขและแสดงต่อ นายทหารจเรในการตรวจครั้งต่อไป)</div>
+            <div class="report-divider"></div>
+
+
+            <div class="sec1-title">๑. หน่วยรับตรวจและชื่อ ผบ.หน่วยรับตรวจ (ระดับกองร้อยหรือเทียบเท่าขึ้นไป)</div>
+            <div class="cmd-list">
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๑ ร้อย.บก.และ บร.ป.๔ พัน.๔</span>
+                    <span class="cmd-rank-name">ร.อ. ภานุวัฒน์</span>
+                    <span class="cmd-surname">สามเกษร</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๒ ป.๔ พัน.๔ ร้อย.๑</span>
+                    <span class="cmd-rank-name">ร.ท. พิชญะ</span>
+                    <span class="cmd-surname">ดีประสิทธิ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๓ ป.๔ พัน.๔ ร้อย.๒</span>
+                    <span class="cmd-rank-name">ร.อ. กฤติน</span>
+                    <span class="cmd-surname">นราพงษ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๔ ป.๔ พัน.๔ ร้อย.๓</span>
+                    <span class="cmd-rank-name">ร.อ. ดำรงฤทธิ์</span>
+                    <span class="cmd-surname">ศิริวังไชย</span>
+                </div>
+
+            </div>
+
+            <div class="sec2-title">๒. สิ่งที่ตรวจพบ ข้อเสนอแนะให้แก้ไขและหลักฐานอ้างอิง</div>
+            <div class="tier2-title">๒.๑ แนวทางและวิธีการตรวจ</div>
+
+            <div class="tier2-subitem">๒.๑.๑ การตรวจเอกสารต่าง ๆ เป็นไปตามหัวข้อการตรวจกิจการทั่วไปเรื่องการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ สาย พธ. (หน่วยใช้)</div>
+            <div class="tier2-subitem">๒.๑.๒ การตรวจตามข้อมูลที่ต้องการทราบประกอบการรับตรวจ ที่หน่วยจัดทำ ได้แก่<br>๒.๑.๒.๑ อนุผนวก ๖     (หน่วยรับตรวจและหน่วยรอง)<br>๒.๑.๒.๒ อนุผนวก ๖-๑     (สป.ตาม อสอ.)<br>๒.๑.๒.๓ อนุผนวก ๖-๒     (เครื่องแต่งกาย เครื่องนอนและเครื่องสนาม)</div>
+            <div class="tier2-subitem">๒.๑.๓ การตรวจคลังฯใช้วิธีสุ่มตรวจ สป. ตาม อสอ., อยย.(เครื่องสนาม) ของหน่วย ได้แก่ หมวกสนาม, หม้อข้าวสนาม, พลั่วสนาม, กระติกน้ำ, เป้สนาม และเสื้อกันฝน ใช้วิธีตรวจนับจำนวนตามยอดบัญชีคุมของหน่วยและข้อมูลที่ต้องการทราบประกอบการรับตรวจ</div>
+            <div class="tier2-title">๒.๒ ข้อบกพร่องเล็กน้อย</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">๒.๒.๑ ป.๔ พัน.๔ ร้อย.๒ รับ-ส่งหน้าที่ ผบ.ร้อย. ล่าช้า ไม่ตรงตามระเบียบกำหนด</span> กล่าวคือ มีคำสั่งให้ ผบ.ร้อย. ปฏิบัติหน้าที่ตั้งแต่วันที่ ๙ ม.ค. ๖๙ หน่วยทำการ รับ-ส่งหน้าที่ ในวันที่ ๒๖ ม.ค. ๖๙</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ</div>
+                    <div class="rec-subitem-deep">๑. ให้ปฏิบัติตาม ระเบียบกองทัพบกว่าด้วยการรับ-ส่งหน้าที่ในเวลา ย้าย เลื่อน ลด ปลด และบรรจุ พ.ศ. ๒๕๔๐ ข้อ ๗.</div>
+                    <div class="rec-subitem-deep">๒. เมื่อมีคำสั่งย้ายข้าราชการหรือให้ข้าราชการออกจากราชการ ผู้บังคับบัญชาจัดให้มีการรับ-ส่งหน้าที่กันโดยเร็ว โดยให้เริ่มเดินทางไปรับ-ส่งหน้าที่ซึ่งกันและกันภายใน ๗ วัน นับแต่วันที่ได้รับทราบคำสั่งอย่างเป็นทางการ ต่อจากนั้นให้ทำการรับ-ส่งเจ้าหน้าที่ต่อกันให้แล้วเสร็จตามกำหนดเวลาดังนี้ ข้าราชการที่มีตำแหน่งตั้งแต่ผู้บังคับกองร้อยหรือเทียบเท่า ภายใน ๓ วัน</div>
+                </div>
+            </div>
+            <div class="deficiencies-block">
+                <div class="def-row"><span style="font-weight: bold;">๒.๓ ข้อบกพร่องสำคัญ</span><span>ไม่พบ</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๔ ข้อบกพร่องสำคัญมาก</span><span>ไม่พบ</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๕ ข้อบกพร่องซ้ำ</span><span>ไม่พบ</span></div>
+            </div>
+            <div class="legal-disclaimer">หมายเหตุ - เอกสารการตรวจฉบับนี้ไม่อาจอ้างเป็นพยานหลักฐานที่สมบูรณ์ได้ เพราะได้กระทำขึ้นในเวลา และสถานการณ์ที่จำกัดเป็นเพียงเอกสารที่ได้มาโดยอาศัยข้อมูลคำบอกเล่าที่เกิดขึ้น หรือได้มาตรวจสอบ และสอบถามเจ้าหน้าที่ในขั้นต้นเพียงสังเขปเท่านั้น ซึ่งไม่ครบทุกประเด็น ในทางคดีแพ่งหรือทางคดีอาญาจะรับฟังเป็นข้อยุติไม่ได้</div>
+
+        </div>
+        <div class="bottom-sig-container">
+            
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 17: SET 6 SHEET 1/2 -->
+    <div class="page-portrait" id="page-17">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร</div>
+            <div class="report-subtitle">เรื่อง ยานพาหนะใน นอกอัตราและการใช้รถประจำหน่วย (หน่วยใช้)</div>
+            
+            <div class="report-meta-grid">
+                <div class="meta-line">
+                    <span class="meta-lbl">หน่วย</span>
+                    <span class="meta-val-dots" style="width: 50mm;">ป.๔ พัน.๔</span>
+                    <span class="meta-lbl" style="margin-left: auto;">ชื่อ ผบ.หน่วย</span>
+                    <span class="meta-val-dots" style="width: 55mm;">พ.ท. พรชัย  มากเทพพงษ์</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ตรวจเมื่อวันที่</span>
+                    <span class="meta-val-dots" style="width: 25mm; text-align: center;">๒๔</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">เดือน</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">มิ.ย.</span>
+                    <span class="meta-lbl" style="margin-left: 6mm;">พ.ศ.</span>
+                    <span class="meta-val-dots" style="width: 32mm; text-align: center;">๖๙</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้รับตรวจ</span>
+                    <span class="meta-val-dots" style="width: 48mm;">จ.ส.อ. ณัฐพงษ์  น้อยต้อย</span>
+                    <span class="meta-lbl" style="margin-left: 4mm;">ตำแหน่ง</span>
+                    <span class="meta-val-dots" style="flex: 1;">นายสิบยานยนต์ ป.๔ พัน.๔</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-lbl">ผู้ตรวจ</span>
+                    <span class="meta-val-dots" style="width: 65mm;">พ.อ. เชษฐา  พยัคฆเมฆ</span>
+                    <div style="margin-left: auto; display: flex; align-items: baseline;">
+                        <span class="meta-lbl">แผ่นที่</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๑</span>
+                        <span class="meta-lbl" style="margin: 0 2mm;">ในจำนวน</span>
+                        <span class="meta-val-dots" style="width: 14mm; text-align: center;">๒</span>
+                        <span class="meta-lbl">แผ่น</span>
+                    </div>
+                </div>
+            </div>
+            <div class="report-subnote">(เก็บหลักฐานนี้ไว้เพื่อดำเนินการแก้ไขและแสดงต่อ นายทหารจเรในการตรวจครั้งต่อไป)</div>
+            <div class="report-divider"></div>
+
+
+            <div class="sec1-title">๑. หน่วยรับตรวจและชื่อ ผบ.หน่วยรับตรวจ (ระดับกองร้อยหรือเทียบเท่าขึ้นไป)</div>
+            <div class="cmd-list">
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๑ ร้อย.บก.และ บร.ป.๔ พัน.๔</span>
+                    <span class="cmd-rank-name">ร.อ. ภานุวัฒน์</span>
+                    <span class="cmd-surname">สามเกษร</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๒ ป.๔ พัน.๔ ร้อย.๑</span>
+                    <span class="cmd-rank-name">ร.ท. พิชญะ</span>
+                    <span class="cmd-surname">ดีประสิทธิ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๓ ป.๔ พัน.๔ ร้อย.๒</span>
+                    <span class="cmd-rank-name">ร.อ. กฤติน</span>
+                    <span class="cmd-surname">นราพงษ์</span>
+                </div>
+
+
+                <div class="cmd-row">
+                    <span class="cmd-unit">๑.๔ ป.๔ พัน.๔ ร้อย.๓</span>
+                    <span class="cmd-rank-name">ร.อ. ดำรงฤทธิ์</span>
+                    <span class="cmd-surname">ศิริวังไชย</span>
+                </div>
+
+            </div>
+
+            <div class="sec2-title">๒. สิ่งที่ตรวจพบ ข้อเสนอแนะให้แก้ไขและหลักฐานอ้างอิง</div>
+            <div class="tier2-title">๒.๑ แนวทางและวิธีการตรวจ</div>
+
+            <div class="tier2-subitem">๒.๑.๑ ตรวจเอกสารของหน่วยตามหัวข้อการตรวจกิจการทั่วไป ประจำปี ๒๕๖๙</div>
+            <div class="tier2-subitem">๒.๑.๒ วิธีการตรวจ โดยการตรวจสถานที่ คลังเครื่องมือ คลังชิ้นส่วนซ่อม โรงรถ ตรวจนับจำนวนรถ ดูสภาพความสะอาดของรถ เก็บเป็นระเบียบ สีและทะเบียนรถ และสุ่มตรวจเครื่องยนต์, ทดสอบติดเครื่องยนต์,ทดสอบการเคลื่อนที่ของรถฯ และน้ำมันอัตราตามพิกัดของยานพาหนะ</div>
+            <div class="tier2-title">๒.๒ ข้อบกพร่องเล็กน้อย</div>
+
+            <div class="finding-block">
+                <div><span class="finding-code-title">- เรื่อง การควบคุมทางบัญชี บัญชีคุมชิ้นส่วนซ่อมตามอัตราพิกัด และ สป.สิ้นเปลือง ทบ. ๔๐๐-๐๖๘</span> ตรวจพบเจ้าหน้าที่หน่วย เบิกสิ่งอุปกรณ์แล้ว ผบ.หน่วยแต่งตั้งคณะกรรมการตรวจรับรายงานผลการตรวจรับและมอบสิ่งอุปกรณ์ให้เจ้าหน้าที่ส่งกำลังของหน่วยแต่เจ้าหน้าที่จัดทำการเขียนบันทึกข้อมูลในบัตรบัญชีคุม สป. สิ้นเปลือง ทบ.๔๐๐-๐๖๘ ทุกสายไม่ถูกต้องตามระเบียบ ทบ.</div>
+
+                <div class="rec-container"><div class="rec-header">ข้อเสนอแนะ</div>
+                    <div class="rec-item">ข้อเสนอแนะ</div>
+                    <div class="rec-subitem-deep">๑. ให้ปฏิบัติตามระเบียบกองทัพบก ว่าด้วยการส่งกำลังสิ่งอุปกรณ์ ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔ ข้อ ๓๙.๒.๓.๒ และให้บันทึกด้านหลังบัตรบัญชีคุมสิ่งอุปกรณ์ถาวร ทบ.๔๐๐-๐๐๕ ตามคำอธิบายวิธีเขียนท้ายระเบียบ</div>
+                    <div class="rec-subitem-deep">๒. ข้อ ๓๙.๒.๓.๒ จัดทำบัญชีคุมสิ่งอุปกรณ์ถาวรโดยใช้แบบพิมพ์ ทบ.๔๐๐-๐๐๕ สำหรับบัญชีคุมชิ้นส่วนซ่อมและสิ่งอุปกรณ์ใช้สิ้นเปลือง ให้ใช้แบบพิมพ์ ทบ.๔๐๐-๐๖๘</div>
+                </div>
+            </div>
+            <div class="deficiencies-block">
+                <div class="def-row"><span style="font-weight: bold;">๒.๓ ข้อบกพร่องสำคัญ</span><span>- ไม่มี</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๔ ข้อบกพร่องสำคัญมาก</span><span>- ไม่มี</span></div>
+                <div class="def-row"><span style="font-weight: bold;">๒.๕ ข้อบกพร่องซ้ำ</span><span>- ไม่มี</span></div>
+            </div>
+
+        </div>
+        <div class="bottom-sig-container">
+            <div class="slug-line">/...หมายเหตุ</div>
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+
+    <!-- PAGE 18: SET 6 SHEET 2/2 -->
+    <div class="page-portrait" id="page-18">
+        <div>
+
+
+            <div class="report-form-code">ทบ. ๑๐๕ - ๐๐๙-๑</div>
+            <div class="report-title">บันทึกผลการตรวจของนายทหารจเร (ต่อ)</div>
+            <div style="display: flex; justify-content: flex-end; align-items: baseline; font-size: 15pt; margin-bottom: 2mm;">
+                <span>แผ่นที่</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๒</span>
+                <span>ในจำนวน</span>
+                <span class="meta-val-dots" style="width: 14mm; text-align: center; margin: 0 2mm;">๒</span>
+                <span>แผ่น</span>
+            </div>
+            <div class="report-divider"></div>
+
+            <div class="legal-disclaimer">หมายเหตุ - เอกสารการตรวจฉบับนี้ไม่อาจอ้างเป็นพยานหลักฐานที่สมบูรณ์ได้ เพราะได้กระทำขึ้นในเวลา และสภาพการณ์ที่จำกัดเป็นเพียงเอกสารที่ได้มาโดยอาศัยข้อมูลคำบอกเล่าที่เกิดขึ้น หรือได้มาตรวจสอบ และสอบถามเจ้าหน้าที่ในขั้นต้นเพียงสังเขปเท่านั้น ซึ่งไม่ครบทุกประเด็น ในทางคดีแพ่งหรือทางคดีอาญาจะรับฟังเป็นข้อยุติไม่ได้</div>
+
+        </div>
+        <div class="bottom-sig-container">
+            
+            <div class="bottom-sig-line">ลงชื่อ........................ พ.อ. ................................................................นายทหารจเร  ผู้ตรวจ</div>
+            <div class="bottom-date-line">(........๒๔......../........มิ.ย........./........๖๙........)</div>
+        </div>
+    </div>
+
+</body>
+</html>

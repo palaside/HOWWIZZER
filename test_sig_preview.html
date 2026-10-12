@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Signature Preview Adjusted</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 30px;
+            background: #eef1f5;
+            font-family: 'TH Sarabun PSK', 'TH Sarabun New', 'Sarabun', sans-serif;
+            font-size: 14pt;
+        }
+        
+        .preview-card {
+            background: white;
+            padding: 20px;
+            margin-bottom: 30px;
+            width: 720px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        h3 {
+            margin: 0 0 12px 0;
+            font-size: 16pt;
+            color: #1a365d;
+        }
+        
+        .thai-numeral {{
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "locl" 1, "numr" 1;
+        }}
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .sig-box-table {
+            border: 1px solid #000;
+            width: 100%;
+        }
+        
+        .sig-box-table td {
+            border: 1px solid #000;
+            width: 33.33%;
+            height: 24mm; /* ขนาดจริง 24mm */
+            padding: 0;
+            vertical-align: top;
+        }
+        
+        .sig-cell-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 3px 5px 3px 5px;
+        }
+        
+        .sig-rank {
+            font-size: 13.5pt;
+            font-weight: normal;
+            text-align: left;
+            line-height: 1.1;
+            padding-left: 2px;
+        }
+        
+        /* ADJUSTED OPTION */
+        .sig-bottom-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 2px; /* ชิดขอบล่าง */
+        }
+        
+        /* เดือนและปี: เลื่อนขวาอีก 2 เคาะ (รวมเป็น 4 เคาะ ~20px) */
+        .sig-date {
+            font-size: 13.5pt;
+            line-height: 1.1;
+            text-align: center;
+            margin-left: 20px; /* เลื่อนไปทางขวาอีก 2 เคาะ */
+            margin-bottom: 8px; /* เลื่อนลงมาใกล้ตำแหน่ง */
+        }
+        
+        .sig-role {
+            font-size: 13pt;
+            line-height: 1.1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="preview-card" id="card-adjusted">
+        <h3>ผลการปรับ: เดือนปีเลื่อนขวา ๒ เคาะ + เลื่อนลงมาใกล้ตำแหน่งอีกนิดนึง</h3>
+        <table class="sig-box-table">
+            <tr>
+                <td>
+                    <div class="sig-cell-content">
+                        <div class="sig-rank">จ.ส.อ.</div>
+                        <div class="sig-bottom-group">
+                            <div class="sig-date thai-numeral">พ.ย. 66</div>
+                            <div class="sig-role">ผู้ตรวจนับ</div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="sig-cell-content">
+                        <div class="sig-rank">ร.ท.</div>
+                        <div class="sig-bottom-group">
+                            <div class="sig-date thai-numeral">พ.ย. 66</div>
+                            <div class="sig-role">หัวหน้าชุด</div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="sig-cell-content">
+                        <div class="sig-rank">จ.ส.อ.</div>
+                        <div class="sig-bottom-group">
+                            <div class="sig-date thai-numeral">พ.ย. 66</div>
+                            <div class="sig-role">เจ้าหน้าที่บัญชีคุม</div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

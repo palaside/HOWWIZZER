@@ -1,0 +1,368 @@
+{
+  "document_id": "REF-TB-400-005-V1",
+  "form_code": "ทบ.๔๐๐ – ๐๐๕",
+  "form_name": "บัญชีสิ่งอุปกรณ์ของหน่วย (ทบ.๔๐๐-๐๐๕)",
+  "category": "บัตรบัญชีคุมสิ่งอุปกรณ์ กองทัพบก สาย สพ. (Unit Property Book Card)",
+  "unit_info": {
+    "unit_name": "ป.4 พัน.4 ร้อย.2",
+    "station": "ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์",
+    "toe": "อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )"
+  },
+  "paper_setup": {
+    "size": "A5",
+    "orientation": "portrait",
+    "width_mm": 148.0,
+    "height_mm": 210.0,
+    "margins_mm": {
+      "top": 5.0,
+      "bottom": 5.0,
+      "left": 7.0,
+      "right": 7.0
+    }
+  },
+  "toc": [
+    {
+      "no": "๑",
+      "name": "ปบค. ขนาด 105 มม. พร้อมรถรองปืน เอ็ม.2 เอ.2",
+      "page": "๑"
+    },
+    {
+      "no": "๒",
+      "name": "เครื่องมือชุดช่างซ่อมปืนใหญ่",
+      "page": "๒"
+    },
+    {
+      "no": "๓",
+      "name": "เครื่องวัดอุณหภูมิส่วนบรรจุ",
+      "page": "๓"
+    },
+    {
+      "no": "๔",
+      "name": "ลำกล้องปืนหลอดพร้อมเครื่องประกอบ",
+      "page": "๔"
+    },
+    {
+      "no": "๕",
+      "name": "กล้องพาโนรามิค",
+      "page": "๕",
+      "section": "ประเภท 4 ( นอกอัตรา )"
+    },
+    {
+      "no": "๖",
+      "name": "กล้องข้อศอก",
+      "page": "๖"
+    },
+    {
+      "no": "๗",
+      "name": "เครื่องตั้งมุมยิงประณีต",
+      "page": "๗"
+    },
+    {
+      "no": "๘",
+      "name": "เครื่องวัดอุณหภูมิดินส่ง ( แบบดิจิตอล )",
+      "page": "๘"
+    },
+    {
+      "no": "๙",
+      "name": "ฐานกล้องเล็ง",
+      "page": "๙"
+    },
+    {
+      "no": "๑๐",
+      "name": "กล้องคอลลิเมเตอร์",
+      "page": "๑๐"
+    },
+    {
+      "no": "๑๑",
+      "name": "เครื่องอะไหล่ซ่อมบำรุง 2 ( ปบค.95 )",
+      "page": "๑๑"
+    },
+    {
+      "no": "๑๒",
+      "name": "ชุดตรวจและเติมแก๊ส",
+      "page": "๑๒"
+    },
+    {
+      "no": "๑๓",
+      "name": "กระโจมประจำหมู่",
+      "page": "๑๓",
+      "section": "สาย พธ."
+    },
+    {
+      "no": "๑๔",
+      "name": "กระโจมกระสุน",
+      "page": "๑๔"
+    },
+    {
+      "no": "๑๕",
+      "name": "กระโจมส่วนบรรจุ",
+      "page": "๑๕"
+    }
+  ],
+  "commander_certification": {
+    "title": "บันทึกผลการตรวจของผู้บังคับบัญชา",
+    "inspection_date": "เม.ย. 69",
+    "inspection_result": "ถูกต้องตามจำนวนและสามารถใช้การได้เป็นอย่างดี",
+    "statement": "“ข้าพเจ้าขอรับรองว่าทรัพย์สินซึ่งแสดงไว้ในบัญชีคุมนี้ เป็นทรัพย์สินที่หน่วยได้รับไว้ในความรับผิดชอบจริง และได้เก็บรักษาไว้ในสภาพเรียบร้อย ถูกต้องตามระเบียบของทางราชการทุกประการ”",
+    "commander_rank": "ร.อ.",
+    "commander_name": "(กฤติน  นราพงษ์)",
+    "commander_position": "ผบ.ป.๔ พัน.๔ ร้อย.๒"
+  },
+  "cards": [
+    {
+      "item_no": 1,
+      "item_name": "ปบค. 95 ขนาด 105 มม. พร้อมรถรอง เอ็ม.2 เอ.2",
+      "nsn": "1015-00-722-9752",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "6",
+      "rate_reduced": "4",
+      "category": "2",
+      "unit": "กระบอก",
+      "weight": "4,980 ปอนด์",
+      "volume": "793.65 ลบ./ ฟ.",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "332,712.00 บาท",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 2,
+      "item_name": "เครื่องมือชุดช่างซ่อมปืนใหญ่",
+      "nsn": "5180-00-757-7727",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "1",
+      "rate_reduced": "1",
+      "category": "2",
+      "unit": "ชุด",
+      "weight": "33.00 ปอนด์",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "17,496.00 บาท",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 3,
+      "item_name": "เครื่องวัดอุณหภูมิส่วนบรรจุ",
+      "nsn": "66885-00-344-4613",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "6",
+      "rate_reduced": "4",
+      "category": "2",
+      "unit": "ชุด",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "1,694 บาท",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 4,
+      "item_name": "ลำกล้องปืนหลอดพร้อมเครื่องประกอบ",
+      "nsn": "-",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "",
+      "rate_reduced": "",
+      "category": "2",
+      "unit": "ลำกล้อง",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 5,
+      "item_name": "กล้องพาโนรามิค",
+      "nsn": "1230-35-165-0005",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "4",
+      "rate_reduced": "4",
+      "category": "4",
+      "unit": "กล้อง",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 6,
+      "item_name": "กล้องข้อศอก",
+      "nsn": "-",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "",
+      "rate_reduced": "",
+      "category": "4",
+      "unit": "กล้อง",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 7,
+      "item_name": "เครื่องตั้งมุมยิงประณีต",
+      "nsn": "-",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "",
+      "rate_reduced": "",
+      "category": "4",
+      "unit": "เครื่อง",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 8,
+      "item_name": "เครื่องวัดอุณหภูมิดินส่ง ( แบบดิจิตอล )",
+      "nsn": "6685-xx-165-1315",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "4",
+      "rate_reduced": "4",
+      "category": "4",
+      "unit": "เครื่อง",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 9,
+      "item_name": "ฐานกล้องเล็ง",
+      "nsn": "-",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "",
+      "rate_reduced": "",
+      "category": "4",
+      "unit": "ฐาน",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 10,
+      "item_name": "กล้องคอลลิเมเตอร์",
+      "nsn": "1240-006-6065",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "",
+      "rate_reduced": "",
+      "category": "4",
+      "unit": "กล้อง",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 11,
+      "item_name": "เครื่องอะไหล่สำหรับซ่อมบำรุงขั้น 2 ปบค.95 ขนาด 105 มม.",
+      "nsn": "1015-00-712-0207",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "1",
+      "rate_reduced": "1",
+      "category": "2",
+      "unit": "ชุด",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 12,
+      "item_name": "ชุดตรวจและเติมแก๊ส",
+      "nsn": "-",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "สพ.",
+      "rate_full": "",
+      "rate_reduced": "",
+      "category": "4",
+      "unit": "ชุด",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "1,944 บาท",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 13,
+      "item_name": "กระโจมประจำหมู่",
+      "nsn": "8340-35-229-0026",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "พธ.",
+      "rate_full": "6",
+      "rate_reduced": "4",
+      "category": "2",
+      "unit": "หลัง",
+      "weight": "48.00 กก.",
+      "volume": "0.456 ม. ๓",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 14,
+      "item_name": "กระโจมกระสุน",
+      "nsn": "8340-35-229-0025",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "พธ.",
+      "rate_full": "4",
+      "rate_reduced": "4",
+      "category": "2",
+      "unit": "หลัง",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "",
+      "transactions": [],
+      "locations": []
+    },
+    {
+      "item_no": 15,
+      "item_name": "กระโจมส่วนบรรจุ",
+      "nsn": "8340-35-229-0058",
+      "dept": "ป.4 พัน.4 ร้อย.2",
+      "service": "พธ.",
+      "rate_full": "4",
+      "rate_reduced": "4",
+      "category": "2",
+      "unit": "หลัง",
+      "weight": "",
+      "volume": "",
+      "issuing_unit": "ป.4 พัน.4",
+      "price": "1,944 บาท",
+      "transactions": [],
+      "locations": []
+    }
+  ]
+}

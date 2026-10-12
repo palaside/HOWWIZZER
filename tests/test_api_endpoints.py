@@ -49,3 +49,21 @@ def test_intake_and_gaps_api():
     gaps = client.get("/api/v1/intake/gaps?current_date=2026-10-16")
     assert gaps.status_code == 200
     assert isinstance(gaps.json(), list)
+
+def test_cycle_info_api():
+    # Normal week test
+    res = client.get("/api/v1/cycle/info?target_date=2026-10-16")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["range_text"] == "12 - 16 ต.ค. 69"
+    assert data["target_date_thai"] == "16/10/69"
+    assert data["is_friday_holiday"] is False
+
+    # Holiday week test (Chulalongkorn Day Oct 23, 2026)
+    res_hol = client.get("/api/v1/cycle/info?target_date=2026-10-23")
+    assert res_hol.status_code == 200
+    data_hol = res_hol.json()
+    assert data_hol["range_text"] == "19 - 22 ต.ค. 69"
+    assert data_hol["target_date_thai"] == "23/10/69"
+    assert data_hol["is_friday_holiday"] is True
+

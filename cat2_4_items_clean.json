@@ -1,0 +1,2177 @@
+[
+  {
+    "item_no": 1,
+    "item_name": "เครื่องมือชุดช่างซ่อมปืนใหญ่",
+    "nsn": "5180-00357-7727",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "ชุด",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "2,340 บาท",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 2,
+    "item_name": "ฆ้อนเล็ก",
+    "nsn": "5120-00-061-8541",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 3,
+    "item_name": "กุญแจหกเหลี่ยม 41-W-2456",
+    "nsn": "5120-198-5390",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 4,
+    "item_name": "กุญแจหกเหลี่ยม 41-W-2455",
+    "nsn": "5120-198-5274",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 5,
+    "item_name": "กุญแจหกเหลี่ยม 41-W-2454",
+    "nsn": "5120-244-4659",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 6,
+    "item_name": "กุญแจหกเหลี่ยม 41-W-2451",
+    "nsn": "5120-198-5392",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 7,
+    "item_name": "กุญแจบล็อก 1 นิ้ว 41-W-3029-10",
+    "nsn": "5120-189-7917",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 8,
+    "item_name": "กุญแจบล็อก 1  ¼ นิ้ว 41-W-3027",
+    "nsn": "5120-189-7927",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 9,
+    "item_name": "กุญแจบล็อก  7/8  นิ้ว 41-W-3027",
+    "nsn": "5120-189-7937",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 10,
+    "item_name": "กุญแจบล็อก  3/4  นิ้ว 41-W-3017",
+    "nsn": "5120-189-7985",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 11,
+    "item_name": "กุญแจบล็อก  5/8  นิ้ว 41-W-3013",
+    "nsn": "5120-189-7946",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 12,
+    "item_name": "กุญแจบล็อก  9/16  นิ้ว 41-W-3009",
+    "nsn": "5120-189-7984",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 13,
+    "item_name": "บล็อกขนาด  11/16  นิ้ว",
+    "nsn": "5120-00-235-5870",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 14,
+    "item_name": "ตะไบหัวแหลมกว้ำง 2 ซ.ม. ยาว 8 นิ้ว",
+    "nsn": "5120-00-234-6563",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 15,
+    "item_name": "ตะไบหำงหนู",
+    "nsn": "5120-00-234-6550",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 16,
+    "item_name": "ด้ำมบล็อก  (กอกแก๊ก)",
+    "nsn": "5120-00-230-6385",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 17,
+    "item_name": "ข้อต่อบล็อกยาว 10 นิ้ว",
+    "nsn": "5120-00-227-8074",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 18,
+    "item_name": "หินฝน ยาว 4 นิ้ว",
+    "nsn": "5345-00-224-6575",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 19,
+    "item_name": "ชะแลงงอ",
+    "nsn": "5210-00-224-1389",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 20,
+    "item_name": "ไขควง ยาว 7 ½ นิ้ว",
+    "nsn": "5210-00-222-8852",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 21,
+    "item_name": "ด้ำมบล็อกขนาด 9 ½ นิ้ว",
+    "nsn": "5210-00-221-7958",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 22,
+    "item_name": "เครื่องมือตั้งวำวล์",
+    "nsn": "5210-00-221-1999",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 23,
+    "item_name": "เหล็กแซะ (ปากแบนด้ำมไม้สีด ำ)",
+    "nsn": "5210-00-221-1536",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 24,
+    "item_name": "ตะไบหน้ำ 1  ½ นิ้ว ยาว 15 นิ้ว",
+    "nsn": "5110-00-203-4645",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 25,
+    "item_name": "บล็อกขนาด 3/4 นิ้ว",
+    "nsn": "5120-00-189-7985",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 26,
+    "item_name": "บล็อกขนาด 5/8 นิ้ว",
+    "nsn": "5120-00-189-7946",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 27,
+    "item_name": "บล็อกขนาด 15/16 นิ้ว",
+    "nsn": "5120-00-189-7935",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 28,
+    "item_name": "บล็อกขนาด 7/8 นิ้ว",
+    "nsn": "5120-00-189-7934",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 29,
+    "item_name": "บล็อกขนาด 13/16 นิ้ว",
+    "nsn": "5120-00-189-7933",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 30,
+    "item_name": "บล็อกขนาด  9/16 นิ้ว",
+    "nsn": "5120-00-189-7932",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 31,
+    "item_name": "บล็อกขนาด  1 นิ้ว",
+    "nsn": "5120-00-189-7929",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 32,
+    "item_name": "บล็อกขนาด  7/16 นิ้ว",
+    "nsn": "5120-00-189-7924",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 33,
+    "item_name": "ตะไบหน้ำ 2 ซม. ยาว 10 นิ้ว",
+    "nsn": "5110-00-156-0054",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 34,
+    "item_name": "ปะแจแหวนปากตำย",
+    "nsn": "5180-00-148-7317",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 35,
+    "item_name": "ฆ้อนใหญ่",
+    "nsn": "5120-00-061-8543",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 36,
+    "item_name": "คีมตัดมีแท่นยาว 1 ฟุต",
+    "nsn": "5120-00-542-4171",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 37,
+    "item_name": "กุญแจเลื่อน 41-w-3007",
+    "nsn": "5120-237-0984",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 38,
+    "item_name": "กุญแจเลื่อนขนาด 12 นิ้ว 41-w-488",
+    "nsn": "5120-264-3796",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 39,
+    "item_name": "กุญแจเลื่อนขนาด 8 นิ้ว 41-w-486",
+    "nsn": "5120-240-5328",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 40,
+    "item_name": "ไขควงหน้ำ ½ นิ้ว ยาว 9 ½ (เหลี่ยม) 41-S-1385",
+    "nsn": "5120-227-7338",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 41,
+    "item_name": "ไขควงหน้ำ 0.125 นิ้ว (ยาว 6 นิ้ว) 41-S-1339",
+    "nsn": "5120-180-3180",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 42,
+    "item_name": "ไขควงหน้ำ ¼ นิ้ว (ยาว 13 ¾  นิ้ว) 41-S-1106",
+    "nsn": "5120-277-9494",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 43,
+    "item_name": "ไขควงหน้ำ ¼ นิ้ว (ยาว 8 นิ้ว) 41-S-1102",
+    "nsn": "5120-277-9491",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 44,
+    "item_name": "ไขควงหน้ำ 3/10 นิ้ว (ยาว 7 นิ้ว) 41-S-1101",
+    "nsn": "5120-293-3160",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 45,
+    "item_name": "ไขควงหน้ำ ¼  นิ้ว (ยาว ¾  นิ้ว) 41-S-1163",
+    "nsn": "5120-293-3160",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 46,
+    "item_name": "เหล็กส่งยาว 4 นิ้ว ( ใหญ่ ¼ ) 41-P-3606",
+    "nsn": "5120-240-6083",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 47,
+    "item_name": "เหล็กส่งยาว 4 นิ้ว ( ใหญ่ ¼ ) 41-P-3601",
+    "nsn": "5120-242-3435",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 48,
+    "item_name": "เหล็กตอกสกัดยาว 3 นิ้ว 41-P-3550",
+    "nsn": "5120-223-1019",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 49,
+    "item_name": "คีมปากแหลม 41-P-1991",
+    "nsn": "5120-247-5177",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 50,
+    "item_name": "คีมปากจิ้กจก 41-P-1839",
+    "nsn": "5120-239-8251",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 51,
+    "item_name": "กำหยอดน ้ำมัน 13-O-400",
+    "nsn": "4793-274-5713",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 52,
+    "item_name": "ด้ำมกุญแจบล็อก 41-H-1508",
+    "nsn": "4120-221-7958",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 53,
+    "item_name": "ฆ้อนเหล็ก 41-H-524",
+    "nsn": "4120-224-4046",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 54,
+    "item_name": "ฆ้อนทองเหลือง 41-H-168-30",
+    "nsn": "4120-242-3908",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 55,
+    "item_name": "ตะไบแบนยาว 8 นิ้ว 41-F-1016",
+    "nsn": "4110-156-0054",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 56,
+    "item_name": "สิ่วกว้ำง 1 ซม. ยาว 5.8 นิ้ว",
+    "nsn": "4110-242-3457",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 57,
+    "item_name": "หีบกล่องใส่เครื่องมือ 41-B-1840",
+    "nsn": "4140-357-5483",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "-",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 58,
+    "item_name": "กล่องใส่เครื่องมืออะไหล่ 41-B-1645",
+    "nsn": "4140-357-5483",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "กล่อง",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 59,
+    "item_name": "ข้อต่อด้ำมบล็อกยาว 5 นิ้ว 41-B-307",
+    "nsn": "5210-243-7326",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 06",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 60,
+    "item_name": "ชุดปะแจหกเหลี่ยม",
+    "nsn": "5120-00-935-4641",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 61,
+    "item_name": "ค้อนยำง",
+    "nsn": "5120-00-903-8553",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 62,
+    "item_name": "ชุดเหล็กส่ง 9 ตัวพร้อมซอง",
+    "nsn": "5120-00-903-8553",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 63,
+    "item_name": "กุญแจพร้อมลูก",
+    "nsn": "5340-00-628-1508",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 64,
+    "item_name": "นิ้วมือกล (สปริง)",
+    "nsn": "5340-00-628-1508",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 65,
+    "item_name": "คีมปากจระเข้ไม่มีฟันยาว 9 นิ้ว",
+    "nsn": "5120-00-624-8065",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 66,
+    "item_name": "ไขควงปากแบนยาว 3 นิ้ว",
+    "nsn": "5120-00-596-8502",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 67,
+    "item_name": "ไขควงปากแบนยาว 3 นิ้ว",
+    "nsn": "5120-00-596-8502",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 68,
+    "item_name": "ด้ำมไบไม้ (2 อัน)",
+    "nsn": "5110-00-595-8325",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 69,
+    "item_name": "หินแท่งกลมสีน ้ำเงินยาว 4 นิ้ว",
+    "nsn": "5345-00-584-4554",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 70,
+    "item_name": "ลูกยำงหัวค้อน  (2 อัน)",
+    "nsn": "5120-00-540-4273",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 71,
+    "item_name": "กล่องใส่เครื่องมือ",
+    "nsn": "5140-00-498-8772",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "กล่อง",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 72,
+    "item_name": "ไขควงแฉกครบ 5 ตัว",
+    "nsn": "5120-00-357-7175",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 73,
+    "item_name": "แปรงพู่กันใหญ่",
+    "nsn": "8020-00-297-6657",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 74,
+    "item_name": "เหล็กส่งเล็กมีลำยกันลื่น ย.6",
+    "nsn": "5120-00-293-3509",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 75,
+    "item_name": "ไขควงปากแบนยาว 13 นิ้ว",
+    "nsn": "5120-00-278-1280",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 76,
+    "item_name": "ข้อต่อบล็อก 90 องศำ",
+    "nsn": "5120-00-269-7971",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 77,
+    "item_name": "ประแจเลื่อนเบอร์ 12",
+    "nsn": "5120-00-264-3796",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 78,
+    "item_name": "คีมจิ้งจกขนาด 6 นิ้ว",
+    "nsn": "5120-00-247-5177",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 79,
+    "item_name": "ข้อต่อด้ำม ยาว 5 นิ้ว",
+    "nsn": "5120-00-243-7326",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 80,
+    "item_name": "สิ่วกว้ำง 1 ซม. ยาว 5.8 นิ้ว",
+    "nsn": "5110-00-242-3457",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 81,
+    "item_name": "เหล็กส่งทองเหลืองยาว 12 นิ้ว",
+    "nsn": "5120-00-241-3523",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 82,
+    "item_name": "ไขควงปากแบนขนาด  2 ทำง",
+    "nsn": "5120-00-240-5232",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 83,
+    "item_name": "คีมขนาด 6 นิ้ว",
+    "nsn": "5110-00-239-8253",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 84,
+    "item_name": "เหล็กส่งทองเหลืองยาว 6 นิ้ว",
+    "nsn": "5110-00-239-0037",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 85,
+    "item_name": "บล็อกขนาด ½ นิ้ว",
+    "nsn": "5120-00-237-0984",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 86,
+    "item_name": "เหล็กส่งเล็กยาว 4 นิ้ว",
+    "nsn": "5120-00-239-0035",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  },
+  {
+    "item_no": 87,
+    "item_name": "เหล็กส่งทองเหลืองกว้ำง 1 ซม. ยาว 4 นิ้ว",
+    "nsn": "5120-00-239-0036",
+    "service": "สพ.",
+    "rate_full": "1",
+    "rate_reduced": "1",
+    "category": "2",
+    "unit": "อัน",
+    "weight": "",
+    "volume": "",
+    "issuing_unit": "ป.4 พัน.4",
+    "price": "",
+    "transactions": [
+      {
+        "date": "๒ พ.ค. ๒๙",
+        "doc": "ใบเบิกที่ 4 / 28",
+        "req": "2",
+        "recv": "2",
+        "ret": "-",
+        "bal": "2",
+        "sig": "จ.ส.อ."
+      }
+    ]
+  }
+]

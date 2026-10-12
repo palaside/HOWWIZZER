@@ -1,0 +1,543 @@
+# INDEX_ARMO_GLOBAL — REFERENCE-LOCKED
+VERSION: 3.2-REFERENCE-LOCKED-WINDOWS-FONT-METRIC-SIGNATURE
+STATUS: FROZEN / CANONICAL REFERENCE
+CANONICAL_REFERENCE: `บัญชีหมายเลขอาวุธ.docx`
+CANONICAL_REFERENCE_SHA256: `e7f68e9f34e442983f68801146481b5a9344912609ce2dbd8ac1d45ecc3a3cb1`
+
+## AUTHORITY — HIGHEST DOCUMENT-SPECIFIC RULE
+ไฟล์ `บัญชีหมายเลขอาวุธ.docx` เป็น Source of Truth 100% สำหรับเอกสารประเภทบัญชีหมายเลขอาวุธ
+
+เมื่อกฎเก่า, Skill เก่า, PDF เก่า, inference หรือค่าที่ AI คำนวณเองขัดกับ Canonical Reference:
+**CANONICAL REFERENCE WINS**
+
+Generator ต้อง **clone/preserve OOXML จาก Canonical Reference** และเปลี่ยนเฉพาะ Variable Fields ที่ประกาศไว้เท่านั้น
+ห้าม rebuild geometry จากค่าที่เดา/วัดใหม่ ถ้าสามารถ clone โครงสร้างเดิมได้
+
+## GLOBAL FONT RULE
+ข้อความที่มองเห็นได้ทุกส่วน = **17 pt**
+ห้ามลด/เพิ่ม Font Size เพื่อแก้ overflow
+ถ้า overflow ให้แก้เฉพาะ variable/layout handling ที่ไม่ทำลาย Canonical Geometry
+
+## REFERENCE GEOMETRY LOCK
+ค่าที่ตรวจจาก Canonical DOCX:
+- Page: 21.0009 × 29.7004 cm
+- Margins: top 2.54 / bottom 2.54 / left 2.54 / right 2.54 cm
+- Header distance: 1.2488 cm
+- Footer distance: 1.2488 cm
+- Table count: 1
+- Table columns: 3
+- Canonical table rows in reference: 8
+- Canonical column widths: [3.242, 10.0013, 2.6599] cm
+
+**Implementation rule:** ค่าข้างบนใช้เพื่อ QA/traceability; Production ให้ clone section/table/cell/paragraph/run properties จาก Reference โดยตรง
+
+## IMMUTABLE FIELDS / STRUCTURE — PRESERVE 100%
+สิ่งต่อไปนี้ห้าม Generator เปลี่ยนเอง:
+- Page/section geometry
+- Header placement และ document/form-code placement
+- Title placement
+- Font size 17 pt
+- Paragraph spacing / line spacing / blank-line rhythm
+- Table outer geometry
+- จำนวนคอลัมน์และลำดับคอลัมน์
+- Column widths
+- Border topology รวมกรอบล่างของตาราง
+- Header-row geometry และรูปแบบหัวตาราง
+- Cell margins / vertical alignment / paragraph alignment
+- ตำแหน่งและโครงสร้าง Summary block
+- Summary paragraph geometry
+- Signature block geometry / spacing / alignment pattern
+- ตำแหน่ง Rank / Full Name / Position ตาม Canonical Reference
+- Bottom-table frame relationship กับ Signature block
+- Static wording ทุกจุดที่ไม่ได้ประกาศเป็น Variable
+
+ห้าม AI normalize, beautify, re-center, re-space, reflow หรือ redesign ส่วน Immutable
+
+## VARIABLE FIELDS — CHANGE ONLY WHEN INPUT REQUIRES
+อนุญาตให้แทนค่าเฉพาะ:
+1. `WEAPON_SERIAL[]` — หมายเลขอาวุธแต่ละรายการ
+2. `ITEM_NAME[]` — รายการของแต่ละแถว
+3. `REMARK[]` — หมายเหตุของแต่ละแถว
+4. `COUNT` — จำนวนรายการจริง
+5. `UNIT` — หน่วยนับ
+6. `EQUIPMENT_NAME` — ชื่อรายการใน Summary
+7. `SIGNER_RANK` — ยศผู้ลงนาม **เฉพาะเมื่อ input ระบุให้เปลี่ยน**
+8. `SIGNER_FULL_NAME` — ชื่อ-นามสกุล **เฉพาะเมื่อ input ระบุให้เปลี่ยน**
+9. `SIGNER_POSITION` — ตำแหน่ง **เฉพาะเมื่อ input ระบุให้เปลี่ยน**
+10. Document/form identifiers เฉพาะเมื่อระบบประกาศ field นั้นเป็น variable สำหรับงานนั้น
+
+### NO-VARIABLE RULE
+ถ้า Input ไม่มีค่าทดแทนสำหรับ Variable ใด:
+**PRESERVE CANONICAL VALUE**
+ห้ามล้างค่า ห้ามสร้างค่าใหม่ ห้ามเดา
+
+## TABLE RULE — CLONE, DO NOT REBUILD
+- Clone table OOXML จาก Canonical Reference
+- Clone canonical data-row OOXML เมื่อต้องเพิ่ม/ลดจำนวนรายการ
+- เปลี่ยนเฉพาะข้อความใน variable cells
+- Preserve borders, widths, cell properties, paragraph properties และ spacing
+- หัวตารางต้องยึด Canonical Reference โดยตรง ห้าม AI สร้างหัวตารางใหม่
+- กรอบล่างต้องยึด Canonical Reference โดยตรง
+
+## SUMMARY — REFERENCE LOCKED
+ยึดการจัดวางจาก Canonical Reference 100%
+ข้อความเชิงตัวแปรใช้ semantic pattern:
+`หมดรายการรวม [COUNT] [UNIT] ขอรับรองว่า`
+`[EQUIPMENT_NAME]`
+`[COUNT] [UNIT] และหมายเลข อยู่ครบถ้วนถูกต้อง`
+
+แต่ **line wrapping, paragraph geometry, spacing และตำแหน่ง** ให้ Canonical Reference เป็นผู้ตัดสิน
+ห้ามเพิ่มเส้น `-----`
+ห้ามนำ wording เก่ากลับมาใช้
+
+## WINDOWS FONT-METRIC SIGNATURE CALIBRATION — PRODUCTION RULE
+ก่อน Generate งานจริง ต้องมี `calibration/windows_font_metrics.json` ที่สร้างบน Windows เครื่องใช้งานจริง
+จากไฟล์ฟอนต์ **TH Sarabun New 17 pt ที่ติดตั้งจริง**
+
+- ห้ามใช้ heuristic width model
+- ห้ามใช้ค่าความกว้างตัวอักษรโดยประมาณ
+- Arbitrary signer name ต้องวัดด้วย FreeType จาก font file ที่ Calibration ระบุ
+- Anchor ของยศคำนวณใหม่ทุกครั้งจากความกว้าง `([CURRENT FULL NAME])`
+- `RIGHT_EDGE(last "." of RANK) == LEFT_EDGE("(" of CURRENT FULL NAME)`
+- Visual tolerance เป้าหมาย: `delta <= 1 mm`
+- ไม่มี Calibration = BLOCK GENERATION
+- Font file เปลี่ยน/หาย = BLOCK GENERATION
+- Calibration นี้เป็น machine-specific และต้องทำใหม่เมื่อเปลี่ยน font file
+
+
+## OFFICIAL REFERENCE-LOCKED EXCEPTION — DYNAMIC SIGNATURE X-ANCHOR
+Signature style, font 17 pt, vertical spacing, name alignment, position alignment และโครงสร้างบล็อก
+ยังคงยึด Canonical Reference
+
+**ข้อยกเว้นเดียว:** ตำแหน่งแนวนอนของ `SIGNER_RANK` เป็น Dynamic Variable Geometry
+
+ทุกครั้งที่ `SIGNER_FULL_NAME` เปลี่ยน Generator ต้องคำนวณ Anchor ใหม่จากชื่อปัจจุบัน:
+`RIGHT_EDGE(last "." of RANK) == LEFT_EDGE("(" of CURRENT FULL_NAME)`
+
+กฎบังคับ:
+- ห้ามใช้ fixed spaces
+- ห้ามใช้ fixed left_indent
+- ห้ามใช้ตำแหน่งยศจากชื่อใน Reference เป็นค่าตายตัว
+- ชื่อเต็มยัง Center ตาม Reference
+- ตำแหน่งยัง Center ตาม Reference
+- ขยับเฉพาะ Rank ในแกน X
+- ใช้ RIGHT TAB / RIGHT-EDGE anchor ที่คำนวณจากชื่อปัจจุบัน
+- ชื่อสั้น / ปกติ / ยาว / ยาวมาก ต้องทำให้ Rank เคลื่อนตาม `(` ทุกครั้ง
+- ถ้า Rank ไม่เคลื่อนเมื่อ left edge ของชื่อเปลี่ยน = FAIL
+
+
+## SIGNATURE — REFERENCE LOCKED
+Signature Block ให้ clone geometry จาก Canonical Reference:
+`[SIGNER_RANK]`
+`([SIGNER_FULL_NAME])`
+`[SIGNER_POSITION]`
+
+- ถ้าไม่มี signer variables ใหม่ ให้คง `ร.อ. / (กฤติน นราพงษ์) / ผบ.ป.๔ พัน.๔ ร้อย.๒`
+- ถ้ามีการเปลี่ยน signer ให้เปลี่ยนเฉพาะ text
+- Preserve paragraph/tab/indent/spacing/alignment จาก Canonical Reference ก่อน
+- ห้ามใช้ indent guessing
+- ห้ามย้ายทั้งบล็อกเพื่อชดเชยข้อความใหม่
+- หาก variable text ใหม่ทำให้ geometry แตก ให้ BLOCK และขอ Review แทนการ redesign อัตโนมัติ
+
+## REFERENCE-LOCKED GENERATOR ALGORITHM
+1. Load Canonical Reference
+2. Verify SHA-256
+3. Clone document as working copy
+4. Resolve declared variables
+5. Replace variable text only
+6. Clone/remove canonical data rows only when COUNT requires
+7. Recalculate COUNT-dependent Summary text
+8. Preserve all immutable OOXML
+9. Save DOCX
+10. Render every page
+11. Compare against Reference-Lock gates
+12. FAIL => BLOCK EXPORT; PASS => READY
+
+## VALIDATION GATES
+- REFERENCE_SHA256_MATCH
+- GLOBAL_FONT_SIZE == 17pt
+- SECTION_GEOMETRY == CANONICAL
+- TABLE_COLUMN_COUNT == CANONICAL
+- TABLE_COLUMN_WIDTHS == CANONICAL
+- TABLE_BORDER_TOPOLOGY == CANONICAL
+- HEADER_PATTERN == CANONICAL
+- SUMMARY_STRUCTURE == CANONICAL
+- SIGNATURE_STRUCTURE == CANONICAL
+- BOTTOM_BORDER == CANONICAL
+- STATIC_TEXT_UNCHANGED
+- ONLY_DECLARED_VARIABLES_CHANGED
+- NO_UNDECLARED_FORMATTING_CHANGE
+- RENDER_VISUAL_QA == PASS
+
+ข้อใดข้อหนึ่ง FAIL:
+`REFERENCE_LOCK_GATE = FAIL`
+`EXPORT = BLOCKED`
+
+---
+
+# LEGACY RULES — RETAINED FOR TRACEABILITY ONLY
+กฎด้านล่างมาจาก Skill รุ่นก่อน หากขัดกับ Reference-Locked Contract ด้านบน ให้ **Reference-Locked Contract ชนะเสมอ**
+
+# GLOBAL RULE STACK — MANDATORY
+
+## GLOBAL FONT SIZE IRON RULE — MANDATORY
+`GLOBAL_FONT_SIZE = 17 pt`
+
+- ใช้กับข้อความที่มองเห็นได้ทุกส่วนของเอกสารโดยไม่มีข้อยกเว้น
+- Header / Footer / Form Code / Title / Paragraph / Table Header / Data Row / Summary / Signature = 17 pt
+- คำสั่งขนาด 15 / 16 / 18 / 20 pt เดิมใน Skill หรือ Reference ถูกยกเลิกเฉพาะเรื่องขนาด
+- ห้ามลด/เพิ่ม Font Size เพื่อแก้ข้อความล้นหรือเลียนแบบ Reference
+- ถ้าข้อความล้น ให้แก้ Layout/Geometry เท่านั้น
+- Priority: USER CURRENT DIRECTIVE > GLOBAL_FONT_SIZE_RULE > DOCUMENT-SPECIFIC SKILL > REFERENCE > SOURCE
+- Validation: ถ้ามี visible text run ใดไม่ใช่ 17 pt = FAIL / BLOCK EXPORT
+
+
+กฎระดับ Global นี้อยู่เหนือกฎเฉพาะของเอกสารทุกชนิด
+
+## A. GLOBAL DOCUMENT CLONE IRON RULE
+
+งานสร้างเอกสารจากต้นฉบับต้องถือเป็น **FORENSIC DOCUMENT CLONE — STRICT 1:1**
+ไม่ใช่งานออกแบบใหม่
+
+### SOURCE OF TRUTH
+- เอกสารต้นฉบับ/Reference ที่ผู้ใช้ระบุ คือ Source of Truth
+- ต้องรักษาคำ ข้อมูล เลขไทย/อารบิก และความไม่สมมาตรของต้นฉบับ
+- ห้ามเติม แก้คำ normalize หรือปรับให้สวยขึ้นเอง
+- ถ้าต้นฉบับมีช่องว่าง ระยะเยื้อง หรือองค์ประกอบที่ดูไม่สมมาตร ให้คงไว้
+
+### VISUAL + STRUCTURAL 1:1
+ต้องจำลองให้ใกล้ต้นฉบับที่สุดทั้ง:
+- ขนาดและแนวกระดาษ
+- Margin / Header / Footer
+- ตำแหน่งข้อความ
+- Font / Font Size / Weight
+- Alignment / Indent / Tab Stop
+- Line spacing / Paragraph spacing
+- ตาราง แถว คอลัมน์ ความกว้าง ความสูง Cell margin
+- Border / Merge cell
+- Page break / ตำแหน่งองค์ประกอบรายหน้า
+
+ต้องใช้โครงสร้าง Word จริงเมื่อทำได้ ห้ามใช้ space หลายตัวเพื่อปลอมตำแหน่งที่ควรเป็น
+Alignment, Tab Stop, Indent, Table หรือโครงสร้าง Word
+
+### NO AI REDESIGN
+**ห้ามออกแบบใหม่ ห้ามปรับปรุง ห้ามจัดใหม่ ห้ามตีความเพื่อความสวยงาม**
+เป้าหมายคือให้ดูเหมือนเอกสารที่คนพิมพ์ตามแบบเดิม ไม่ใช่เอกสารที่ AI ออกแบบขึ้นใหม่
+
+### SCOPED EDIT IRON RULE
+เมื่อผู้ใช้สั่งแก้เอกสารที่ Clone แล้ว:
+> **สั่งแก้ตรงไหน = แก้เฉพาะตรงนั้น**
+> **ไม่ได้สั่ง = ห้ามแตะ**
+> **การแก้จุดหนึ่งต้องไม่ทำให้ Layout จุดอื่นเปลี่ยน**
+
+หากวิธีแก้ทำให้ส่วนอื่นเคลื่อน ต้องย้อนและเลือกวิธีที่กระทบน้อยกว่า
+
+### RENDER / VISUAL QA
+ก่อนส่ง DOCX:
+1. Save
+2. Render ทุกหน้าเป็นภาพ
+3. เทียบกับ Reference หน้า-ต่อ-หน้า
+4. ตรวจตำแหน่ง ขนาด ระยะห่าง ตาราง เส้นขอบ และ Page Break
+5. ถ้าต่างจาก Reference โดยไม่ได้รับคำสั่ง → FIX → RENDER AGAIN
+6. ห้ามกล่าวว่า Render/QA ผ่าน ถ้ายังไม่ได้ตรวจจริง
+
+## B. GLOBAL PAGE LAYOUT IRON RULE
+
+ค่า Page Layout มาตรฐาน:
+- Paper Size: **A4**
+- Top Margin: **2.54 cm**
+- Bottom Margin: **2.54 cm**
+- Left Margin: **2.54 cm**
+- Right Margin: **2.54 cm**
+- Header Distance: **1.27 cm**
+- Footer Distance: **1.27 cm**
+- Orientation: **FOLLOW SOURCE DOCUMENT**
+
+Orientation ต้องยึดแนวกระดาษของต้นฉบับจริง เช่น Portrait หรือ Landscape
+ห้ามเปลี่ยนแนวกระดาษเอง
+
+ข้อยกเว้นของ Global Page Layout ใช้ได้เฉพาะเมื่อผู้ใช้ระบุ Exception โดยตรง
+
+## C. PRIORITY / EXECUTION ORDER
+
+**Source Document → Forensic Analysis → Global Clone Rule → Global Page Rule → Document-Specific Skill → User Scoped Edit → Impact Check → Render → Visual Comparison → Deliver**
+
+
+# PURPOSE
+สกิลนี้ใช้สร้างเอกสาร “บัญชีหมายเลขอาวุธล่าสุด” ให้ผลลัพธ์ตรงกับ Production Baseline
+ทั้ง 6 ฉบับ/แผ่น โดยเปลี่ยนเฉพาะข้อมูลรายการของแต่ละแผ่น ห้ามออกแบบ Layout ใหม่เอง
+
+# HARD RULE 0 — REFERENCE-FIRST
+1. ต้องใช้ Canonical Reference เป็นแม่แบบทาง Layout
+2. ต้อง clone โครงสร้าง/format จาก Reference แล้วแทนข้อมูล
+3. ห้ามสร้างตารางใหม่จากค่าประมาณ ถ้ามี Reference ใช้งานได้
+4. ห้ามยืดความสูงแถวเพื่อเติมพื้นที่หน้า
+5. ห้าม merge ส่วนท้ายจนโครงสร้าง 3 คอลัมน์หาย
+6. ห้ามแก้ Layout ที่ผ่านอนุมัติแล้วโดยไม่มีคำสั่งชัดเจน
+
+# PAGE — DOCUMENT-SPECIFIC
+- A4 Portrait ตามต้นฉบับ
+- Page size: 21.0 x 29.7 cm
+- Margins: 2.54 cm ทั้ง 4 ด้าน ตาม GLOBAL PAGE LAYOUT IRON RULE
+- Header distance: 1.27 cm
+- Footer distance: 1.27 cm
+- 1 equipment account = 1 sheet/page
+- Production output = 6 sheets/pages
+- ต้องมี explicit page break ระหว่างแต่ละบัญชี
+- ห้ามปล่อยให้บัญชีสองชนิดไหลรวมหน้าเดียวกัน
+
+# HEADER
+ทุกแผ่นต้องมี:
+- `ทบ. ๔๖๘ – ๒๐๔` ชิดขวา
+- `( คส. ๔ )` ชิดขวา
+- `บัญชีหมายเลขอาวุธ` กึ่งกลาง
+- TH Sarabun New 17 pt เว้นแต่ Reference มี run-level formatting เฉพาะ ให้ preserve Reference
+
+# TABLE — PRODUCTION LOCK
+ตารางต้องมี 3 คอลัมน์ตลอด:
+1. หมายเลขอาวุธ
+2. รายการ
+3. หมายเหตุ
+
+กฎ:
+- ใช้ column geometry จาก Reference/Production โดยตรง
+- Grid widths ที่ตรวจได้จาก Production: [0.01, 0.01, 0.01]
+- คงเส้นแนวตั้งทั้ง 3 คอลัมน์
+- Header มีเส้นบนและเส้นล่าง
+- Data rows ไม่มีเส้นแนวนอนคั่นกลาง
+- Final border อยู่หลังส่วนลงนามและระยะเว้นท้าย
+- ห้ามเพิ่มแถวเปล่ายาว ๆ เพื่อดันกรอบล่างลงท้ายหน้า
+- ความสูงตารางต้องเกิดจากจำนวนรายการ + spacing ของส่วนท้ายเท่านั้น
+- คอลัมน์ “รายการ” จัดกึ่งกลางแนวนอนและแนวตั้ง
+- หมายเลขและหมายเหตุให้ preserve alignment ตาม Reference
+- เนื้อหาปกติ TH Sarabun New 17 pt
+
+# DATA-ROW CONSTRUCTION
+ใช้ data-row จาก Reference เป็น template row:
+- clone OOXML ของ data row
+- สร้างจำนวน data rows เท่าจำนวนรายการจริงของแผ่น
+- แทนเฉพาะ text ของ 3 cells
+- preserve cell properties, widths, borders, paragraph formatting และ vertical alignment
+- ห้ามกำหนด row height แบบ exact เพื่อทำให้ตารางยาว
+- ถ้าชื่อรายการยาว ให้ Word wrap ภายใน cell ตามความกว้างจริง ห้ามขยายตาราง
+
+## DATA-ROW TOP-SPACING LOCK — USER APPROVED
+ใช้กับ data row ของทั้ง 6 หน้า:
+- ข้อความใน data row ห้ามชิดเส้นบนของแถวนั้น
+- ก่อนข้อความรายการจริงของแต่ละ data row ให้มีระยะลงมาเทียบเท่า **Enter 1 ครั้ง / blank paragraph 1 บรรทัด**
+- ใช้กฎนี้เหมือนกันทั้ง 3 cells ของ data row: `หมายเลขอาวุธ` / `รายการ` / `หมายเหตุ`
+- ให้คง alignment, font, font size, border, column geometry และข้อมูลเดิมทั้งหมด
+- การเพิ่มระยะนี้เป็น scoped edit: ห้ามเปลี่ยน Header, Summary, Signature, จำนวนหน้า, จำนวน data rows หรือข้อความรายการ
+- ใช้กับทั้ง 6 หน้า
+
+# DOCUMENT_END_SUMMARY_PATTERN — USER-APPROVED REFERENCE / IRON RULE
+ส่วนท้ายตารางของ INDEX_ARMO ทั้ง 6 แผ่น ให้ใช้ Reference นี้เป็น Source of Truth
+
+VISIBLE TEXT PATTERN — EXACTLY 3 LINES:
+`หมดรายการรวม [COUNT] [UNIT] ขอรับรองว่า`
+`[EQUIPMENT_NAME]`
+`[COUNT] [UNIT] และหมายเลข อยู่ครบถ้วนถูกต้อง`
+
+กฎบังคับ:
+- ใช้ข้อความ 3 บรรทัดนี้เท่านั้น
+- เปลี่ยนได้เฉพาะ `[COUNT]`, `[UNIT]`, `[EQUIPMENT_NAME]`
+- `[EQUIPMENT_NAME]` ต้องอยู่บรรทัดที่ 2 เพียงบรรทัดเดียว
+- ห้ามใช้ข้อความเดิม `ตามหมายเลขข้างบนอยู่ครบถ้วน`
+- ห้ามใช้ข้อความเดิม `ถูกต้องทุกหมายเลข`
+- ห้ามใส่เส้น `-----` เป็นส่วนหนึ่งของข้อความ
+- ใช้ GLOBAL_FONT_SIZE = 17 pt ทุกบรรทัด
+- ใช้กับทั้ง 6 แผ่น
+- COUNT ต้องตรงกับจำนวน Data Rows ของแผ่นนั้น
+- UNIT และ EQUIPMENT_NAME ต้องมาจากข้อมูลของแผ่นนั้น
+- ห้ามคัดค่าจากแผ่นก่อนหน้า
+- ห้ามแต่ง/normalize/สลับคำจาก Pattern นี้
+
+VALIDATION:
+- SUMMARY_LINE_COUNT == 3
+- SUMMARY_FONT == 17pt
+- SUMMARY_LINE_1 == `หมดรายการรวม [COUNT] [UNIT] ขอรับรองว่า`
+- SUMMARY_LINE_2 == `[EQUIPMENT_NAME]`
+- SUMMARY_LINE_3 == `[COUNT] [UNIT] และหมายเลข อยู่ครบถ้วนถูกต้อง`
+- SUMMARY_OLD_WORDING_PRESENT == false
+- FAIL => BLOCK EXPORT
+
+# SIGNATURE_BLOCK_PATTERN — GLOBAL SIGNATURE IRON RULE
+กฎนี้เป็น **RULE สำหรับการลงนามทุกครั้ง** ไม่จำกัดเฉพาะเอกสารนี้
+
+หลัง Summary เว้น 2 บรรทัด แล้วลงนาม TH Sarabun New 17 pt:
+
+`[RANK]`
+`([FULL_NAME])`
+`[POSITION]`
+
+สำหรับ Production Dataset ปัจจุบัน:
+`ร.อ.`
+`(กฤติน นราพงษ์)`
+`ผบ.ป.๔ พัน.๔ ร้อย.๒`
+
+กฎตำแหน่งบังคับ:
+- ชื่อเต็มและตำแหน่งรักษา Layout กึ่งกลางตาม Reference
+- ยศอยู่บรรทัดก่อนชื่อเต็ม
+- ห้าม center ยศแบบอิสระ
+- **จุดสุดท้าย `.` ของยศ ต้องอยู่ในแนวตั้งเดียวกับวงเล็บเปิด `(` ของชื่อเต็ม**
+- ตัวอย่างบังคับ: จุดสุดท้ายของ `ร.อ.` ต้องตรงแนวตั้งกับ `(` ของ `(กฤติน นราพงษ์)`
+- ใช้ **Anchor-Based Alignment** เท่านั้น ห้ามใช้การเดา `left_indent` เพื่อเลื่อนยศ
+- สร้าง `SIGNATURE_NAME_LEFT_ANCHOR` จากตำแหน่งขอบซ้ายของ `(` ของชื่อเต็ม
+- บรรทัดยศใช้ **RIGHT TAB / RIGHT EDGE** จบที่ `SIGNATURE_NAME_LEFT_ANCHOR`
+- บรรทัดชื่อเต็มและบรรทัดตำแหน่งยังคง Center บนฐานเดียวกัน
+- ขยับเฉพาะยศเพื่อให้ผ่านกฎนี้ ห้ามขยับชื่อเต็มเพื่อไล่หายศ
+- ห้ามขยับบล็อกลายเซ็นทั้งชุดเมื่อแก้เฉพาะยศ
+- GLOBAL RULE: `RIGHT_EDGE(last "." of RANK) == LEFT_EDGE("(" of FULL_NAME)`
+- ต้อง Render และตรวจ alignment นี้ทุกหน้าที่มีการลงนาม
+- ถ้าไม่ตรง = SIGNATURE GATE FAIL และห้ามประกาศ PASS
+
+หลังบรรทัดตำแหน่ง:
+- เว้น 2 บรรทัด
+- จึงวางเส้นกรอบท้ายตาราง
+
+# PRODUCTION DATASET — 6 SHEETS
+SHEET 1
+EQUIPMENT_NAME = `ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม. ๑๐๑ เอ. ๑`
+COUNT = `๖`
+UNIT = `กระบอก`
+ROWS =
+- `๒๔๐๘๐` | `(ส่งซ่อม)`
+- `๑๙๖๐๙` | ``
+- `๒๐๖๗๐` | ``
+- `๒๓๕๕๔` | ``
+- `๒๔๒๘๐` | ``
+- `๘๕๑๖` | ``
+
+SHEET 2
+EQUIPMENT_NAME = `กล้องเล็งพาโนรามิค`
+COUNT = `๙`
+UNIT = `กล้อง`
+ROWS =
+- `๐๒๙๔`
+- `๐๒๙๖`
+- `๐๒๙๘`
+- `๐๒๙๙`
+- `๒๔๑๖๕`
+- `๕๗๗๕๖`
+- `๔๓๕` | `อะไหล่`
+- `๔๓๑` | `อะไหล่`
+- `๔๙๒๙๕` | `อะไหล่`
+
+SHEET 3
+EQUIPMENT_NAME = `กล้องข้อศอก`
+COUNT = `๗`
+UNIT = `กล้อง`
+ROWS =
+- `๑๓๘๒๗`
+- `๒๖๕๓`
+- `๓๕๘๙๗`
+- `๓๖๐๐๘`
+- `๓๖๔๗๔`
+- `๒๓๓๒`
+- `๓๖๐๗๓` | `อะไหล่`
+
+SHEET 4
+EQUIPMENT_NAME = `เครื่องตั้งมุมยิงประณีต`
+COUNT = `๖`
+UNIT = `เครื่อง`
+ROWS =
+- `๑๗๙๑๐๒`
+- `๓๐๑๙๒`
+- `๒๘๑๘๙`
+- `๙๖๑๕๗`
+- `๑๔๗๘๓๐`
+- `๑๔๗๓๔๙`
+
+SHEET 5
+EQUIPMENT_NAME = `ฐานกล้องเล็ง`
+COUNT = `๙`
+UNIT = `อัน`
+ROWS =
+- `๐๒๙๑`
+- `๐๒๘๓`
+- `0290`
+- `๐๔๒๔`
+- `๐๔๓๕`
+- `๐๔๓๑`
+- `๑๒๐๓๓` | `อะไหล่`
+- `๒๗๐๒๖` | `อะไหล่`
+- `๗๑๑๕` | `อะไหล่`
+
+SHEET 6
+EQUIPMENT_NAME = `คอลลิเมเตอร์`
+COUNT = `๕`
+UNIT = `เครื่อง`
+ROWS =
+- `๙๑๔๘`
+- `๙๗๗๔`
+- `๙๓๕๐`
+- `๑๘๘๒`
+- `๑๘๘๓`
+
+# SOURCE-PRESERVATION RULES
+- รักษาเลขไทย/เลขอารบิกตามต้นฉบับ
+- `0290` ต้องคงเป็นเลขอารบิกตาม Production Baseline
+- ห้าม normalize ชื่อยุทโธปกรณ์เอง
+- ห้ามแก้คำหรือหมายเลขจากความรู้ภายนอก
+- ถ้าข้อมูลใหม่ไม่ครบ ให้หยุดและรายงานช่องที่ขาด ห้ามเดา
+
+# REQUIRED GENERATION ALGORITHM
+1. เปิด Canonical Reference ด้วย python-docx
+2. clone reference document สำหรับแต่ละ sheet
+3. เก็บ header และ table header เดิม
+4. clone data-row template เท่าจำนวนรายการจริง
+5. แทนหมายเลข / รายการ / หมายเหตุ
+6. clone summary/signature row จาก Reference
+7. แทนเฉพาะ 3 summary lines; preserve blank paragraphs และ signature geometry
+8. summary = 15 pt
+9. signature = 16 pt
+10. ตรวจ signature iron rule
+11. รวม 6 sheet โดยใช้ explicit page breaks
+12. ห้ามสร้าง filler rows
+13. save DOCX
+14. render DOCX ด้วย `/home/oai/skills/docx/render_docx.py`
+15. ตรวจ PNG ทุกหน้า 100%
+16. ถ้าหน้าไม่ตรง Reference: FIX → RENDER AGAIN → VERIFY
+17. ส่งไฟล์ได้ต่อเมื่อผ่านทุก gate
+
+# AUTOMATED STRUCTURAL GATES
+ต้อง PASS ทั้งหมด:
+- PAGE_COUNT == 6
+- TABLES_PER_SHEET == 1
+- TABLE_COLUMNS == 3
+- DATA_ROW_COUNT == declared COUNT
+- DATA_ROW_TOP_SPACING == one blank paragraph before row text on all 6 sheets
+- SUMMARY_FONT == 17pt
+- SUMMARY_LITERAL_PATTERN == exact 3-line production pattern
+- SIGNATURE_FONT == 16pt
+- NO_MIDDLE_HORIZONTAL_BORDERS == true
+- NO_FILLER_ROWS == true
+- ARABIC_0290_PRESERVED == true
+- SIGNATURE_DOT_ALIGNS_WITH_NAME_OPEN_PAREN == visually verified
+- GLOBAL_SIGNATURE_LAST_DOT_ALIGNS_WITH_NAME_OPEN_PAREN == visually verified
+- ALL_TEXT_VISIBLE == visually verified
+
+# FAILURE CONDITIONS
+ถือว่า FAIL และห้ามเรียก Production หาก:
+- ตัวหนังสือหาย
+- ตารางยืดยาวผิด Reference
+- มี filler rows
+- Summary หายหรือ font ผิด
+- ตารางไม่ใช่ 3 คอลัมน์
+- มีเส้นแนวนอนกลาง
+- `ร.อ.` อยู่กึ่งกลางผิดกฎ
+- จุดหลัง `อ.` ไม่ตรงแนว `(`
+- รายการ/หมายเลขผิดต้นฉบับ
+- output ไม่ครบ 6 แผ่น
+- ยังไม่ได้ Render และตรวจทุกหน้า
+
+# ACCEPTANCE
+ผลลัพธ์ที่ถูกต้องต้องเทียบกับ:
+`บัญชีหมายเลขอาวุธล่าสุด_INDEX_ARMO_แก้ไขใหม่.docx`
+
+นี่คือ Production Baseline v1.0
+ห้ามใช้ไฟล์ `บัญชีหมายเลขอาวุธล่าสุด_มาตรฐาน_INDEX_ARMO.docx` รุ่นที่ตารางยาวผิดเป็น Reference
+
+
+# MIGRATION NOTE — GLOBAL FONT SIZE 17 PT
+คำสั่งขนาดฟอนต์เดิมใดๆ ที่ยังปรากฏในข้อความประวัติ/Reference ให้ถือว่าถูก GLOBAL_FONT_SIZE_RULE = 17 pt override ทั้งหมด

@@ -1,0 +1,4144 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บัญชีสิ่งอุปกรณ์ของหน่วย (ทบ.๔๐๐-๐๐๕) - SUPERCLONE</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap');
+        
+        @page {
+            size: 148mm 210mm; /* A5 Portrait */
+            margin: 0;
+        }
+        
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #525659;
+            font-family: 'TH Sarabun PSK', 'TH Sarabun New', 'Sarabun', sans-serif;
+            font-size: 12pt;
+            line-height: 1.15;
+            color: #000;
+        }
+        
+        .thai-numeral {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "locl" 1, "numr" 1;
+        }
+        
+        .a5-sheet {
+            width: 148mm;
+            height: 210mm;
+            background: #ffffff;
+            margin: 15px auto;
+            padding: 6mm 7mm 5mm 7mm;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            overflow: hidden;
+        }
+        
+        @media print {
+            body {
+                background-color: transparent;
+            }
+            .a5-sheet {
+                margin: 0;
+                box-shadow: none;
+                width: 148mm;
+                height: 210mm;
+            }
+        }
+        
+        .card-header-row {
+            text-align: right;
+            font-size: 13pt;
+            line-height: 1.0;
+            margin-bottom: 1mm;
+        }
+        
+        .card-title {
+            text-align: center;
+            font-size: 16pt;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 2mm;
+        }
+        
+        .unit-info-block {
+            font-size: 11pt;
+            line-height: 1.15;
+            margin-bottom: 1.5mm;
+            border-bottom: 1px solid #000;
+            padding-bottom: 1mm;
+        }
+        
+        .unit-name-line {
+            font-weight: normal;
+        }
+        
+        .unit-detail-line {
+            display: flex;
+            justify-content: flex-start;
+            font-size: 10.5pt;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .ledger-table {
+            border: 1px solid #000;
+            margin-bottom: 1.5mm;
+        }
+        
+        .ledger-table th, .ledger-table td {
+            border: 1px solid #000;
+            padding: 1px 2px;
+            font-size: 10.5pt;
+            line-height: 1.05;
+            text-align: center;
+        }
+        
+        .ledger-table th {
+            font-weight: normal;
+            background-color: #fcfcfc;
+        }
+        
+        .tx-row td {
+            height: 4.8mm;
+        }
+        
+        .tx-date {
+            white-space: nowrap;
+            font-size: 10pt;
+        }
+        
+        .tx-doc {
+            text-align: left !important;
+            padding-left: 3px !important;
+            font-size: 9.5pt !important;
+            line-height: 1.0;
+        }
+        
+        .tx-qty {
+            font-size: 10.5pt;
+        }
+        
+        .tx-sig {
+            font-size: 10pt;
+        }
+        
+        .footer-spec-table {
+            border: 1px solid #000;
+            margin-bottom: 1.5mm;
+        }
+        
+        .footer-spec-table td {
+            border: 1px solid #000;
+            padding: 1.5px 3px;
+            font-size: 10.5pt;
+            line-height: 1.1;
+        }
+        
+        .f-lbl {
+            font-size: 10pt;
+            color: #333;
+        }
+        
+        .f-val {
+            font-size: 11pt;
+            font-weight: bold;
+        }
+        
+        .f-span-row {
+            padding: 1px 3px;
+        }
+        
+        .regulation-note {
+            font-size: 8.5pt;
+            text-align: center;
+            color: #444;
+            margin-top: auto;
+        }
+        
+        /* BACK CARD */
+        .back-title {
+            text-align: center;
+            font-size: 14pt;
+            font-weight: bold;
+            line-height: 1.2;
+            margin-top: 3mm;
+            margin-bottom: 4mm;
+        }
+        
+        .back-table {
+            border: 1px solid #000;
+            margin-top: 2mm;
+        }
+        
+        .back-table th, .back-table td {
+            border: 1px solid #000;
+            padding: 2px 3px;
+            font-size: 11pt;
+            text-align: center;
+        }
+        
+        .back-row td {
+            height: 7.5mm;
+        }
+        
+        /* TOC TABLE */
+        .toc-table {
+            border: 1px solid #000;
+            margin-bottom: 3mm;
+        }
+        
+        .toc-table th, .toc-table td {
+            border: 1px solid #000;
+            padding: 1.5px 3px;
+            font-size: 10.5pt;
+            text-align: center;
+        }
+        
+        .toc-name {
+            text-align: left !important;
+            padding-left: 5px !important;
+        }
+        
+        .toc-sec-title {
+            background: #eee;
+            font-weight: bold;
+            text-align: center;
+            font-size: 10.5pt;
+        }
+        
+        .cert-box {
+            border: 1px solid #000;
+            padding: 3mm;
+            font-size: 10.5pt;
+            line-height: 1.2;
+        }
+        
+        .cert-title {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1mm;
+        }
+        
+        .cert-statement {
+            text-indent: 10mm;
+            text-align: justify;
+            margin: 2mm 0;
+            font-size: 10pt;
+        }
+        
+        .sig-container {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 3mm;
+        }
+        
+        .sig-block {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 11pt;
+            line-height: 1.1;
+        }
+        
+        .sig-name-pos-group {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin-left: 20px;
+        }
+        
+        .sig-name-wrapper {
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+            margin-top: 6mm;
+        }
+        
+        .sig-rank-anchor {
+            position: absolute;
+            right: 100%;
+            bottom: calc(100% + 2mm);
+            white-space: nowrap;
+            font-size: 11pt;
+            line-height: 1.0;
+        }
+        
+        .sig-name, .sig-pos {
+            font-size: 11pt;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    
+<!-- PAGE 1: TOC & UNIT CERTIFICATION -->
+<div class="a5-sheet" id="page-toc">
+    <div class="card-title" style="margin-top: 2mm; margin-bottom: 3mm;">
+        สารบัญ<br>
+        <span style="font-size: 13pt; font-weight: normal;">บัญชีสิ่งอุปกรณ์ สป.๒-๔ สาย สพ. อจย.๖-๒๗ (๒ พ.ค.๒๙)</span>
+    </div>
+    
+    <table class="toc-table">
+        <thead>
+            <tr>
+                <th style="width: 18%;">ลำดับ</th>
+                <th style="width: 66%;">รายการ</th>
+                <th style="width: 16%;">หน้า</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๑</td>
+        <td class="toc-name">ปบค. ขนาด 105 มม. พร้อมรถรองปืน เอ็ม.2 เอ.2</td>
+        <td class="toc-page thai-numeral">๑</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๒</td>
+        <td class="toc-name">เครื่องมือชุดช่างซ่อมปืนใหญ่</td>
+        <td class="toc-page thai-numeral">๒</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๓</td>
+        <td class="toc-name">เครื่องวัดอุณหภูมิส่วนบรรจุ</td>
+        <td class="toc-page thai-numeral">๓</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๔</td>
+        <td class="toc-name">ลำกล้องปืนหลอดพร้อมเครื่องประกอบ</td>
+        <td class="toc-page thai-numeral">๔</td>
+    </tr>
+    
+    
+        <tr class="toc-sec-row">
+            <td colspan="3" class="toc-sec-title">ประเภท 4 ( นอกอัตรา )</td>
+        </tr>
+        
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๕</td>
+        <td class="toc-name">กล้องพาโนรามิค</td>
+        <td class="toc-page thai-numeral">๕</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๖</td>
+        <td class="toc-name">กล้องข้อศอก</td>
+        <td class="toc-page thai-numeral">๖</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๗</td>
+        <td class="toc-name">เครื่องตั้งมุมยิงประณีต</td>
+        <td class="toc-page thai-numeral">๗</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๘</td>
+        <td class="toc-name">เครื่องวัดอุณหภูมิดินส่ง ( แบบดิจิตอล )</td>
+        <td class="toc-page thai-numeral">๘</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๙</td>
+        <td class="toc-name">ฐานกล้องเล็ง</td>
+        <td class="toc-page thai-numeral">๙</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๑๐</td>
+        <td class="toc-name">กล้องคอลลิเมเตอร์</td>
+        <td class="toc-page thai-numeral">๑๐</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๑๑</td>
+        <td class="toc-name">เครื่องอะไหล่ซ่อมบำรุง 2 ( ปบค.95 )</td>
+        <td class="toc-page thai-numeral">๑๑</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๑๒</td>
+        <td class="toc-name">ชุดตรวจและเติมแก๊ส</td>
+        <td class="toc-page thai-numeral">๑๒</td>
+    </tr>
+    
+    
+        <tr class="toc-sec-row">
+            <td colspan="3" class="toc-sec-title">สาย พธ.</td>
+        </tr>
+        
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๑๓</td>
+        <td class="toc-name">กระโจมประจำหมู่</td>
+        <td class="toc-page thai-numeral">๑๓</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๑๔</td>
+        <td class="toc-name">กระโจมกระสุน</td>
+        <td class="toc-page thai-numeral">๑๔</td>
+    </tr>
+    
+    
+    <tr class="toc-row">
+        <td class="toc-no thai-numeral">๑๕</td>
+        <td class="toc-name">กระโจมส่วนบรรจุ</td>
+        <td class="toc-page thai-numeral">๑๕</td>
+    </tr>
+    
+        </tbody>
+    </table>
+    
+    <div class="cert-box">
+        <div class="cert-title">บันทึกผลการตรวจของผู้บังคับบัญชา</div>
+        <div class="cert-date-result">
+            <span>เม.ย. 69</span> &nbsp; <span>ถูกต้องตามจำนวนและสามารถใช้การได้เป็นอย่างดี</span>
+        </div>
+        <div class="cert-statement">“ข้าพเจ้าขอรับรองว่าทรัพย์สินซึ่งแสดงไว้ในบัญชีคุมนี้ เป็นทรัพย์สินที่หน่วยได้รับไว้ในความรับผิดชอบจริง และได้เก็บรักษาไว้ในสภาพเรียบร้อย ถูกต้องตามระเบียบของทางราชการทุกประการ”</div>
+        
+        <!-- SIGNATURE BLOCK (Universal Red Line Standard) -->
+        <div class="sig-container">
+            <div class="sig-block">
+                <div class="sig-name-pos-group">
+                    <div class="sig-name-wrapper">
+                        <span class="sig-rank-anchor">ร.อ.</span>
+                        <div class="sig-name">(กฤติน  นราพงษ์)</div>
+                    </div>
+                    <div class="sig-pos">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+    <!-- CARD 1: ปบค. 95 ขนาด 105 มม. พร้อมรถรอง เอ็ม.2 เอ.2 (FRONT) -->
+    <div class="a5-sheet" id="card-1-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row">
+                <td class="tx-date thai-numeral">29 ก.ค. 07</td>
+                <td class="tx-doc">ใบเบิกที่ 15 / 07<br>ลง 29 ก.ค. 07<br>ทะเบียนหน่วยจ่าย<br>ที่ 63 / 07<br>ลง 29 ก.ค. 07</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-qty thai-numeral">-</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-sig">จ.ส.อ.</td>
+            </tr>
+            
+            <tr class="tx-row">
+                <td class="tx-date thai-numeral">14 ธ.ค. 32</td>
+                <td class="tx-doc">ใบเบิกที่ 35 / 32<br>ลง 14 ธ.ค. 32<br>ทะเบียนหน่วยจ่าย<br>ที่ 113 / 32<br>ลง 14 ธ.ค. 32</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-qty thai-numeral">-</td>
+                <td class="tx-qty thai-numeral">4</td>
+                <td class="tx-sig">จ.ส.อ.</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral">6</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral">4</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">2</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">กระบอก</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral">4,980 ปอนด์</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral">793.65 ลบ./ ฟ.</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">1015-00-722-9752</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">ปบค. 95 ขนาด 105 มม. พร้อมรถรอง เอ็ม.2 เอ.2</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral">332,712.00 บาท</span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 1: ปบค. 95 ขนาด 105 มม. พร้อมรถรอง เอ็ม.2 เอ.2 (BACK) -->
+    <div class="a5-sheet" id="card-1-back">
+        <div class="back-title">
+            รายการสถานที่อยู่ของสิ่งอุปกรณ์<br>พร้อมทั้งรายการหลักฐาน
+        </div>
+        
+        <table class="back-table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">ว.ด.ป.</th>
+                    <th style="width: 15%;">จำนวน</th>
+                    <th style="width: 35%;">หน่วย / ที่ตั้ง</th>
+                    <th style="width: 30%;">รายการหลักฐาน</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- CARD 2: เครื่องมือชุดช่างซ่อมปืนใหญ่ (FRONT) -->
+    <div class="a5-sheet" id="card-2-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row">
+                <td class="tx-date thai-numeral">3 พ.ย. 04</td>
+                <td class="tx-doc">ใบเบิกที่ 7 / 08<br>ลง 3 พ.ย. 04<br>ทะเบียนหน่วยจ่าย<br>ที่ 54 / 04<br>ลง 1 ส.ค. 04</td>
+                <td class="tx-qty thai-numeral">1</td>
+                <td class="tx-qty thai-numeral">1</td>
+                <td class="tx-qty thai-numeral">-</td>
+                <td class="tx-qty thai-numeral">1</td>
+                <td class="tx-sig">จ.ส.อ.</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral">1</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral">1</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">2</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">ชุด</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral">33.00 ปอนด์</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">5180-00-757-7727</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">เครื่องมือชุดช่างซ่อมปืนใหญ่</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral">17,496.00 บาท</span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 2: เครื่องมือชุดช่างซ่อมปืนใหญ่ (BACK) -->
+    <div class="a5-sheet" id="card-2-back">
+        <div class="back-title">
+            รายการสถานที่อยู่ของสิ่งอุปกรณ์<br>พร้อมทั้งรายการหลักฐาน
+        </div>
+        
+        <table class="back-table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">ว.ด.ป.</th>
+                    <th style="width: 15%;">จำนวน</th>
+                    <th style="width: 35%;">หน่วย / ที่ตั้ง</th>
+                    <th style="width: 30%;">รายการหลักฐาน</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- CARD 3: เครื่องวัดอุณหภูมิส่วนบรรจุ (FRONT) -->
+    <div class="a5-sheet" id="card-3-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row">
+                <td class="tx-date thai-numeral">29 เม.ย. 16</td>
+                <td class="tx-doc">ใบเบิกที่ 4 / 06<br>ลง 29 เม.ย. 06<br>ทะเบียนหน่วยจ่าย<br>ที่ 55 / 06<br>ลง 29 เม.ย. 06</td>
+                <td class="tx-qty thai-numeral">1</td>
+                <td class="tx-qty thai-numeral">1</td>
+                <td class="tx-qty thai-numeral">-</td>
+                <td class="tx-qty thai-numeral">1</td>
+                <td class="tx-sig">จ.ส.อ.</td>
+            </tr>
+            
+            <tr class="tx-row">
+                <td class="tx-date thai-numeral">4 เม.ย. 28</td>
+                <td class="tx-doc">ใบเบิกที่ 4 / 28<br>ลง 4 เม.ย. 28<br>ทะเบียนหน่วยจ่าย<br>ที่ 28 / 28<br>ลง 4 เม.ย. 28</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-qty thai-numeral">-</td>
+                <td class="tx-qty thai-numeral">3</td>
+                <td class="tx-sig">จ.ส.อ.</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral">6</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral">4</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">2</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">ชุด</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">66885-00-344-4613</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">เครื่องวัดอุณหภูมิส่วนบรรจุ</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral">1,694 บาท</span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 4: ลำกล้องปืนหลอดพร้อมเครื่องประกอบ (FRONT) -->
+    <div class="a5-sheet" id="card-4-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row">
+                <td class="tx-date thai-numeral">25 ส.ค. 04</td>
+                <td class="tx-doc">ใบเบิกที่ 168 / 04<br>ลง 25 ส.ค. 04<br>ทะเบียนหน่วยจ่าย<br>ที่ 75 / 04<br>ลง 25 ส.ค. 04</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-qty thai-numeral">-</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-sig">จ.ส.อ.</td>
+            </tr>
+            
+            <tr class="tx-row">
+                <td class="tx-date thai-numeral">16 มี.ค. 07</td>
+                <td class="tx-doc">ใบเบิกที่ 14 / 07<br>ลง 16 มี.ค. 07<br>ทะเบียนหน่วยจ่าย<br>ที่ 48 / 07<br>ลง 16 มี.ค. 07</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-qty thai-numeral">2</td>
+                <td class="tx-qty thai-numeral">-</td>
+                <td class="tx-qty thai-numeral">4</td>
+                <td class="tx-sig">จ.ส.อ.</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">2</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">ลำกล้อง</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">-</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">ลำกล้องปืนหลอดพร้อมเครื่องประกอบ</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 4: ลำกล้องปืนหลอดพร้อมเครื่องประกอบ (BACK) -->
+    <div class="a5-sheet" id="card-4-back">
+        <div class="back-title">
+            รายการสถานที่อยู่ของสิ่งอุปกรณ์<br>พร้อมทั้งรายการหลักฐาน
+        </div>
+        
+        <table class="back-table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">ว.ด.ป.</th>
+                    <th style="width: 15%;">จำนวน</th>
+                    <th style="width: 35%;">หน่วย / ที่ตั้ง</th>
+                    <th style="width: 30%;">รายการหลักฐาน</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr class="back-row">
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- CARD 5: กล้องพาโนรามิค (FRONT) -->
+    <div class="a5-sheet" id="card-5-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral">4</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral">4</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">4</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">กล้อง</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">1230-35-165-0005</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">กล้องพาโนรามิค</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 6: กล้องข้อศอก (FRONT) -->
+    <div class="a5-sheet" id="card-6-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">4</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">กล้อง</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">-</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">กล้องข้อศอก</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 7: เครื่องตั้งมุมยิงประณีต (FRONT) -->
+    <div class="a5-sheet" id="card-7-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">4</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">เครื่อง</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">-</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">เครื่องตั้งมุมยิงประณีต</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 8: เครื่องวัดอุณหภูมิดินส่ง ( แบบดิจิตอล ) (FRONT) -->
+    <div class="a5-sheet" id="card-8-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral">4</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral">4</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">4</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">เครื่อง</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">6685-xx-165-1315</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">เครื่องวัดอุณหภูมิดินส่ง ( แบบดิจิตอล )</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 9: ฐานกล้องเล็ง (FRONT) -->
+    <div class="a5-sheet" id="card-9-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">4</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">ฐาน</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">-</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">ฐานกล้องเล็ง</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 10: กล้องคอลลิเมเตอร์ (FRONT) -->
+    <div class="a5-sheet" id="card-10-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">4</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">กล้อง</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">1240-006-6065</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">กล้องคอลลิเมเตอร์</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 11: เครื่องอะไหล่สำหรับซ่อมบำรุงขั้น 2 ปบค.95 ขนาด 105 มม. (FRONT) -->
+    <div class="a5-sheet" id="card-11-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral">1</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral">1</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">2</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">ชุด</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">1015-00-712-0207</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">เครื่องอะไหล่สำหรับซ่อมบำรุงขั้น 2 ปบค.95 ขนาด 105 มม.</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 12: ชุดตรวจและเติมแก๊ส (FRONT) -->
+    <div class="a5-sheet" id="card-12-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">สพ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">4</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">ชุด</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">-</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">ชุดตรวจและเติมแก๊ส</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral">1,944 บาท</span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 13: กระโจมประจำหมู่ (FRONT) -->
+    <div class="a5-sheet" id="card-13-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">พธ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral">6</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral">4</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">2</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">หลัง</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral">48.00 กก.</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral">0.456 ม. ๓</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">8340-35-229-0026</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">กระโจมประจำหมู่</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 14: กระโจมกระสุน (FRONT) -->
+    <div class="a5-sheet" id="card-14-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">พธ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral">4</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral">4</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">2</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">หลัง</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">8340-35-229-0025</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">กระโจมกระสุน</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+    <!-- CARD 15: กระโจมส่วนบรรจุ (FRONT) -->
+    <div class="a5-sheet" id="card-15-front">
+        <div class="card-header-row">
+            <span class="form-code thai-numeral">ทบ.๔๐๐ – ๐๐๕</span>
+        </div>
+        <div class="card-title">บัญชีสิ่งอุปกรณ์ของหน่วย</div>
+        
+        <div class="unit-info-block">
+            <div class="unit-name-line">นามหน่วย <span>ป.4 พัน.4 ร้อย.2</span></div>
+            <div class="unit-detail-line">
+                <span>ที่ตั้ง</span> <span>ค่ายจิรประวัติ   อ.เมือง     จว.นครสวรรค์</span>
+                <span style="margin-left: 15px;">อัตรายุทโธปกรณ์ที่</span> <span>อจย ๖-๒๗  ( ๒ พ.ค. ๒๙ )</span>
+            </div>
+        </div>
+
+        <table class="ledger-table">
+            <thead>
+                <tr>
+                    <th rowspan="2" style="width: 17%;">ว.ด.ป.</th>
+                    <th rowspan="2" style="width: 33%;">หลักฐาน</th>
+                    <th colspan="4" style="width: 35%;">จำนวน</th>
+                    <th rowspan="2" style="width: 15%;">ลงนาม</th>
+                </tr>
+                <tr>
+                    <th style="width: 9%;">ขอ<br>เบิก</th>
+                    <th style="width: 9%;">ได้รับ</th>
+                    <th style="width: 8%;">ส่งคืน</th>
+                    <th style="width: 9%;">คงมี</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            <tr class="tx-row empty-row">
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            
+            </tbody>
+        </table>
+
+        <!-- FOOTER SPEC GRID -->
+        <table class="footer-spec-table">
+            <tr>
+                <td style="width: 40%;" colspan="2">
+                    <span class="f-lbl">สายงานที่ควบคุม</span><br>
+                    <span class="f-val">พธ.</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราเต็ม</span><br>
+                    <span class="f-val thai-numeral">4</span>
+                </td>
+                <td style="width: 30%;">
+                    <span class="f-lbl">จำนวนตามอัตราลด</span><br>
+                    <span class="f-val thai-numeral">4</span>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ประเภท</span><br>
+                    <span class="f-val">2</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">หน่วยนับ</span><br>
+                    <span class="f-val">หลัง</span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">น้ำหนัก</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+                <td style="width: 25%;">
+                    <span class="f-lbl">ปริมาตร</span><br>
+                    <span class="f-val thai-numeral"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">หมายเลขสิ่งอุปกรณ์</span> &nbsp; <span class="f-val thai-numeral">8340-35-229-0058</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="f-span-row">
+                    <span class="f-lbl">ชื่อสิ่งอุปกรณ์</span> &nbsp; <span class="f-val">กระโจมส่วนบรรจุ</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="f-span-row">
+                    <span class="f-lbl">หน่วยจ่าย</span> &nbsp; <span class="f-val">ป.4 พัน.4</span>
+                </td>
+                <td colspan="2" class="f-span-row" style="text-align: right;">
+                    <span class="f-lbl">ราคา</span> &nbsp; <span class="f-val thai-numeral">1,944 บาท</span>
+                </td>
+            </tr>
+        </table>
+        
+        <div class="regulation-note">
+            (พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์ประเภท ๒ และ ๔ พ.ศ.๒๕๓๔)
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทบ.๔๐๐-๐๗๑ แบบ ก ใบติดตามใบส่งซ่อม (การเบิกเกิน ๔๕ - ๙๐ วัน)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        @page landscape-page {
+            size: A4 landscape;
+            margin: 0;
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        body {
+            margin: 0;
+            padding: 20px 0;
+            background-color: #525659;
+            font-family: 'Sarabun', 'TH Sarabun PSK', 'THSarabunNew', sans-serif;
+            font-size: 12pt;
+            font-weight: 400;
+            font-feature-settings: "locl" 1, "numr" 1;
+            font-variant-numeric: tabular-nums;
+            color: #000000;
+            line-height: 1.35;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .page-landscape {
+            width: 297mm;
+            min-height: 210mm;
+            height: 210mm;
+            padding: 8mm 12mm 6mm 15mm;
+            background-color: #ffffff;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            page: landscape-page;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        @media print {
+            body {
+                background-color: transparent;
+                padding: 0;
+            }
+            .page-landscape {
+                margin-bottom: 0;
+                box-shadow: none;
+                page-break-after: always;
+                break-after: page;
+            }
+        }
+
+        /* Header Layout */
+        .form-top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5mm;
+        }
+        .doc-title {
+            font-size: 18pt;
+            font-weight: bold;
+            text-align: center;
+            margin-left: 50mm;
+        }
+        .header-top-right {
+            text-align: right;
+            font-size: 12pt;
+            line-height: 1.2;
+        }
+        .form-code {
+            font-weight: bold;
+        }
+        .form-subcode {
+            margin-top: 1mm;
+        }
+
+        /* Meta block Left */
+        .meta-block {
+            margin-bottom: 2mm;
+            font-size: 12pt;
+            line-height: 1.45;
+        }
+        .meta-line {
+            margin-bottom: 0.5mm;
+        }
+        .meta-label {
+            font-weight: bold;
+            display: inline-block;
+            width: 12mm;
+        }
+        .instruction-line {
+            padding-left: 20mm;
+            margin-top: 1.5mm;
+            margin-bottom: 2mm;
+            font-size: 12.5pt;
+        }
+
+        /* Grid Table (6 columns) */
+        .grid-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11.5pt;
+            margin-bottom: 2mm;
+        }
+        .grid-table th, .grid-table td {
+            border: 1px solid #000000;
+            padding: 1.2mm 1.5mm;
+            height: 6.8mm;
+        }
+        .grid-table th {
+            text-align: center;
+            font-weight: bold;
+            background-color: #ffffff;
+            vertical-align: middle;
+            line-height: 1.2;
+        }
+
+        /* Universal Signature Engine Styles (Red Line Standard) */
+        .sig-block {
+            position: relative;
+            display: inline-block;
+            font-family: inherit;
+        }
+        .sig-verify {
+            font-weight: bold;
+            font-size: 12pt;
+            text-align: left;
+            margin-bottom: 20pt;
+        }
+        .sig-name-pos-group {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sig-name-wrapper {
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+            margin-top: 20pt;
+        }
+        .sig-rank-anchor {
+            position: absolute;
+            right: 100%;
+            bottom: calc(100% + 18px);
+            white-space: nowrap;
+            font-size: 12pt;
+            line-height: 1.0;
+            margin-right: 2px;
+        }
+        .sig-name {
+            display: inline-block;
+            font-weight: normal;
+            font-size: 12pt;
+            line-height: 1.15;
+            white-space: nowrap;
+        }
+        .sig-pos {
+            text-align: center;
+            white-space: pre-line;
+            line-height: 1.2;
+            margin-top: 2px;
+            font-size: 12pt;
+        }
+        .sig-date {
+            text-align: center;
+            margin-top: 3px;
+            font-size: 12pt;
+            white-space: nowrap;
+        }
+
+        .double-sig-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 3mm;
+            padding: 0 15mm;
+        }
+        .sig-col-left {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+        }
+        .sig-col-right {
+            width: 45%;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Footer Note */
+        .footer-note {
+            text-align: center;
+            margin-top: 2mm;
+            margin-bottom: 1mm;
+            font-size: 10.5pt;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== PAGE: ใบติดตามใบส่งซ่อม (A4 Landscape 1 หน้าจบ) ==================== -->
+    <div class="page-landscape">
+        <div>
+            <!-- Form Top Header -->
+            <div class="form-top-header">
+                <div></div>
+                <div class="doc-title">ใบติดตามใบส่งซ่อม</div>
+                <div class="header-top-right">
+                    <div class="form-code">ทบ. ๔๐๐ - ๐๗๑</div>
+                    <div class="form-subcode">แบบ  ก. การเบิกเกิน  ๔๕ - ๙๐  วัน</div>
+                </div>
+            </div>
+
+            <!-- Meta block -->
+            <div class="meta-block">
+                <div class="meta-line">ที่…………………………………………….</div>
+                <div class="meta-line">เรื่อง      ขอทราบผลการเบิกส่งซ่อม  สป.</div>
+                <div class="meta-line">
+                    <span class="meta-label">ถึง</span>
+                    <span>ป.๔ พัน.๔</span>
+                </div>
+                <div class="meta-line">
+                    <span class="meta-label">จาก</span>
+                    <span>ป.๔ พัน.๔ ร้อย.๒</span>
+                </div>
+                <div class="instruction-line">
+                    กรุณาดำเนินการตรวจสอบใบส่งซ่อมข้างล่างนี้   ซึ่งหน่วยได้ส่งใบส่งซ่อมไว้เรียบร้อยแล้ว
+                </div>
+            </div>
+
+            <!-- Table (6 columns) -->
+            <table class="grid-table">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">ลำดับ</th>
+                        <th style="width: 21%;">รายการ สป.</th>
+                        <th style="width: 17%;">หมายเลข สป.</th>
+                        <th style="width: 18%; line-height: 1.15; padding: 1mm 1mm;"><span style="white-space: nowrap;">ที่ใบส่งซ่อม ที่ทะเบียนหน่วย</span><br><span>จ่าย</span></th>
+                        <th style="width: 18%; white-space: nowrap; padding: 1mm 1mm;">วันที่ส่งหรือวางใบส่งซ่อม</th>
+                        <th style="width: 21%; white-space: nowrap; padding: 1mm 1mm;">หมายเหตุ  (บันทึกโดยหน่วยจ่าย)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr>
+            <td style="text-align: center; vertical-align: middle;">๑.</td>
+            <td style="text-align: left; vertical-align: middle; padding-left: 3mm; line-height: 1.25;">ปบค.๙๕ ขนาด ๑๐๕ มม.<br>เอ็ม.๑๐๑ เอ.๑ ปรับปรุง</td>
+            <td style="text-align: center; vertical-align: middle;">๒๔๐๘๐</td>
+            <td style="text-align: center; vertical-align: middle;">๐๑ / ๖๔</td>
+            <td style="text-align: center; vertical-align: middle;">๖ พ.ย. ๖๓</td>
+            <td style="text-align: left; vertical-align: middle;"></td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+
+        <div>
+            <!-- Double Signature Block (Universal Red Line Standard) -->
+            <div class="double-sig-row">
+                <div class="sig-col-left">
+                    <div class="sig-block" style="font-size: 12pt; line-height: 1.0;">
+        
+        <div class="sig-name-pos-group" style="margin-left: 45px;">
+            <div class="sig-name-wrapper" style="margin-top: 20pt;">
+                <span class="sig-rank-anchor">ร.อ.</span>
+                <div class="sig-name">(กฤติน  นราพงษ์)</div>
+            </div>
+            <div class="sig-pos">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+            <div class="sig-date" style="margin-top: 4px; font-size: 12pt; text-align: center; white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ธ.ค. ๖๘</div>
+        </div>
+    </div>
+                </div>
+                <div class="sig-col-right">
+                    <div class="sig-block" style="font-size: 12pt; line-height: 1.0;">
+        <div class="sig-verify" style="font-weight: bold; margin-bottom: 24pt; font-size: 12pt; text-align: left;">ผู้ตรวจสอบ</div>
+        <div class="sig-name-pos-group" style="margin-left: 45px;">
+            <div class="sig-name-wrapper" style="margin-top: 20pt;">
+                <span class="sig-rank-anchor">จ.ส.อ.</span>
+                <div class="sig-name">(ณัฐชัย  รักษาวงษ์)</div>
+            </div>
+            <div class="sig-pos">ส.หน.สย. ป.๔ พัน.๔ ร้อย.๒</div>
+            <div class="sig-date" style="margin-top: 4px; font-size: 12pt; text-align: center; white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ธ.ค. ๖๘</div>
+        </div>
+    </div>
+                </div>
+            </div>
+
+            <!-- Footer note (ด้านล่างในหน้าเดียวกันเหมือนรูปที่ 1) -->
+            <div class="footer-note">
+                ( พิมพ์ตามระเบียบกองทัพบกว่าด้วยการส่งกำลังสิ่งอุปกรณ์  ประเภท  ๒ และ ๔  พ.ศ.  ๒๕๓๔ )
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
