@@ -9,6 +9,122 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../static/style.css">
   <link rel="stylesheet" href="/frontend/static/style.css">
+<!-- UNIFIED MILITARY SARABUN FONT-ENGINE & RULE 9 THIN/LIGHT STANDARD -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<style id="rta-universal-thin-font-engine">
+    @font-face {
+        font-family: 'Sarabun';
+        font-style: normal;
+        font-weight: 100;
+        src: url('/fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Thin.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Sarabun';
+        font-style: normal;
+        font-weight: 200;
+        src: url('/fonts/Sarabun-ExtraLight.ttf') format('truetype'),
+             url('fonts/Sarabun-ExtraLight.ttf') format('truetype'),
+             url('../fonts/Sarabun-ExtraLight.ttf') format('truetype'),
+             url('../../fonts/Sarabun-ExtraLight.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Sarabun';
+        font-style: normal;
+        font-weight: 300;
+        src: url('/fonts/Sarabun-Light.ttf') format('truetype'),
+             url('fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Light.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Sarabun';
+        font-style: normal;
+        font-weight: 400;
+        src: url('/fonts/Sarabun-Regular.ttf') format('truetype'),
+             url('fonts/Sarabun-Regular.ttf') format('truetype'),
+             url('../fonts/Sarabun-Regular.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Regular.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Sarabun';
+        font-style: normal;
+        font-weight: 700;
+        src: url('/fonts/Sarabun-Bold.ttf') format('truetype'),
+             url('fonts/Sarabun-Bold.ttf') format('truetype'),
+             url('../fonts/Sarabun-Bold.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Bold.ttf') format('truetype');
+    }
+
+    /* Force Windows to alias legacy TH Sarabun names to genuine Sarabun Thin/Light */
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 100;
+        src: url('/fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Thin.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 300;
+        src: url('/fonts/Sarabun-Light.ttf') format('truetype'),
+             url('fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Light.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 100;
+        src: url('/fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Thin.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 300;
+        src: url('/fonts/Sarabun-Light.ttf') format('truetype'),
+             url('fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Light.ttf') format('truetype');
+    }
+
+    /* RULE 9: THIN FONT-WEIGHT MANDATE (Non-headings = 300 Thin/Light, Headings = 700 Bold) */
+    body, div, p, span, td, li, a, input, textarea, label, select, button,
+    section, article, main, header, footer,
+    .memo-p, .memo-body, .memo-closing, .memo-content, .memo-text, .content-para,
+    .memo-meta-dots, .meta-fill-dotted, .dotted-line, .memo-att-row, .memo-att-desc, .memo-att-qty,
+    .salutation-row, .salutation, .reference-section, .attachment-section, .attachment-row, .attachment-item,
+    .sig-name, .sig-pos, .sig-date, .sig-rank-anchor,
+    .staff-grid, .staff-grid div, .staff-col, .form-table td, table td,
+    .doc-desc, .stat-pill, .btn-action, .meta-row, .meta-half-col,
+    .meta-fill-dotted div {
+        font-family: 'Sarabun', 'TH Sarabun New', 'TH Sarabun PSK', Tahoma, sans-serif !important;
+        font-weight: 300 !important;
+    }
+
+    /* Exclusively Headings & Titles are Bold (700) */
+    b, strong, .font-bold, .bold, th, table th,
+    .memo-title, .doc-title, .meta-label, .memo-meta-label,
+    .form-header-title, .form-header-sub, .form-title,
+    .photo-cert-text, .sig-verify,
+    .brand-title, .brand-badge, .badge, .doc-code,
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Sarabun', 'TH Sarabun New', 'TH Sarabun PSK', Tahoma, sans-serif !important;
+        font-weight: 700 !important;
+    }
+</style>
+
+
 </head>
 <body>
 
@@ -21,9 +137,12 @@
         <p class="brand-sub">ระเบียบสารบรรณ ทบ. ๒๕๖๓ • มาตรฐานแกนดิ่ง Red Line • พิมพ์แพ็กเกจคู่ขนาน ๒ ชุด • คมกริบ 300 DPI</p>
       </div>
     </div>
-    <div style="display: flex; align-items: center; gap: 14px;">
-      <a href="/" style="padding: 7px 14px; border-radius: 8px; background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.4); color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 500;">
-        📑 สลับไปหน้าคลังเอกสาร ๑๗ ฉบับ
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <button onclick="document.getElementById('tabBtn17Docs').click()" class="btn-primary" style="padding: 7px 14px; font-size: 13.5px; cursor: pointer;">
+        🏛️ คลังเอกสารราชการ ๑๗ ฉบับ
+      </button>
+      <a href="/" target="_blank" style="padding: 7px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); color: #94a3b8; text-decoration: none; font-size: 13px;">
+        🔗 เปิด Portal แยก
       </a>
       <div class="system-status">
         <div class="status-dot"></div>
@@ -42,6 +161,9 @@
     </button>
     <button class="tab-btn" data-tab="tab-external-intake">
       📥 จุดรับเอกสารภายนอก & ติดตามช่องว่าง (Part 2)
+    </button>
+    <button class="tab-btn" data-tab="tab-all-17-docs" id="tabBtn17Docs">
+      🏛️ คลังเอกสารราชการ ทบ. ๑๗ ฉบับ (Full Catalog)
     </button>
   </nav>
 
@@ -184,6 +306,317 @@
 
     <div id="externalIntakeList">
       <!-- Hydrated via dashboard.js -->
+    </div>
+  </section>
+
+  <!-- ==================================================== -->
+  <!-- TAB 4: COMPLETE 17 MILITARY DOCUMENTS CATALOG         -->
+  <!-- ==================================================== -->
+  <section id="tab-all-17-docs" class="tab-content">
+    <div class="glass-panel action-bar" style="margin-bottom: 20px;">
+      <div class="action-bar-left" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h2 style="font-size: 18px; font-weight: 700; color: #fff;">🏛️ คลังเอกสารราชการ ทบ. ๑๗ ฉบับ (Superclone Engine)</h2>
+          <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">
+            เปิดดูตัวอย่าง HTML คมชัด 300 DPI พร้อมดาวน์โหลดไฟล์ Word (.docx) และ Excel (.xlsx) คู่ขนาน
+          </p>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <input type="text" id="catalogSearchInput" placeholder="🔍 ค้นหาชื่อเอกสาร, รหัส ทบ. ..." oninput="filterCatalogDocs()" style="padding: 8px 14px; border-radius: 8px; background: rgba(0,0,0,0.4); border: 1px solid var(--border-glass); color: #fff; font-size: 13.5px; width: 260px; outline: none;">
+          <span class="badge badge-generated" style="font-size: 12px;">ครบ ๑๗ ฉบับ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="catalog-grid" id="catalogDocsGrid">
+      <!-- 1. แบบรายงาน สด.๑ -->
+      <div class="doc-card" data-title="แบบรายงานผลการตรวจ สด 1 สด.๑ สพ. อาวุธ">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">สด.๑</span>
+            <span class="doc-format-tag">A4 ไฮบริด (5 หน้า)</span>
+          </div>
+          <div class="doc-title">แบบรายงานผลการตรวจ สด.๑</div>
+          <div class="doc-desc">บันทึกรายงานผลการตรวจประจำสัปดาห์โดยผู้บังคับบัญชา สป.สาย สพ. (อาวุธ) พร้อมตารางสรุปปรนนิบัติบำรุง</div>
+        </div>
+        <div class="card-actions">
+          <a href="/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 2. บันทึกรายงานผลการตรวจประจำสัปดาห์ -->
+      <div class="doc-card" data-title="บันทึกรายงานผลการตรวจประจำสัปดาห์ ชุดตรวจ">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">WEEKLY-REP</span>
+            <span class="doc-format-tag">A4 ไฮบริด (5 หน้า)</span>
+          </div>
+          <div class="doc-title">บันทึกรายงานผลการตรวจประจำสัปดาห์</div>
+          <div class="doc-desc">รายงานผลการตรวจสภาพยุทโธปกรณ์ประจำสัปดาห์ พร้อมบล็อกลงนามมาตรฐาน Red Line Standard</div>
+        </div>
+        <div class="card-actions">
+          <a href="/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 3. ขอส่งใบติดตามทวงถาม ๔๕ วัน -->
+      <div class="doc-card" data-title="ขอส่งใบติดตามทวงถาม 45 วัน ๔๕ วัน ทบ.400-071 แบบ ก">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">ทบ.๔๐๐-๐๗๑ (ก)</span>
+            <span class="doc-format-tag">A4 + Legal (3 หน้า)</span>
+          </div>
+          <div class="doc-title">ขอส่งใบติดตามทวงถาม ๔๕ วัน</div>
+          <div class="doc-desc">บันทึกข้อความและ ทบ.๔๐๐-๐๗๑ แบบ ก ใบติดตามใบเบิก สิ่งอุปกรณ์สาย สพ. เกินกำหนด ๔๕ วัน</div>
+        </div>
+        <div class="card-actions">
+          <a href="/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 4. ขอส่งใบติดตามทวงถาม ๙๐ วัน -->
+      <div class="doc-card" data-title="ขอส่งใบติดตามทวงถาม 90 วัน ๙๐ วัน ทบ.400-071 แบบ ข">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">ทบ.๔๐๐-๐๗๑ (ข)</span>
+            <span class="doc-format-tag">A4 + Legal (3 หน้า)</span>
+          </div>
+          <div class="doc-title">ขอส่งใบติดตามทวงถาม ๙๐ วัน</div>
+          <div class="doc-desc">บันทึกข้อความและ ทบ.๔๐๐-๐๗๑ แบบ ข ใบติดตามใบเบิก สิ่งอุปกรณ์สาย สพ. เกินกำหนด ๙๐ วัน</div>
+        </div>
+        <div class="card-actions">
+          <a href="/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 5. ทบ.๔๐๐-๐๑๒ -->
+      <div class="doc-card" data-title="ทบ 400 012 400-012 ใบรายงานผลเปรียบเทียบการตรวจสอบสิ่งอุปกรณ์">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">ทบ.๔๐๐-๐๑๒</span>
+            <span class="doc-format-tag">Legal แนวนอน (2 หน้า)</span>
+          </div>
+          <div class="doc-title">ใบรายงานผลเปรียบเทียบสิ่งอุปกรณ์</div>
+          <div class="doc-desc">ทบ.๔๐๐-๐๑๒ ใบรายงานผลเปรียบเทียบการตรวจสอบสิ่งอุปกรณ์สาย สพ. บัญชีคุมยอดคงเหลือ</div>
+        </div>
+        <div class="card-actions">
+          <a href="/ทบ_400_012_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ทบ_400_012_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ทบ_400_012_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 6. ทบ.๔๖๘-๒๐๔ (คส.๔) -->
+      <div class="doc-card" data-title="ทบ 468 204 468-204 คส 4 บัญชีหมายเลขอาวุธ">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">ทบ.๔๖๘-๒๐๔</span>
+            <span class="doc-format-tag">A4 แนวตั้ง (6 หน้า)</span>
+          </div>
+          <div class="doc-title">บัญชีหมายเลขอาวุธ (คส. ๔)</div>
+          <div class="doc-desc">ทบ.๔๖๘-๒๐๔ บัญชีแจกแจงหมายเลขประจำปืน ชิ้นส่วนสำคัญ และอาวุธประจำกายประจำหน่วย</div>
+        </div>
+        <div class="card-actions">
+          <a href="/ทบ_468_204_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ทบ_468_204_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ทบ_468_204_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 7. ทบ.๔๖๘-๓๖๐ (สพ.๔๖๐) -->
+      <div class="doc-card" data-title="ทบ 468 360 468-360 สพ 460 กำหนดการปรนนิบัติบำรุงยุทธภัณฑ์">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">ทบ.๔๖๘-๓๖๐</span>
+            <span class="doc-format-tag">A4 แนวนอน (4 หน้า)</span>
+          </div>
+          <div class="doc-title">กำหนดการปรนนิบัติบำรุงยุทธภัณฑ์</div>
+          <div class="doc-desc">ตารางกำหนดการปรนนิบัติบำรุง ปบค.๙๕ และยุทโธปกรณ์สนับสนุน รายสัปดาห์ รายเดือน รายปี</div>
+        </div>
+        <div class="card-actions">
+          <a href="/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 8. ทบ.๔๐๐-๐๐๕ -->
+      <div class="doc-card" data-title="ทบ 400 005 400-005 บัญชีคุมสิ่งอุปกรณ์ของหน่วย">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">ทบ.๔๐๐-๐๐๕</span>
+            <span class="doc-format-tag">A5 แนวตั้ง (31 หน้า)</span>
+          </div>
+          <div class="doc-title">บัญชีคุมสิ่งอุปกรณ์ของหน่วย</div>
+          <div class="doc-desc">บัตรบัญชีคุมสิ่งอุปกรณ์ ทบ.๔๐๐-๐๐๕ พร้อมหน้าสารบัญ หน้ารับรองยอด และรายการรับ-จ่ายคงคลัง</div>
+        </div>
+        <div class="card-actions">
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 9. บัญชีคุมสิ่งอุปกรณ์ ประเภท ๒ และ ๔ -->
+      <div class="doc-card" data-title="บัญชีคุมสิ่งอุปกรณ์ ประเภท 2 และ 4 ประเภท ๒ และ ๔ ทบ 400 005">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">ทบ.๔๐๐-๐๐๕ (๒ และ ๔)</span>
+            <span class="doc-format-tag">A5 แนวตั้ง (178 หน้า)</span>
+          </div>
+          <div class="doc-title">บัญชีคุม สป. ประเภท ๒ และ ๔</div>
+          <div class="doc-desc">สมุดทะเบียนคุมสิ่งอุปกรณ์ถาวรและสิ้นเปลือง ฉบับสมบูรณ์ ๘๗ รายการบัตร หน้า-หลัง</div>
+        </div>
+        <div class="card-actions">
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 10. บัญชีรายละเอียดหมายเลข ปบค.๙๕ -->
+      <div class="doc-card" data-title="บัญชีรายละเอียดหมายเลข ปบค 95 ปบค.๙๕ 105 มม. เอ็ม 101 เอ 1">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">ปบค.๙๕</span>
+            <span class="doc-format-tag">A4 แนวนอน (1 หน้า)</span>
+          </div>
+          <div class="doc-title">บัญชีรายละเอียดหมายเลข ปบค.๙๕</div>
+          <div class="doc-desc">บัญชีรายละเอียดหมายเลข ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑ ปรับปรุง พร้อมชุดอุปกรณ์ครบหมู่</div>
+        </div>
+        <div class="card-actions">
+          <a href="/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 11. สมุดประวัติการใช้ปืนใหญ่ -->
+      <div class="doc-card" data-title="สมุดประวัติการใช้ปืนใหญ่ ปืนใหญ่">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">GUN-BOOK</span>
+            <span class="doc-format-tag">A4 แนวนอน (5 หน้า)</span>
+          </div>
+          <div class="doc-title">สมุดประวัติการใช้ปืนใหญ่</div>
+          <div class="doc-desc">สมุดบันทึกประวัติการยิง การเปลี่ยนลำกล้อง การตรวจสภาพ และการซ่อมบำรุงปืนใหญ่ประจำหน่วย</div>
+        </div>
+        <div class="card-actions">
+          <a href="/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 12. ประวัติการใช้อาวุธ -->
+      <div class="doc-card" data-title="ประวัติการใช้อาวุธ ป หมู่ 2 ถึง 6">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">WEAPON-HIST</span>
+            <span class="doc-format-tag">A4 แนวตั้ง (5 หน้า)</span>
+          </div>
+          <div class="doc-title">ประวัติการใช้อาวุธ (ป.หมู่ ๒ ถึง ๖)</div>
+          <div class="doc-desc">บันทึกยอดนัดกระสุนที่ยิง การใช้งาน และการส่งซ่อมบำรุงประจำหมู่ปืนใหญ่</div>
+        </div>
+        <div class="card-actions">
+          <a href="/ประวัติการใช้อาวุธ_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ประวัติการใช้อาวุธ_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ประวัติการใช้อาวุธ_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 13. ใบสำรวจสิ่งอุปกรณ์ สาย สพ. (ทบ.๔๐๐-๐๑๑) -->
+      <div class="doc-card" data-title="ใบสำรวจสิ่งอุปกรณ์ สาย สพ ทบ 400 011 400-011">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">ทบ.๔๐๐-๐๑๑</span>
+            <span class="doc-format-tag">Legal แนวนอน (12 หน้า)</span>
+          </div>
+          <div class="doc-title">ใบสำรวจสิ่งอุปกรณ์ สาย สพ.</div>
+          <div class="doc-desc">ทบ.๔๐๐-๐๑๑ แบบฟอร์มใบสำรวจสิ่งอุปกรณ์รายบุคคลและประจำหน่วย บัตรย่อย ๓ ใบต่อการ์ด</div>
+        </div>
+        <div class="card-actions">
+          <a href="/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 14. รายงานผลการตรวจสอบอาการถอยและจำลองการยิง ป. (ประจำไตรมาส) -->
+      <div class="doc-card" data-title="รายงานผลการตรวจสอบอาการถอยและจำลองการยิง ไตรมาส">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">QUARTER-REP</span>
+            <span class="doc-format-tag">A4 ไฮบริด (3 หน้า)</span>
+          </div>
+          <div class="doc-title">รายงานผลการตรวจสอบอาการถอย (ไตรมาส)</div>
+          <div class="doc-desc">การตรวจสอบกลไกเครื่องถอย การจำลองแรงยิง และค่าความดันระบบไฮดรอลิกประจำไตรมาส</div>
+        </div>
+        <div class="card-actions">
+          <a href="/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 15. บันทึกผลการตรวจกิจการทั่วไป ชุดตรวจที่ ๒ -->
+      <div class="doc-card" data-title="บันทึกผลการตรวจกิจการทั่วไป ชุดตรวจที่ 2 ๒">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">INSPECT-GEN-2</span>
+            <span class="doc-format-tag">A4 แนวตั้ง (18 หน้า)</span>
+          </div>
+          <div class="doc-title">บันทึกผลการตรวจกิจการทั่วไป (ชุดที่ ๒)</div>
+          <div class="doc-desc">แบบตรวจการส่งกำลังและบำรุงรักษา อาวุธ ยานพาหนะ และคลัง สป. ของกองร้อย</div>
+        </div>
+        <div class="card-actions">
+          <a href="/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 16. บันทึกข้อความ (ขอส่งใบติดตามใบส่งซ่อมเกิน ๔๕ วัน) -->
+      <div class="doc-card" data-title="บันทึกข้อความล่าสุดสุด 45 วัน ใบส่งซ่อมเกิน 45 วัน">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">MEMO-45</span>
+            <span class="doc-format-tag">A4 แนวตั้ง (1 หน้า)</span>
+          </div>
+          <div class="doc-title">บันทึกข้อความ (ติดตามส่งซ่อม ๔๕ วัน)</div>
+          <div class="doc-desc">หนังสือราชการบันทึกข้อความ ตราครุฑ พร้อมตารางตรวจ/ทาน และบล็อกลงนามมาตรฐาน ๑๓๐ มม.</div>
+        </div>
+        <div class="card-actions">
+          <a href="/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+
+      <!-- 17. บันทึกข้อความ (ขอส่งใบติดตามใบส่งซ่อมเกิน ๙๐ วัน) -->
+      <div class="doc-card" data-title="บันทึกข้อความ 90 วัน ๙๐ วัน ใบส่งซ่อมเกิน 90 วัน">
+        <div class="card-top">
+          <div class="card-header-line">
+            <span class="doc-code">MEMO-90</span>
+            <span class="doc-format-tag">A4 แนวตั้ง (1 หน้า)</span>
+          </div>
+          <div class="doc-title">บันทึกข้อความ (ติดตามส่งซ่อม ๙๐ วัน)</div>
+          <div class="doc-desc">หนังสือราชการบันทึกข้อความ ขอส่งใบติดตามใบส่งซ่อมเกิน ๙๐ วัน พร้อมระบบพิมพ์คู่ขนาน</div>
+        </div>
+        <div class="card-actions">
+          <a href="/บันทึกข้อความ_90_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บันทึกข้อความ_90_วัน_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บันทึกข้อความ_90_วัน_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
     </div>
   </section>
 

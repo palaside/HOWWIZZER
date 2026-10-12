@@ -271,21 +271,14 @@
         }
         .memo-sig-wrap {
             margin-left: 105mm; /* 130mm from left edge of paper (25mm padding-left) */
-            margin-top: 22mm; /* ยศ ห่างจาก จึงเรียนมาเพื่อกรุณาทราบ 5 เอนเตอร์ */
+            margin-top: 8mm;
         }
         .memo-footer-staff {
-            margin-top: 22mm; /* อยู่ใต้ ผบ.ป.๔ พัน.๔ ร้อย.๒ 5 เอนเตอร์ */
+            margin-top: 12mm;
             display: flex;
             justify-content: flex-end;
         }
         .staff-grid {
-            display: grid;
-            grid-template-columns: 26mm 22mm 8mm 20mm;
-            font-size: 13.5pt;
-            font-weight: 300 !important;
-            line-height: 1.25;
-            text-align: left;
-        }
             display: grid;
             grid-template-columns: 26mm 22mm 8mm 20mm;
             font-size: 13.5pt;
@@ -410,13 +403,130 @@
             font-weight: 700 !important;
         }
     </style>
+<!-- UNIFIED MILITARY SARABUN FONT-ENGINE & RULE 9 THIN/LIGHT STANDARD -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<style id="rta-universal-thin-font-engine">
+    @font-face {
+        font-family: 'Sarabun';
+        font-style: normal;
+        font-weight: 100;
+        src: url('/fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Thin.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Sarabun';
+        font-style: normal;
+        font-weight: 200;
+        src: url('/fonts/Sarabun-ExtraLight.ttf') format('truetype'),
+             url('fonts/Sarabun-ExtraLight.ttf') format('truetype'),
+             url('../fonts/Sarabun-ExtraLight.ttf') format('truetype'),
+             url('../../fonts/Sarabun-ExtraLight.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Sarabun';
+        font-style: normal;
+        font-weight: 300;
+        src: url('/fonts/Sarabun-Light.ttf') format('truetype'),
+             url('fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Light.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Sarabun';
+        font-style: normal;
+        font-weight: 400;
+        src: url('/fonts/Sarabun-Regular.ttf') format('truetype'),
+             url('fonts/Sarabun-Regular.ttf') format('truetype'),
+             url('../fonts/Sarabun-Regular.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Regular.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'Sarabun';
+        font-style: normal;
+        font-weight: 700;
+        src: url('/fonts/Sarabun-Bold.ttf') format('truetype'),
+             url('fonts/Sarabun-Bold.ttf') format('truetype'),
+             url('../fonts/Sarabun-Bold.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Bold.ttf') format('truetype');
+    }
+
+    /* Force Windows to alias legacy TH Sarabun names to genuine Sarabun Thin/Light */
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 100;
+        src: url('/fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Thin.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 300;
+        src: url('/fonts/Sarabun-Light.ttf') format('truetype'),
+             url('fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Light.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 100;
+        src: url('/fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../fonts/Sarabun-Thin.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Thin.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 300;
+        src: url('/fonts/Sarabun-Light.ttf') format('truetype'),
+             url('fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../fonts/Sarabun-Light.ttf') format('truetype'),
+             url('../../fonts/Sarabun-Light.ttf') format('truetype');
+    }
+
+    /* RULE 9: THIN FONT-WEIGHT MANDATE (Non-headings = 300 Thin/Light, Headings = 700 Bold) */
+    body, div, p, span, td, li, a, input, textarea, label, select, button,
+    section, article, main, header, footer,
+    .memo-p, .memo-body, .memo-closing, .memo-content, .memo-text, .content-para,
+    .memo-meta-dots, .meta-fill-dotted, .dotted-line, .memo-att-row, .memo-att-desc, .memo-att-qty,
+    .salutation-row, .salutation, .reference-section, .attachment-section, .attachment-row, .attachment-item,
+    .sig-name, .sig-pos, .sig-date, .sig-rank-anchor,
+    .staff-grid, .staff-grid div, .staff-col, .form-table td, table td,
+    .doc-desc, .stat-pill, .btn-action, .meta-row, .meta-half-col,
+    .meta-fill-dotted div {
+        font-family: 'Sarabun', 'TH Sarabun New', 'TH Sarabun PSK', Tahoma, sans-serif !important;
+        font-weight: 300 !important;
+    }
+
+    /* Exclusively Headings & Titles are Bold (700) */
+    b, strong, .font-bold, .bold, th, table th,
+    .memo-title, .doc-title, .meta-label, .memo-meta-label,
+    .form-header-title, .form-header-sub, .form-title,
+    .photo-cert-text, .sig-verify,
+    .brand-title, .brand-badge, .badge, .doc-code,
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Sarabun', 'TH Sarabun New', 'TH Sarabun PSK', Tahoma, sans-serif !important;
+        font-weight: 700 !important;
+    }
+</style>
+
+
+
 </head>
 <body>
 
     <!-- ========================================== -->
     <!-- PAGE 1: บันทึกข้อความนำส่ง                    -->
     <!-- ========================================== -->
-    <div class="page-portrait" style="padding: 22mm 20mm 15mm 25mm;">
+    <div class="page-portrait" style="padding: 14mm 20mm 10mm 25mm;">
         <div class="memo-copy-label">(สำเนาคู่ฉบับ)</div>
 
         <div class="memo-header-container">
@@ -500,16 +610,13 @@
 
         <!-- SIGNATURE BLOCK (Universal Red Line Standard) -->
         <div class="memo-sig-wrap">
-            <div class="sig-block" style="font-size: 17pt; line-height: 1.0;">
+            <div class="sig-block" style="font-size: 13.5pt; line-height: 1.0;">
         <div class="sig-name-pos-group" style="margin-left: 0px;">
-            <div class="sig-name-wrapper" style="margin-top: 24pt;">
-                
-                
-                <span class="sig-rank-anchor" style="font-size: 17pt;">ร.อ.</span>
-                <div class="sig-name" style="font-size: 17pt;">(กฤติน  นราพงษ์)</div>
+            <div class="sig-name-wrapper" style="margin-top: 14pt;">
+                <span class="sig-rank-anchor" style="font-size: 13.5pt;">ร.อ.</span>
+                <div class="sig-name" style="font-size: 13.5pt;">(กฤติน  นราพงษ์)</div>
             </div>
-            <div class="sig-pos" style="font-size: 17pt;">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
-            
+            <div class="sig-pos" style="font-size: 13.5pt;">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
         </div>
     </div>
         </div>

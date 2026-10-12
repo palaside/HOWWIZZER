@@ -569,3 +569,13 @@ async function loadCadenceGaps() {
     console.error('Failed to load gaps:', err);
   }
 }
+
+function filterCatalogDocs() {
+  const query = document.getElementById('catalogSearchInput')?.value.toLowerCase().trim() || '';
+  const cards = document.querySelectorAll('#catalogDocsGrid .doc-card');
+  cards.forEach(card => {
+    const text = (card.getAttribute('data-title') + ' ' + card.innerText).toLowerCase();
+    card.style.display = text.includes(query) ? 'flex' : 'none';
+  });
+}
+
