@@ -223,15 +223,30 @@
             display: block;
         }
 
-        /* STAFF INITIALS FOOTER */
-        .memo-staff-footer {
-            position: absolute;
-            bottom: 15mm;
-            right: 20mm;
-            font-size: 11pt;
-            line-height: 1.3;
+        /* RULE 9: THIN FONT-WEIGHT STANDARD (font-weight: 300 for non-headings) */
+        p, span, td, .memo-p, .memo-content, .memo-att-row, .memo-att-desc, .memo-att-qty,
+        .sig-rank-anchor, .sig-name, .sig-pos, .staff-grid, .staff-grid div, .form-table td {
+            font-weight: 300 !important;
+        }
+
+        .memo-title, .memo-meta-label, th, .form-header-title, .form-header-sub,
+        .photo-cert-text, .font-bold, b, strong {
+            font-weight: 700 !important;
+        }
+
+        /* STAFF INITIALS FOOTER (RULE-STAFF-REVIEW-FOOTER-V1: Mandatory 4-Column Dual-Axis) */
+        .memo-footer-staff {
+            margin-top: 22mm; /* อยู่ใต้ ผบ.ป.๔ พัน.๔ ร้อย.๒ ๕ เอนเตอร์ */
+            display: flex;
+            justify-content: flex-end;
+        }
+        .staff-grid {
+            display: grid;
+            grid-template-columns: 26mm 22mm 8mm 20mm;
+            font-size: 13.5pt;
+            font-weight: 300;
+            line-height: 1.25;
             text-align: left;
-            font-family: 'TH Sarabun PSK', 'THSarabunNew', 'Sarabun', sans-serif;
         }
 
         /* ================= PAGES 2 & 3: FORM SD.1 ================= */
@@ -356,7 +371,7 @@
                 <td style="width: 4%;" class="memo-meta-label">ที่</td>
                 <td style="width: 46%;" class="memo-meta-dots">กห ๐๔๘๓.๑.๔.๑/</td>
                 <td style="width: 8%; text-align: right;" class="memo-meta-label">วันที่</td>
-                <td style="width: 42%;" class="memo-meta-dots">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ส.ค. ๖๙</td>
+                <td style="width: 42%;" class="memo-meta-dots">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;พ.ย. ๖๙</td>
             </tr>
         </table>
 
@@ -398,7 +413,7 @@
             </div>
 
             <p class="memo-p" style="margin-top: 3.5mm;">
-                ตามอ้างถึง ป.๔ พัน.๔ ร้อย.๒ ขอรายงานผลการตรวจอาวุธ และสิ่งอุปกรณ์ประจำโรงเก็บปืนใหญ่ ประจำสัปดาห์โดยผู้บังคับบัญชา สป.สาย สพ. (อาวุธ) ประจำสัปดาห์ ในวันศุกร์ที่ ๗ ส.ค. ๖๙ เวลา ๑๓๐๐ – ๑๕๐๐ น.  รายละเอียดตามสิ่งที่ส่งมาด้วย
+                ตามอ้างถึง ป.๔ พัน.๔ ร้อย.๒ ขอรายงานผลการตรวจอาวุธ และสิ่งอุปกรณ์ประจำโรงเก็บปืนใหญ่ ประจำสัปดาห์โดยผู้บังคับบัญชา สป.สาย สพ. (อาวุธ) ประจำสัปดาห์ ในวันศุกร์ที่ ๖ พ.ย. ๖๙ เวลา ๑๓๐๐ – ๑๕๐๐ น.  รายละเอียดตามสิ่งที่ส่งมาด้วย
             </p>
 
             <p class="memo-p" style="margin-top: 3.5mm;">
@@ -421,9 +436,18 @@
             </div>
         </div>
 
-        <div class="memo-staff-footer">
-            จ.ส.อ.                    ร่าง/ตรวจ                   ส.ค. ๖๙<br>
-            ส.ท. วรากรฯ  พิมพ์/ทาน         ๗       ส.ค. ๖๙
+        <!-- BOTTOM RIGHT STAFF INITIALS (RULE-STAFF-REVIEW-FOOTER-V1) -->
+        <div class="memo-footer-staff">
+            <div class="staff-grid">
+                <div>จ.ส.อ.</div>
+                <div>ร่าง/ตรวจ</div>
+                <div></div>
+                <div>พ.ย. ๖๙</div>
+                <div>ส.ท. วรากรฯ</div>
+                <div>พิมพ์/ทาน</div>
+                <div style="text-align: right; padding-right: 2.5mm;">๕</div>
+                <div>พ.ย. ๖๙</div>
+            </div>
         </div>
     </div>
 
@@ -434,8 +458,8 @@
         <div class="form-header-title">แบบรายงานผลการตรวจอาวุธ และสิ่งอุปกรณ์ประจำโรงเก็บปืนใหญ่</div>
         <div class="form-header-sub">
             หน่วย ป.๔ พัน.๔ ร้อย.๒<br>
-            สัปดาห์ที่ ๑ ตั้งแต่วันที่ ๓ ส.ค. - ๗ ส.ค. ๖๙<br>
-            <span style="font-weight: normal;">(ตรวจในวันศุกร์ที่ ๗ ส.ค. ๖๙  เวลา  ๑๓๐๐ – ๑๕๐๐ น.)</span>
+            สัปดาห์ที่ ๑ ตั้งแต่วันที่ ๒ พ.ย. - ๖ พ.ย. ๖๙<br>
+            <span style="font-weight: normal;">(ตรวจในวันศุกร์ที่ ๖ พ.ย. ๖๙  เวลา  ๑๓๐๐ – ๑๕๐๐ น.)</span>
         </div>
 
         <table class="form-table">
@@ -874,7 +898,7 @@
                 <div class="sig-name">(กฤติน  นราพงษ์)</div>
             </div>
             <div class="sig-pos">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
-            <div class="sig-date" style="margin-top: 4px; font-size: 12pt; text-align: center; white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ส.ค. ๖๙</div>
+            <div class="sig-date" style="margin-top: 4px; font-size: 12pt; text-align: center; white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;พ.ย. ๖๙</div>
         </div>
     </div>
         </div>

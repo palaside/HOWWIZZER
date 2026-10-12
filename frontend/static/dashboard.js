@@ -30,8 +30,8 @@ function initDateDefaults() {
   const targetDateInput = document.getElementById('targetCycleDate');
   const targetDisplay = document.getElementById('targetCycleDateDisplay');
   
-  // Default to 2026-10-16 for military testing cycle or current date
-  const initialDate = targetDateInput?.value || '2026-10-16';
+  // Default to 2026-11-06 (Cycle 2 - 6 พ.ย. 69: Monday 2 Nov start)
+  const initialDate = targetDateInput?.value || '2026-11-06';
   if (targetDateInput) {
     targetDateInput.value = initialDate;
     targetDateInput.addEventListener('change', (e) => onNativeDateChanged(e.target.value));

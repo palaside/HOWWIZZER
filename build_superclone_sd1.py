@@ -477,15 +477,30 @@ def generate_html(output_path):
             display: block;
         }}
 
-        /* STAFF INITIALS FOOTER */
-        .memo-staff-footer {{
-            position: absolute;
-            bottom: 15mm;
-            right: 20mm;
-            font-size: 11pt;
-            line-height: 1.3;
+        /* RULE 9: THIN FONT-WEIGHT STANDARD (font-weight: 300 for non-headings) */
+        p, span, td, .memo-p, .memo-content, .memo-att-row, .memo-att-desc, .memo-att-qty,
+        .sig-rank-anchor, .sig-name, .sig-pos, .staff-grid, .staff-grid div, .form-table td {{
+            font-weight: 300 !important;
+        }}
+
+        .memo-title, .memo-meta-label, th, .form-header-title, .form-header-sub,
+        .photo-cert-text, .font-bold, b, strong {{
+            font-weight: 700 !important;
+        }}
+
+        /* STAFF INITIALS FOOTER (RULE-STAFF-REVIEW-FOOTER-V1: Mandatory 4-Column Dual-Axis) */
+        .memo-footer-staff {{
+            margin-top: 22mm;
+            display: flex;
+            justify-content: flex-end;
+        }}
+        .staff-grid {{
+            display: grid;
+            grid-template-columns: 26mm 22mm 8mm 20mm;
+            font-size: 13.5pt;
+            font-weight: 300;
+            line-height: 1.25;
             text-align: left;
-            font-family: 'TH Sarabun PSK', 'THSarabunNew', 'Sarabun', sans-serif;
         }}
 
         /* ================= PAGES 2 & 3: FORM SD.1 ================= */
@@ -650,9 +665,18 @@ def generate_html(output_path):
             </div>
         </div>
 
-        <div class="memo-staff-footer">
-            {p1["staff_initials"]["draft_inspect"]}<br>
-            {p1["staff_initials"]["type_verify"]}
+        <!-- BOTTOM RIGHT STAFF INITIALS (RULE-STAFF-REVIEW-FOOTER-V1) -->
+        <div class="memo-footer-staff">
+            <div class="staff-grid">
+                <div>จ.ส.อ.</div>
+                <div>ร่าง/ตรวจ</div>
+                <div></div>
+                <div>พ.ย. ๖๙</div>
+                <div>ส.ท. วรากรฯ</div>
+                <div>พิมพ์/ทาน</div>
+                <div style="text-align: right; padding-right: 2.5mm;">๕</div>
+                <div>พ.ย. ๖๙</div>
+            </div>
         </div>
     </div>
 
@@ -893,13 +917,34 @@ def generate_docx(output_path):
     }
     render_signature_docx(doc, p1_sig_data, axis_inch=4.2, font_size=12, space_after_rank_pt=22)
 
-    # Staff Initials
-    p_st = doc.add_paragraph()
-    p_st.alignment = WD_ALIGN_PARAGRAPH.RIGHT
-    p_st.paragraph_format.space_before = Pt(30)
-    r_st = p_st.add_run(f'{p1["staff_initials"]["draft_inspect"]}\n{p1["staff_initials"]["type_verify"]}')
-    r_st.font.name = "TH Sarabun PSK"
-    r_st.font.size = Pt(11)
+    # Staff Review Footer (RULE-STAFF-REVIEW-FOOTER-V1: Mandatory 4-Column Dual-Axis)
+    t_st = doc.add_table(rows=2, cols=4)
+    t_st.alignment = WD_TABLE_ALIGNMENT.RIGHT
+    t_st.autofit = False
+    st_widths = [Inches(1.02), Inches(0.87), Inches(0.31), Inches(0.79)]
+    for row in t_st.rows:
+        for i, w in enumerate(st_widths):
+            row.cells[i].width = w
+            set_cell_margins(row.cells[i], top=0, bottom=0, left=20, right=20)
+
+    st_data = [
+        ["จ.ส.อ.", "ร่าง/ตรวจ", "", "พ.ย. ๖๙"],
+        ["ส.ท. วรากรฯ", "พิมพ์/ทาน", "๕", "พ.ย. ๖๙"]
+    ]
+    for r_idx, row_vals in enumerate(st_data):
+        for c_idx, val in enumerate(row_vals):
+            cell = t_st.rows[r_idx].cells[c_idx]
+            p = cell.paragraphs[0]
+            p.paragraph_format.space_before = Pt(0)
+            p.paragraph_format.space_after = Pt(0)
+            p.paragraph_format.line_spacing = 1.0
+            if c_idx == 2:
+                p.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+            else:
+                p.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            r = p.add_run(val)
+            r.font.name = "TH Sarabun PSK"
+            r.font.size = Pt(11)
 
     # --- DOCX PAGE 2: แบบรายงานผลการตรวจ สด.๑ (แผ่นที่ ๑) ---
     doc.add_page_break()

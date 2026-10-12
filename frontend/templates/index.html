@@ -7,7 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="../static/style.css">
+  <link rel="stylesheet" href="/frontend/static/style.css">
 </head>
 <body>
 
@@ -20,9 +21,14 @@
         <p class="brand-sub">ระเบียบสารบรรณ ทบ. ๒๕๖๓ • มาตรฐานแกนดิ่ง Red Line • พิมพ์แพ็กเกจคู่ขนาน ๒ ชุด • คมกริบ 300 DPI</p>
       </div>
     </div>
-    <div class="system-status">
-      <div class="status-dot"></div>
-      <span>ระบบ Cloud HotFolder เชื่อมต่อพร้อมทำงาน</span>
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <a href="/" style="padding: 7px 14px; border-radius: 8px; background: rgba(59, 130, 246, 0.2); border: 1px solid rgba(59, 130, 246, 0.4); color: #fff; text-decoration: none; font-size: 13.5px; font-weight: 500;">
+        📑 สลับไปหน้าคลังเอกสาร ๑๗ ฉบับ
+      </a>
+      <div class="system-status">
+        <div class="status-dot"></div>
+        <span>ระบบ Cloud HotFolder เชื่อมต่อพร้อมทำงาน</span>
+      </div>
     </div>
   </header>
 
@@ -51,16 +57,16 @@
         <div class="cycle-date-control-group">
           <!-- Thai Date Input Wrapper (วว/ดด/ปป พุทธศักราช) -->
           <div class="thai-date-wrapper" onclick="triggerNativeDatePicker()" title="คลิกเพื่อเลือกวันที่จากปฏิทิน">
-            <input type="text" id="targetCycleDateDisplay" class="input-field thai-date-display" placeholder="วว/ดด/ปป" value="16/10/69">
-            <input type="date" id="targetCycleDate" class="native-date-hidden" value="2026-10-16">
+            <input type="text" id="targetCycleDateDisplay" class="input-field thai-date-display" placeholder="วว/ดด/ปป" value="06/11/69">
+            <input type="date" id="targetCycleDate" class="native-date-hidden" value="2026-11-06">
             <span class="calendar-icon-btn">📅</span>
           </div>
 
-          <!-- Floating Cycle Pill Badge (ตัวอักษรลอย แสดงช่วงวงรอบ เช่น 12 - 16 ต.ค. 69) -->
+          <!-- Floating Cycle Pill Badge (ตัวอักษรลอย แสดงช่วงวงรอบ เช่น 2 - 6 พ.ย. 69) -->
           <div class="floating-cycle-chip" id="floatingCycleChip" title="ช่วงวันทำการในวงรอบสัปดาห์">
             <span class="chip-icon">🗓️</span>
             <span class="chip-label">วงรอบ:</span>
-            <span class="chip-value" id="cycleRangeDisplay">12 - 16 ต.ค. 69</span>
+            <span class="chip-value" id="cycleRangeDisplay">2 - 6 พ.ย. 69</span>
           </div>
         </div>
 
@@ -194,6 +200,6 @@
     </div>
   </div>
 
-  <script src="/static/dashboard.js"></script>
+  <script src="../static/dashboard.js"></script>
 </body>
 </html>

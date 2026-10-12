@@ -289,7 +289,7 @@ def generate_html(output_path):
 
         body {{
             background-color: #525659;
-            font-family: 'TH Sarabun PSK', 'TH Sarabun New', 'Sarabun', Tahoma, sans-serif;
+            font-family: 'Sarabun', 'TH Sarabun New', 'TH Sarabun PSK', Tahoma, sans-serif;
             font-size: 11pt;
             font-weight: 300;
             line-height: 1.25;
@@ -298,6 +298,17 @@ def generate_html(output_path):
             flex-direction: column;
             align-items: center;
             padding: 20px 0;
+        }}
+
+        /* RULE 9: THIN FONT-WEIGHT STANDARD (font-weight: 300 for non-headings) */
+        p, span, td, .memo-body, .memo-closing, .salutation-row, .reference-section, .attachment-section,
+        .meta-fill-dotted, .sig-name, .sig-pos, .staff-grid, .staff-grid div, .form-table td {{
+            font-weight: 300 !important;
+        }}
+
+        .memo-title, .meta-label, th, .form-header-title, .form-header-sub,
+        .photo-cert-text, .font-bold, b, strong {{
+            font-weight: 700 !important;
         }}
 
         /* OpenType Thai Numeral Engine */

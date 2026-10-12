@@ -24,7 +24,7 @@
 
         body {
             background-color: #525659;
-            font-family: 'TH Sarabun PSK', 'TH Sarabun New', 'Sarabun', Tahoma, sans-serif;
+            font-family: 'Sarabun', 'TH Sarabun New', 'TH Sarabun PSK', Tahoma, sans-serif;
             font-size: 11pt;
             font-weight: 300;
             line-height: 1.25;
@@ -33,6 +33,17 @@
             flex-direction: column;
             align-items: center;
             padding: 20px 0;
+        }
+
+        /* RULE 9: THIN FONT-WEIGHT STANDARD (font-weight: 300 for non-headings) */
+        p, span, td, .memo-body, .memo-closing, .salutation-row, .reference-section, .attachment-section,
+        .meta-fill-dotted, .sig-name, .sig-pos, .staff-grid, .staff-grid div, .form-table td {
+            font-weight: 300 !important;
+        }
+
+        .memo-title, .meta-label, th, .form-header-title, .form-header-sub,
+        .photo-cert-text, .font-bold, b, strong {
+            font-weight: 700 !important;
         }
 
         /* OpenType Thai Numeral Engine */
@@ -193,13 +204,14 @@
             display: flex;
             align-items: flex-end;
             margin-bottom: 3.2mm;
-            font-size: 17pt;
+            font-size: 16pt;
+            font-weight: 300 !important;
         }
         .meta-row:last-child {
             margin-bottom: 0mm;
         }
         .meta-label {
-            font-weight: bold;
+            font-weight: 700 !important;
             font-size: 20pt;
             line-height: 1.0;
             white-space: nowrap;
@@ -212,7 +224,8 @@
             display: flex;
             align-items: flex-end;
             padding-bottom: 1px;
-            font-size: 17pt;
+            font-size: 16pt;
+            font-weight: 300 !important;
             line-height: 1.1;
         }
         .meta-half-col {
@@ -223,22 +236,26 @@
         .salutation-row {
             margin-top: 4.5mm; /* 1 เอนเตอร์ จาก เรื่อง */
             margin-bottom: 2.5mm;
-            font-size: 17pt;
-            line-height: 1.20;
+            font-size: 16pt;
+            font-weight: 300 !important;
+            line-height: 1.35;
         }
         .reference-section {
             margin-bottom: 2.5mm;
-            font-size: 17pt;
-            line-height: 1.20;
+            font-size: 16pt;
+            font-weight: 300 !important;
+            line-height: 1.35;
         }
         .attachment-section {
             margin-bottom: 3mm;
-            font-size: 17pt;
-            line-height: 1.20;
+            font-size: 16pt;
+            font-weight: 300 !important;
+            line-height: 1.35;
         }
         .memo-body {
-            font-size: 17pt;
-            line-height: 1.20;
+            font-size: 16pt;
+            font-weight: 300 !important;
+            line-height: 1.35;
             text-align: justify;
             text-justify: inter-cluster;
             text-indent: 25mm;
@@ -246,8 +263,9 @@
             margin-bottom: 2.5mm;
         }
         .memo-closing {
-            font-size: 17pt;
-            line-height: 1.20;
+            font-size: 16pt;
+            font-weight: 300 !important;
+            line-height: 1.35;
             text-indent: 25mm;
             margin-bottom: 0mm;
         }
@@ -261,6 +279,13 @@
             justify-content: flex-end;
         }
         .staff-grid {
+            display: grid;
+            grid-template-columns: 26mm 22mm 8mm 20mm;
+            font-size: 13.5pt;
+            font-weight: 300 !important;
+            line-height: 1.25;
+            text-align: left;
+        }
             display: grid;
             grid-template-columns: 26mm 22mm 8mm 20mm;
             font-size: 13.5pt;
@@ -377,12 +402,12 @@
         .align-top { vertical-align: top; }
 
         /* Non-heading Thin typography Standard (RULE-PROD-DOC-ENGINE-V1 Rule 9) */
-        p, span, td, .memo-p, .memo-body, .memo-closing, .staff-grid, .salutation-row, .reference-section, .attachment-section, .sig-rank-anchor, .sig-name, .sig-pos, .sig-date, .meta-fill-dotted {
-            font-weight: 300;
+        p, span, td, div, .memo-p, .memo-body, .memo-closing, .staff-grid, .staff-grid div, .salutation-row, .reference-section, .attachment-section, .sig-rank-anchor, .sig-name, .sig-pos, .sig-date, .meta-fill-dotted {
+            font-weight: 300 !important;
         }
 
         .memo-title, .meta-label, th, .form-header-title, .form-header-sub, .photo-cert-text, .sig-role-anchor, .sig-label-anchor, .sig-verify, .font-bold, b, strong {
-            font-weight: 700;
+            font-weight: 700 !important;
         }
     </style>
 </head>
@@ -415,7 +440,7 @@
                 </div>
                 <div class="meta-half-col">
                     <span class="meta-label">วันที่</span>
-                    <div class="meta-fill-dotted" style="padding-left: 20mm;">มิ.ย. ๖๙</div>
+                    <div class="meta-fill-dotted" style="padding-left: 20mm;">พ.ย. ๖๙</div>
                 </div>
             </div>
 
@@ -465,7 +490,7 @@
 
         <!-- CONTENT BODY -->
         <div class="memo-body">
-            ตามอ้างถึง ป.๔ พัน.๔ ร้อย.๒ ขอรายงานผลการตรวจอาวุธ และสิ่งอุปกรณ์ ประจำโรงเก็บปืนใหญ่ ประจำสัปดาห์โดยผู้บังคับบัญชา สป.สาย สพ. (อาวุธ) ประจำสัปดาห์ใน วันศุกร์ที่ ๑๙ มิ.ย. ๖๙ เวลา ๑๓๐๐ – ๑๕๐๐ น. รายละเอียดตามสิ่งที่ส่งมาด้วย
+            ตามอ้างถึง ป.๔ พัน.๔ ร้อย.๒ ขอรายงานผลการตรวจอาวุธ และสิ่งอุปกรณ์ ประจำโรงเก็บปืนใหญ่ ประจำสัปดาห์โดยผู้บังคับบัญชา สป.สาย สพ. (อาวุธ) ประจำสัปดาห์ใน วันศุกร์ที่ ๖ พ.ย. ๖๙ เวลา ๑๓๐๐ – ๑๕๐๐ น. รายละเอียดตามสิ่งที่ส่งมาด้วย
         </div>
 
         <!-- CLOSING -->
@@ -495,11 +520,11 @@
                 <div>จ.ส.อ.</div>
                 <div>ร่าง/ตรวจ</div>
                 <div></div>
-                <div>มิ.ย. ๖๙</div>
+                <div>พ.ย. ๖๙</div>
                 <div>ส.ท. วรากรฯ</div>
                 <div>พิมพ์/ทาน</div>
-                <div style="text-align: right; padding-right: 2.5mm;">๑๙</div>
-                <div>มิ.ย. ๖๙</div>
+                <div style="text-align: right; padding-right: 2.5mm;">๕</div>
+                <div>พ.ย. ๖๙</div>
             </div>
         </div>
     </div>
@@ -512,8 +537,8 @@
         <div class="form-header-title">แบบรายงานผลการตรวจอาวุธ และสิ่งอุปกรณ์ประจำโรงเก็บปืนใหญ่</div>
         <div class="form-header-sub">
             <div>หน่วย ป.๔ พัน.๔ ร้อย.๒</div>
-            <div>สัปดาห์ที่ ๓ ตั้งแต่วันที่ ๑๕ มิ.ย. – ๑๙ มิ.ย. ๖๙</div>
-            <div>(ตรวจในวันวันศุกร์ที่ ๑๙ มิ.ย. ๖๙  เวลา  ๑๓๐๐ – ๑๕๐๐ น.)</div>
+            <div>สัปดาห์ที่ ๑ ตั้งแต่วันที่ ๒ พ.ย. – ๖ พ.ย. ๖๙</div>
+            <div>(ตรวจในวันศุกร์ที่ ๖ พ.ย. ๖๙  เวลา  ๑๓๐๐ – ๑๕๐๐ น.)</div>
         </div>
 
         <table class="form-table">
@@ -927,7 +952,7 @@
             <tbody>
                 
         <tr>
-            <td rowspan="5" class="text-center align-top font-bold" style="line-height: 1.4;">วันศุกร์ที่ ๑๙ มิ.ย. ๖๙<br>เวลา ๑๓๐๐ - ๑๕๐๐</td>
+            <td rowspan="5" class="text-center align-top font-bold" style="line-height: 1.4;">วันศุกร์ที่ ๖ พ.ย. ๖๙<br>เวลา ๑๓๐๐ - ๑๕๐๐</td>
             <td style="padding-left: 4mm;">๑. การควบคุมทางบัญชี</td>
             <td class="text-center">เรียบร้อย</td>
             <td class="text-center">ไม่มี</td>
