@@ -5,8 +5,19 @@ from backend.services.inventory_service import (
     return_item,
     replace_damaged_item,
     get_inventory_balance,
-    get_item_history
+    get_item_history,
+    _load_db,
+    _save_db
 )
+
+@pytest.fixture(autouse=True)
+def reset_inventory():
+    data = _load_db()
+    for it in data["items"]:
+        it["status"] = "AVAILABLE"
+    data["loan_requests"] = []
+    _save_db(data)
+    yield
 
 def test_loan_workflow_dual_control():
     # 1. Maker/Admin requests loan (Status: PENDING_APPROVAL)

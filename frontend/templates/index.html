@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ระบบศูนย์รวมและจัดทำเอกสารราชการทหารอัตโนมัติ (Military Doc & HotFolder Engine)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="glass-panel top-nav">
+    <div class="brand-wrapper">
+      <div class="brand-badge">RTA DOC-ENGINE V1</div>
+      <div>
+        <h1 class="brand-title">ระบบจัดทำเอกสารและคลังยุทธภัณฑ์อัตโนมัติ</h1>
+        <p class="brand-sub">ระเบียบสารบรรณ ทบ. ๒๕๖๓ • มาตรฐานแกนดิ่ง Red Line • พิมพ์แพ็กเกจคู่ขนาน ๒ ชุด • คมกริบ 300 DPI</p>
+      </div>
+    </div>
+    <div class="system-status">
+      <div class="status-dot"></div>
+      <span>ระบบ Cloud HotFolder เชื่อมต่อพร้อมทำงาน</span>
+    </div>
+  </header>
+
+  <!-- Tab Navigation -->
+  <nav class="tabs-container">
+    <button class="tab-btn active" data-tab="tab-internal-docs">
+      📑 ระบบเอกสารภายใน & แดชบอร์ดพิมพ์คู่ (Part 1)
+    </button>
+    <button class="tab-btn" data-tab="tab-inventory-custody">
+      🛡️ คลังอาวุธ & ควบคุมเบิกจ่ายคู่ขนาน (Part 3)
+    </button>
+    <button class="tab-btn" data-tab="tab-external-intake">
+      📥 จุดรับเอกสารภายนอก & ติดตามช่องว่าง (Part 2)
+    </button>
+  </nav>
+
+  <!-- ==================================================== -->
+  <!-- TAB 1: INTERNAL DOCS & HOTFOLDER PRINT ENGINE        -->
+  <!-- ==================================================== -->
+  <section id="tab-internal-docs" class="tab-content active">
+    
+    <!-- Action Bar -->
+    <div class="glass-panel action-bar">
+      <div class="action-bar-left">
+        <span class="action-title">วงรอบเอกสารเป้าหมาย:</span>
+        <input type="date" id="targetCycleDate" class="input-field" value="2026-10-16">
+        <button id="btnTriggerGen" onclick="triggerDocGeneration()" class="btn-primary">
+          ⚡ สั่งประมวลผลและสร้างแพ็กเกจคู่ขนาน ๒ ชุด
+        </button>
+      </div>
+      <div style="font-size: 13.5px; color: var(--accent-cyan);">
+        📌 <strong>กฎคำนวณวันเสนอเซ็น (Rule 6):</strong> วันที่บนหัวบันทึกและบล็อก <em>พิมพ์/ทาน</em> เป็นวันพฤหัสบดี (จันทร์-พฤหัสบดี ห้ามตรงวันหยุดหรือวันศุกร์เด็ดขาด)
+      </div>
+    </div>
+
+    <!-- Signer Personnel Registry Preview Panel -->
+    <div class="glass-panel" style="padding: 20px 28px; margin-bottom: 24px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+        <h3 style="font-size: 16px; font-weight: 600; color: #fff;">🏛️ ทำเนียบผู้ลงนามส่วนกลาง (Single Source of Truth Signer Binding)</h3>
+        <span style="font-size: 12.5px; color: var(--text-secondary);">ผูกกับ Universal Red Line Signature Engine อัตโนมัติ</span>
+      </div>
+      <div id="personnelList" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px;">
+        <!-- Hydrated via dashboard.js -->
+      </div>
+    </div>
+
+    <!-- Document Checklist Cards Grid -->
+    <h2 style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #fff;">
+      รายการเอกสารพร้อมส่งออก (Export & Print Checklist)
+    </h2>
+    <div id="docsChecklistGrid" class="cards-grid">
+      <!-- Hydrated via dashboard.js -->
+    </div>
+  </section>
+
+  <!-- ==================================================== -->
+  <!-- TAB 2: ARMORY & DUAL-CONTROL CUSTODY ENGINE          -->
+  <!-- ==================================================== -->
+  <section id="tab-inventory-custody" class="tab-content">
+    <div class="glass-panel action-bar">
+      <div class="action-bar-left">
+        <span class="action-title">คลังอาวุธหลัก (ปบค.๙๕ ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑)</span>
+      </div>
+      <div id="inventorySummary">
+        <!-- Hydrated via dashboard.js -->
+      </div>
+    </div>
+
+    <div class="alert-banner alert-info">
+      <span>🛡️</span>
+      <div>
+        <strong>มาตรการความปลอดภัย Dual-Control (Maker-Checker):</strong>
+        แอดมิน/เสมียนคลังสร้างคำขอเบิก (Maker) และเจ้าของคลัง/ผบ.ร้อย เป็นผู้อนุมัติและตัดยอดคงเหลือ (Checker) พร้อมเชื่อมต่อ Data Injection ไประบายลงในตารางเอกสารอัตโนมัติ ๑๐๐%
+      </div>
+    </div>
+
+    <div class="glass-panel" style="padding: 24px;">
+      <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #fff;">
+        ทะเบียนคุมสิ่งอุปกรณ์ประจำหน่วย (ทบ.๔๐๐-๐๐๕ & ทบ.๔๖๘-๒๐๔)
+      </h3>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>รหัสยุทธภัณฑ์</th>
+              <th>รายการสิ่งอุปกรณ์</th>
+              <th>หมายเลขซีเรียล</th>
+              <th>สถานะปัจจุบัน</th>
+              <th>การดำเนินการ (Dual-Control)</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryTableBody">
+            <!-- Hydrated via dashboard.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== -->
+  <!-- TAB 3: EXTERNAL INTAKE & GAP ANALYSIS                -->
+  <!-- ==================================================== -->
+  <section id="tab-external-intake" class="tab-content">
+    
+    <!-- Cadence Gap Alerts -->
+    <h2 style="font-size: 18px; font-weight: 600; margin-bottom: 14px; color: #fff;">
+      🚨 ตรวจสอบช่องว่างและรายงานค้างส่งตามวงรอบ (Periodic Cadence Gap Monitor)
+    </h2>
+    <div id="cadenceGapsList" style="margin-bottom: 28px;">
+      <!-- Hydrated via dashboard.js -->
+    </div>
+
+    <!-- Intake HotFolder Watch -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+      <h2 style="font-size: 18px; font-weight: 600; color: #fff;">
+        📥 เอกสารที่รับเข้าจาก FolderIN (External Intake Dropzone)
+      </h2>
+      <button onclick="loadExternalIntake()" class="btn-secondary">
+        🔄 สแกน FolderIN ทันที
+      </button>
+    </div>
+
+    <div class="alert-banner alert-danger" style="margin-bottom: 18px;">
+      <span>⚠️</span>
+      <div>
+        <strong>ระบบ Ingestion Fallback (Rule 4):</strong>
+        หากพบไฟล์ที่ชื่อไม่ตรงกับ Regex มาตรฐาน ระบบจะจัดเข้าหมวด <em>UNCLASSIFIED_EXTERNAL</em> ทันที พร้อมแสดงปุ่มให้แอดมินคลิกระบุวงรอบได้ใน ๑ คลิก เพื่อไม่ให้เอกสารสูญหาย
+      </div>
+    </div>
+
+    <div id="externalIntakeList">
+      <!-- Hydrated via dashboard.js -->
+    </div>
+  </section>
+
+  <!-- Preview Modal (Print-Grade 300 DPI) -->
+  <div id="previewModal" class="modal-overlay" onclick="closePreviewModal()">
+    <div class="glass-panel modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 id="modalTitle" style="font-size: 16px; font-weight: 600; color: #fff;">พรีวิวเอกสาร Print-Grade 300 DPI</h3>
+        <button class="modal-close" onclick="closePreviewModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img id="modalPreviewImage" class="modal-img" src="" alt="300 DPI Preview">
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/dashboard.js"></script>
+</body>
+</html>

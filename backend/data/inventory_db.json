@@ -5,15 +5,15 @@
       "model_key": "GUN-105",
       "name": "ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑",
       "serial_no": "54231",
-      "status": "BORROWED",
+      "status": "AVAILABLE",
       "category": "อาวุธหลัก",
       "history": [
         {
           "action": "LOAN_APPROVED",
-          "request_id": "LOAN-5CFB64E5",
+          "request_id": "LOAN-5C6C3699",
           "borrower": "ส.อ. สมเกียรติ สุขใจ",
           "by": "owner_commander",
-          "timestamp": "2026-10-12T18:12:57.160247",
+          "timestamp": "2026-10-12T18:17:27.834304",
           "notes": "อนุมัติการยืม: ยิงสนับสนุนการฝึก"
         }
       ]
@@ -32,7 +32,7 @@
           "is_damaged": true,
           "damage_notes": "ศูนย์เล็งแตกร้าว",
           "receiver": "owner_commander",
-          "timestamp": "2026-10-12T18:12:57.175406",
+          "timestamp": "2026-10-12T18:17:27.862160",
           "notes": "รับคืนสิ่งอุปกรณ์: ศูนย์เล็งแตกร้าว"
         },
         {
@@ -40,7 +40,7 @@
           "old_serial_no": "54232",
           "new_serial_no": "SN-NEW-9988",
           "replaced_by": "owner_commander",
-          "timestamp": "2026-10-12T18:12:57.188346",
+          "timestamp": "2026-10-12T18:17:27.873074",
           "notes": "เปลี่ยนทดแทนหมายเลขยุทโธปกรณ์: เดิม 54232 เป็น SN-NEW-9988"
         }
       ]
@@ -55,17 +55,5 @@
       "history": []
     }
   ],
-  "loan_requests": [
-    {
-      "request_id": "LOAN-5CFB64E5",
-      "item_id": "GUN-105-01",
-      "borrower_name": "ส.อ. สมเกียรติ สุขใจ",
-      "purpose": "ยิงสนับสนุนการฝึก",
-      "requested_by": "admin_warehouse",
-      "requested_at": "2026-10-12T18:12:57.147947",
-      "status": "BORROWED",
-      "approved_by": "owner_commander",
-      "approved_at": "2026-10-12T18:12:57.160232"
-    }
-  ]
+  "loan_requests": []
 }
