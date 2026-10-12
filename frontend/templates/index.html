@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ระบบศูนย์รวมและจัดทำเอกสารราชการทหารอัตโนมัติ (Military Doc & HotFolder Engine)</title>
+  <title>ระบบ​ศูนย์รวม​และ​จัดทำ​เอกสาร​ราชการทหาร​อัตโนมัติ (Military Doc & HotFolder Engine)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -133,20 +133,20 @@
     <div class="brand-wrapper">
       <div class="brand-badge">RTA DOC-ENGINE V1</div>
       <div>
-        <h1 class="brand-title">ระบบจัดทำเอกสารและคลังยุทธภัณฑ์อัตโนมัติ</h1>
-        <p class="brand-sub">ระเบียบสารบรรณ ทบ. ๒๕๖๓ • มาตรฐานแกนดิ่ง Red Line • พิมพ์แพ็กเกจคู่ขนาน ๒ ชุด • คมกริบ 300 DPI</p>
+        <h1 class="brand-title">ระบบ​จัดทำ​เอกสาร​และ​คลัง​ยุทธภัณฑ์​อัตโนมัติ</h1>
+        <p class="brand-sub">ระเบียบ​สารบรรณ ทบ. ๒๕๖๓ • มาตรฐาน​แกน​ดิ่ง Red Line • พิมพ์​แพ็กเกจ​คู่ขนาน ๒ ชุด • คมกริบ 300 DPI</p>
       </div>
     </div>
     <div style="display: flex; align-items: center; gap: 10px;">
       <button onclick="document.getElementById('tabBtn17Docs').click()" class="btn-primary" style="padding: 7px 14px; font-size: 13.5px; cursor: pointer;">
-        🏛️ คลังเอกสารราชการ ๑๗ ฉบับ
+        🏛️ คลัง​เอกสารราชการ ๑๗ ฉบับ
       </button>
       <a href="/" target="_blank" style="padding: 7px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); color: #94a3b8; text-decoration: none; font-size: 13px;">
         🔗 เปิด Portal แยก
       </a>
       <div class="system-status">
         <div class="status-dot"></div>
-        <span>ระบบ Cloud HotFolder เชื่อมต่อพร้อมทำงาน</span>
+        <span>ระบบ Cloud HotFolder เชื่อมต่อ​พร้อม​ทำงาน</span>
       </div>
     </div>
   </header>
@@ -154,16 +154,16 @@
   <!-- Tab Navigation -->
   <nav class="tabs-container">
     <button class="tab-btn active" data-tab="tab-internal-docs">
-      📑 ระบบเอกสารภายใน & แดชบอร์ดพิมพ์คู่ (Part 1)
+      📑 ระบบ​เอกสาร​ภายใน & แด​ช​บอร์ด​พิมพ์​คู่ (Part 1)
     </button>
     <button class="tab-btn" data-tab="tab-inventory-custody">
-      🛡️ คลังอาวุธ & ควบคุมเบิกจ่ายคู่ขนาน (Part 3)
+      🛡️ คลัง​อาวุธ & ควบคุม​เบิก​จ่าย​คู่ขนาน (Part 3)
     </button>
     <button class="tab-btn" data-tab="tab-external-intake">
-      📥 จุดรับเอกสารภายนอก & ติดตามช่องว่าง (Part 2)
+      📥 จุด​รับ​เอกสาร​ภายนอก & ติดตาม​ช่องว่าง (Part 2)
     </button>
     <button class="tab-btn" data-tab="tab-all-17-docs" id="tabBtn17Docs">
-      🏛️ คลังเอกสารราชการ ทบ. ๑๗ ฉบับ (Full Catalog)
+      🏛️ คลัง​เอกสารราชการ ทบ. ๑๗ ฉบับ (Full Catalog)
     </button>
   </nav>
 
@@ -175,7 +175,7 @@
     <!-- Action Bar -->
     <div class="glass-panel action-bar">
       <div class="action-bar-left">
-        <span class="action-title">วงรอบเอกสารเป้าหมาย:</span>
+        <span class="action-title">วง​รอบ​เอกสาร​เป้าหมาย:</span>
         <div class="cycle-date-control-group">
           <!-- Thai Date Input Wrapper (วว/ดด/ปป พุทธศักราช) -->
           <div class="thai-date-wrapper" onclick="triggerNativeDatePicker()" title="คลิกเพื่อเลือกวันที่จากปฏิทิน">
@@ -187,17 +187,17 @@
           <!-- Floating Cycle Pill Badge (ตัวอักษรลอย แสดงช่วงวงรอบ เช่น 2 - 6 พ.ย. 69) -->
           <div class="floating-cycle-chip" id="floatingCycleChip" title="ช่วงวันทำการในวงรอบสัปดาห์">
             <span class="chip-icon">🗓️</span>
-            <span class="chip-label">วงรอบ:</span>
+            <span class="chip-label">วง​รอบ:</span>
             <span class="chip-value" id="cycleRangeDisplay">2 - 6 พ.ย. 69</span>
           </div>
         </div>
 
         <button id="btnTriggerGen" onclick="triggerDocGeneration()" class="btn-primary">
-          ⚡ สั่งประมวลผลและสร้างแพ็กเกจคู่ขนาน ๒ ชุด
+          ⚡ สั่ง​ประมวลผล​และ​สร้าง​แพ็กเกจ​คู่ขนาน ๒ ชุด
         </button>
       </div>
       <div style="font-size: 13.5px; color: var(--accent-cyan);">
-        📌 <strong>กฎคำนวณวันเสนอเซ็น (Rule 6):</strong> วันที่บนหัวบันทึกและบล็อก <em>พิมพ์/ทาน</em> เป็นวันพฤหัสบดี (จันทร์-พฤหัสบดี ห้ามตรงวันหยุดหรือวันศุกร์เด็ดขาด)
+        📌 <strong>กฎ​คำนวณ​วัน​เสนอ​เซ็น (Rule 6):</strong> วันที่​บน​หัวบันทึก​และ​บล็อก <em>พิมพ์/ทาน</em> เป็น​วัน​พฤหัสบดี (จันทร์-พฤหัสบดี ห้าม​ตรง​วันหยุด​หรือ​วัน​ศุกร์​เด็ดขาด)
       </div>
     </div>
 
@@ -206,13 +206,13 @@
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
         <div>
           <h3 style="font-size: 17px; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 8px;">
-            🎖️ รายชื่อเจ้าหน้าที่ในส่วนของผู้ใช้
+            🎖️ รายชื่อ​เจ้าหน้าที่​ใน​ส่วน​ของ​ผู้ใช้
           </h3>
           <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">
             แสดง ยศ • ชื่อ-สกุล • ตำแหน่ง (ผบ.พัน.ป., ผบ.ร้อย.ป., ส.หน.สย., ผบ.หมู่ ป.1 ถึง ผบ.หมู่ ป.6)
           </p>
         </div>
-        <span class="badge badge-generated" style="font-size: 12px;">ครบถ้วนตามอัตรา (๙ นาย)</span>
+        <span class="badge badge-generated" style="font-size: 12px;">ครบถ้วน​ตาม​อัตรา (๙ นาย)</span>
       </div>
       <div id="operatorsGrid" style="display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 6px;">
         <!-- Hydrated via dashboard.js -->
@@ -222,7 +222,7 @@
 
     <!-- Document Checklist Cards Grid -->
     <h2 style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #fff;">
-      รายการเอกสารพร้อมส่งออก (Export & Print Checklist)
+      รายการ​เอกสาร​พร้อม​ส่งออก (Export & Print Checklist)
     </h2>
     <div id="docsChecklistGrid" class="cards-grid">
       <!-- Hydrated via dashboard.js -->
@@ -235,7 +235,7 @@
   <section id="tab-inventory-custody" class="tab-content">
     <div class="glass-panel action-bar">
       <div class="action-bar-left">
-        <span class="action-title">คลังอาวุธหลัก (ปบค.๙๕ ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑)</span>
+        <span class="action-title">คลัง​อาวุธ​หลัก (ปบค.๙๕ ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑)</span>
       </div>
       <div id="inventorySummary">
         <!-- Hydrated via dashboard.js -->
@@ -245,24 +245,24 @@
     <div class="alert-banner alert-info">
       <span>🛡️</span>
       <div>
-        <strong>มาตรการความปลอดภัย Dual-Control (Maker-Checker):</strong>
-        แอดมิน/เสมียนคลังสร้างคำขอเบิก (Maker) และเจ้าของคลัง/ผบ.ร้อย เป็นผู้อนุมัติและตัดยอดคงเหลือ (Checker) พร้อมเชื่อมต่อ Data Injection ไประบายลงในตารางเอกสารอัตโนมัติ ๑๐๐%
+        <strong>มาตรการ​ความปลอดภัย Dual-Control (Maker-Checker):</strong>
+        แอดมิน/เสมียน​คลัง​สร้าง​คำขอ​เบิก (Maker) และ​เจ้าของ​คลัง/ผบ.ร้อย เป็น​ผู้อนุมัติ​และ​ตัด​ยอด​คงเหลือ (Checker) พร้อม​เชื่อมต่อ Data Injection ไป​ระบาย​ลง​ใน​ตาราง​เอกสาร​อัตโนมัติ ๑๐๐%
       </div>
     </div>
 
     <div class="glass-panel" style="padding: 24px;">
       <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #fff;">
-        ทะเบียนคุมสิ่งอุปกรณ์ประจำหน่วย (ทบ.๔๐๐-๐๐๕ & ทบ.๔๖๘-๒๐๔)
+        ทะเบียน​คุม​สิ่งอุปกรณ์​ประจำ​หน่วย (ทบ.๔๐๐-๐๐๕ & ทบ.๔๖๘-๒๐๔)
       </h3>
       <div class="table-container">
         <table class="data-table">
           <thead>
             <tr>
-              <th>รหัสยุทธภัณฑ์</th>
-              <th>รายการสิ่งอุปกรณ์</th>
-              <th>หมายเลขซีเรียล</th>
-              <th>สถานะปัจจุบัน</th>
-              <th>การดำเนินการ (Dual-Control)</th>
+              <th>รหัส​ยุทธภัณฑ์</th>
+              <th>รายการ​สิ่งอุปกรณ์</th>
+              <th>หมายเลข​ซี​เรียล</th>
+              <th>สถานะ​ปัจจุบัน</th>
+              <th>การ​ดำเนินการ (Dual-Control)</th>
             </tr>
           </thead>
           <tbody id="inventoryTableBody">
@@ -280,7 +280,7 @@
     
     <!-- Cadence Gap Alerts -->
     <h2 style="font-size: 18px; font-weight: 600; margin-bottom: 14px; color: #fff;">
-      🚨 ตรวจสอบช่องว่างและรายงานค้างส่งตามวงรอบ (Periodic Cadence Gap Monitor)
+      🚨 ตรวจสอบ​ช่องว่าง​และ​ราย​งานค้าง​ส่ง​ตาม​วง​รอบ (Periodic Cadence Gap Monitor)
     </h2>
     <div id="cadenceGapsList" style="margin-bottom: 28px;">
       <!-- Hydrated via dashboard.js -->
@@ -289,7 +289,7 @@
     <!-- Intake HotFolder Watch -->
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
       <h2 style="font-size: 18px; font-weight: 600; color: #fff;">
-        📥 เอกสารที่รับเข้าจาก FolderIN (External Intake Dropzone)
+        📥 เอกสาร​ที่​รับ​เข้า​จาก FolderIN (External Intake Dropzone)
       </h2>
       <button onclick="loadExternalIntake()" class="btn-secondary">
         🔄 สแกน FolderIN ทันที
@@ -300,7 +300,7 @@
       <span>⚠️</span>
       <div>
         <strong>ระบบ Ingestion Fallback (Rule 4):</strong>
-        หากพบไฟล์ที่ชื่อไม่ตรงกับ Regex มาตรฐาน ระบบจะจัดเข้าหมวด <em>UNCLASSIFIED_EXTERNAL</em> ทันที พร้อมแสดงปุ่มให้แอดมินคลิกระบุวงรอบได้ใน ๑ คลิก เพื่อไม่ให้เอกสารสูญหาย
+        หาก​พบ​ไฟล์​ที่​ชื่อ​ไม่​ตรง​กับ Regex มาตรฐาน ระบบ​จะ​จัด​เข้า​หมวด <em>UNCLASSIFIED_EXTERNAL</em> ทันที พร้อม​แสดง​ปุ่ม​ให้​แอดมิน​คลิก​ระบุ​วง​รอบ​ได้​ใน ๑ คลิก เพื่อ​ไม่​ให้​เอกสาร​สูญหาย
       </div>
     </div>
 
@@ -316,9 +316,9 @@
     <div class="glass-panel action-bar" style="margin-bottom: 20px;">
       <div class="action-bar-left" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
         <div>
-          <h2 style="font-size: 18px; font-weight: 700; color: #fff;">🏛️ คลังเอกสารราชการ ทบ. ๑๗ ฉบับ (Superclone Engine)</h2>
+          <h2 style="font-size: 18px; font-weight: 700; color: #fff;">🏛️ คลัง​เอกสารราชการ ทบ. ๑๗ ฉบับ (Superclone Engine)</h2>
           <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">
-            เปิดดูตัวอย่าง HTML คมชัด 300 DPI พร้อมดาวน์โหลดไฟล์ Word (.docx) และ Excel (.xlsx) คู่ขนาน
+            เปิด​ดู​ตัวอย่าง HTML คมชัด 300 DPI พร้อม​ดาวน์โหลด​ไฟล์ Word (.docx) และ Excel (.xlsx) คู่ขนาน
           </p>
         </div>
         <div style="display: flex; gap: 10px; align-items: center;">
@@ -336,8 +336,8 @@
             <span class="doc-code">สด.๑</span>
             <span class="doc-format-tag">A4 ไฮบริด (5 หน้า)</span>
           </div>
-          <div class="doc-title">แบบรายงานผลการตรวจ สด.๑</div>
-          <div class="doc-desc">บันทึกรายงานผลการตรวจประจำสัปดาห์โดยผู้บังคับบัญชา สป.สาย สพ. (อาวุธ) พร้อมตารางสรุปปรนนิบัติบำรุง</div>
+          <div class="doc-title">แบบ​รายงาน​ผล​การ​ตรวจ สด.๑</div>
+          <div class="doc-desc">บันทึก​รายงาน​ผล​การ​ตรวจ​ประจำสัปดาห์​โดย​ผู้บังคับบัญชา สป.สาย สพ. (อาวุธ) พร้อม​ตาราง​สรุป​ปรนนิบัติบำรุง</div>
         </div>
         <div class="card-actions">
           <a href="/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -353,8 +353,8 @@
             <span class="doc-code">WEEKLY-REP</span>
             <span class="doc-format-tag">A4 ไฮบริด (5 หน้า)</span>
           </div>
-          <div class="doc-title">บันทึกรายงานผลการตรวจประจำสัปดาห์</div>
-          <div class="doc-desc">รายงานผลการตรวจสภาพยุทโธปกรณ์ประจำสัปดาห์ พร้อมบล็อกลงนามมาตรฐาน Red Line Standard</div>
+          <div class="doc-title">บันทึก​รายงาน​ผล​การ​ตรวจ​ประจำสัปดาห์</div>
+          <div class="doc-desc">รายงาน​ผล​การ​ตรวจ​สภาพ​ยุทโธปกรณ์​ประจำสัปดาห์ พร้อม​บล็อก​ลงนาม​มาตรฐาน Red Line Standard</div>
         </div>
         <div class="card-actions">
           <a href="/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -370,8 +370,8 @@
             <span class="doc-code">ทบ.๔๐๐-๐๗๑ (ก)</span>
             <span class="doc-format-tag">A4 + Legal (3 หน้า)</span>
           </div>
-          <div class="doc-title">ขอส่งใบติดตามทวงถาม ๔๕ วัน</div>
-          <div class="doc-desc">บันทึกข้อความและ ทบ.๔๐๐-๐๗๑ แบบ ก ใบติดตามใบเบิก สิ่งอุปกรณ์สาย สพ. เกินกำหนด ๔๕ วัน</div>
+          <div class="doc-title">ขอ​ส่ง​ใบ​ติดตาม​ทวงถาม ๔๕ วัน</div>
+          <div class="doc-desc">บันทึก​ข้อความ​และ ทบ.๔๐๐-๐๗๑ แบบ ก ใบ​ติดตาม​ใบเบิก สิ่งอุปกรณ์​สาย สพ. เกินกำหนด ๔๕ วัน</div>
         </div>
         <div class="card-actions">
           <a href="/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -387,8 +387,8 @@
             <span class="doc-code">ทบ.๔๐๐-๐๗๑ (ข)</span>
             <span class="doc-format-tag">A4 + Legal (3 หน้า)</span>
           </div>
-          <div class="doc-title">ขอส่งใบติดตามทวงถาม ๙๐ วัน</div>
-          <div class="doc-desc">บันทึกข้อความและ ทบ.๔๐๐-๐๗๑ แบบ ข ใบติดตามใบเบิก สิ่งอุปกรณ์สาย สพ. เกินกำหนด ๙๐ วัน</div>
+          <div class="doc-title">ขอ​ส่ง​ใบ​ติดตาม​ทวงถาม ๙๐ วัน</div>
+          <div class="doc-desc">บันทึก​ข้อความ​และ ทบ.๔๐๐-๐๗๑ แบบ ข ใบ​ติดตาม​ใบเบิก สิ่งอุปกรณ์​สาย สพ. เกินกำหนด ๙๐ วัน</div>
         </div>
         <div class="card-actions">
           <a href="/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -404,8 +404,8 @@
             <span class="doc-code">ทบ.๔๐๐-๐๑๒</span>
             <span class="doc-format-tag">Legal แนวนอน (2 หน้า)</span>
           </div>
-          <div class="doc-title">ใบรายงานผลเปรียบเทียบสิ่งอุปกรณ์</div>
-          <div class="doc-desc">ทบ.๔๐๐-๐๑๒ ใบรายงานผลเปรียบเทียบการตรวจสอบสิ่งอุปกรณ์สาย สพ. บัญชีคุมยอดคงเหลือ</div>
+          <div class="doc-title">ใบรายงาน​ผล​เปรียบเทียบ​สิ่งอุปกรณ์</div>
+          <div class="doc-desc">ทบ.๔๐๐-๐๑๒ ใบรายงาน​ผล​เปรียบเทียบ​การ​ตรวจสอบ​สิ่งอุปกรณ์​สาย สพ. บัญชี​คุม​ยอด​คงเหลือ</div>
         </div>
         <div class="card-actions">
           <a href="/ทบ_400_012_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -421,8 +421,8 @@
             <span class="doc-code">ทบ.๔๖๘-๒๐๔</span>
             <span class="doc-format-tag">A4 แนวตั้ง (6 หน้า)</span>
           </div>
-          <div class="doc-title">บัญชีหมายเลขอาวุธ (คส. ๔)</div>
-          <div class="doc-desc">ทบ.๔๖๘-๒๐๔ บัญชีแจกแจงหมายเลขประจำปืน ชิ้นส่วนสำคัญ และอาวุธประจำกายประจำหน่วย</div>
+          <div class="doc-title">บัญชี​หมายเลข​อาวุธ (คส. ๔)</div>
+          <div class="doc-desc">ทบ.๔๖๘-๒๐๔ บัญชี​แจกแจง​หมายเลข​ประจำ​ปืน ชิ้น​ส่วนสำคัญ และ​อาวุธ​ประจำ​กาย​ประจำ​หน่วย</div>
         </div>
         <div class="card-actions">
           <a href="/ทบ_468_204_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -438,8 +438,8 @@
             <span class="doc-code">ทบ.๔๖๘-๓๖๐</span>
             <span class="doc-format-tag">A4 แนวนอน (4 หน้า)</span>
           </div>
-          <div class="doc-title">กำหนดการปรนนิบัติบำรุงยุทธภัณฑ์</div>
-          <div class="doc-desc">ตารางกำหนดการปรนนิบัติบำรุง ปบค.๙๕ และยุทโธปกรณ์สนับสนุน รายสัปดาห์ รายเดือน รายปี</div>
+          <div class="doc-title">กำหนดการ​ปรนนิบัติบำรุง​ยุทธภัณฑ์</div>
+          <div class="doc-desc">ตาราง​กำหนดการ​ปรนนิบัติบำรุง ปบค.๙๕ และ​ยุทโธปกรณ์​สนับสนุน รายสัปดาห์ รายเดือน รายปี</div>
         </div>
         <div class="card-actions">
           <a href="/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -455,8 +455,8 @@
             <span class="doc-code">ทบ.๔๐๐-๐๐๕</span>
             <span class="doc-format-tag">A5 แนวตั้ง (31 หน้า)</span>
           </div>
-          <div class="doc-title">บัญชีคุมสิ่งอุปกรณ์ของหน่วย</div>
-          <div class="doc-desc">บัตรบัญชีคุมสิ่งอุปกรณ์ ทบ.๔๐๐-๐๐๕ พร้อมหน้าสารบัญ หน้ารับรองยอด และรายการรับ-จ่ายคงคลัง</div>
+          <div class="doc-title">บัญชี​คุม​สิ่งอุปกรณ์​ของ​หน่วย</div>
+          <div class="doc-desc">บัตร​บัญชี​คุม​สิ่งอุปกรณ์ ทบ.๔๐๐-๐๐๕ พร้อมหน้า​สารบัญ หน้า​รับรอง​ยอด และ​รายการ​รับ-จ่าย​คงคลัง</div>
         </div>
         <div class="card-actions">
           <a href="/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -472,8 +472,8 @@
             <span class="doc-code">ทบ.๔๐๐-๐๐๕ (๒ และ ๔)</span>
             <span class="doc-format-tag">A5 แนวตั้ง (178 หน้า)</span>
           </div>
-          <div class="doc-title">บัญชีคุม สป. ประเภท ๒ และ ๔</div>
-          <div class="doc-desc">สมุดทะเบียนคุมสิ่งอุปกรณ์ถาวรและสิ้นเปลือง ฉบับสมบูรณ์ ๘๗ รายการบัตร หน้า-หลัง</div>
+          <div class="doc-title">บัญชี​คุม สป. ประเภท ๒ และ ๔</div>
+          <div class="doc-desc">สมุด​ทะเบียน​คุม​สิ่งอุปกรณ์​ถาวร​และ​สิ้นเปลือง ฉบับ​สมบูรณ์ ๘๗ รายการ​บัตร หน้า-หลัง</div>
         </div>
         <div class="card-actions">
           <a href="/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -489,8 +489,8 @@
             <span class="doc-code">ปบค.๙๕</span>
             <span class="doc-format-tag">A4 แนวนอน (1 หน้า)</span>
           </div>
-          <div class="doc-title">บัญชีรายละเอียดหมายเลข ปบค.๙๕</div>
-          <div class="doc-desc">บัญชีรายละเอียดหมายเลข ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑ ปรับปรุง พร้อมชุดอุปกรณ์ครบหมู่</div>
+          <div class="doc-title">บัญชี​รายละเอียด​หมายเลข ปบค.๙๕</div>
+          <div class="doc-desc">บัญชี​รายละเอียด​หมายเลข ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑ ปรับปรุง พร้อม​ชุด​อุปกรณ์​ครบ​หมู่</div>
         </div>
         <div class="card-actions">
           <a href="/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -506,8 +506,8 @@
             <span class="doc-code">GUN-BOOK</span>
             <span class="doc-format-tag">A4 แนวนอน (5 หน้า)</span>
           </div>
-          <div class="doc-title">สมุดประวัติการใช้ปืนใหญ่</div>
-          <div class="doc-desc">สมุดบันทึกประวัติการยิง การเปลี่ยนลำกล้อง การตรวจสภาพ และการซ่อมบำรุงปืนใหญ่ประจำหน่วย</div>
+          <div class="doc-title">สมุด​ประวัติการ​ใช้​ปืนใหญ่</div>
+          <div class="doc-desc">สมุดบันทึก​ประวัติการ​ยิง การ​เปลี่ยน​ลำกล้อง การ​ตรวจ​สภาพ และ​การ​ซ่อมบำรุง​ปืนใหญ่​ประจำ​หน่วย</div>
         </div>
         <div class="card-actions">
           <a href="/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -523,8 +523,8 @@
             <span class="doc-code">WEAPON-HIST</span>
             <span class="doc-format-tag">A4 แนวตั้ง (5 หน้า)</span>
           </div>
-          <div class="doc-title">ประวัติการใช้อาวุธ (ป.หมู่ ๒ ถึง ๖)</div>
-          <div class="doc-desc">บันทึกยอดนัดกระสุนที่ยิง การใช้งาน และการส่งซ่อมบำรุงประจำหมู่ปืนใหญ่</div>
+          <div class="doc-title">ประวัติการ​ใช้​อาวุธ (ป.หมู่ ๒ ถึง ๖)</div>
+          <div class="doc-desc">บันทึก​ยอด​นัด​กระสุน​ที่​ยิง การใช้งาน และ​การ​ส่ง​ซ่อมบำรุง​ประจำ​หมู่​ปืนใหญ่</div>
         </div>
         <div class="card-actions">
           <a href="/ประวัติการใช้อาวุธ_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -540,8 +540,8 @@
             <span class="doc-code">ทบ.๔๐๐-๐๑๑</span>
             <span class="doc-format-tag">Legal แนวนอน (12 หน้า)</span>
           </div>
-          <div class="doc-title">ใบสำรวจสิ่งอุปกรณ์ สาย สพ.</div>
-          <div class="doc-desc">ทบ.๔๐๐-๐๑๑ แบบฟอร์มใบสำรวจสิ่งอุปกรณ์รายบุคคลและประจำหน่วย บัตรย่อย ๓ ใบต่อการ์ด</div>
+          <div class="doc-title">ใบ​สำรวจ​สิ่งอุปกรณ์ สาย สพ.</div>
+          <div class="doc-desc">ทบ.๔๐๐-๐๑๑ แบบฟอร์ม​ใบ​สำรวจ​สิ่งอุปกรณ์​รายบุคคล​และ​ประจำ​หน่วย บัตร​ย่อย ๓ ใบ​ต่อ​การ์ด</div>
         </div>
         <div class="card-actions">
           <a href="/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -557,8 +557,8 @@
             <span class="doc-code">QUARTER-REP</span>
             <span class="doc-format-tag">A4 ไฮบริด (3 หน้า)</span>
           </div>
-          <div class="doc-title">รายงานผลการตรวจสอบอาการถอย (ไตรมาส)</div>
-          <div class="doc-desc">การตรวจสอบกลไกเครื่องถอย การจำลองแรงยิง และค่าความดันระบบไฮดรอลิกประจำไตรมาส</div>
+          <div class="doc-title">รายงาน​ผล​การ​ตรวจสอบ​อา​การถอย (ไตรมาส)</div>
+          <div class="doc-desc">การ​ตรวจสอบ​กลไก​เครื่อง​ถอย การจำลอง​แรง​ยิง และ​ค่า​ความดัน​ระบบ​ไฮดรอลิก​ประจำ​ไตรมาส</div>
         </div>
         <div class="card-actions">
           <a href="/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -574,8 +574,8 @@
             <span class="doc-code">INSPECT-GEN-2</span>
             <span class="doc-format-tag">A4 แนวตั้ง (18 หน้า)</span>
           </div>
-          <div class="doc-title">บันทึกผลการตรวจกิจการทั่วไป (ชุดที่ ๒)</div>
-          <div class="doc-desc">แบบตรวจการส่งกำลังและบำรุงรักษา อาวุธ ยานพาหนะ และคลัง สป. ของกองร้อย</div>
+          <div class="doc-title">บันทึก​ผล​การ​ตรวจ​กิจการ​ทั่วไป (ชุด​ที่ ๒)</div>
+          <div class="doc-desc">แบบ​ตรวจการ​ส่ง​กำลัง​และ​บำรุงรักษา อาวุธ ยานพาหนะ และ​คลัง สป. ของ​กองร้อย</div>
         </div>
         <div class="card-actions">
           <a href="/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -591,8 +591,8 @@
             <span class="doc-code">MEMO-45</span>
             <span class="doc-format-tag">A4 แนวตั้ง (1 หน้า)</span>
           </div>
-          <div class="doc-title">บันทึกข้อความ (ติดตามส่งซ่อม ๔๕ วัน)</div>
-          <div class="doc-desc">หนังสือราชการบันทึกข้อความ ตราครุฑ พร้อมตารางตรวจ/ทาน และบล็อกลงนามมาตรฐาน ๑๓๐ มม.</div>
+          <div class="doc-title">บันทึก​ข้อความ (ติดตาม​ส่ง​ซ่อม ๔๕ วัน)</div>
+          <div class="doc-desc">หนังสือราชการ​บันทึก​ข้อความ ตรา​ครุฑ พร้อม​ตาราง​ตรวจ/ทาน และ​บล็อก​ลงนาม​มาตรฐาน ๑๓๐ มม.</div>
         </div>
         <div class="card-actions">
           <a href="/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -608,8 +608,8 @@
             <span class="doc-code">MEMO-90</span>
             <span class="doc-format-tag">A4 แนวตั้ง (1 หน้า)</span>
           </div>
-          <div class="doc-title">บันทึกข้อความ (ติดตามส่งซ่อม ๙๐ วัน)</div>
-          <div class="doc-desc">หนังสือราชการบันทึกข้อความ ขอส่งใบติดตามใบส่งซ่อมเกิน ๙๐ วัน พร้อมระบบพิมพ์คู่ขนาน</div>
+          <div class="doc-title">บันทึก​ข้อความ (ติดตาม​ส่ง​ซ่อม ๙๐ วัน)</div>
+          <div class="doc-desc">หนังสือราชการ​บันทึก​ข้อความ ขอ​ส่ง​ใบ​ติดตาม​ใบ​ส่ง​ซ่อม​เกิน ๙๐ วัน พร้อม​ระบบ​พิมพ์​คู่ขนาน</div>
         </div>
         <div class="card-actions">
           <a href="/บันทึกข้อความ_90_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
@@ -624,7 +624,7 @@
   <div id="previewModal" class="modal-overlay" onclick="closePreviewModal()">
     <div class="glass-panel modal-content" onclick="event.stopPropagation()">
       <div class="modal-header">
-        <h3 id="modalTitle" style="font-size: 16px; font-weight: 600; color: #fff;">พรีวิวเอกสาร Print-Grade 300 DPI</h3>
+        <h3 id="modalTitle" style="font-size: 16px; font-weight: 600; color: #fff;">พรีวิว​เอกสาร Print-Grade 300 DPI</h3>
         <button class="modal-close" onclick="closePreviewModal()">&times;</button>
       </div>
       <div class="modal-body">
