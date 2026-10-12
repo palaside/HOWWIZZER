@@ -527,11 +527,11 @@ def generate_html(output_path):
         }}
         .staff-grid {{
             display: grid;
-            grid-template-columns: 24mm 24mm 24mm;
+            grid-template-columns: 26mm 22mm 8mm 20mm;
             font-size: 13.5pt;
             font-weight: 300;
             line-height: 1.25;
-            text-align: center;
+            text-align: left;
         }}
 
         /* ================= PAGE 2 & 3: FORM SD.1 ================= */
@@ -748,10 +748,12 @@ def generate_html(output_path):
             <div class="staff-grid">
                 <div>จ.ส.อ.</div>
                 <div>ร่าง/ตรวจ</div>
+                <div></div>
                 <div>มิ.ย. ๖๙</div>
                 <div>ส.ท. วรากรฯ</div>
                 <div>พิมพ์/ทาน</div>
-                <div style="display: flex; justify-content: space-between;"><span>๑๙</span><span>มิ.ย. ๖๙</span></div>
+                <div style="text-align: right; padding-right: 2.5mm;">๑๙</div>
+                <div>มิ.ย. ๖๙</div>
             </div>
         </div>
     </div>

@@ -148,15 +148,17 @@ def compile_dual_copy_package(src_html_path: Path, out_dir: Path, base_name: str
     # 1. Produce File Copy (_สำเนาคู่ฉบับ.html)
     copy_content = content
 
-    # Standard Gold Standard Staff Footer (5 Enters below ผบ.ป.๔ พัน.๔ ร้อย.๒, 3 columns, clean tabular alignment)
+    # Standard Gold Standard Staff Footer (5 Enters below ผบ.ป.๔ พัน.๔ ร้อย.๒, 4 columns, clean tabular alignment)
     standard_staff_footer_html = f'''<div class="memo-footer-staff" style="margin-top: 22mm; display: flex; justify-content: flex-end;">
-    <div class="staff-grid" style="display: grid; grid-template-columns: 26mm 26mm 26mm; font-size: 13.5pt; font-weight: 300; line-height: 1.25; font-family: inherit;">
+    <div class="staff-grid" style="display: grid; grid-template-columns: 26mm 22mm 8mm 20mm; font-size: 13.5pt; font-weight: 300; line-height: 1.25; font-family: inherit;">
         <div style="text-align: left;">จ.ส.อ.</div>
         <div style="text-align: left;">ร่าง/ตรวจ</div>
-        <div style="text-align: right;">{thai_month} {thai_year}</div>
+        <div></div>
+        <div style="text-align: left;">{thai_month} {thai_year}</div>
         <div style="text-align: left;">ส.ท. วรากรฯ</div>
         <div style="text-align: left;">พิมพ์/ทาน</div>
-        <div style="display: flex; justify-content: space-between;"><span>{thai_day}</span><span>{thai_month} {thai_year}</span></div>
+        <div style="text-align: right; padding-right: 2.5mm;">{thai_day}</div>
+        <div style="text-align: left;">{thai_month} {thai_year}</div>
     </div>
 </div>'''
 
