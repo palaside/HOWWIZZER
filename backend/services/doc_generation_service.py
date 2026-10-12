@@ -107,6 +107,30 @@ def inject_inventory_data_into_html(html_content: str, inventory_data: dict | No
             )
     return updated_html
 
+def _replace_staff_footer_element(html_content: str, replacement_html: str) -> str:
+    """
+    Safely finds and replaces <div class="(memo-footer-staff|memo-staff-footer)">
+    by accurately tracking nested <div> tag depth so it NEVER eats the parent page's closing </div>.
+    """
+    pattern = re.compile(r'<div class="(?:memo-footer-staff|memo-staff-footer)"[^>]*>')
+    m = pattern.search(html_content)
+    if not m:
+        return html_content
+        
+    start_pos = m.start()
+    depth = 1
+    idx = m.end()
+    tag_pattern = re.compile(r'<div\b[^>]*>|</div\s*>')
+    for tm in tag_pattern.finditer(html_content, idx):
+        if tm.group().startswith("<div"):
+            depth += 1
+        else:
+            depth -= 1
+            if depth == 0:
+                end_pos = tm.end()
+                return html_content[:start_pos] + replacement_html + html_content[end_pos:]
+    return html_content
+
 def compile_dual_copy_package(src_html_path: Path, out_dir: Path, base_name: str, sub_date: date) -> tuple[Path, Path]:
     """
     Compiles dual copies (RULE-PROD-DOC-ENGINE-V1 Rule 7):
@@ -136,17 +160,12 @@ def compile_dual_copy_package(src_html_path: Path, out_dir: Path, base_name: str
     </div>
 </div>'''
 
-    staff_block_pattern = r'<div class="(memo-footer-staff|memo-staff-footer)"[^>]*>[\s\S]*?</div>\s*</div>'
-    if re.search(staff_block_pattern, copy_content):
-        copy_content = re.sub(
-            staff_block_pattern,
-            standard_staff_footer_html,
-            copy_content
-        )
+    if re.search(r'<div class="(?:memo-footer-staff|memo-staff-footer)"', copy_content):
+        copy_content = _replace_staff_footer_element(copy_content, standard_staff_footer_html)
     else:
         # If not present in template, inject below signature block on first portrait page
         copy_content = re.sub(
-            r'(<div class="memo-sig-wrap"[^>]*>[\s\S]*?</div>\s*</div>)',
+            r'(<div class="(?:memo-sig-wrap|sig-container)"[^>]*>[\s\S]*?</div>\s*</div>)',
             rf'\g<1>\n        {standard_staff_footer_html}',
             copy_content
         )
@@ -161,7 +180,7 @@ def compile_dual_copy_package(src_html_path: Path, out_dir: Path, base_name: str
     # 2. Produce Original (_ฉบับจริง.html - Strip '(สำเนาคู่ฉบับ)' and hide draft block)
     orig_content = copy_content.replace("(สำเนาคู่ฉบับ)", "")
     orig_content = orig_content.replace("สำเนาคู่ฉบับ", "")
-    orig_content = re.sub(staff_block_pattern, r'<div class="\1" style="display: none !important;"></div>', orig_content)
+    orig_content = _replace_staff_footer_element(orig_content, '<div class="memo-footer-staff" style="display: none !important;"></div>')
     
     orig_path = out_dir / f"{base_name}_ฉบับจริง.html"
     orig_path.write_text(orig_content, encoding="utf-8")
