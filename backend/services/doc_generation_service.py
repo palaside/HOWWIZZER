@@ -48,22 +48,33 @@ def generate_high_dpi_preview(html_path: Path, output_img: Path, scale_factor: f
         output_img.write_bytes(b"MOCK_PNG_IMAGE_300DPI")
         return output_img
 
-def get_generation_checklist(period_key: str) -> list[dict]:
+def get_generation_checklist(period_key: str = "") -> list[dict]:
     schedules = load_schedule()
     checklist = []
     HOTFOLDER_OUT.mkdir(parents=True, exist_ok=True)
     for s in schedules:
-        target_name_orig = f"{s['template_id']}_{period_key}_ฉบับจริง.html"
-        out_file = HOTFOLDER_OUT / target_name_orig
-        preview_file = HOTFOLDER_OUT / f"{s['template_id']}_{period_key}_300dpi.png"
+        pattern = f"{s['template_id']}_{period_key}*_ฉบับจริง.html" if period_key else f"{s['template_id']}_*_ฉบับจริง.html"
+        matching = sorted(HOTFOLDER_OUT.glob(pattern))
+        out_file = matching[-1] if matching else None
+        if out_file:
+            p_key = out_file.name.replace(f"{s['template_id']}_", "").replace("_ฉบับจริง.html", "")
+            preview_file = HOTFOLDER_OUT / f"{s['template_id']}_{p_key}_300dpi.png"
+            copy_file = HOTFOLDER_OUT / f"{s['template_id']}_{p_key}_สำเนาคู่ฉบับ.html"
+        else:
+            preview_file = None
+            copy_file = None
+
+        has_generated = out_file and out_file.exists()
         checklist.append({
             "template_id": s["template_id"],
             "title": s["title"],
             "frequency": s["frequency"],
-            "status": "GENERATED" if out_file.exists() else "PENDING",
-            "original_file": str(out_file) if out_file.exists() else None,
-            "preview_url": f"/api/v1/docs/preview/{preview_file.name}" if preview_file.exists() else None,
-            "updated_at": datetime.fromtimestamp(out_file.stat().st_mtime).isoformat() if out_file.exists() else None
+            "status": "GENERATED" if has_generated else "PENDING",
+            "original_file": str(out_file) if has_generated else None,
+            "original_url": f"/hotfolder/ready/{out_file.name}" if has_generated else None,
+            "copy_url": f"/hotfolder/ready/{copy_file.name}" if (copy_file and copy_file.exists()) else None,
+            "preview_url": f"/api/v1/docs/preview/{preview_file.name}" if (preview_file and preview_file.exists()) else None,
+            "updated_at": datetime.fromtimestamp(out_file.stat().st_mtime).isoformat() if has_generated else None
         })
     return checklist
 

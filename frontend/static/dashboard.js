@@ -48,9 +48,9 @@ async function loadDocumentChecklist() {
       const badgeClass = isGen ? 'badge-generated' : 'badge-pending';
       const badgeText = isGen ? 'พร้อมพิมพ์ ๒ ชุด' : 'รอสั่งสร้าง';
       
-      const origUrl = `/hotfolder/ready/${item.template_id}_2026-10-12_ฉบับจริง.html`;
-      const copyUrl = `/hotfolder/ready/${item.template_id}_2026-10-12_สำเนาคู่ฉบับ.html`;
-      const previewImg = `/api/v1/docs/preview/${item.template_id}_2026-10-12_300dpi.png`;
+      const origUrl = item.original_url;
+      const copyUrl = item.copy_url;
+      const previewImg = item.preview_url;
 
       return `
         <div class="glass-panel doc-card">
