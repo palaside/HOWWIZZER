@@ -1,0 +1,39 @@
+{
+  "rules": [
+    {
+      "doc_type": "FIRE_SAFETY",
+      "title": "รายงานการตรวจป้องกันอัคคีภัย",
+      "cadence": "MONTHLY",
+      "pattern": "รายงานอัคคีภัย.*_(\\d{4}-\\d{2})",
+      "deadline_day_of_month": 10
+    },
+    {
+      "doc_type": "AMMO_INSPECTION",
+      "title": "รายงานตรวจสภาพกระสุนและวัตถุระเบิด",
+      "cadence": "QUARTERLY",
+      "pattern": "รายงาน.*กระสุน.*_(\\d{4}-Q[1-4])",
+      "deadline_day_of_month": 15
+    }
+  ],
+  "ingested_records": [
+    {
+      "filename": "รายงานอัคคีภัย_ประจำเดือน_2026-10.pdf",
+      "file_path": "C:\\Users\\EVE\\AppData\\Local\\Temp\\pytest-of-EVE\\pytest-43\\test_external_ingest_regex_mat0\\FolderIN\\รายงานอัคคีภัย_ประจำเดือน_2026-10.pdf",
+      "doc_type": "FIRE_SAFETY",
+      "title": "รายงานการตรวจป้องกันอัคคีภัย",
+      "period_key": "2026-10",
+      "status": "INGESTED",
+      "ingested_at": "2026-10-12T18:14:00.982667"
+    },
+    {
+      "filename": "รายงานดับเพลิง_กองร้อยพิเศษ_ฉบับด่วน.pdf",
+      "file_path": "C:\\Users\\EVE\\AppData\\Local\\Temp\\pytest-of-EVE\\pytest-43\\test_external_ingest_fallback_0\\FolderIN\\รายงานดับเพลิง_กองร้อยพิเศษ_ฉบับด่วน.pdf",
+      "doc_type": "FIRE_SAFETY",
+      "title": "รายงานการตรวจป้องกันอัคคีภัย",
+      "period_key": "2026-10",
+      "status": "CLASSIFIED",
+      "ingested_at": "2026-10-12T18:14:00.999876",
+      "classified_at": "2026-10-12T18:14:01.011972"
+    }
+  ]
+}
