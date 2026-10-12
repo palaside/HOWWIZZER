@@ -15,6 +15,30 @@
           "by": "owner_commander",
           "timestamp": "2026-10-12T18:17:27.834304",
           "notes": "อนุมัติการยืม: ยิงสนับสนุนการฝึก"
+        },
+        {
+          "action": "LOAN_APPROVED",
+          "request_id": "LOAN-C2CADA2E",
+          "borrower": "ส.อ. สมเกียรติ สุขใจ",
+          "by": "owner_commander",
+          "timestamp": "2026-10-12T20:35:04.230811",
+          "notes": "อนุมัติการยืม: ยิงสนับสนุนการฝึก"
+        },
+        {
+          "action": "LOAN_APPROVED",
+          "request_id": "LOAN-0A41B614",
+          "borrower": "ส.อ. สมเกียรติ สุขใจ",
+          "by": "owner_commander",
+          "timestamp": "2026-10-12T20:46:08.232642",
+          "notes": "อนุมัติการยืม: ยิงสนับสนุนการฝึก"
+        },
+        {
+          "action": "LOAN_APPROVED",
+          "request_id": "LOAN-03D39048",
+          "borrower": "ส.อ. สมเกียรติ สุขใจ",
+          "by": "owner_commander",
+          "timestamp": "2026-10-12T20:49:42.608257",
+          "notes": "อนุมัติการยืม: ยิงสนับสนุนการฝึก"
         }
       ]
     },
@@ -42,6 +66,57 @@
           "replaced_by": "owner_commander",
           "timestamp": "2026-10-12T18:17:27.873074",
           "notes": "เปลี่ยนทดแทนหมายเลขยุทโธปกรณ์: เดิม 54232 เป็น SN-NEW-9988"
+        },
+        {
+          "action": "ITEM_RETURNED",
+          "loan_id": "loan_test_dam",
+          "is_damaged": true,
+          "damage_notes": "ศูนย์เล็งแตกร้าว",
+          "receiver": "owner_commander",
+          "timestamp": "2026-10-12T20:35:04.260854",
+          "notes": "รับคืนสิ่งอุปกรณ์: ศูนย์เล็งแตกร้าว"
+        },
+        {
+          "action": "ITEM_REPLACED",
+          "old_serial_no": "SN-NEW-9988",
+          "new_serial_no": "SN-NEW-9988",
+          "replaced_by": "owner_commander",
+          "timestamp": "2026-10-12T20:35:04.274703",
+          "notes": "เปลี่ยนทดแทนหมายเลขยุทโธปกรณ์: เดิม SN-NEW-9988 เป็น SN-NEW-9988"
+        },
+        {
+          "action": "ITEM_RETURNED",
+          "loan_id": "loan_test_dam",
+          "is_damaged": true,
+          "damage_notes": "ศูนย์เล็งแตกร้าว",
+          "receiver": "owner_commander",
+          "timestamp": "2026-10-12T20:46:08.275429",
+          "notes": "รับคืนสิ่งอุปกรณ์: ศูนย์เล็งแตกร้าว"
+        },
+        {
+          "action": "ITEM_REPLACED",
+          "old_serial_no": "SN-NEW-9988",
+          "new_serial_no": "SN-NEW-9988",
+          "replaced_by": "owner_commander",
+          "timestamp": "2026-10-12T20:46:08.293872",
+          "notes": "เปลี่ยนทดแทนหมายเลขยุทโธปกรณ์: เดิม SN-NEW-9988 เป็น SN-NEW-9988"
+        },
+        {
+          "action": "ITEM_RETURNED",
+          "loan_id": "loan_test_dam",
+          "is_damaged": true,
+          "damage_notes": "ศูนย์เล็งแตกร้าว",
+          "receiver": "owner_commander",
+          "timestamp": "2026-10-12T20:49:42.642326",
+          "notes": "รับคืนสิ่งอุปกรณ์: ศูนย์เล็งแตกร้าว"
+        },
+        {
+          "action": "ITEM_REPLACED",
+          "old_serial_no": "SN-NEW-9988",
+          "new_serial_no": "SN-NEW-9988",
+          "replaced_by": "owner_commander",
+          "timestamp": "2026-10-12T20:49:42.656471",
+          "notes": "เปลี่ยนทดแทนหมายเลขยุทโธปกรณ์: เดิม SN-NEW-9988 เป็น SN-NEW-9988"
         }
       ]
     },

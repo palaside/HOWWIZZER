@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initDateDefaults();
   loadDocumentChecklist();
-  loadPersonnelRegistry();
+  loadOperators();
   loadInventory();
   loadExternalIntake();
   loadCadenceGaps();
@@ -127,26 +127,70 @@ function closePreviewModal() {
 }
 
 // ==========================================
-// PERSONNEL & SIGNER REGISTRY
+// 8 USER OPERATOR SLOTS (ผบ.หมู่ ป.1 - 6, ผบ.ร้อย, ผบ.พัน)
 // ==========================================
-async function loadPersonnelRegistry() {
-  const container = document.getElementById('personnelList');
+async function loadOperators() {
+  const container = document.getElementById('operatorsGrid');
   if (!container) return;
   try {
-    const res = await fetch(`${API_BASE}/personnel`);
-    const data = await res.json();
-    const roles = data.roles || {};
-    container.innerHTML = Object.entries(roles).map(([key, info]) => `
-      <div style="background: rgba(0,0,0,0.25); padding: 14px; border-radius: 10px; border: 1px solid var(--border-glass);">
-        <div style="font-size: 12px; color: var(--accent-cyan); font-weight: 600; margin-bottom: 4px;">${info.role_name} (${key})</div>
-        <div style="font-size: 15px; font-weight: 600;">${info.rank} ${info.name}</div>
-        <div style="font-size: 13px; color: var(--text-secondary);">${info.position}</div>
+    const res = await fetch(`${API_BASE}/personnel/operators`);
+    const operators = await res.json();
+    container.innerHTML = operators.map(op => `
+      <div class="operator-slot" onclick="promptEditOperator(${op.slot})" 
+           style="background: rgba(0, 0, 0, 0.4); padding: 14px 10px; border-radius: 12px; border: 1px solid var(--border-glass); text-align: center; cursor: pointer; transition: all 0.2s;"
+           title="คลิกเพื่อแก้ไขข้อมูลเจ้าหน้าที่ ช่องที่ ${op.slot}">
+        <div style="font-size: 12px; color: var(--accent-cyan); font-weight: 700; margin-bottom: 6px;">
+          ${op.position}
+        </div>
+        <div style="font-size: 16px; font-weight: 700; color: #ffffff; line-height: 1.2;">
+          ${op.rank}
+        </div>
+        <div style="font-size: 13.5px; font-weight: 500; color: var(--text-primary); margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          ${op.name}
+        </div>
+        <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 8px;">
+          ${op.gun_serial && op.gun_serial !== '-' 
+            ? `<span style="background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; color: var(--text-secondary);">หมายเลข ${op.gun_serial}</span>` 
+            : `<span style="color: var(--accent-blue); font-size: 11px;">กองบังคับการ</span>`}
+        </div>
       </div>
     `).join('');
   } catch (err) {
-    console.error('Failed to load personnel:', err);
+    console.error('Failed to load operators:', err);
   }
 }
+
+async function promptEditOperator(slot) {
+  const res = await fetch(`${API_BASE}/personnel/operators`);
+  const operators = await res.json();
+  const current = operators.find(o => o.slot === slot);
+  if (!current) return;
+
+  const newRank = prompt(`ช่องที่ ${slot} (${current.position})\nระบุ ยศ:`, current.rank);
+  if (newRank === null) return;
+  const newName = prompt(`ระบุ ชื่อ-สกุล:`, current.name);
+  if (newName === null) return;
+  const newPos = prompt(`ระบุ ตำแหน่ง (เช่น ผบ.หมู่ ป.${slot}):`, current.position);
+  if (newPos === null) return;
+
+  try {
+    await fetch(`${API_BASE}/personnel/operators/${slot}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        rank: newRank,
+        name: newName,
+        position: newPos,
+        gun_serial: current.gun_serial
+      })
+    });
+    alert(`อัปเดตข้อมูลเจ้าหน้าที่ช่องที่ ${slot} สำเร็จ!`);
+    loadOperators();
+  } catch (err) {
+    alert('เกิดข้อผิดพลาดในการบันทึก: ' + err.message);
+  }
+}
+
 
 // ==========================================
 // TAB 2: ARMORY & DUAL-CONTROL CUSTODY

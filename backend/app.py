@@ -73,6 +73,25 @@ def health():
 def get_personnel():
     return load_registry()
 
+@app.get("/api/v1/personnel/operators")
+def list_operators():
+    from backend.services.personnel_service import get_operators
+    return get_operators()
+
+@app.put("/api/v1/personnel/operators/{slot}")
+def edit_operator(slot: int, payload: dict = Body(...)):
+    from backend.services.personnel_service import update_operator
+    try:
+        return update_operator(
+            slot=slot,
+            rank=payload.get("rank", ""),
+            name=payload.get("name", ""),
+            position=payload.get("position", ""),
+            gun_serial=payload.get("gun_serial", "")
+        )
+    except KeyError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+
 @app.put("/api/v1/personnel/{role_id}")
 def update_personnel(role_id: str, payload: dict = Body(...)):
     try:
@@ -85,6 +104,7 @@ def update_personnel(role_id: str, payload: dict = Body(...)):
         return updated
     except KeyError as e:
         raise HTTPException(status_code=404, detail=str(e))
+
 
 # --- Document Production & HotFolder Engine ---
 @app.get("/api/v1/docs/checklist")

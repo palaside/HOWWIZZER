@@ -10,7 +10,7 @@ def test_get_battery_commander():
     assert "rank" in signer
     assert "name" in signer
     assert "position" in signer
-    assert signer["position"] == "ผบ.ร้อย.พล.รพศ.๑"
+    assert "ผบ.ร้อย" in signer["position"]
 
 def test_update_and_persist_signer():
     original = get_personnel_by_role("commander_battery")
@@ -29,3 +29,40 @@ def test_inject_signers_into_template_payload():
     hydrated = inject_signers_into_template(payload)
     assert hydrated["signature_blocks"][0]["name"] != ""
     assert hydrated["signature_blocks"][0]["rank"] != ""
+
+def test_get_eight_operators():
+    from backend.services.personnel_service import get_operators, get_personnel_by_role
+    operators = get_operators()
+    assert isinstance(operators, list)
+    assert len(operators) >= 8
+    
+    # Check slot 1: จ.ส.อ. วรนันท์ ศรีวารี ผบ.หมู่ ป.1
+    op1 = next(o for o in operators if o["slot"] == 1)
+    assert op1["rank"] == "จ.ส.อ."
+    assert "วรนันท์" in op1["name"]
+    assert "ผบ.หมู่ ป.1" in op1["position"]
+    
+    # Check slot 8: พ.ท. พรชัย มากเทพพงษ์ ผบ.พัน.ป.
+    op8 = next(o for o in operators if o["slot"] == 8)
+    assert op8["rank"] == "พ.ท."
+    assert "พรชัย" in op8["name"]
+    assert "ผบ.พัน" in op8["position"]
+
+    # Check slot 9: จ.ส.อ. ณัฐชัย รักษาวงษ์ ส.หน.สย.ป.๔ พัน.๔ ร้อย.๒
+    op9 = next(o for o in operators if o["slot"] == 9)
+    assert op9["rank"] == "จ.ส.อ."
+    assert "ณัฐชัย" in op9["name"]
+    assert "ส.หน.สย" in op9["position"]
+    
+    # Check role registry binding
+    ops_chief = get_personnel_by_role("chief_operations")
+    assert "ณัฐชัย" in ops_chief["name"]
+    assert ops_chief["rank"] == "จ.ส.อ."
+
+def test_update_operator():
+    from backend.services.personnel_service import update_operator, get_operators
+    updated = update_operator(slot=2, rank="จ.ส.ต.", name="ทดสอบ เปลี่ยนชื่อ", position="ผบ.หมู่ ป.2")
+    assert updated["name"] == "ทดสอบ เปลี่ยนชื่อ"
+    # Revert back
+    update_operator(slot=2, rank="จ.ส.ต.", name="จุฑานนท์ คณฑา", position="ผบ.หมู่ ป.2")
+

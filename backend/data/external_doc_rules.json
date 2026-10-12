@@ -18,22 +18,22 @@
   "ingested_records": [
     {
       "filename": "รายงานอัคคีภัย_ประจำเดือน_2026-10.pdf",
-      "file_path": "C:\\Users\\EVE\\AppData\\Local\\Temp\\pytest-of-EVE\\pytest-43\\test_external_ingest_regex_mat0\\FolderIN\\รายงานอัคคีภัย_ประจำเดือน_2026-10.pdf",
+      "file_path": "C:\\Users\\EVE\\AppData\\Local\\Temp\\pytest-of-EVE\\pytest-49\\test_external_ingest_regex_mat0\\FolderIN\\รายงานอัคคีภัย_ประจำเดือน_2026-10.pdf",
       "doc_type": "FIRE_SAFETY",
       "title": "รายงานการตรวจป้องกันอัคคีภัย",
       "period_key": "2026-10",
       "status": "INGESTED",
-      "ingested_at": "2026-10-12T18:14:00.982667"
+      "ingested_at": "2026-10-12T20:49:42.534532"
     },
     {
       "filename": "รายงานดับเพลิง_กองร้อยพิเศษ_ฉบับด่วน.pdf",
-      "file_path": "C:\\Users\\EVE\\AppData\\Local\\Temp\\pytest-of-EVE\\pytest-43\\test_external_ingest_fallback_0\\FolderIN\\รายงานดับเพลิง_กองร้อยพิเศษ_ฉบับด่วน.pdf",
+      "file_path": "C:\\Users\\EVE\\AppData\\Local\\Temp\\pytest-of-EVE\\pytest-49\\test_external_ingest_fallback_0\\FolderIN\\รายงานดับเพลิง_กองร้อยพิเศษ_ฉบับด่วน.pdf",
       "doc_type": "FIRE_SAFETY",
       "title": "รายงานการตรวจป้องกันอัคคีภัย",
       "period_key": "2026-10",
       "status": "CLASSIFIED",
-      "ingested_at": "2026-10-12T18:14:00.999876",
-      "classified_at": "2026-10-12T18:14:01.011972"
+      "ingested_at": "2026-10-12T20:49:42.555393",
+      "classified_at": "2026-10-12T20:49:42.571463"
     }
   ]
 }

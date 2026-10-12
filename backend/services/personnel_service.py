@@ -43,3 +43,29 @@ def inject_signers_into_template(template_data: dict) -> dict:
                 block["name"] = role_info["name"]
                 block["position"] = role_info["position"]
     return hydrated
+
+def get_operators() -> list[dict]:
+    """Returns the 8 artillery squad commanders & battery officers."""
+    data = load_registry()
+    return data.get("operators", [])
+
+def update_operator(slot: int, rank: str, name: str, position: str, gun_serial: str = "") -> dict:
+    """Updates rank, name, and position for a specific operator slot (1-8)."""
+    data = load_registry()
+    operators = data.get("operators", [])
+    op = next((o for o in operators if o["slot"] == slot), None)
+    if not op:
+        raise KeyError(f"Operator slot {slot} not found")
+        
+    op.update({
+        "rank": rank.strip(),
+        "name": name.strip(),
+        "position": position.strip(),
+        "updated_at": datetime.now().isoformat()
+    })
+    if gun_serial:
+        op["gun_serial"] = gun_serial.strip()
+        
+    save_registry(data)
+    return op
+
