@@ -41,6 +41,15 @@
    - แทรก Zero-Width Space (`\u200b`) ผ่าน `thai_typography_engine.py` โดยคุ้มครองแท็ก HTML และคำย่อทหาร
    - เอกสารราชการทุกฉบับต้องกั้นหน้า-กั้นหลังตรงเสมอ (`text-align: justify; text-justify: inter-cluster; word-break: keep-all; overflow-wrap: break-word;`)
 
+6. **[RULE-SARABUN-DOC-STANDARD-V1](file:///d:/Project/WEPAPP/.agents/rules/sarabun-document-standard.md)**
+   - **กฎระเบียบงานสารบรรณขั้นสูงสุด (Sarabun Gold Standard & Zero-Regression Mandate):**
+   - เอกสารทุกชุดและทุกฉบับต้องผ่าน Reference ของระเบียบงานสารบรรณ พ.ศ. ๒๕๒๖ และธรรมเนียมทหาร
+   - **ฟอนต์และขนาด:** ใช้ `TH Sarabun PSK` ขนาด **`17pt`** เป็นขนาดเนื้อหาหลัก (`font-size: 17pt; line-height: 1.25`)
+   - **น้ำหนักฟอนต์:** หัวข้อหลัก (Headings/Labels) ต้องใช้ตัวหนา **Bold (`font-weight: 700`)** ส่วนเนื้อหา ตัวตาราง คำเติม และรายละเอียดทั้งหมดที่ไม่ใช่หัวข้อ ต้องใช้น้ำหนัก **Thin (`font-weight: 300`)** เสมอ
+   - **บล็อกการลงนาม:** ต้องยึดถือมาตรฐาน Red Line Standard (จุด `.` ท้ายยศ ตรงกับวงเล็บเปิด `(` ของชื่อเป๊ะ ๑๐๐% และเว้น ๑๓๐ มม. จากขอบซ้ายในแนวตั้ง)
+   - **บล็อกผู้ร่าง/ตรวจ/พิมพ์/ทาน:** ต้องมีครบถ้วน ๔ คอลัมน์ ๒ แกนดิ่งคู่ขนาน เคาะลงมา ๕ Enter (๒๒ มม.) ใต้ตำแหน่งผู้ลงนาม (แสดงในสำเนาคู่ฉบับ ซ่อนในตัวจริง)
+   - **ข้อห้ามเด็ดขาด:** ห้ามรีเฟรชหรือรันสคริปต์คอมไพล์แล้วทำฟอนต์ 17pt, Thin 300, บล็อกลงนาม หรือบล็อกผู้ร่าง/ตรวจ/พิมพ์/ทาน หลุดหายโดยเด็ดขาด (Zero Regression ๑๐๐%)
+
 ---
 
 ## 🏆 Approved References (Gold Standard)
