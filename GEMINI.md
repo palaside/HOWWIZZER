@@ -35,6 +35,11 @@
 4. **[RULE-PAGEFIT-TUNING-V1](file:///d:/Project/WEPAPP/.agents/skills/PageFit_Tuning/SKILL.md)**
    - สกิลวิศวกรรมบีบอัดเอกสารให้ลงพอดีหน้า A4 (Zero-Overflow Micro-Tuning Budget 4 มิติ)
    - เมื่อตรวจพบว่าข้อความหรือบล็อกลงนามล้นขอบกระดาษ ระบบต้องปรับจูนอัตโนมัติ: ปรับ Page Padding ล่างเหลือ 10mm, สเกลเนื้อหาเป็น 13.5pt/line-height: 1.18, กระชับ Margin หัวข้อ และคงระยะปลอดภัยใต้บล็อกลงนามอย่างน้อย 8-12mm เสมอ ห้ามตัดทอนข้อความเด็ดขาด
+ 
+5. **[RULE-THAI-TYPOGRAPHY-ZWS-V1](file:///d:/Project/WEPAPP/.agents/rules/thai-typography-zws.md)**
+   - มาตรฐานการตัดคำและจัดหน้ากระดาษภาษาไทย ป้องกันคำขาดครึ่งท่อน (Zero Split Words) ๑๐๐%
+   - แทรก Zero-Width Space (`\u200b`) ผ่าน `thai_typography_engine.py` โดยคุ้มครองแท็ก HTML และคำย่อทหาร
+   - เอกสารราชการทุกฉบับต้องกั้นหน้า-กั้นหลังตรงเสมอ (`text-align: justify; text-justify: inter-cluster; word-break: keep-all; overflow-wrap: break-word;`)
 
 ---
 
