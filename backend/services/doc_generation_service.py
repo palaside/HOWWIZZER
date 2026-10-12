@@ -124,8 +124,8 @@ def compile_dual_copy_package(src_html_path: Path, out_dir: Path, base_name: str
     # 1. Produce File Copy (_สำเนาคู่ฉบับ.html)
     copy_content = content
 
-    # Standard Gold Standard Staff Footer (Image 1 layout: 3 columns, clean tabular alignment)
-    standard_staff_footer_html = f'''<div class="memo-footer-staff" style="margin-top: auto; display: flex; justify-content: flex-end;">
+    # Standard Gold Standard Staff Footer (5 Enters below ผบ.ป.๔ พัน.๔ ร้อย.๒, 3 columns, clean tabular alignment)
+    standard_staff_footer_html = f'''<div class="memo-footer-staff" style="margin-top: 22mm; display: flex; justify-content: flex-end;">
     <div class="staff-grid" style="display: grid; grid-template-columns: 26mm 26mm 26mm; font-size: 13.5pt; line-height: 1.25; font-family: inherit;">
         <div style="text-align: left;">จ.ส.อ.</div>
         <div style="text-align: left;">ร่าง/ตรวจ</div>
@@ -136,20 +136,19 @@ def compile_dual_copy_package(src_html_path: Path, out_dir: Path, base_name: str
     </div>
 </div>'''
 
-    if re.search(r'<div class="(memo-footer-staff|memo-staff-footer)"[^>]*>.*?</div>', copy_content, flags=re.DOTALL):
+    staff_block_pattern = r'<div class="(memo-footer-staff|memo-staff-footer)"[^>]*>[\s\S]*?</div>\s*</div>'
+    if re.search(staff_block_pattern, copy_content):
         copy_content = re.sub(
-            r'<div class="(memo-footer-staff|memo-staff-footer)"[^>]*>.*?</div>',
+            staff_block_pattern,
             standard_staff_footer_html,
-            copy_content,
-            flags=re.DOTALL
+            copy_content
         )
     else:
-        # If not present in template, inject at bottom of first portrait page
+        # If not present in template, inject below signature block on first portrait page
         copy_content = re.sub(
-            r'(<div class="page-portrait"[^>]*>.*?)(</div>\s*<!-- ========================================== -->|\s*<div class="page-portrait")',
-            rf'\g<1>{standard_staff_footer_html}\g<2>',
-            copy_content,
-            flags=re.DOTALL
+            r'(<div class="memo-sig-wrap"[^>]*>[\s\S]*?</div>\s*</div>)',
+            rf'\g<1>\n        {standard_staff_footer_html}',
+            copy_content
         )
 
     # Ensure '(สำเนาคู่ฉบับ)' is present
@@ -162,7 +161,7 @@ def compile_dual_copy_package(src_html_path: Path, out_dir: Path, base_name: str
     # 2. Produce Original (_ฉบับจริง.html - Strip '(สำเนาคู่ฉบับ)' and hide draft block)
     orig_content = copy_content.replace("(สำเนาคู่ฉบับ)", "")
     orig_content = orig_content.replace("สำเนาคู่ฉบับ", "")
-    orig_content = re.sub(r'<div class="(memo-footer-staff|memo-staff-footer)"[^>]*>.*?</div>', r'<div class="\1" style="display: none !important;"></div>', orig_content, flags=re.DOTALL)
+    orig_content = re.sub(staff_block_pattern, r'<div class="\1" style="display: none !important;"></div>', orig_content)
     
     orig_path = out_dir / f"{base_name}_ฉบับจริง.html"
     orig_path.write_text(orig_content, encoding="utf-8")
