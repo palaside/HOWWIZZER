@@ -123,21 +123,34 @@ def compile_dual_copy_package(src_html_path: Path, out_dir: Path, base_name: str
     
     # 1. Produce File Copy (_สำเนาคู่ฉบับ.html)
     copy_content = content
-    # Update Staff initials block (พิมพ์/ทาน date row) to synchronized submission date
-    # Case A: Grid layout
-    pattern_staff_date = r'(<div[^>]*style="[^"]*display:\s*flex[^"]*justify-content:\s*space-between[^"]*"[^>]*>\s*<span>)[^<]*(</span>\s*<span>)[^<]*(</span>\s*</div>)'
-    replacement_staff_date = rf'\g<1>{thai_day}\g<2>{thai_month} {thai_year}\g<3>'
-    copy_content = re.sub(pattern_staff_date, replacement_staff_date, copy_content)
-    copy_content = re.sub(r'(<div>ร่าง/ตรวจ</div>\s*<div>)[^<]*(</div>)', rf'\g<1>{thai_month} {thai_year}\g<2>', copy_content)
 
-    # Case B: Plain text in memo-staff-footer (e.g. ส.ท. วรากรฯ  พิมพ์/ทาน         ๗       ส.ค. ๖๙)
-    pattern_text_pt = r'(พิมพ์/ทาน\s+)[๐-๙0-9]+\s+[^\s<]+(\s+[๐-๙0-9]+)'
-    copy_content = re.sub(pattern_text_pt, rf'\g<1>{thai_day}       {thai_month}\g<2>', copy_content)
-    # Also update year if needed:
-    pattern_text_pt_full = r'(พิมพ์/ทาน\s+)[๐-๙0-9]+\s+[^\s<]+\s+[๐-๙0-9]+'
-    copy_content = re.sub(pattern_text_pt_full, rf'\g<1>{thai_day}       {thai_month} {thai_year}', copy_content)
-    pattern_text_rt_full = r'(ร่าง/ตรวจ\s+)[^\s<]+\s+[๐-๙0-9]+'
-    copy_content = re.sub(pattern_text_rt_full, rf'\g<1>{thai_month} {thai_year}', copy_content)
+    # Standard Gold Standard Staff Footer (Image 1 layout: 3 columns, clean tabular alignment)
+    standard_staff_footer_html = f'''<div class="memo-footer-staff" style="margin-top: auto; display: flex; justify-content: flex-end;">
+    <div class="staff-grid" style="display: grid; grid-template-columns: 26mm 26mm 26mm; font-size: 13.5pt; line-height: 1.25; font-family: inherit;">
+        <div style="text-align: left;">จ.ส.อ.</div>
+        <div style="text-align: left;">ร่าง/ตรวจ</div>
+        <div style="text-align: right;">{thai_month} {thai_year}</div>
+        <div style="text-align: left;">ส.ท. วรากรฯ</div>
+        <div style="text-align: left;">พิมพ์/ทาน</div>
+        <div style="display: flex; justify-content: space-between;"><span>{thai_day}</span><span>{thai_month} {thai_year}</span></div>
+    </div>
+</div>'''
+
+    if re.search(r'<div class="(memo-footer-staff|memo-staff-footer)"[^>]*>.*?</div>', copy_content, flags=re.DOTALL):
+        copy_content = re.sub(
+            r'<div class="(memo-footer-staff|memo-staff-footer)"[^>]*>.*?</div>',
+            standard_staff_footer_html,
+            copy_content,
+            flags=re.DOTALL
+        )
+    else:
+        # If not present in template, inject at bottom of first portrait page
+        copy_content = re.sub(
+            r'(<div class="page-portrait"[^>]*>.*?)(</div>\s*<!-- ========================================== -->|\s*<div class="page-portrait")',
+            rf'\g<1>{standard_staff_footer_html}\g<2>',
+            copy_content,
+            flags=re.DOTALL
+        )
 
     # Ensure '(สำเนาคู่ฉบับ)' is present
     if "สำเนาคู่ฉบับ" not in copy_content:
