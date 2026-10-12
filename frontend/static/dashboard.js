@@ -137,21 +137,23 @@ async function loadOperators() {
     const operators = await res.json();
     container.innerHTML = operators.map(op => `
       <div class="operator-slot" onclick="promptEditOperator(${op.slot})" 
-           style="background: rgba(0, 0, 0, 0.4); padding: 14px 10px; border-radius: 12px; border: 1px solid var(--border-glass); text-align: center; cursor: pointer; transition: all 0.2s;"
-           title="คลิกเพื่อแก้ไขข้อมูลเจ้าหน้าที่ ช่องที่ ${op.slot}">
-        <div style="font-size: 12px; color: var(--accent-cyan); font-weight: 700; margin-bottom: 6px;">
-          ${op.position}
+           style="background: rgba(0, 0, 0, 0.5); padding: 14px 4px; border-radius: 12px; border: 1px solid var(--border-glass); text-align: center; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; justify-content: space-between; min-height: 120px;"
+           title="คลิกเพื่อแก้ไขข้อมูลเจ้าหน้าที่ ช่องที่ ${op.slot} (${op.position})">
+        <div>
+          <!-- 2. ยศ ชื่อ นามสกุล อยู่บรรทัดเดียวกัน -->
+          <div style="font-size: 11.8px; font-weight: 700; color: #ffffff; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.3px;" title="${op.rank} ${op.name}">
+            ${op.rank} ${op.name}
+          </div>
+          <!-- 3. ตำแหน่งลงมาใต้ชื่อ -->
+          <div style="font-size: 11.5px; color: var(--accent-cyan); font-weight: 600; margin-top: 6px; line-height: 1.25; min-height: 28px; display: flex; align-items: center; justify-content: center; letter-spacing: -0.2px;" title="${op.position}">
+            ${op.position}
+          </div>
         </div>
-        <div style="font-size: 16px; font-weight: 700; color: #ffffff; line-height: 1.2;">
-          ${op.rank}
-        </div>
-        <div style="font-size: 13.5px; font-weight: 500; color: var(--text-primary); margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-          ${op.name}
-        </div>
-        <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 8px;">
+        <!-- 4. หมายเลขปืนที่รับผิดชอบให้เลื่อนมาล่างสุด -->
+        <div style="margin-top: 10px; font-size: 11px;">
           ${op.gun_serial && op.gun_serial !== '-' 
-            ? `<span style="background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; color: var(--text-secondary);">หมายเลข ${op.gun_serial}</span>` 
-            : `<span style="color: var(--accent-blue); font-size: 11px;">กองบังคับการ</span>`}
+            ? `<span style="background: rgba(255,255,255,0.08); padding: 2px 5px; border-radius: 4px; color: var(--text-secondary); border: 1px solid rgba(255,255,255,0.05); display: inline-block;">หมายเลข ${op.gun_serial}</span>` 
+            : `<span style="color: var(--accent-blue); font-size: 11px; font-weight: 500; display: inline-block;">กองบังคับการ</span>`}
         </div>
       </div>
     `).join('');

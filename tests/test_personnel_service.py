@@ -34,25 +34,37 @@ def test_get_eight_operators():
     from backend.services.personnel_service import get_operators, get_personnel_by_role
     operators = get_operators()
     assert isinstance(operators, list)
-    assert len(operators) >= 8
+    assert len(operators) >= 9
     
-    # Check slot 1: จ.ส.อ. วรนันท์ ศรีวารี ผบ.หมู่ ป.1
+    # Check slot 1: พ.ท. พรชัย มากเทพพงษ์ ผบ.พัน.ป.
     op1 = next(o for o in operators if o["slot"] == 1)
-    assert op1["rank"] == "จ.ส.อ."
-    assert "วรนันท์" in op1["name"]
-    assert "ผบ.หมู่ ป.1" in op1["position"]
+    assert op1["rank"] == "พ.ท."
+    assert "พรชัย" in op1["name"]
+    assert "ผบ.พัน" in op1["position"]
     
-    # Check slot 8: พ.ท. พรชัย มากเทพพงษ์ ผบ.พัน.ป.
-    op8 = next(o for o in operators if o["slot"] == 8)
-    assert op8["rank"] == "พ.ท."
-    assert "พรชัย" in op8["name"]
-    assert "ผบ.พัน" in op8["position"]
+    # Check slot 2: ร.อ. กฤติน นราพงษ์ ผบ.ร้อย.ป.
+    op2 = next(o for o in operators if o["slot"] == 2)
+    assert op2["rank"] == "ร.อ."
+    assert "กฤติน" in op2["name"]
+    assert "ผบ.ร้อย" in op2["position"]
 
-    # Check slot 9: จ.ส.อ. ณัฐชัย รักษาวงษ์ ส.หน.สย.ป.๔ พัน.๔ ร้อย.๒
+    # Check slot 3: จ.ส.อ. ณัฐชัย รักษาวงษ์ ส.หน.สย.ป.๔ พัน.๔ ร้อย.๒
+    op3 = next(o for o in operators if o["slot"] == 3)
+    assert op3["rank"] == "จ.ส.อ."
+    assert "ณัฐชัย" in op3["name"]
+    assert "ส.หน.สย" in op3["position"]
+    
+    # Check slot 4: จ.ส.อ. วรนันท์ ศรีวารี ผบ.หมู่ ป.1
+    op4 = next(o for o in operators if o["slot"] == 4)
+    assert op4["rank"] == "จ.ส.อ."
+    assert "วรนันท์" in op4["name"]
+    assert "ผบ.หมู่ ป.1" in op4["position"]
+
+    # Check slot 9: ส.อ. อภิวัฒน์ จันทร์ลอย ผบ.หมู่ ป.6
     op9 = next(o for o in operators if o["slot"] == 9)
-    assert op9["rank"] == "จ.ส.อ."
-    assert "ณัฐชัย" in op9["name"]
-    assert "ส.หน.สย" in op9["position"]
+    assert op9["rank"] == "ส.อ."
+    assert "อภิวัฒน์" in op9["name"]
+    assert "ผบ.หมู่ ป.6" in op9["position"]
     
     # Check role registry binding
     ops_chief = get_personnel_by_role("chief_operations")
@@ -61,8 +73,8 @@ def test_get_eight_operators():
 
 def test_update_operator():
     from backend.services.personnel_service import update_operator, get_operators
-    updated = update_operator(slot=2, rank="จ.ส.ต.", name="ทดสอบ เปลี่ยนชื่อ", position="ผบ.หมู่ ป.2")
+    updated = update_operator(slot=5, rank="จ.ส.ต.", name="ทดสอบ เปลี่ยนชื่อ", position="ผบ.หมู่ ป.2")
     assert updated["name"] == "ทดสอบ เปลี่ยนชื่อ"
     # Revert back
-    update_operator(slot=2, rank="จ.ส.ต.", name="จุฑานนท์ คณฑา", position="ผบ.หมู่ ป.2")
+    update_operator(slot=5, rank="จ.ส.ต.", name="จุฑานนท์ คณฑา", position="ผบ.หมู่ ป.2")
 
