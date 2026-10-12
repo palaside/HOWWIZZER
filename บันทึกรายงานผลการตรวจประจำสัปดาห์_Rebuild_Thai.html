@@ -5,7 +5,7 @@
     <title>บันทึกรายงานผลการตรวจประจำสัปดาห์โดยผู้บังคับบัญชา สป.สาย สพ. (อาวุธ) (ประจำสัปดาห์)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         @page portrait-page {
             size: A4 portrait;
@@ -26,6 +26,7 @@
             background-color: #525659;
             font-family: 'TH Sarabun PSK', 'TH Sarabun New', 'Sarabun', Tahoma, sans-serif;
             font-size: 11pt;
+            font-weight: 300;
             line-height: 1.25;
             color: #000000;
             display: flex;
@@ -263,6 +264,7 @@
             display: grid;
             grid-template-columns: 24mm 24mm 24mm;
             font-size: 13.5pt;
+            font-weight: 300;
             line-height: 1.25;
             text-align: center;
         }
@@ -373,6 +375,15 @@
         .text-right { text-align: right; }
         .font-bold { font-weight: bold; }
         .align-top { vertical-align: top; }
+
+        /* Non-heading Thin typography Standard (RULE-PROD-DOC-ENGINE-V1 Rule 9) */
+        p, span, td, .memo-p, .memo-body, .memo-closing, .staff-grid, .salutation-row, .reference-section, .attachment-section, .sig-rank-anchor, .sig-name, .sig-pos, .sig-date, .meta-fill-dotted {
+            font-weight: 300;
+        }
+
+        .memo-title, .meta-label, th, .form-header-title, .form-header-sub, .photo-cert-text, .sig-role-anchor, .sig-label-anchor, .sig-verify, .font-bold, b, strong {
+            font-weight: 700;
+        }
     </style>
 </head>
 <body>
