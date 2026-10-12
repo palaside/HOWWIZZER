@@ -1,0 +1,28 @@
+{
+  "schedules": [
+    {
+      "template_id": "REF-WEEKLY-INSPECTION-JUN-V1",
+      "title": "รายงานผลการตรวจประจำสัปดาห์โดยผู้บังคับบัญชา สป.สาย สพ. (อาวุธ)",
+      "frequency": "WEEKLY",
+      "target_weekday": 0,
+      "reference_dir": "references/approved_weekly_inspection",
+      "roles": ["commander_battery", "chief_maintenance", "record_officer"]
+    },
+    {
+      "template_id": "REF-SD1-WEEKLY-REPORT-V1",
+      "title": "บันทึกรายงานผลการตรวจประจำสัปดาห์ (สด.๑)",
+      "frequency": "WEEKLY",
+      "target_weekday": 4,
+      "reference_dir": "references/approved_sd1_weekly_report",
+      "roles": ["commander_battery", "chief_maintenance"]
+    },
+    {
+      "template_id": "REF-QUARTERLY-REPORT-V1",
+      "title": "รายงานผลการตรวจสอบอาการถอยและจำลองการยิง ป. (ประจำไตรมาส)",
+      "frequency": "QUARTERLY",
+      "target_day_of_quarter": 1,
+      "reference_dir": "references/approved_quarterly_report",
+      "roles": ["commander_battery", "record_officer"]
+    }
+  ]
+}
