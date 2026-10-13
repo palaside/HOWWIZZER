@@ -272,29 +272,42 @@ async function loadOperators() {
   const container = document.getElementById('operatorsGrid');
   if (!container) return;
   try {
-    const res = await fetch(`${API_BASE}/personnel/operators`);
-    const operators = await res.json();
+    let operators = [];
+    try {
+      const res = await fetch(`${API_BASE}/personnel/operators`);
+      if (res.ok) {
+        operators = await res.json();
+      }
+    } catch(e) {}
+
+    // Fallback to static JSON if API is offline
+    if (!operators || operators.length === 0) {
+      const resStatic = await fetch('/backend/data/personnel_registry.json');
+      if (resStatic.ok) {
+        const reg = await resStatic.json();
+        operators = reg.eight_operators || [];
+      }
+    }
+
+    if (!operators || operators.length === 0) return;
+
     container.innerHTML = operators.map(op => `
       <div class="operator-slot" onclick="promptEditOperator(${op.slot})" 
-           style="background: linear-gradient(180deg, rgba(20, 29, 43, 0.85) 0%, rgba(11, 16, 24, 0.95) 100%); padding: 10px 3px; border-radius: 12px; border: 1px solid rgba(56, 189, 248, 0.25); border-top: 2px solid #38bdf8; text-align: center; cursor: pointer; transition: all 0.2s; display: flex; flex-direction: column; justify-content: space-between; min-height: 116px; box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);"
            title="คลิกเพื่อแก้ไขข้อมูลเจ้าหน้าที่ ช่องที่ ${op.slot} (${op.position})">
         <div>
-          <!-- 2. ยศ ชื่อ นามสกุล ปรับให้เด่นสะดุดตาด้วยกรอบไฮไลท์และตัวหนาพิเศษ (เต็มชื่อ ไม่ขาดตอน) -->
-          <div style="background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 6px 2px; margin-bottom: 6px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 2px 6px rgba(0, 0, 0, 0.3);">
-            <div style="font-size: 12.3px; font-weight: 800; color: #ffffff; line-height: 1.25; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.35px; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9), 0 0 10px rgba(255, 255, 255, 0.45);" title="${op.rank} ${op.name}">
-              <span style="color: #38bdf8; font-weight: 800;">${op.rank}</span> ${op.name}
+          <div class="operator-name-badge">
+            <div class="operator-name-text" title="${op.rank} ${op.name}">
+              <span class="operator-rank">${op.rank}</span> ${op.name}
             </div>
           </div>
-          <!-- 3. ตำแหน่งลงมาใต้ชื่อ -->
-          <div style="font-size: 11.5px; color: var(--accent-cyan); font-weight: 600; line-height: 1.25; min-height: 24px; display: flex; align-items: center; justify-content: center;" title="${op.position}">
+          <div class="operator-pos-text" title="${op.position}">
             ${op.position}
           </div>
         </div>
-        <!-- 4. หมายเลขปืนที่รับผิดชอบให้เลื่อนมาล่างสุด -->
-        <div style="margin-top: 8px; font-size: 10.5px;">
+        <div class="operator-serial-box">
           ${op.gun_serial && op.gun_serial !== '-' 
-            ? `<span style="background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; color: var(--text-secondary); border: 1px solid rgba(255,255,255,0.06); display: inline-block;">หมายเลข ${op.gun_serial}</span>` 
-            : `<span style="color: var(--accent-blue); font-size: 10.5px; font-weight: 500; display: inline-block;">กองบังคับการ</span>`}
+            ? `<span class="operator-serial-tag">หมายเลข ${op.gun_serial}</span>` 
+            : `<span class="operator-hq-tag">กองบังคับการ</span>`}
         </div>
       </div>
     `).join('');
