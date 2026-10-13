@@ -95,6 +95,22 @@
           "by": "owner_commander",
           "timestamp": "2026-10-13T02:00:30.471009",
           "notes": "อนุมัติการยืม: ยิงสนับสนุนการฝึก"
+        },
+        {
+          "action": "LOAN_APPROVED",
+          "request_id": "LOAN-08F7DB52",
+          "borrower": "ส.อ. สมเกียรติ สุขใจ",
+          "by": "owner_commander",
+          "timestamp": "2026-10-13T15:29:56.438756",
+          "notes": "อนุมัติการยืม: ยิงสนับสนุนการฝึก"
+        },
+        {
+          "action": "LOAN_APPROVED",
+          "request_id": "LOAN-E2027005",
+          "borrower": "ส.อ. สมเกียรติ สุขใจ",
+          "by": "owner_commander",
+          "timestamp": "2026-10-13T15:31:05.057555",
+          "notes": "อนุมัติการยืม: ยิงสนับสนุนการฝึก"
         }
       ]
     },
@@ -291,6 +307,40 @@
           "new_serial_no": "SN-NEW-9988",
           "replaced_by": "owner_commander",
           "timestamp": "2026-10-13T02:00:30.510964",
+          "notes": "เปลี่ยนทดแทนหมายเลขยุทโธปกรณ์: เดิม SN-NEW-9988 เป็น SN-NEW-9988"
+        },
+        {
+          "action": "ITEM_RETURNED",
+          "loan_id": "loan_test_dam",
+          "is_damaged": true,
+          "damage_notes": "ศูนย์เล็งแตกร้าว",
+          "receiver": "owner_commander",
+          "timestamp": "2026-10-13T15:29:56.471638",
+          "notes": "รับคืนสิ่งอุปกรณ์: ศูนย์เล็งแตกร้าว"
+        },
+        {
+          "action": "ITEM_REPLACED",
+          "old_serial_no": "SN-NEW-9988",
+          "new_serial_no": "SN-NEW-9988",
+          "replaced_by": "owner_commander",
+          "timestamp": "2026-10-13T15:29:56.485492",
+          "notes": "เปลี่ยนทดแทนหมายเลขยุทโธปกรณ์: เดิม SN-NEW-9988 เป็น SN-NEW-9988"
+        },
+        {
+          "action": "ITEM_RETURNED",
+          "loan_id": "loan_test_dam",
+          "is_damaged": true,
+          "damage_notes": "ศูนย์เล็งแตกร้าว",
+          "receiver": "owner_commander",
+          "timestamp": "2026-10-13T15:31:05.088739",
+          "notes": "รับคืนสิ่งอุปกรณ์: ศูนย์เล็งแตกร้าว"
+        },
+        {
+          "action": "ITEM_REPLACED",
+          "old_serial_no": "SN-NEW-9988",
+          "new_serial_no": "SN-NEW-9988",
+          "replaced_by": "owner_commander",
+          "timestamp": "2026-10-13T15:31:05.102552",
           "notes": "เปลี่ยนทดแทนหมายเลขยุทโธปกรณ์: เดิม SN-NEW-9988 เป็น SN-NEW-9988"
         }
       ]

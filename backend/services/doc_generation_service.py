@@ -196,15 +196,22 @@ def compile_dual_copy_package(src_html_path: Path, out_dir: Path, base_name: str
             copy_content
         )
 
-    # Ensure '(สำเนาคู่ฉบับ)' is present
+    # Ensure '(สำเนาคู่ฉบับ)' is present in copy
     if "สำเนาคู่ฉบับ" not in copy_content:
         copy_content = copy_content.replace("<body", "<body data-copy=\"true\"")
+        copy_content = re.sub(
+            r'(<body[^>]*>)',
+            r'\g<1>\n    <div class="memo-header-copy" style="text-align: right; padding: 5mm 15mm 0 0; font-size: 14pt; font-weight: 300;">(สำเนาคู่ฉบับ)</div>',
+            copy_content,
+            count=1
+        )
     
     copy_path = out_dir / f"{base_name}_สำเนาคู่ฉบับ.html"
     copy_path.write_text(copy_content, encoding="utf-8")
     
     # 2. Produce Original (_ฉบับจริง.html - Strip '(สำเนาคู่ฉบับ)' and hide draft block)
-    orig_content = copy_content.replace("(สำเนาคู่ฉบับ)", "")
+    orig_content = re.sub(r'<div class="memo-header-copy"[^>]*>.*?</div>', '', copy_content)
+    orig_content = orig_content.replace("(สำเนาคู่ฉบับ)", "")
     orig_content = orig_content.replace("สำเนาคู่ฉบับ", "")
     orig_content = _replace_staff_footer_element(orig_content, '<div class="memo-footer-staff" style="display: none !important;"></div>')
     
