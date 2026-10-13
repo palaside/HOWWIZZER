@@ -1,0 +1,111 @@
+{
+  "$schema": "rta-sarabun-memo-v1",
+  "document_id": "REF-MEMO-DAMAGE-V1",
+  "document_title": "บันทึกข้อความ (รายงานการชำรุดเสียหายของสิ่งและอุปกรณ์ จากการเบิกยืม)",
+  "category": "หนังสือราชการภายใน (บันทึกข้อความ ทบ.)",
+  "authority": "ระเบียบสำนักนายกรัฐมนตรีว่าด้วยงานสารบรรณ พ.ศ. ๒๕๒๖ และที่แก้ไขเพิ่มเติม / ระเบียบ ทบ. ว่าด้วยงานสารบรรณ พ.ศ. ๒๕๖๓",
+  "unit": "ป.๔ พัน.๔ ร้อย.๒",
+  "page_setup": {
+    "paper_size": "A4",
+    "orientation": "portrait",
+    "width_mm": 210,
+    "height_mm": 297,
+    "margins_mm": {
+      "top": 25,
+      "bottom": 20,
+      "left": 30,
+      "right": 20
+    }
+  },
+  "typography": {
+    "font_primary": "TH Sarabun PSK",
+    "weights": {
+      "heading": 600,
+      "body": 300
+    },
+    "sizes_pt": {
+      "memo_title": 29,
+      "meta_labels": 20,
+      "body_text": 16,
+      "staff_review": 13.5
+    },
+    "line_height": 1.22
+  },
+  "header_block": {
+    "garuda": {
+      "width_mm": 30,
+      "height_mm": 18,
+      "left_mm": 0,
+      "top_mm": 0,
+      "image_path": "garuda_vector_official.png"
+    },
+    "title": "บันทึกข้อความ",
+    "title_top_mm": 3
+  },
+  "metadata_block": {
+    "agency": {
+      "label": "ส่วนราชการ",
+      "value": "ป.๔ พัน.๔ ร้อย.๒  ( โทร. ๓๑๑๙๓ )"
+    },
+    "doc_number": {
+      "label": "ที่",
+      "value": "กห ๐๔๘๓.๑.๔.๑/"
+    },
+    "date": {
+      "label": "วันที่",
+      "value": "{date_thai}"
+    },
+    "subject": {
+      "label": "เรื่อง",
+      "value": "รายงานการชำรุดเสียหายของสิ่งและอุปกรณ์ จากการเบิกยืม"
+    },
+    "dotted_line_baseline_gap_px": 1.5
+  },
+  "body_block": {
+    "salutation": "เรียน  ผบ.ป.๔ พัน.๔ ร้อย.๒",
+    "references": [
+      "๑. ระเบียบ ทบ. ว่าด้วยการส่งกำลังสิ่งอุปกรณ์ ประเภท ๒ และ ๔ พ.ศ. ๒๕๓๔",
+      "๒. ระเบียบ ทบ. ว่าด้วยการคุมและปรนนิบัติบำรุงยุทโธปกรณ์ สาย สพ."
+    ],
+    "attachments": [
+      {
+        "item": "รายงานของ {borrower_fullname}",
+        "qty": "จำนวน  ๑  ฉบับ"
+      }
+    ],
+    "paragraphs": [
+      "เนื่องด้วย กระผม จ.ส.อ. ณัฐชัย  รักษาวงษ์ ตำแหน่ง ส.หน.สย.ป.๔ พัน.๔ ร้อย.๒ ขอรายงานการชำรุดและเสียหาย โดยเมื่อวัน {loan_date_thai} {borrower_fullname} ได้มีการเบิก {item_name} จำนวน {qty_thai} รายการ ไปใช้งาน และเกิดเหตุ {cause_text} จึงทำให้ {item_name} เกิดการชำรุดเสียหาย",
+      "จากเหตุการณ์ครั้งนี้ มีการตรวจสอบพบว่า ยุทโธปกรณ์มีอาการ{symptom_text} จากความเสียหายดังกล่าว ส่งผลให้ไม่สามารถใช้งานได้ตามปกติ จำนวน {qty_thai} รายการ โดยรายละเอียดได้แนบมาพร้อมกับ รายงานความผิด ของ {borrower_fullname}",
+      "ขออนุมัติการดำเนินการส่งซ่อมตามสายการปรนณิบัติบำรุงต่อไป",
+      "จึงเรียนมาเพื่อกรุณาพิจารณา"
+    ],
+    "indent_cm": 2.5
+  },
+  "signature_block": {
+    "rule": "RULE-UNIVERSAL-SIGNATURE-BLOCK-V1",
+    "left_offset_mm": 130,
+    "enter_gap_from_body": 5,
+    "rank": "ร.อ.",
+    "name": "(กฤติน  นราพงษ์)",
+    "position": "ผบ.ป.๔ พัน.๔ ร้อย.๒",
+    "alignment_constraint": "จุดท้ายยศตรงกับวงเล็บเปิดของชื่อ 100%"
+  },
+  "staff_footer_block": {
+    "rule": "RULE-STAFF-REVIEW-FOOTER-V1",
+    "enter_gap_from_signature": 5,
+    "columns_mm": [26, 22, 8, 20],
+    "dual_axis_alignment": "แกนดิ่งยศตรงกัน และแกนเดือนปีตรงกัน",
+    "drafter_inspector": {
+      "rank": "จ.ส.อ.",
+      "role": "ร่าง/ตรวจ",
+      "date": "",
+      "month_year": "{month_year_thai}"
+    },
+    "typist_reviewer": {
+      "rank": "ส.ท.",
+      "role": "พิมพ์/ทาน",
+      "date": "{day_thai}",
+      "month_year": "{month_year_thai}"
+    }
+  }
+}

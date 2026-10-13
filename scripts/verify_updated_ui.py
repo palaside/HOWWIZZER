@@ -35,10 +35,13 @@ async def main():
             print("[PASS] Captured verified_memo_garuda_header.png")
             
         # Capture full first page
-        page1 = await memo_page.query_selector(".a4-page")
-        if page1:
-            await page1.screenshot(path="verified_memo_page1.png")
+        pages = await memo_page.query_selector_all(".a4-page")
+        if len(pages) > 0:
+            await pages[0].screenshot(path="verified_memo_page1.png")
             print("[PASS] Captured verified_memo_page1.png")
+        if len(pages) > 1:
+            await pages[1].screenshot(path="verified_memo_page2_dualcopy.png")
+            print("[PASS] Captured verified_memo_page2_dualcopy.png")
             
         await browser.close()
         print("ALL VERIFICATIONS COMPLETED SUCCESSFULLY!")

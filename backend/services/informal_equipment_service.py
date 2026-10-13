@@ -276,12 +276,34 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     """
     Generates a Royal Thai Army Standard Memo (บันทึกข้อความ)
     Reporting equipment damage from borrowing to the Battery Commander (ผบ.ร้อย).
+    Compiled directly from Single Source of Truth Blueprint: table_layout_damage_memo.json
     Adheres strictly to:
+    - RULE-RTA-MEMO-STANDARD-V1 (SSOT JSON Blueprint, Dotted line hugging, Dual-Copy Package)
     - RULE-SARABUN-DOC-STANDARD-V1 (PSK font, Bold 600, Thin 300)
-    - RULE-RTA-MEMO-STANDARD-V1 (Dotted line hugging, Dual-Copy Package)
     - RULE-UNIVERSAL-SIGNATURE-BLOCK-V1 (Red Line Standard 130mm, 5 enters)
-    - RULE-STAFF-REVIEW-FOOTER-V1 (Dual-Axis 4 columns)
+    - RULE-STAFF-REVIEW-FOOTER-V1 (Dual-Axis 4 columns, 5 enters)
+    - RULE-PROD-DOC-ENGINE-V1 (Official Mon-Thu business day calculation)
     """
+    import json
+    from pathlib import Path
+
+    # 1. Load SSOT Blueprint
+    bp_candidates = [
+        Path("d:/Project/WEPAPP/table_layout_damage_memo.json"),
+        Path(__file__).resolve().parent.parent.parent / "table_layout_damage_memo.json",
+        Path(__file__).resolve().parent.parent.parent / "references" / "informal_equipment" / "table_layout_damage_memo.json",
+    ]
+    bp = None
+    for p in bp_candidates:
+        if p.exists():
+            with open(p, "r", encoding="utf-8") as f:
+                bp = json.load(f)
+            break
+
+    if not bp:
+        raise FileNotFoundError("ไม่พบไฟล์พิมพ์เขียว table_layout_damage_memo.json")
+
+    # 2. Load Loan & Damage Database Records
     db = load_inventory_db()
     loan = None
     for l in db.get("loans", []):
@@ -300,7 +322,7 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     cause_text = damage.get("cause") or "การปฏิบัติภารกิจภาคสนาม"
     symptom_text = damage.get("symptom") or "ชำรุดเสียหาย ไม่สามารถใช้งานได้ตามปกติ"
 
-    # Compute official signing date (Mon-Thu business day, no holiday, no Friday)
+    # 3. Compute Official Signing Date (Mon-Thu business day, no holiday, no Friday)
     from backend.services.business_day_engine import is_business_day
     if signing_date_iso:
         try:
@@ -319,44 +341,111 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     year_thai = to_thai_digits(candidate.year + 543)
     date_display_thai = f"{day_thai} {month_thai} {year_thai}"
 
-    # Load personnel registry for signers
-    from backend.services.personnel_service import load_registry
-    reg = load_registry()
-    roles = reg.get("roles", {})
-    commander = roles.get("commander_battery", {
-        "rank": "ร.อ.",
-        "name": "กฤติน นราพงษ์",
-        "position": "ผบ.ป.๔ พัน.๔ ร้อย.๒"
-    })
-    chief_ops = roles.get("chief_operations", {
-        "rank": "จ.ส.อ.",
-        "name": "ณัฐชัย รักษาวงษ์",
-        "position": "ส.หน.สย.ป.๔ พัน.๔ ร้อย.๒"
-    })
+    short_month_thai = THAI_MONTHS[candidate.month]
+    short_year_thai = to_thai_digits(str(candidate.year + 543)[-2:])
+    month_year_display_thai = f"{short_month_thai} {short_year_thai}"
 
-    # Red Line Standard Universal Signature Block (130mm left, 5 enters / 22mm)
-    rank_str = commander.get("rank", "ร.อ.")
-    name_str = commander.get("name", "กฤติน นราพงษ์")
-    pos_str = "ผบ.ป.๔ พัน.๔ ร้อย.๒"
-    sig_block_html = f'''
-      <div class="sig-block-container" style="margin-left: 130mm; margin-top: 22mm; font-size: 16pt; line-height: 1.25;">
-        <div style="position: relative; display: inline-block;">
-          <span style="position: absolute; right: 100%; top: 0; white-space: nowrap; font-weight: 300;">{rank_str}</span>
-          <div style="text-align: center; white-space: nowrap; font-weight: 300;">({name_str})</div>
-          <div style="text-align: center; margin-top: 2px; white-space: nowrap; font-weight: 300;">{pos_str}</div>
-        </div>
-      </div>
-    '''
+    # 4. Resolve Blueprint Data
+    page_setup = bp.get("page_setup", {})
+    margins = page_setup.get("margins_mm", {"top": 25, "bottom": 20, "left": 30, "right": 20})
+    header_block = bp.get("header_block", {})
+    metadata_block = bp.get("metadata_block", {})
+    body_block = bp.get("body_block", {})
+    sig_block_def = bp.get("signature_block", {})
+    staff_footer_def = bp.get("staff_footer_block", {})
 
     garuda_b64 = get_garuda_base64()
     garuda_src = f"data:image/png;base64,{garuda_b64}" if garuda_b64 else "/garuda.png"
 
+    # Fill metadata values
+    agency_val = metadata_block.get("agency", {}).get("value", "ป.๔ พัน.๔ ร้อย.๒  ( โทร. ๓๑๑๙๓ )")
+    doc_num_val = metadata_block.get("doc_number", {}).get("value", "กห ๐๔๘๓.๑.๔.๑/")
+    date_val = metadata_block.get("date", {}).get("value", "{date_thai}").replace("{date_thai}", date_display_thai)
+    subject_val = metadata_block.get("subject", {}).get("value", "รายงานการชำรุดเสียหายของสิ่งและอุปกรณ์ จากการเบิกยืม")
+
+    # Fill body values
+    salutation = body_block.get("salutation", "เรียน  ผบ.ป.๔ พัน.๔ ร้อย.๒")
+    references = body_block.get("references", [])
+    attachments = body_block.get("attachments", [])
+    resolved_attachments = []
+    for att in attachments:
+        item_text = att.get("item", "").replace("{borrower_fullname}", borrower_fullname)
+        qty_text = att.get("qty", "จำนวน  ๑  ฉบับ")
+        resolved_attachments.append((item_text, qty_text))
+
+    paragraphs = body_block.get("paragraphs", [])
+    resolved_paragraphs = []
+    for p in paragraphs:
+        p_res = (p.replace("{borrower_fullname}", borrower_fullname)
+                  .replace("{loan_date_thai}", loan_date_thai)
+                  .replace("{item_name}", item_name)
+                  .replace("{qty_thai}", qty_thai)
+                  .replace("{cause_text}", cause_text)
+                  .replace("{symptom_text}", symptom_text))
+        resolved_paragraphs.append(p_res)
+
+    # Signature Block Values
+    sig_rank = sig_block_def.get("rank", "ร.อ.")
+    sig_name = sig_block_def.get("name", "(กฤติน  นราพงษ์)")
+    if not sig_name.startswith("("):
+        sig_name = f"({sig_name})"
+    sig_pos = sig_block_def.get("position", "ผบ.ป.๔ พัน.๔ ร้อย.๒")
+
+    # Staff Review Footer Values
+    drafter = staff_footer_def.get("drafter_inspector", {})
+    typist = staff_footer_def.get("typist_reviewer", {})
+    drafter_rank = drafter.get("rank", "จ.ส.อ.")
+    drafter_role = drafter.get("role", "ร่าง/ตรวจ")
+    drafter_my = drafter.get("month_year", "{month_year_thai}").replace("{month_year_thai}", month_year_display_thai)
+
+    typist_rank = typist.get("rank", "ส.ท.")
+    typist_role = typist.get("role", "พิมพ์/ทาน")
+    typist_day = typist.get("date", "{day_thai}").replace("{day_thai}", day_thai)
+    typist_my = typist.get("month_year", "{month_year_thai}").replace("{month_year_thai}", month_year_display_thai)
+
+    # 5. Build HTML Markup
     memo_html = f"""<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>บันทึกข้อความ - รายงานการชำรุดเสียหายของสิ่งและอุปกรณ์ จากการเบิกยืม</title>
+  <title>{bp.get('document_title', 'บันทึกข้อความ')}</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap');
+
+    /* Local TH Sarabun PSK font embeddings */
+    @font-face {{
+      font-family: 'TH Sarabun PSK';
+      font-style: normal;
+      font-weight: 300;
+      src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+           url('/fonts/THSarabunPSK.ttf') format('truetype'),
+           url('fonts/THSarabunPSK.ttf') format('truetype');
+    }}
+    @font-face {{
+      font-family: 'TH Sarabun PSK';
+      font-style: normal;
+      font-weight: 400;
+      src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+           url('/fonts/THSarabunPSK.ttf') format('truetype'),
+           url('fonts/THSarabunPSK.ttf') format('truetype');
+    }}
+    @font-face {{
+      font-family: 'TH Sarabun PSK';
+      font-style: normal;
+      font-weight: 600;
+      src: local('TH Sarabun PSK Bold'), local('THSarabunPSK-Bold'),
+           url('/fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+           url('fonts/THSarabunPSK-Bold.ttf') format('truetype');
+    }}
+    @font-face {{
+      font-family: 'TH Sarabun PSK';
+      font-style: normal;
+      font-weight: 700;
+      src: local('TH Sarabun PSK Bold'), local('THSarabunPSK-Bold'),
+           url('/fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+           url('fonts/THSarabunPSK-Bold.ttf') format('truetype');
+    }}
+
     @page {{
       size: A4 portrait;
       margin: 0;
@@ -371,6 +460,9 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
       padding: 0;
       background-color: #525659;
       font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', sans-serif !important;
+      font-size: 16pt;
+      line-height: 1.22;
+      color: #000000;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -378,21 +470,26 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     .a4-page {{
       width: 210mm;
       min-height: 297mm;
-      padding: 25mm 20mm 20mm 25mm; /* ขอบซ้าย 25mm สำหรับเข้าเล่ม */
+      height: 297mm;
+      padding: {margins['top']}mm {margins['right']}mm {margins['bottom']}mm {margins['left']}mm; /* บน 25 มม., ขวา 20 มม., ล่าง 20 มม., ซ้าย 30 มม. */
       background-color: #ffffff;
       margin-bottom: 20px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }}
     @media print {{
       body {{
-        background-color: #ffffff;
+        background-color: transparent;
         padding: 0;
       }}
       .a4-page {{
         margin: 0;
         box-shadow: none;
         page-break-after: always;
+        height: 297mm;
       }}
       .no-print {{
         display: none !important;
@@ -418,7 +515,7 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
       position: absolute;
       left: 0;
       top: 0;
-      height: 18mm;
+      height: {header_block.get('garuda', {}).get('height_mm', 18)}mm;
       width: auto;
     }}
     .memo-title {{
@@ -426,65 +523,147 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
       font-size: 29pt;
       font-weight: 600;
       line-height: 1.1;
-      padding-top: 3mm;
+      padding-top: {header_block.get('title_top_mm', 3)}mm;
       letter-spacing: 0.5px;
     }}
+
+    /* METADATA BLOCK WITH DOTTED UNDERLINE HUGGING */
     .meta-table {{
       width: 100%;
       border-collapse: collapse;
-      margin-top: 4mm;
+      margin-top: 3mm;
+      margin-bottom: 4mm;
       font-size: 16pt;
     }}
     .meta-table td {{
-      padding: 2.5px 0;
+      padding: 1px 0;
       vertical-align: bottom;
     }}
     .meta-label {{
       font-size: 20pt;
       font-weight: 600;
       white-space: nowrap;
+      padding-right: 2mm;
     }}
     .meta-dots {{
       border-bottom: 1px dotted #000;
       display: inline-block;
       width: 100%;
-      min-height: 1.1em;
+      min-height: 1.05em;
       line-height: 1.05;
       padding-bottom: 1.5px;
       font-weight: 300;
-    }}
-    .memo-body {{
-      margin-top: 6mm;
       font-size: 16pt;
-      line-height: 1.25;
-      text-align: justify;
-      text-justify: inter-cluster;
+    }}
+
+    /* BODY BLOCK */
+    .memo-body {{
+      font-size: 16pt;
+      line-height: 1.22;
       font-weight: 300;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }}
+    .salutation-row {{
+      font-size: 16pt;
+      margin-bottom: 3mm;
+    }}
+    .salutation-label {{
+      font-weight: 600;
+    }}
+    .ref-section {{
+      margin-bottom: 2.5mm;
+    }}
+    .ref-label {{
+      font-weight: 600;
+      white-space: nowrap;
+    }}
+    .ref-item {{
+      font-weight: 300;
+      font-size: 16pt;
+      line-height: 1.22;
+    }}
+    .att-section {{
+      margin-bottom: 3.5mm;
+    }}
+    .att-label {{
+      font-weight: 600;
+      white-space: nowrap;
     }}
     .memo-para {{
-      text-indent: 25mm; /* ย่อหน้า 2.5 ซม. */
-      margin-bottom: 4mm;
+      text-indent: 25mm; /* กั้นหน้าย่อหน้า 2.5 ซม. */
+      text-align: justify;
+      text-justify: inter-cluster;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      font-weight: 300;
+      margin-bottom: 3.5mm;
     }}
-    .memo-ref {{
-      margin-left: 25mm;
-      margin-bottom: 2mm;
+
+    /* UNIVERSAL SIGNATURE BLOCK (RULE-UNIVERSAL-SIGNATURE-BLOCK-V1) */
+    .sig-container {{
+      width: 100%;
+      margin-top: 22mm; /* 5 Enter */
+      /* Page left padding is 30mm; 130mm - 30mm = 100mm from content left edge */
+      padding-left: 100mm;
+      display: flex;
+      justify-content: flex-start;
     }}
-    /* Draft review footer 4 cols */
+    .sig-block {{
+      position: relative;
+      display: inline-block;
+      font-size: 16pt;
+      line-height: 1.22;
+    }}
+    .sig-rank-anchor {{
+      position: absolute;
+      right: 100%;
+      top: 0;
+      white-space: nowrap;
+      font-weight: 300;
+    }}
+    .sig-name {{
+      text-align: center;
+      white-space: nowrap;
+      font-weight: 300;
+    }}
+    .sig-pos {{
+      text-align: center;
+      margin-top: 0;
+      white-space: nowrap;
+      font-weight: 300;
+    }}
+
+    /* STAFF REVIEW FOOTER (RULE-STAFF-REVIEW-FOOTER-V1) */
     .staff-footer-container {{
-      margin-top: 22mm;
+      margin-top: 22mm; /* 5 Enter ใต้บล็อกลงนาม */
       width: 80mm;
       font-size: 13.5pt;
-      line-height: 1.25;
+      line-height: 1.22;
       font-weight: 300;
     }}
     .staff-row {{
       display: flex;
       align-items: baseline;
     }}
-    .staff-col-rank {{ width: 26mm; text-align: left; }}
-    .staff-col-role {{ width: 22mm; text-align: left; }}
-    .staff-col-day  {{ width: 8mm; text-align: right; padding-right: 1.5mm; }}
-    .staff-col-month{{ width: 20mm; text-align: left; }}
+    .staff-col-rank {{
+      width: 26mm;
+      text-align: left;
+    }}
+    .staff-col-role {{
+      width: 22mm;
+      text-align: left;
+    }}
+    .staff-col-day {{
+      width: 8mm;
+      text-align: right;
+      padding-right: 1.5mm;
+    }}
+    .staff-col-month {{
+      width: 20mm;
+      text-align: left;
+    }}
   </style>
 </head>
 <body>
@@ -510,72 +689,77 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
   <div class="a4-page">
     <div class="memo-garuda-container">
       <img src="{garuda_src}" alt="ตราครุฑ" class="memo-garuda">
-      <div class="memo-title">บันทึกข้อความ</div>
+      <div class="memo-title">{header_block.get('title', 'บันทึกข้อความ')}</div>
     </div>
 
+    <!-- Metadata Section -->
     <table class="meta-table">
       <tr>
-        <td style="width: 105mm;">
+        <td style="width: 95mm;">
           <span class="meta-label">ส่วนราชการ</span>
-          <span class="meta-dots" style="width: calc(100% - 32mm);">ป.๔ พัน.๔ ร้อย.๒ ( โทร. ๓๑๑๙๓ )</span>
+          <span class="meta-dots" style="width: calc(100% - 32mm);">{agency_val}</span>
         </td>
         <td style="width: 10mm;"></td>
-        <td style="width: 75mm;"></td>
+        <td style="width: 55mm;"></td>
       </tr>
       <tr>
         <td>
           <span class="meta-label">ที่</span>
-          <span class="meta-dots" style="width: calc(100% - 8mm);">กห ๐๔๘๓.๑.๔.๑/</span>
+          <span class="meta-dots" style="width: calc(100% - 8mm);">{doc_num_val}</span>
         </td>
         <td></td>
         <td>
           <span class="meta-label">วันที่</span>
-          <span class="meta-dots" style="width: calc(100% - 15mm);">{date_display_thai}</span>
+          <span class="meta-dots" style="width: calc(100% - 16mm);">{date_val}</span>
         </td>
       </tr>
       <tr>
         <td colspan="3">
           <span class="meta-label">เรื่อง</span>
-          <span class="meta-dots" style="width: calc(100% - 14mm);">รายงานการชำรุดเสียหายของสิ่งและอุปกรณ์ จากการเบิกยืม</span>
+          <span class="meta-dots" style="width: calc(100% - 15mm);">{subject_val}</span>
         </td>
       </tr>
     </table>
 
     <div class="memo-body">
-      <div style="margin-top: 4mm; margin-bottom: 3mm;">
-        <span class="meta-label" style="font-size: 16pt;">เรียน</span>&nbsp;&nbsp;ผบ.ป.๔ พัน.๔ ร้อย.๒
+      <!-- Salutation -->
+      <div class="salutation-row">
+        <span class="salutation-label">เรียน</span>&nbsp;&nbsp;{salutation.replace('เรียน', '').strip()}
       </div>
 
-      <div style="margin-bottom: 2mm;">
-        <span style="font-weight: 600;">อ้างถึง</span>&nbsp;&nbsp;๑. ระเบียบ ทบ. ว่าด้วยการส่งกำลังสิ่งอุปกรณ์ ประเภท ๒ และ ๔ พ.ศ. ๒๕๓๔<br>
-        <span style="display: inline-block; width: 13.5mm;"></span>๒. ระเบียบ ทบ. ว่าด้วยการคุมและปรนนิบัติบำรุงยุทโธปกรณ์ สาย สพ.
+      <!-- References (อ้างถึง) -->
+      <div class="ref-section">
+        <span class="ref-label">อ้างถึง</span>&nbsp;&nbsp;<span class="ref-item">{references[0] if len(references) > 0 else ''}</span><br>
+        <span style="display: inline-block; width: 13.5mm;"></span><span class="ref-item">{references[1] if len(references) > 1 else ''}</span>
       </div>
 
-      <div style="margin-bottom: 4mm;">
-        <span style="font-weight: 600;">สิ่งที่ส่งมาด้วย</span>&nbsp;&nbsp;รายงานของ {borrower_fullname} จำนวน ๑ ฉบับ
+      <!-- Attachments (สิ่งที่ส่งมาด้วย) -->
+      <div class="att-section">
+        <span class="att-label">สิ่งที่ส่งมาด้วย</span>&nbsp;&nbsp;<span style="font-weight: 300;">{resolved_attachments[0][0] if resolved_attachments else ''}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300;">{resolved_attachments[0][1] if resolved_attachments else ''}</span>
       </div>
 
-      <!-- ย่อหน้าต้น (เหตุผลและความเป็นมา) -->
+      <!-- Content Paragraphs -->
       <div class="memo-para">
-        เนื่องด้วย กระผม จ.ส.อ. ณัฐชัย&nbsp;&nbsp;รักษาวงษ์ ตำแหน่ง ส.หน.สย.ป.๔ พัน.๔ ร้อย.๒ ขอรายงานการชำรุดและเสียหาย โดยเมื่อวัน {loan_date_thai} {borrower_fullname} ได้มีการเบิก {item_name} จำนวน {qty_thai} รายการ ไปใช้งาน และเกิดเหตุ {cause_text} จึงทำให้ {item_name} เกิดการชำรุดเสียหาย
+        {resolved_paragraphs[0] if len(resolved_paragraphs) > 0 else ''}
       </div>
-
-      <!-- ย่อหน้ากลาง (รายละเอียดและผลกระทบ) -->
       <div class="memo-para">
-        จากเหตุการณ์ครั้งนี้ มีการตรวจสอบพบว่า ยุทโธปกรณ์มีอาการ{symptom_text} จากความเสียหายดังกล่าว ส่งผลให้ไม่สามารถใช้งานได้ตามปกติ จำนวน {qty_thai} รายการ โดยรายละเอียดได้แนบมาพร้อมกับ รายงานความผิด ของ {borrower_fullname}
+        {resolved_paragraphs[1] if len(resolved_paragraphs) > 1 else ''}
       </div>
-
-      <!-- ย่อหน้าท้าย (ข้อพิจารณาและข้อเสนอ) -->
       <div class="memo-para">
-        ขออนุมัติการดำเนินการส่งซ่อมตามสายการปรนณิบัติบำรุงต่อไป
+        {resolved_paragraphs[2] if len(resolved_paragraphs) > 2 else ''}
       </div>
-
       <div class="memo-para">
-        จึงเรียนมาเพื่อกรุณาพิจารณา
+        {resolved_paragraphs[3] if len(resolved_paragraphs) > 3 else ''}
       </div>
 
-      <!-- บล็อกการลงนาม (Signature Block) -->
-      {sig_block_html}
+      <!-- Universal Signature Block (130mm from page left, 5 enters) -->
+      <div class="sig-container">
+        <div class="sig-block">
+          <span class="sig-rank-anchor">{sig_rank}</span>
+          <div class="sig-name">{sig_name}</div>
+          <div class="sig-pos">{sig_pos}</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -586,86 +770,91 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     <div class="copy-banner">(สำเนาคู่ฉบับ)</div>
     <div class="memo-garuda-container">
       <img src="{garuda_src}" alt="ตราครุฑ" class="memo-garuda">
-      <div class="memo-title">บันทึกข้อความ</div>
+      <div class="memo-title">{header_block.get('title', 'บันทึกข้อความ')}</div>
     </div>
 
+    <!-- Metadata Section -->
     <table class="meta-table">
       <tr>
-        <td style="width: 105mm;">
+        <td style="width: 95mm;">
           <span class="meta-label">ส่วนราชการ</span>
-          <span class="meta-dots" style="width: calc(100% - 32mm);">ป.๔ พัน.๔ ร้อย.๒ ( โทร. ๓๑๑๙๓ )</span>
+          <span class="meta-dots" style="width: calc(100% - 32mm);">{agency_val}</span>
         </td>
         <td style="width: 10mm;"></td>
-        <td style="width: 75mm;"></td>
+        <td style="width: 55mm;"></td>
       </tr>
       <tr>
         <td>
           <span class="meta-label">ที่</span>
-          <span class="meta-dots" style="width: calc(100% - 8mm);">กห ๐๔๘๓.๑.๔.๑/</span>
+          <span class="meta-dots" style="width: calc(100% - 8mm);">{doc_num_val}</span>
         </td>
         <td></td>
         <td>
           <span class="meta-label">วันที่</span>
-          <span class="meta-dots" style="width: calc(100% - 15mm);">{date_display_thai}</span>
+          <span class="meta-dots" style="width: calc(100% - 16mm);">{date_val}</span>
         </td>
       </tr>
       <tr>
         <td colspan="3">
           <span class="meta-label">เรื่อง</span>
-          <span class="meta-dots" style="width: calc(100% - 14mm);">รายงานการชำรุดเสียหายของสิ่งและอุปกรณ์ จากการเบิกยืม</span>
+          <span class="meta-dots" style="width: calc(100% - 15mm);">{subject_val}</span>
         </td>
       </tr>
     </table>
 
     <div class="memo-body">
-      <div style="margin-top: 4mm; margin-bottom: 3mm;">
-        <span class="meta-label" style="font-size: 16pt;">เรียน</span>&nbsp;&nbsp;ผบ.ป.๔ พัน.๔ ร้อย.๒
+      <!-- Salutation -->
+      <div class="salutation-row">
+        <span class="salutation-label">เรียน</span>&nbsp;&nbsp;{salutation.replace('เรียน', '').strip()}
       </div>
 
-      <div style="margin-bottom: 2mm;">
-        <span style="font-weight: 600;">อ้างถึง</span>&nbsp;&nbsp;๑. ระเบียบ ทบ. ว่าด้วยการส่งกำลังสิ่งอุปกรณ์ ประเภท ๒ และ ๔ พ.ศ. ๒๕๓๔<br>
-        <span style="display: inline-block; width: 13.5mm;"></span>๒. ระเบียบ ทบ. ว่าด้วยการคุมและปรนนิบัติบำรุงยุทโธปกรณ์ สาย สพ.
+      <!-- References (อ้างถึง) -->
+      <div class="ref-section">
+        <span class="ref-label">อ้างถึง</span>&nbsp;&nbsp;<span class="ref-item">{references[0] if len(references) > 0 else ''}</span><br>
+        <span style="display: inline-block; width: 13.5mm;"></span><span class="ref-item">{references[1] if len(references) > 1 else ''}</span>
       </div>
 
-      <div style="margin-bottom: 4mm;">
-        <span style="font-weight: 600;">สิ่งที่ส่งมาด้วย</span>&nbsp;&nbsp;รายงานของ {borrower_fullname} จำนวน ๑ ฉบับ
+      <!-- Attachments (สิ่งที่ส่งมาด้วย) -->
+      <div class="att-section">
+        <span class="att-label">สิ่งที่ส่งมาด้วย</span>&nbsp;&nbsp;<span style="font-weight: 300;">{resolved_attachments[0][0] if resolved_attachments else ''}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300;">{resolved_attachments[0][1] if resolved_attachments else ''}</span>
       </div>
 
-      <!-- ย่อหน้าต้น -->
+      <!-- Content Paragraphs -->
       <div class="memo-para">
-        เนื่องด้วย กระผม จ.ส.อ. ณัฐชัย&nbsp;&nbsp;รักษาวงษ์ ตำแหน่ง ส.หน.สย.ป.๔ พัน.๔ ร้อย.๒ ขอรายงานการชำรุดและเสียหาย โดยเมื่อวัน {loan_date_thai} {borrower_fullname} ได้มีการเบิก {item_name} จำนวน {qty_thai} รายการ ไปใช้งาน และเกิดเหตุ {cause_text} จึงทำให้ {item_name} เกิดการชำรุดเสียหาย
+        {resolved_paragraphs[0] if len(resolved_paragraphs) > 0 else ''}
       </div>
-
-      <!-- ย่อหน้ากลาง -->
       <div class="memo-para">
-        จากเหตุการณ์ครั้งนี้ มีการตรวจสอบพบว่า ยุทโธปกรณ์มีอาการ{symptom_text} จากความเสียหายดังกล่าว ส่งผลให้ไม่สามารถใช้งานได้ตามปกติ จำนวน {qty_thai} รายการ โดยรายละเอียดได้แนบมาพร้อมกับ รายงานความผิด ของ {borrower_fullname}
+        {resolved_paragraphs[1] if len(resolved_paragraphs) > 1 else ''}
       </div>
-
-      <!-- ย่อหน้าท้าย -->
       <div class="memo-para">
-        ขออนุมัติการดำเนินการส่งซ่อมตามสายการปรนณิบัติบำรุงต่อไป
+        {resolved_paragraphs[2] if len(resolved_paragraphs) > 2 else ''}
       </div>
-
       <div class="memo-para">
-        จึงเรียนมาเพื่อกรุณาพิจารณา
+        {resolved_paragraphs[3] if len(resolved_paragraphs) > 3 else ''}
       </div>
 
-      <!-- บล็อกการลงนาม (Signature Block) -->
-      {sig_block_html}
+      <!-- Universal Signature Block (130mm from page left, 5 enters) -->
+      <div class="sig-container">
+        <div class="sig-block">
+          <span class="sig-rank-anchor">{sig_rank}</span>
+          <div class="sig-name">{sig_name}</div>
+          <div class="sig-pos">{sig_pos}</div>
+        </div>
+      </div>
 
-      <!-- บล็อกเจ้าหน้าที่ทำหนังสือ (Dual-Axis 4 Columns Footer) -->
+      <!-- บล็อกเจ้าหน้าที่ทำหนังสือ (Dual-Axis 4 Columns Staff Footer, 5 enters) -->
       <div class="staff-footer-container">
         <div class="staff-row">
-          <div class="staff-col-rank">จ.ส.อ.</div>
-          <div class="staff-col-role">ร่าง/ตรวจ</div>
+          <div class="staff-col-rank">{drafter_rank}</div>
+          <div class="staff-col-role">{drafter_role}</div>
           <div class="staff-col-day"></div>
-          <div class="staff-col-month"></div>
+          <div class="staff-col-month">{drafter_my}</div>
         </div>
         <div class="staff-row">
-          <div class="staff-col-rank">ส.ท.</div>
-          <div class="staff-col-role">พิมพ์/ทาน</div>
-          <div class="staff-col-day">{to_thai_digits(datetime.now().day)}</div>
-          <div class="staff-col-month">{THAI_MONTHS[datetime.now().month]}&nbsp;{to_thai_digits(str(datetime.now().year + 543)[-2:])}</div>
+          <div class="staff-col-rank">{typist_rank}</div>
+          <div class="staff-col-role">{typist_role}</div>
+          <div class="staff-col-day">{typist_day}</div>
+          <div class="staff-col-month">{typist_my}</div>
         </div>
       </div>
     </div>
@@ -674,7 +863,7 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
 </body>
 </html>"""
 
-    # Ensure Thai typography zero-width space is inserted
+    # Apply Thai typography Zero-Width Space engine
     try:
         from thai_typography_engine import insert_thai_zws
         memo_html = insert_thai_zws(memo_html)
