@@ -25,7 +25,7 @@
         body {
             background-color: #525659;
             font-family: 'Sarabun', 'TH Sarabun New', 'TH Sarabun PSK', Tahoma, sans-serif;
-            font-size: 11pt;
+            font-size: 14.5pt;
             font-weight: 300;
             line-height: 1.25;
             color: #000000;
@@ -43,7 +43,7 @@
 
         .memo-title, .meta-label, th, .form-header-title, .form-header-sub,
         .photo-cert-text, .font-bold, b, strong {
-            font-weight: 700 !important;
+            font-weight: 600 !important;
         }
 
         /* OpenType Thai Numeral Engine */
@@ -192,7 +192,7 @@
             text-align: center;
             font-size: 29pt;
             font-weight: bold;
-            line-height: 1.1;
+            line-height: 1.05;
             padding-top: 3mm;
             letter-spacing: 0.5px;
         }
@@ -211,22 +211,22 @@
             margin-bottom: 0mm;
         }
         .meta-label {
-            font-weight: 700 !important;
+            font-weight: 600 !important;
             font-size: 20pt;
             line-height: 1.0;
             white-space: nowrap;
             margin-right: 2.5mm;
-            padding-bottom: 1px;
+            padding-bottom: 1.5px;
         }
         .meta-fill-dotted {
             flex: 1;
             border-bottom: 1px dotted #000;
             display: flex;
             align-items: flex-end;
-            padding-bottom: 1px;
+            padding-bottom: 1.5px;
             font-size: 16pt;
             font-weight: 300 !important;
-            line-height: 1.1;
+            line-height: 1.05;
         }
         .meta-half-col {
             flex: 1;
@@ -289,35 +289,39 @@
 
         /* ================= PAGE 2 & 3: FORM SD.1 ================= */
         .form-header-title {
-            font-size: 14pt;
-            font-weight: bold;
+            font-size: 18pt;
+            font-weight: 600;
             text-align: center;
-            line-height: 1.2;
-            margin-bottom: 0.5mm;
+            line-height: 1.25;
+            margin-bottom: 1mm;
         }
         .form-header-sub {
-            font-size: 12.5pt;
-            font-weight: bold;
+            font-size: 15pt;
+            font-weight: 600;
             text-align: center;
-            line-height: 1.2;
-            margin-bottom: 1.5mm;
+            line-height: 1.3;
+            margin-bottom: 3mm;
         }
         .form-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 14pt;
-            line-height: 1.15;
+            font-size: 14.5pt;
+            line-height: 1.22;
         }
         .form-table th, .form-table td {
             border: 1px solid #000000;
-            padding: 0.55mm 1.5mm;
+            padding: 1.2mm 2mm;
             vertical-align: middle;
         }
         .form-table th {
             background-color: #ffffff;
-            font-weight: bold;
+            font-size: 15pt;
+            font-weight: 600;
             text-align: center;
-            padding: 1.0mm 1.5mm;
+        }
+        .form-table td {
+            font-size: 14.5pt;
+            font-weight: 300;
         }
         .col-no { width: 14mm; text-align: center; }
         .col-topic { width: 115mm; }
@@ -374,19 +378,24 @@
         .gun-rec-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 15pt;
-            line-height: 1.22;
-            margin-top: 3mm;
+            font-size: 14.5pt;
+            line-height: 1.25;
+            margin-top: 4mm;
         }
         .gun-rec-table th, .gun-rec-table td {
             border: 1px solid #000000;
-            padding: 1.6mm 2mm;
+            padding: 2.2mm 2.5mm;
             vertical-align: middle;
         }
         .gun-rec-table th {
             background-color: #ffffff;
-            font-weight: bold;
+            font-size: 15pt;
+            font-weight: 600;
             text-align: center;
+        }
+        .gun-rec-table td {
+            font-size: 14.5pt;
+            font-weight: 300;
         }
 
         .text-center { text-align: center; }
@@ -400,7 +409,7 @@
         }
 
         .memo-title, .meta-label, th, .form-header-title, .form-header-sub, .photo-cert-text, .sig-role-anchor, .sig-label-anchor, .sig-verify, .font-bold, b, strong {
-            font-weight: 700 !important;
+            font-weight: 600 !important;
         }
     </style>
 <!-- UNIFIED MILITARY SARABUN FONT-ENGINE & RULE 9 THIN/LIGHT STANDARD -->
@@ -408,91 +417,103 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,700&display=swap" rel="stylesheet">
 <style id="rta-universal-thin-font-engine">
+    /* ======================================================== */
+    /* OFFICIAL GOVERNMENT TH SARABUN PSK ENGINE (PRIMARY SSOT) */
+    /* ======================================================== */
     @font-face {
-        font-family: 'Sarabun';
-        font-style: normal;
-        font-weight: 100;
-        src: url('/fonts/Sarabun-Thin.ttf') format('truetype'),
-             url('fonts/Sarabun-Thin.ttf') format('truetype'),
-             url('../fonts/Sarabun-Thin.ttf') format('truetype'),
-             url('../../fonts/Sarabun-Thin.ttf') format('truetype');
-    }
-    @font-face {
-        font-family: 'Sarabun';
-        font-style: normal;
-        font-weight: 200;
-        src: url('/fonts/Sarabun-ExtraLight.ttf') format('truetype'),
-             url('fonts/Sarabun-ExtraLight.ttf') format('truetype'),
-             url('../fonts/Sarabun-ExtraLight.ttf') format('truetype'),
-             url('../../fonts/Sarabun-ExtraLight.ttf') format('truetype');
-    }
-    @font-face {
-        font-family: 'Sarabun';
-        font-style: normal;
-        font-weight: 300;
-        src: url('/fonts/Sarabun-Light.ttf') format('truetype'),
-             url('fonts/Sarabun-Light.ttf') format('truetype'),
-             url('../fonts/Sarabun-Light.ttf') format('truetype'),
-             url('../../fonts/Sarabun-Light.ttf') format('truetype');
-    }
-    @font-face {
-        font-family: 'Sarabun';
+        font-family: 'TH Sarabun PSK';
         font-style: normal;
         font-weight: 400;
-        src: url('/fonts/Sarabun-Regular.ttf') format('truetype'),
-             url('fonts/Sarabun-Regular.ttf') format('truetype'),
-             url('../fonts/Sarabun-Regular.ttf') format('truetype'),
-             url('../../fonts/Sarabun-Regular.ttf') format('truetype');
+        src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+             url('/fonts/THSarabunPSK.ttf') format('truetype'),
+             url('fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK.ttf') format('truetype');
     }
     @font-face {
-        font-family: 'Sarabun';
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 300;
+        src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+             url('/fonts/THSarabunPSK.ttf') format('truetype'),
+             url('fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 100;
+        src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+             url('/fonts/THSarabunPSK.ttf') format('truetype'),
+             url('fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 600;
+        src: local('TH Sarabun PSK Bold'), local('THSarabunPSK-Bold'),
+             url('/fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK-Bold.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
         font-style: normal;
         font-weight: 700;
-        src: url('/fonts/Sarabun-Bold.ttf') format('truetype'),
-             url('fonts/Sarabun-Bold.ttf') format('truetype'),
-             url('../fonts/Sarabun-Bold.ttf') format('truetype'),
-             url('../../fonts/Sarabun-Bold.ttf') format('truetype');
+        src: local('TH Sarabun PSK Bold'), local('THSarabunPSK-Bold'),
+             url('/fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK-Bold.ttf') format('truetype');
     }
 
-    /* Force Windows to alias legacy TH Sarabun names to genuine Sarabun Thin/Light */
+    /* Fallback: TH Sarabun New */
     @font-face {
         font-family: 'TH Sarabun New';
         font-style: normal;
-        font-weight: 100;
-        src: url('/fonts/Sarabun-Thin.ttf') format('truetype'),
-             url('fonts/Sarabun-Thin.ttf') format('truetype'),
-             url('../fonts/Sarabun-Thin.ttf') format('truetype'),
-             url('../../fonts/Sarabun-Thin.ttf') format('truetype');
+        font-weight: 400;
+        src: local('TH Sarabun New'), local('THSarabunNew'),
+             url('/fonts/THSarabunNew.ttf') format('truetype'),
+             url('fonts/THSarabunNew.ttf') format('truetype'),
+             url('../fonts/THSarabunNew.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew.ttf') format('truetype');
     }
     @font-face {
         font-family: 'TH Sarabun New';
         font-style: normal;
         font-weight: 300;
-        src: url('/fonts/Sarabun-Light.ttf') format('truetype'),
-             url('fonts/Sarabun-Light.ttf') format('truetype'),
-             url('../fonts/Sarabun-Light.ttf') format('truetype'),
-             url('../../fonts/Sarabun-Light.ttf') format('truetype');
+        src: local('TH Sarabun New'), local('THSarabunNew'),
+             url('/fonts/THSarabunNew.ttf') format('truetype'),
+             url('fonts/THSarabunNew.ttf') format('truetype'),
+             url('../fonts/THSarabunNew.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew.ttf') format('truetype');
     }
     @font-face {
-        font-family: 'TH Sarabun PSK';
+        font-family: 'TH Sarabun New';
         font-style: normal;
-        font-weight: 100;
-        src: url('/fonts/Sarabun-Thin.ttf') format('truetype'),
-             url('fonts/Sarabun-Thin.ttf') format('truetype'),
-             url('../fonts/Sarabun-Thin.ttf') format('truetype'),
-             url('../../fonts/Sarabun-Thin.ttf') format('truetype');
+        font-weight: 600;
+        src: local('TH Sarabun New Bold'), local('THSarabunNew-Bold'),
+             url('/fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew-Bold.ttf') format('truetype');
     }
     @font-face {
-        font-family: 'TH Sarabun PSK';
+        font-family: 'TH Sarabun New';
         font-style: normal;
-        font-weight: 300;
-        src: url('/fonts/Sarabun-Light.ttf') format('truetype'),
-             url('fonts/Sarabun-Light.ttf') format('truetype'),
-             url('../fonts/Sarabun-Light.ttf') format('truetype'),
-             url('../../fonts/Sarabun-Light.ttf') format('truetype');
+        font-weight: 700;
+        src: local('TH Sarabun New Bold'), local('THSarabunNew-Bold'),
+             url('/fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew-Bold.ttf') format('truetype');
     }
 
-    /* RULE 9: THIN FONT-WEIGHT MANDATE (Non-headings = 300 Thin/Light, Headings = 700 Bold) */
+    /* RULE 9: THIN FONT-WEIGHT MANDATE (Non-headings = 300 Thin/Light, Headings = 600 Bold) */
     body, div, p, span, td, li, a, input, textarea, label, select, button,
     section, article, main, header, footer,
     .memo-p, .memo-body, .memo-closing, .memo-content, .memo-text, .content-para,
@@ -502,19 +523,19 @@
     .staff-grid, .staff-grid div, .staff-col, .form-table td, table td,
     .doc-desc, .stat-pill, .btn-action, .meta-row, .meta-half-col,
     .meta-fill-dotted div {
-        font-family: 'Sarabun', 'TH Sarabun New', 'TH Sarabun PSK', Tahoma, sans-serif !important;
+        font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', Tahoma, sans-serif !important;
         font-weight: 300 !important;
     }
 
-    /* Exclusively Headings & Titles are Bold (700) */
+    /* Headings & Important Labels: Word-Standard Bold (font-weight: 600/Bold) */
     b, strong, .font-bold, .bold, th, table th,
     .memo-title, .doc-title, .meta-label, .memo-meta-label,
     .form-header-title, .form-header-sub, .form-title,
     .photo-cert-text, .sig-verify,
     .brand-title, .brand-badge, .badge, .doc-code,
     h1, h2, h3, h4, h5, h6 {
-        font-family: 'Sarabun', 'TH Sarabun New', 'TH Sarabun PSK', Tahoma, sans-serif !important;
-        font-weight: 700 !important;
+        font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', Tahoma, sans-serif !important;
+        font-weight: 600 !important;
     }
 </style>
 

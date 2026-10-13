@@ -1,4 +1,4 @@
-﻿# 🏛️ SARABUN DOCUMENT ENGINE STANDARD (กฎระเบียบงานสารบรรณขั้นสูงสุด)
+# 🏛️ SARABUN DOCUMENT ENGINE STANDARD (กฎระเบียบงานสารบรรณขั้นสูงสุด)
 **Rule ID:** RULE-SARABUN-DOC-STANDARD-V1  
 **Scope:** บังคับใช้กับเอกสารราชการ, หนังสือภายนอก, หนังสือภายใน (บันทึกข้อความ), รายงาน, แบบฟอร์ม ทบ., และเอกสารทุกชุด/ทุกฉบับในโปรเจกต์ ๑๐๐%
 
@@ -14,8 +14,9 @@
 ## 🔤 2. TYPOGRAPHY & FONT SPECIFICATION (มาตรฐานฟอนต์และน้ำหนัก)
 
 ### 2.1 ฟอนต์หลัก (Primary Font Family)
-* กำหนดใช้ **TH Sarabun PSK** เป็นฟอนต์หลัก (โดยผูก Fallback ไปยัง TH Sarabun New, Sarabun, sans-serif)
-* ใน HTML ต้องผูกทั้ง Google Fonts และ Local @font-face เพื่อรองรับการเรนเดอร์ออฟไลน์และออนไลน์
+* กำหนดใช้ **TH Sarabun New** และ **TH Sarabun PSK** ต้นฉบับราชการแท้ (SIPA / กรมทรัพย์สินทางปัญญา DIP) เป็นฟอนต์หลัก
+* ต้องฝังไฟล์ฟอนต์แท้ (.ttf) ใน `fonts/` (`THSarabunNew.ttf`, `THSarabunNew-Bold.ttf`, `THSarabunPSK.ttf`, `THSarabunPSK-Bold.ttf`) พร้อมประกาศ `@font-face`
+* จัดลำดับ `font-family: 'TH Sarabun New', 'TH Sarabun PSK', 'THSarabunNew', 'THSarabunPSK', 'Sarabun', sans-serif !important;` โดยให้ฟอนต์แท้ราชการมีลำดับความสำคัญก่อน Google Fonts
 
 ### 2.2 ขนาดฟอนต์มาตรฐาน (Font Size = 17pt Standard)
 * **ขนาดตัวอักษรเนื้อหาหลัก (Standard Body Size):** **17pt**
@@ -26,10 +27,11 @@
   * **บล็อกผู้ร่าง/ตรวจ/พิมพ์/ทาน (Staff Footer):** 13.5pt ถึง 14pt ตัวบาง (ont-weight: 300;)
 
 ### 2.3 มาตรฐานน้ำหนักฟอนต์ (Strict Font-Weight Hierarchy)
-* **หัวข้อหลัก (Headings / Labels / Titles):** ต้องใช้ **ตัวหนา (Bold: ont-weight: 700)** เท่านั้น
+* **หัวข้อหลัก (Headings / Labels / Titles):** ต้องใช้ **ตัวหนามาตรฐาน Microsoft Word (font-weight: 600 / Bold)**
   * ป้ายกำกับ: ส่วนราชการ, ที่, วันที่, เรื่อง, เรียน, สิ่งที่ส่งมาด้วย (เฉพาะคำหัวข้อ)
-  * หัวตาราง (	h) และชื่อฟอร์ม/รายงาน
-* **ส่วนที่ไม่ใช่หัวข้อ (Non-headings / Body / Content / Tables / Footers):** ต้องใช้ **ตัวบาง (Thin/Light: ont-weight: 300)** เสมอ!
+  * หัวตาราง (th) และชื่อฟอร์ม/รายงาน
+  * **ข้อห้าม:** ห้ามใช้ตัวหนาถมดำตันจัดแบบ Google Fonts 700 display ให้ใช้ความหนาโปร่งคมชัดตามลายเส้นราชการแท้ (Stroke Weight 600)
+* **ส่วนที่ไม่ใช่หัวข้อ (Non-headings / Body / Content / Tables / Footers):** ต้องใช้ **ตัวบาง (Thin/Light: font-weight: 300)** เสมอ!
   * เนื้อหาบันทึกข้อความ (.content-para, .memo-body)
   * ข้อความเติมในเส้นประ (.meta-fill-dotted)
   * รายละเอียดสิ่งที่ส่งมาด้วย และจำนวน
