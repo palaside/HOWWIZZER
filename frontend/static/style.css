@@ -967,9 +967,9 @@ h1, h2, h3, h4, h5, h6, th, b, strong,
 }
 
 /* ------------------------------------------------------------------------- */
-/* 3. Mobile Landscape and Phablets (<= 768px)                              */
+/* 3. Mobile Landscape and Phablets (<= 767px)                              */
 /* ------------------------------------------------------------------------- */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   body {
     padding: 12px;
   }

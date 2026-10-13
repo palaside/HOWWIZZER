@@ -1,0 +1,123 @@
+{
+  "suite": "E2E UI/UX Micro-Interactions Walkthrough Test",
+  "timestamp": "2026-10-13",
+  "steps": [
+    {
+      "step": "1.1 Brand Badge Render",
+      "status": "PASS",
+      "details": "Found brand badge: RTA DOC-ENGINE V1"
+    },
+    {
+      "step": "1.2 System Status Dot",
+      "status": "PASS",
+      "details": "HotFolder status active"
+    },
+    {
+      "step": "2.1 Thai Year BE Format",
+      "status": "PASS",
+      "details": "Initial display: 06/11/69"
+    },
+    {
+      "step": "2.2 Floating Cycle Chip",
+      "status": "PASS",
+      "details": "Cycle range: 2 - 6 พ.ย. 69"
+    },
+    {
+      "step": "2.3 Date Change & Re-calculation",
+      "status": "PASS",
+      "details": "Updated to: 9 - 13 พ.ย. 69"
+    },
+    {
+      "step": "3.1 9 Operator Slots Render",
+      "status": "PASS",
+      "details": "Found exactly 9 operator cards"
+    },
+    {
+      "step": "4.1 4-Slot Photo Grid Render",
+      "status": "PASS",
+      "details": "Found 4 photo slots"
+    },
+    {
+      "step": "4.2 Photo Status Ready Badge",
+      "status": "PASS",
+      "details": "Status: พร้อมใช้งาน (๔/๔ ภาพ)"
+    },
+    {
+      "step": "4.3 Form SD.1 Page 4 Photo Placement",
+      "status": "PASS",
+      "details": "Page 4 has all 4 inspection photos hydrated"
+    },
+    {
+      "step": "5.1 Upcoming Queue Priority Cards",
+      "status": "PASS",
+      "details": "Rendered 5 queue priority cards"
+    },
+    {
+      "step": "5.2 Master Checklist 19 Documents",
+      "status": "PASS",
+      "details": "Rendered all 19 documents in checklist"
+    },
+    {
+      "step": "5.3 Category Filter: Weekly",
+      "status": "PASS",
+      "details": "Filtered to 2 weekly documents"
+    },
+    {
+      "step": "5.4 Category Filter: Follow-up",
+      "status": "PASS",
+      "details": "Filtered to 6 follow-up documents"
+    },
+    {
+      "step": "5.5 Instant Search Filter",
+      "status": "PASS",
+      "details": "Successfully found exact document for 'สด.๑'"
+    },
+    {
+      "step": "5.6 Batch Check All (19/19)",
+      "status": "PASS",
+      "details": "Counter: เช็คแล้ว ๑๙/๑๙ ฉบับ"
+    },
+    {
+      "step": "5.7 Batch Clear Checkboxes (0/19)",
+      "status": "PASS",
+      "details": "Counter: เช็คแล้ว ๐/๑๙ ฉบับ"
+    },
+    {
+      "step": "5.8 Single Checkbox & State Persistence",
+      "status": "PASS",
+      "details": "Counter: เช็คแล้ว ๑/๑๙ ฉบับ"
+    },
+    {
+      "step": "6.1 Tab 2 Armory Custody Switch",
+      "status": "PASS",
+      "details": "Tab 2 active"
+    },
+    {
+      "step": "6.2 Tab 3 External Intake Switch",
+      "status": "PASS",
+      "details": "Tab 3 active"
+    },
+    {
+      "step": "6.3 Tab 4 Full Catalog 17 Docs",
+      "status": "PASS",
+      "details": "Catalog has 17 document cards"
+    },
+    {
+      "step": "7.1 Tablet (768px) 3-Col Operators Grid",
+      "status": "PASS",
+      "details": "Operators grid adapted to 3 columns"
+    },
+    {
+      "step": "7.2 Mobile (390px) Compact Operators Grid",
+      "status": "PASS",
+      "details": "Operators grid adapted to 1 columns"
+    },
+    {
+      "step": "7.3 Visual Capture E2E",
+      "status": "PASS",
+      "details": "Saved e2e_walkthrough_success.png"
+    }
+  ],
+  "passed": 23,
+  "failed": 0
+}

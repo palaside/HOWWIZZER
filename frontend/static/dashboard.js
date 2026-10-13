@@ -1,6 +1,11 @@
 // Tactical Military Document & Custody Management Dashboard
 const API_BASE = '/api/v1';
 
+function toThaiNum(n) {
+  if (n === null || n === undefined) return '';
+  return String(n).replace(/[0-9]/g, d => '๐๑๒๓๔๕๖๗๘๙'[d]);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initTabs();
   initDateDefaults();
@@ -285,7 +290,7 @@ async function loadOperators() {
       const resStatic = await fetch('/backend/data/personnel_registry.json');
       if (resStatic.ok) {
         const reg = await resStatic.json();
-        operators = reg.eight_operators || [];
+        operators = reg.operators || reg.eight_operators || [];
       }
     }
 
@@ -656,7 +661,7 @@ function renderInspectionPhotosGrid(photos) {
 
   const validCount = (photos || []).filter(p => !!p).length;
   if (badge) {
-    badge.innerText = `พร้อมใช้งาน (${validCount}/๔ ภาพ)`;
+    badge.innerText = `พร้อมใช้งาน (${toThaiNum(validCount)}/๔ ภาพ)`;
     badge.className = validCount >= 4 ? 'badge badge-generated' : 'badge badge-pending';
   }
 
@@ -1202,7 +1207,7 @@ function renderMasterChecklist() {
   const totalCount = MASTER_DOC_INVENTORY.length;
   const checkedCount = Object.values(checkedMap).filter(Boolean).length;
   if (countDisplay) {
-    countDisplay.innerText = `เช็คแล้ว ${checkedCount}/${totalCount} ฉบับ`;
+    countDisplay.innerText = `เช็คแล้ว ${toThaiNum(checkedCount)}/${toThaiNum(totalCount)} ฉบับ`;
   }
 
   if (filtered.length === 0) {
