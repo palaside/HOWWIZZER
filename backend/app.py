@@ -53,13 +53,17 @@ app.add_middleware(
 )
 
 # Static and Hotfolder asset mounts
-HOTFOLDER_OUT.mkdir(parents=True, exist_ok=True)
-HOTFOLDER_IN.mkdir(parents=True, exist_ok=True)
-(FRONTEND_DIR / "static").mkdir(parents=True, exist_ok=True)
-(FRONTEND_DIR / "templates").mkdir(parents=True, exist_ok=True)
+for d in [HOTFOLDER_OUT, HOTFOLDER_IN, FRONTEND_DIR / "static", FRONTEND_DIR / "templates"]:
+    try:
+        d.mkdir(parents=True, exist_ok=True)
+    except OSError:
+        pass
 
-app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR / "static")), name="static")
-app.mount("/hotfolder/ready", StaticFiles(directory=str(HOTFOLDER_OUT)), name="hotfolder_ready")
+if (FRONTEND_DIR / "static").exists():
+    app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR / "static")), name="static")
+
+if HOTFOLDER_OUT.exists():
+    app.mount("/hotfolder/ready", StaticFiles(directory=str(HOTFOLDER_OUT)), name="hotfolder_ready")
 
 # --- System Health ---
 @app.get("/api/v1/health")
