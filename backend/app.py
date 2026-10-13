@@ -61,6 +61,7 @@ for d in [HOTFOLDER_OUT, HOTFOLDER_IN, FRONTEND_DIR / "static", FRONTEND_DIR / "
 
 if (FRONTEND_DIR / "static").exists():
     app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR / "static")), name="static")
+    app.mount("/frontend/static", StaticFiles(directory=str(FRONTEND_DIR / "static")), name="frontend_static")
 
 if HOTFOLDER_OUT.exists():
     app.mount("/hotfolder/ready", StaticFiles(directory=str(HOTFOLDER_OUT)), name="hotfolder_ready")
@@ -340,9 +341,14 @@ def api_get_damage_memo(loan_id: str, target_date: Optional[str] = None):
 
 # --- Frontend Portal UI ---
 @app.get("/", response_class=HTMLResponse)
+@app.get("/frontend/templates/index.html", response_class=HTMLResponse)
+@app.get("/index.html", response_class=HTMLResponse)
 def index():
     template_path = FRONTEND_DIR / "templates" / "index.html"
     if template_path.exists():
         return HTMLResponse(template_path.read_text(encoding="utf-8"))
+    root_index = WORKSPACE_ROOT / "index.html"
+    if root_index.exists():
+        return HTMLResponse(root_index.read_text(encoding="utf-8"))
     return HTMLResponse("<h1>Tactical Military Document Automation Suite</h1>")
 

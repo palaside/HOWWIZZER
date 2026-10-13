@@ -3,371 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ระบบ​ศูนย์รวม​เอกสารราชการ ทบ. (Military Doc Portal)</title>
+  <title>ระบบ​ศูนย์รวม​และ​จัดทำ​เอกสาร​ราชการทหาร​อัตโนมัติ (Military Doc & HotFolder Engine)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Chakra+Petch:wght@500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-primary: #0a0e17;
-      --bg-surface: #111827;
-      --bg-card: rgba(17, 24, 39, 0.75);
-      --border-card: rgba(255, 255, 255, 0.08);
-      --accent: #3b82f6;
-      --accent-glow: rgba(59, 130, 246, 0.25);
-      --accent-gold: #f59e0b;
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
-      --tag-html: #38bdf8;
-      --tag-docx: #60a5fa;
-      --tag-xlsx: #34d399;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--bg-primary);
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(30, 58, 138, 0.25) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(16, 185, 129, 0.12) 0%, transparent 45%),
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
-      color: var(--text-main);
-      font-family: 'Sarabun', sans-serif;
-      min-height: 100vh;
-      padding: 2.5rem 1.5rem 4rem 1.5rem;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-    }
-
-    header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      margin-bottom: 2.5rem;
-      position: relative;
-    }
-
-    .emblem-wrapper {
-      position: relative;
-      margin-bottom: 1.25rem;
-    }
-
-    .emblem-wrapper img {
-      width: 76px;
-      height: auto;
-      filter: drop-shadow(0 0 16px rgba(59, 130, 246, 0.45));
-      border-radius: 8px;
-    }
-
-    .badge-status {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: #34d399;
-      padding: 4px 14px;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.5px;
-    }
-
-    .badge-status::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      background-color: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #10b981;
-    }
-
-    h1 {
-      font-size: 2.25rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #ffffff 40%, #93c5fd 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.5rem;
-    }
-
-    .subtitle {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 680px;
-      line-height: 1.6;
-    }
-
-    .search-box {
-      margin-top: 1.5rem;
-      width: 100%;
-      max-width: 520px;
-      position: relative;
-    }
-
-    .search-box input {
-      width: 100%;
-      padding: 12px 18px 12px 42px;
-      background: rgba(17, 24, 39, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 12px;
-      color: #fff;
-      font-family: inherit;
-      font-size: 0.95rem;
-      outline: none;
-      backdrop-filter: blur(10px);
-      transition: all 0.2s ease;
-    }
-
-    .search-box input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px var(--accent-glow);
-    }
-
-    .search-icon {
-      position: absolute;
-      left: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      font-size: 1rem;
-    }
-
-    .stats-bar {
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .stat-pill {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      padding: 6px 16px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .stat-pill span {
-      color: #fff;
-      font-weight: 600;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 1.25rem;
-    }
-
-    .doc-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-card);
-      border-radius: 16px;
-      padding: 1.35rem;
-      backdrop-filter: blur(12px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .doc-card::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #3b82f6, #10b981);
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .doc-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(59, 130, 246, 0.4);
-      box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.5), 0 0 15px var(--accent-glow);
-    }
-
-    .doc-card:hover::before {
-      opacity: 1;
-    }
-
-    .card-top {
-      margin-bottom: 1rem;
-    }
-
-    .card-header-line {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-    }
-
-    .doc-code {
-      font-family: 'Chakra Petch', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--accent-gold);
-      background: rgba(245, 158, 11, 0.12);
-      padding: 2px 8px;
-      border-radius: 4px;
-      letter-spacing: 0.5px;
-    }
-
-    .doc-format-tag {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2px 7px;
-      border-radius: 4px;
-    }
-
-    .doc-title {
-      font-size: 1.12rem;
-      font-weight: 600;
-      color: #fff;
-      line-height: 1.45;
-      margin-bottom: 0.4rem;
-    }
-
-    .doc-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
-    .card-actions {
-      display: flex;
-      gap: 0.5rem;
-      padding-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .btn-action {
-      flex: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      padding: 8px 10px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.15s ease;
-      cursor: pointer;
-    }
-
-    .btn-html {
-      background: rgba(56, 189, 248, 0.12);
-      color: var(--tag-html);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-    }
-    .btn-html:hover {
-      background: rgba(56, 189, 248, 0.25);
-      border-color: var(--tag-html);
-      color: #fff;
-    }
-
-    .btn-docx {
-      background: rgba(96, 165, 250, 0.1);
-      color: var(--tag-docx);
-      border: 1px solid rgba(96, 165, 250, 0.2);
-    }
-    .btn-docx:hover {
-      background: rgba(96, 165, 250, 0.2);
-      color: #fff;
-    }
-
-    .btn-xlsx {
-      background: rgba(52, 211, 153, 0.1);
-      color: var(--tag-xlsx);
-      border: 1px solid rgba(52, 211, 153, 0.2);
-    }
-    .btn-xlsx:hover {
-      background: rgba(52, 211, 153, 0.2);
-      color: #fff;
-    }
-
-    footer {
-      text-align: center;
-      margin-top: 3.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      color: var(--text-muted);
-      font-size: 0.82rem;
-    }
-
-    .main-nav-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(17, 24, 39, 0.85);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 14px;
-      padding: 10px 18px;
-      margin-bottom: 2rem;
-    }
-    .main-nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: #fff;
-    }
-    .main-nav-links {
-      display: flex;
-      gap: 8px;
-    }
-    .nav-tab-btn {
-      padding: 8px 16px;
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.05);
-      color: #9ca3af;
-      text-decoration: none;
-      font-size: 0.88rem;
-      font-weight: 500;
-      transition: all 0.2s ease;
-      cursor: pointer;
-    }
-    .nav-tab-btn.active, .nav-tab-btn:hover {
-      background: rgba(59, 130, 246, 0.2);
-      border-color: #3b82f6;
-      color: #fff;
-    }
-    @media (max-width: 640px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      h1 {
-        font-size: 1.75rem;
-      }
-      .main-nav-bar {
-        flex-direction: column;
-        gap: 12px;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
 <!-- UNIFIED MILITARY SARABUN FONT-ENGINE & RULE 9 THIN/LIGHT STANDARD -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -498,39 +138,340 @@
 
 </head>
 <body>
-  <div class="container">
-    <!-- Top System Switcher Navigation Bar -->
-    <nav class="main-nav-bar">
-      <div class="main-nav-brand">
-        <span style="font-size: 1.25rem;">🎖️</span>
-        <span>RTA DOC-ENGINE & PORTAL V2</span>
-      </div>
-      <div class="main-nav-links">
-        <a href="/" class="nav-tab-btn active">📑 คลัง​เอกสารราชการ (17 ฉบับ)</a>
-        <a href="/frontend/templates/index.html" class="nav-tab-btn">⚡ แด​ช​บอร์ด​ระบบ​ทหาร (RTA Engine)</a>
-      </div>
-    </nav>
-    <header>
-      <div class="emblem-wrapper">
-        <img src="artillery_emblem.png" alt="Royal Thai Army Artillery Emblem" onerror="this.src='Garuda_Vector.svg.png'">
-      </div>
-      <div class="badge-status">ระบบ​ออนไลน์ • พอร์ต 8888 Active</div>
-      <h1>ระบบ​ศูนย์รวม​เอกสารราชการ ทบ.</h1>
-      <p class="subtitle">Superclone Production-Grade Engine • รองรับ​พรีวิว HTML ความ​ละเอียด​สูง พร้อม​ดาวน์โหลด​คู่ฉบับ Word (.docx) และ Excel (.xlsx)</p>
-      
-      <div class="search-box">
-        <span class="search-icon">🔍</span>
-        <input type="text" id="searchInput" placeholder="พิมพ์ชื่อเอกสาร, รหัสแบบฟอร์ม, ทบ. เพื่อค้นหา..." oninput="filterDocs()">
-      </div>
-    </header>
 
-    <div class="stats-bar">
-      <div class="stat-pill">เอกสาร​ทั้งหมด: <span>17 ฉบับ</span></div>
-      <div class="stat-pill">ระบบ​พิมพ์​คู่ขนาน: <span>Dual-Copy Active</span></div>
-      <div class="stat-pill">มาตรฐาน​การ​จัดพิมพ์: <span>A4 / Legal / A5</span></div>
+  <!-- Top Navigation Header -->
+  <header class="glass-panel top-nav">
+    <div class="brand-wrapper">
+      <div class="brand-badge">RTA DOC-ENGINE V1</div>
+      <div>
+        <h1 class="brand-title">ระบบ​จัดทำ​เอกสาร​และ​คลัง​ยุทธภัณฑ์​อัตโนมัติ</h1>
+        <p class="brand-sub">ระเบียบ​สารบรรณ ทบ. ๒๕๖๓ • มาตรฐาน​แกน​ดิ่ง Red Line • พิมพ์​แพ็กเกจ​คู่ขนาน ๒ ชุด • คมกริบ 300 DPI</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <button onclick="document.getElementById('tabBtn17Docs').click()" class="btn-primary" style="padding: 7px 14px; font-size: 13.5px; cursor: pointer;">
+        🏛️ คลัง​เอกสารราชการ ๑๗ ฉบับ
+      </button>
+      <a href="/" target="_blank" style="padding: 7px 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.15); color: #94a3b8; text-decoration: none; font-size: 13px;">
+        🔗 เปิด Portal แยก
+      </a>
+      <div class="system-status">
+        <div class="status-dot"></div>
+        <span>ระบบ Cloud HotFolder เชื่อมต่อ​พร้อม​ทำงาน</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Tab Navigation -->
+  <nav class="tabs-container">
+    <button class="tab-btn active" data-tab="tab-internal-docs">
+      📑 ระบบ​เอกสาร​ภายใน & แด​ช​บอร์ด​พิมพ์​คู่ (Part 1)
+    </button>
+    <button class="tab-btn" data-tab="tab-inventory-custody">
+      🛡️ คลัง​อาวุธ & ควบคุม​เบิก​จ่าย​คู่ขนาน (Part 3)
+    </button>
+    <button class="tab-btn" data-tab="tab-external-intake">
+      📥 จุด​รับ​เอกสาร​ภายนอก & ติดตาม​ช่องว่าง (Part 2)
+    </button>
+    <button class="tab-btn" data-tab="tab-all-17-docs" id="tabBtn17Docs">
+      🏛️ คลัง​เอกสารราชการ ทบ. ๑๗ ฉบับ (Full Catalog)
+    </button>
+    <button class="tab-btn" data-tab="tab-informal-survey" id="tabBtnInformalSurvey">
+      📋 สำรวจ​สิ่งอุปกรณ์ & เบิกยืม-ส่งซ่อม (ไม่เป็นทางการ)
+    </button>
+  </nav>
+
+  <!-- ==================================================== -->
+  <!-- TAB 1: INTERNAL DOCS & HOTFOLDER PRINT ENGINE        -->
+  <!-- ==================================================== -->
+  <section id="tab-internal-docs" class="tab-content active">
+    
+    <!-- Action Bar -->
+    <div class="glass-panel action-bar">
+      <div class="action-bar-left">
+        <span class="action-title">วง​รอบ​เอกสาร​เป้าหมาย:</span>
+        <div class="cycle-date-control-group">
+          <!-- Thai Date Input Wrapper (วว/ดด/ปป พุทธศักราช) -->
+          <div class="thai-date-wrapper" onclick="triggerNativeDatePicker()" title="คลิกเพื่อเลือกวันที่จากปฏิทิน">
+            <input type="text" id="targetCycleDateDisplay" class="input-field thai-date-display" placeholder="วว/ดด/ปป" value="06/11/69">
+            <input type="date" id="targetCycleDate" class="native-date-hidden" value="2026-11-06">
+            <span class="calendar-icon-btn">📅</span>
+          </div>
+
+          <!-- Floating Cycle Pill Badge (ตัวอักษรลอย แสดงช่วงวงรอบ เช่น 2 - 6 พ.ย. 69) -->
+          <div class="floating-cycle-chip" id="floatingCycleChip" title="ช่วงวันทำการในวงรอบสัปดาห์">
+            <span class="chip-icon">🗓️</span>
+            <span class="chip-label">วง​รอบ:</span>
+            <span class="chip-value" id="cycleRangeDisplay">2 - 6 พ.ย. 69</span>
+          </div>
+        </div>
+
+        <button id="btnTriggerGen" onclick="triggerDocGeneration()" class="btn-primary">
+          ⚡ สั่ง​ประมวลผล​และ​สร้าง​แพ็กเกจ​คู่ขนาน ๒ ชุด
+        </button>
+      </div>
+      <div style="font-size: 13.5px; color: var(--accent-cyan);">
+        📌 <strong>กฎ​คำนวณ​วัน​เสนอ​เซ็น (Rule 6):</strong> วันที่​บน​หัวบันทึก​และ​บล็อก <em>พิมพ์/ทาน</em> เป็น​วัน​พฤหัสบดี (จันทร์-พฤหัสบดี ห้าม​ตรง​วันหยุด​หรือ​วัน​ศุกร์​เด็ดขาด)
+      </div>
     </div>
 
-    <div class="grid" id="docsGrid">
+    <!-- 9 User Operator Slots (ผบ.พัน.ป., ผบ.ร้อย.ป., ส.หน.สย., ผบ.หมู่ ป.1 ถึง 6) -->
+    <div class="glass-panel" style="padding: 18px 16px; margin-bottom: 24px; border-color: rgba(56, 189, 248, 0.3);">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+        <div>
+          <h3 style="font-size: 17px; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 8px;">
+            🎖️ รายชื่อ​เจ้าหน้าที่​ใน​ส่วน​ของ​ผู้ใช้
+          </h3>
+          <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">
+            แสดง ยศ • ชื่อ-สกุล • ตำแหน่ง (ผบ.พัน.ป., ผบ.ร้อย.ป., ส.หน.สย., ผบ.หมู่ ป.1 ถึง ผบ.หมู่ ป.6)
+          </p>
+        </div>
+        <span class="badge badge-generated" style="font-size: 12px;">ครบถ้วน​ตาม​อัตรา (๙ นาย)</span>
+      </div>
+      <div id="operatorsGrid" class="operators-grid">
+        <!-- Hydrated via dashboard.js -->
+      </div>
+    </div>
+
+    <!-- 📷 Inspection Photos Upload Box (อัพรูป จำนวน ๔ ภาพ) -->
+    <div class="glass-panel" style="padding: 22px 20px; margin-bottom: 24px; border-color: rgba(56, 189, 248, 0.35); background: linear-gradient(180deg, rgba(17, 24, 39, 0.8) 0%, rgba(10, 14, 23, 0.95) 100%);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px; margin-bottom: 18px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding-bottom: 14px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <h3 style="font-size: 18px; font-weight: 600; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+              📷 ภาพถ่าย​การ​ตรวจ โรง​เก็บ​ปืนใหญ่
+            </h3>
+            <span class="badge" style="background: rgba(56, 189, 248, 0.18); border: 1px solid rgba(56, 189, 248, 0.45); color: #38bdf8; font-size: 12.5px; padding: 2px 10px;">
+              อัพรูป จำนวน ๔ ภาพ
+            </span>
+            <span class="badge badge-generated" id="photoUploadStatusBadge" style="font-size: 12px;">
+              พร้อมใช้งาน (๔/๔ ภาพ)
+            </span>
+          </div>
+          <p style="font-size: 13.5px; color: var(--text-secondary); margin-top: 5px;">
+            เมื่อ​อัพโหลด​แล้ว ภาพ​จะ​วิ่ง​ตรง​ไป​วาง​แปะ​แทนที่​เดิม ๔ ตำแหน่ง (หน้า ๔ ของ​แบบ​รายงานผลการตรวจ สด.๑) โดย​อัตโนมัติ ๑๐๐%
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <input type="file" id="bulkPhotoUploadInput" accept="image/*" multiple style="display: none;" onchange="handleBulkPhotoUpload(event)">
+          <button type="button" onclick="document.getElementById('bulkPhotoUploadInput').click()" class="btn-primary" style="padding: 9px 18px; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 16px rgba(56, 189, 248, 0.35);">
+            📤 อัพรูป จำนวน ๔ ภาพ
+          </button>
+          <button type="button" onclick="resetInspectionPhotosToDefault()" class="btn-secondary" style="padding: 8px 14px; font-size: 13px; color: #cbd5e1;" title="รีเซ็ตกลับเป็นภาพถ่ายต้นแบบของโรงเก็บปืนใหญ่">
+            🔄 รีเซ็ตภาพตั้งต้น
+          </button>
+          <a href="/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.html" target="_blank" class="btn-secondary" style="padding: 8px 14px; font-size: 13px; color: var(--accent-gold); border-color: rgba(245, 158, 11, 0.4); text-decoration: none;" title="เปิดดูหน้า ๔ ในแบบรายงาน สด.๑">
+            👁️ เปิดตรวจหน้า ๔
+          </a>
+        </div>
+      </div>
+
+      <!-- 4 Photo Slots (2x2 Grid Matching Page 4) -->
+      <div id="inspectionPhotosGrid" class="inspection-photos-grid">
+        <!-- Hydrated via dashboard.js -->
+      </div>
+
+      <div style="margin-top: 14px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; font-size: 12.5px; color: var(--text-muted);">
+        <div style="display: flex; align-items: center; gap: 6px;">
+          <span>💡 <strong>คำแนะนำ:</strong> สามารถกดปุ่ม <em>"อัพรูป จำนวน ๔ ภาพ"</em> เพื่อเลือก ๔ ไฟล์พร้อมกัน หรือคลิกที่แต่ละช่องเพื่อเปลี่ยนภาพเฉพาะตำแหน่งได้</span>
+        </div>
+        <div style="color: var(--accent-cyan);">
+          ✓ ระบบบันทึกลงคลังถาวรและอัพเดทไปยังเอกสาร สด.๑ ทันที
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ==================================================== -->
+    <!-- MASTER DOCUMENT QUEUE & INTERACTIVE CHECKLIST        -->
+    <!-- ==================================================== -->
+    <div class="glass-panel" style="padding: 24px; margin-top: 24px; border: 1px solid rgba(56, 189, 248, 0.35); box-shadow: 0 8px 32px rgba(0,0,0,0.45); border-radius: 14px;">
+      
+      <!-- Section Header & Progress Stats -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+            <h2 style="font-size: 19px; font-weight: 700; color: #fff; margin: 0;">
+              📋 ตรวจสอบ​คิวงาน​และ​สถานะ​เอกสาร​ใน​แผน (Master Document Queue & Checklist)
+            </h2>
+            <span class="badge badge-generated" id="checklistProgressBadge" style="font-size: 12px; padding: 3px 10px;">
+              พร้อมใช้งาน ๑๙/๑๙ ฉบับ (100%)
+            </span>
+          </div>
+          <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0;">
+            แจ้ง​สถานะ​คิวงาน​ถัดไป​ตาม​วงรอบ​สารบรรณ ทบ. พร้อม​เช็คลิสต์​ตรวจสอบ​ความพร้อม​ของ​ไฟล์ (HTML 300 DPI / Word / Excel) และ​การพิมพ์​คู่ขนาน ๒ ชุด
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <button type="button" onclick="toggleCheckAllDocs(true)" class="btn-secondary" style="font-size: 12.5px; padding: 7px 12px; cursor: pointer;">
+            ✅ ติ๊กเลือกทั้งหมด
+          </button>
+          <button type="button" onclick="toggleCheckAllDocs(false)" class="btn-secondary" style="font-size: 12.5px; padding: 7px 12px; color: #cbd5e1; cursor: pointer;">
+            🔄 ล้างการติ๊ก
+          </button>
+        </div>
+      </div>
+
+      <!-- Upcoming Work Queue Cards (คิวงานถัดไปตามวงรอบ) -->
+      <div style="margin-bottom: 22px;">
+        <div style="font-size: 14px; font-weight: 600; color: var(--accent-cyan); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+          <span>⏳ ลำดับ​คิวงาน​ถัดไป (Upcoming Work Queue Priority):</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;" id="upcomingQueueGrid">
+          <!-- Hydrated via dashboard.js -->
+        </div>
+      </div>
+
+      <!-- Filter Tabs & Search Bar -->
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 12px 16px; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 16px;">
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="checklistFilterTabs">
+          <button type="button" class="btn-filter active" onclick="filterChecklist('all', this)" style="padding: 6px 12px; border-radius: 6px; font-size: 12.5px; cursor: pointer; background: var(--accent-blue); color: #fff; border: 1px solid var(--accent-blue);">
+            ทั้งหมด (๑๙ ฉบับ)
+          </button>
+          <button type="button" class="btn-filter" onclick="filterChecklist('weekly', this)" style="padding: 6px 12px; border-radius: 6px; font-size: 12.5px; cursor: pointer; background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.15);">
+            📌 คิวสัปดาห์นี้ (๒ ฉบับ)
+          </button>
+          <button type="button" class="btn-filter" onclick="filterChecklist('followup', this)" style="padding: 6px 12px; border-radius: 6px; font-size: 12.5px; cursor: pointer; background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.15);">
+            ⏱️ คิวทวงถาม ๔๕/๙๐ วัน (๔ ฉบับ)
+          </button>
+          <button type="button" class="btn-filter" onclick="filterChecklist('periodic', this)" style="padding: 6px 12px; border-radius: 6px; font-size: 12.5px; cursor: pointer; background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.15);">
+            📅 คิวไตรมาส/ปี (๕ ฉบับ)
+          </button>
+          <button type="button" class="btn-filter" onclick="filterChecklist('armory', this)" style="padding: 6px 12px; border-radius: 6px; font-size: 12.5px; cursor: pointer; background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.15);">
+            🛡️ คุมคลัง/ประวัติอาวุธ (๘ ฉบับ)
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <input type="text" id="checklistSearchInput" placeholder="🔍 ค้นหารหัส, ชื่อเอกสาร..." oninput="onChecklistSearchInput(this.value)" style="padding: 6px 12px; border-radius: 6px; background: rgba(15,23,42,0.8); border: 1px solid rgba(56,189,248,0.3); color: #fff; font-size: 13px; width: 220px; outline: none;">
+          <span style="font-size: 12px; color: var(--text-muted);" id="checkedCountDisplay">เช็คแล้ว 0/๑๙</span>
+        </div>
+      </div>
+
+      <!-- Interactive Checklist Table Container -->
+      <div class="table-container" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow-x: auto;">
+        <table class="data-table" style="width: 100%; font-size: 13.5px;">
+          <thead>
+            <tr>
+              <th style="width: 46px; text-align: center;">ตรวจ</th>
+              <th style="width: 140px;">รหัสเอกสาร</th>
+              <th>ชื่อเอกสารตามระเบียบ ทบ.</th>
+              <th style="width: 180px;">วงรอบ / คิวงาน</th>
+              <th style="width: 180px; text-align: center;">สถานะไฟล์ในระบบ</th>
+              <th style="width: 230px; text-align: center;">เปิดเอกสารต้นฉบับ</th>
+            </tr>
+          </thead>
+          <tbody id="masterChecklistTableBody">
+            <!-- Hydrated via dashboard.js -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================================================== -->
+  <!-- TAB 2: ARMORY & DUAL-CONTROL CUSTODY ENGINE          -->
+  <!-- ==================================================== -->
+  <section id="tab-inventory-custody" class="tab-content">
+    <div class="glass-panel action-bar">
+      <div class="action-bar-left">
+        <span class="action-title">คลัง​อาวุธ​หลัก (ปบค.๙๕ ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑)</span>
+      </div>
+      <div id="inventorySummary">
+        <!-- Hydrated via dashboard.js -->
+      </div>
+    </div>
+
+    <div class="alert-banner alert-info">
+      <span>🛡️</span>
+      <div>
+        <strong>มาตรการ​ความปลอดภัย Dual-Control (Maker-Checker):</strong>
+        แอดมิน/เสมียน​คลัง​สร้าง​คำขอ​เบิก (Maker) และ​เจ้าของ​คลัง/ผบ.ร้อย เป็น​ผู้อนุมัติ​และ​ตัด​ยอด​คงเหลือ (Checker) พร้อม​เชื่อมต่อ Data Injection ไป​ระบาย​ลง​ใน​ตาราง​เอกสาร​อัตโนมัติ ๑๐๐%
+      </div>
+    </div>
+
+    <div class="glass-panel" style="padding: 24px;">
+      <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: #fff;">
+        ทะเบียน​คุม​สิ่งอุปกรณ์​ประจำ​หน่วย (ทบ.๔๐๐-๐๐๕ & ทบ.๔๖๘-๒๐๔)
+      </h3>
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>รหัส​ยุทธภัณฑ์</th>
+              <th>รายการ​สิ่งอุปกรณ์</th>
+              <th>หมายเลข​ซี​เรียล</th>
+              <th>สถานะ​ปัจจุบัน</th>
+              <th>การ​ดำเนินการ (Dual-Control)</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryTableBody">
+            <!-- Hydrated via dashboard.js -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== -->
+  <!-- TAB 3: EXTERNAL INTAKE & GAP ANALYSIS                -->
+  <!-- ==================================================== -->
+  <section id="tab-external-intake" class="tab-content">
+    
+    <!-- Cadence Gap Alerts -->
+    <h2 style="font-size: 18px; font-weight: 600; margin-bottom: 14px; color: #fff;">
+      🚨 ตรวจสอบ​ช่องว่าง​และ​ราย​งานค้าง​ส่ง​ตาม​วง​รอบ (Periodic Cadence Gap Monitor)
+    </h2>
+    <div id="cadenceGapsList" style="margin-bottom: 28px;">
+      <!-- Hydrated via dashboard.js -->
+    </div>
+
+    <!-- Intake HotFolder Watch -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+      <h2 style="font-size: 18px; font-weight: 600; color: #fff;">
+        📥 เอกสาร​ที่​รับ​เข้า​จาก FolderIN (External Intake Dropzone)
+      </h2>
+      <button onclick="loadExternalIntake()" class="btn-secondary">
+        🔄 สแกน FolderIN ทันที
+      </button>
+    </div>
+
+    <div class="alert-banner alert-danger" style="margin-bottom: 18px;">
+      <span>⚠️</span>
+      <div>
+        <strong>ระบบ Ingestion Fallback (Rule 4):</strong>
+        หาก​พบ​ไฟล์​ที่​ชื่อ​ไม่​ตรง​กับ Regex มาตรฐาน ระบบ​จะ​จัด​เข้า​หมวด <em>UNCLASSIFIED_EXTERNAL</em> ทันที พร้อม​แสดง​ปุ่ม​ให้​แอดมิน​คลิก​ระบุ​วง​รอบ​ได้​ใน ๑ คลิก เพื่อ​ไม่​ให้​เอกสาร​สูญหาย
+      </div>
+    </div>
+
+    <div id="externalIntakeList">
+      <!-- Hydrated via dashboard.js -->
+    </div>
+  </section>
+
+  <!-- ==================================================== -->
+  <!-- TAB 4: COMPLETE 17 MILITARY DOCUMENTS CATALOG         -->
+  <!-- ==================================================== -->
+  <section id="tab-all-17-docs" class="tab-content">
+    <div class="glass-panel action-bar" style="margin-bottom: 20px;">
+      <div class="action-bar-left" style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h2 style="font-size: 18px; font-weight: 700; color: #fff;">🏛️ คลัง​เอกสารราชการ ทบ. ๑๗ ฉบับ (Superclone Engine)</h2>
+          <p style="font-size: 13px; color: var(--text-secondary); margin-top: 2px;">
+            เปิด​ดู​ตัวอย่าง HTML คมชัด 300 DPI พร้อม​ดาวน์โหลด​ไฟล์ Word (.docx) และ Excel (.xlsx) คู่ขนาน
+          </p>
+        </div>
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <input type="text" id="catalogSearchInput" placeholder="🔍 ค้นหาชื่อเอกสาร, รหัส ทบ. ..." oninput="filterCatalogDocs()" style="padding: 8px 14px; border-radius: 8px; background: rgba(0,0,0,0.4); border: 1px solid var(--border-glass); color: #fff; font-size: 13.5px; width: 260px; outline: none;">
+          <span class="badge badge-generated" style="font-size: 12px;">ครบ ๑๗ ฉบับ</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="catalog-grid" id="catalogDocsGrid">
       <!-- 1. แบบรายงาน สด.๑ -->
       <div class="doc-card" data-title="แบบรายงานผลการตรวจ สด 1 สด.๑ สพ. อาวุธ">
         <div class="card-top">
@@ -542,9 +483,9 @@
           <div class="doc-desc">บันทึก​รายงาน​ผล​การ​ตรวจ​ประจำสัปดาห์​โดย​ผู้บังคับบัญชา สป.สาย สพ. (อาวุธ) พร้อม​ตาราง​สรุป​ปรนนิบัติบำรุง</div>
         </div>
         <div class="card-actions">
-          <a href="แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -559,9 +500,9 @@
           <div class="doc-desc">รายงาน​ผล​การ​ตรวจ​สภาพ​ยุทโธปกรณ์​ประจำสัปดาห์ พร้อม​บล็อก​ลงนาม​มาตรฐาน Red Line Standard</div>
         </div>
         <div class="card-actions">
-          <a href="บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -576,9 +517,9 @@
           <div class="doc-desc">บันทึก​ข้อความ​และ ทบ.๔๐๐-๐๗๑ แบบ ก ใบ​ติดตาม​ใบเบิก สิ่งอุปกรณ์​สาย สพ. เกินกำหนด ๔๕ วัน</div>
         </div>
         <div class="card-actions">
-          <a href="ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -593,9 +534,9 @@
           <div class="doc-desc">บันทึก​ข้อความ​และ ทบ.๔๐๐-๐๗๑ แบบ ข ใบ​ติดตาม​ใบเบิก สิ่งอุปกรณ์​สาย สพ. เกินกำหนด ๙๐ วัน</div>
         </div>
         <div class="card-actions">
-          <a href="ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -610,9 +551,9 @@
           <div class="doc-desc">ทบ.๔๐๐-๐๑๒ ใบรายงาน​ผล​เปรียบเทียบ​การ​ตรวจสอบ​สิ่งอุปกรณ์​สาย สพ. บัญชี​คุม​ยอด​คงเหลือ</div>
         </div>
         <div class="card-actions">
-          <a href="ทบ_400_012_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="ทบ_400_012_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="ทบ_400_012_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/ทบ_400_012_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ทบ_400_012_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ทบ_400_012_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -627,9 +568,9 @@
           <div class="doc-desc">ทบ.๔๖๘-๒๐๔ บัญชี​แจกแจง​หมายเลข​ประจำ​ปืน ชิ้น​ส่วนสำคัญ และ​อาวุธ​ประจำ​กาย​ประจำ​หน่วย</div>
         </div>
         <div class="card-actions">
-          <a href="ทบ_468_204_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="ทบ_468_204_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="ทบ_468_204_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/ทบ_468_204_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ทบ_468_204_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ทบ_468_204_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -644,9 +585,9 @@
           <div class="doc-desc">ตาราง​กำหนดการ​ปรนนิบัติบำรุง ปบค.๙๕ และ​ยุทโธปกรณ์​สนับสนุน รายสัปดาห์ รายเดือน รายปี</div>
         </div>
         <div class="card-actions">
-          <a href="ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -661,9 +602,9 @@
           <div class="doc-desc">บัตร​บัญชี​คุม​สิ่งอุปกรณ์ ทบ.๔๐๐-๐๐๕ พร้อมหน้า​สารบัญ หน้า​รับรอง​ยอด และ​รายการ​รับ-จ่าย​คงคลัง</div>
         </div>
         <div class="card-actions">
-          <a href="บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -678,9 +619,9 @@
           <div class="doc-desc">สมุด​ทะเบียน​คุม​สิ่งอุปกรณ์​ถาวร​และ​สิ้นเปลือง ฉบับ​สมบูรณ์ ๘๗ รายการ​บัตร หน้า-หลัง</div>
         </div>
         <div class="card-actions">
-          <a href="บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -695,9 +636,9 @@
           <div class="doc-desc">บัญชี​รายละเอียด​หมายเลข ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑ ปรับปรุง พร้อม​ชุด​อุปกรณ์​ครบ​หมู่</div>
         </div>
         <div class="card-actions">
-          <a href="บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -712,9 +653,9 @@
           <div class="doc-desc">สมุดบันทึก​ประวัติการ​ยิง การ​เปลี่ยน​ลำกล้อง การ​ตรวจ​สภาพ และ​การ​ซ่อมบำรุง​ปืนใหญ่​ประจำ​หน่วย</div>
         </div>
         <div class="card-actions">
-          <a href="สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -729,9 +670,9 @@
           <div class="doc-desc">บันทึก​ยอด​นัด​กระสุน​ที่​ยิง การใช้งาน และ​การ​ส่ง​ซ่อมบำรุง​ประจำ​หมู่​ปืนใหญ่</div>
         </div>
         <div class="card-actions">
-          <a href="ประวัติการใช้อาวุธ_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="ประวัติการใช้อาวุธ_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="ประวัติการใช้อาวุธ_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/ประวัติการใช้อาวุธ_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ประวัติการใช้อาวุธ_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ประวัติการใช้อาวุธ_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -746,9 +687,9 @@
           <div class="doc-desc">ทบ.๔๐๐-๐๑๑ แบบฟอร์ม​ใบ​สำรวจ​สิ่งอุปกรณ์​รายบุคคล​และ​ประจำ​หน่วย บัตร​ย่อย ๓ ใบ​ต่อ​การ์ด</div>
         </div>
         <div class="card-actions">
-          <a href="ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -763,9 +704,9 @@
           <div class="doc-desc">การ​ตรวจสอบ​กลไก​เครื่อง​ถอย การจำลอง​แรง​ยิง และ​ค่า​ความดัน​ระบบ​ไฮดรอลิก​ประจำ​ไตรมาส</div>
         </div>
         <div class="card-actions">
-          <a href="รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -780,9 +721,9 @@
           <div class="doc-desc">แบบ​ตรวจการ​ส่ง​กำลัง​และ​บำรุงรักษา อาวุธ ยานพาหนะ และ​คลัง สป. ของ​กองร้อย</div>
         </div>
         <div class="card-actions">
-          <a href="บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -797,9 +738,9 @@
           <div class="doc-desc">หนังสือราชการ​บันทึก​ข้อความ ตรา​ครุฑ พร้อม​ตาราง​ตรวจ/ทาน และ​บล็อก​ลงนาม​มาตรฐาน ๑๓๐ มม.</div>
         </div>
         <div class="card-actions">
-          <a href="บันทึกข้อความล่าสุดสุด_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="บันทึกข้อความล่าสุดสุด_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="บันทึกข้อความล่าสุดสุด_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
         </div>
       </div>
 
@@ -814,32 +755,357 @@
           <div class="doc-desc">หนังสือราชการ​บันทึก​ข้อความ ขอ​ส่ง​ใบ​ติดตาม​ใบ​ส่ง​ซ่อม​เกิน ๙๐ วัน พร้อม​ระบบ​พิมพ์​คู่ขนาน</div>
         </div>
         <div class="card-actions">
-          <a href="บันทึกข้อความ_90_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
-          <a href="บันทึกข้อความ_90_วัน_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
-          <a href="บันทึกข้อความ_90_วัน_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+          <a href="/บันทึกข้อความ_90_วัน_Rebuild_Thai.html" target="_blank" class="btn-action btn-html">🌐 HTML Preview</a>
+          <a href="/บันทึกข้อความ_90_วัน_Rebuild_Thai.docx" class="btn-action btn-docx">📘 DOCX</a>
+          <a href="/บันทึกข้อความ_90_วัน_Rebuild_Thai.xlsx" class="btn-action btn-xlsx">📊 XLSX</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================================================== -->
+  <!-- TAB 5: INFORMAL EQUIPMENT SURVEY & LOAN/DAMAGE MGMT  -->
+  <!-- ==================================================== -->
+  <section id="tab-informal-survey" class="tab-content">
+    
+    <!-- Header Banner -->
+    <div class="glass-panel" style="padding: 22px 24px; margin-bottom: 22px; border-color: rgba(56, 189, 248, 0.35); background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(10, 15, 26, 0.95) 100%);">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 6px;">
+            <span class="badge" style="background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); font-size: 11.5px; font-weight: 600;">
+              📌 สำรวจแบบไม่เป็นทางการ เพื่อรายงาน ผบ.ร้อย
+            </span>
+            <span class="badge badge-generated" style="font-size: 11.5px;">
+              🛡️ แยกอิสระ ไม่นับรวมบัญชีทางการเดิม
+            </span>
+            <span class="badge" style="background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); font-size: 11.5px;">
+              🔄 ตัดยอดส่งซ่อม & บันทึกข้อความอัตโนมัติ
+            </span>
+          </div>
+          <h2 style="font-size: 21px; font-weight: 600; color: #fff; margin: 0; display: flex; align-items: center; gap: 10px;">
+            📋 บัญชี​สำรวจ​รายการ​และ​สิ่งอุปกรณ์ & ระบบ​เบิกยืม-ส่ง​ซ่อม
+          </h2>
+          <p style="font-size: 13.5px; color: var(--text-secondary); margin: 6px 0 0 0; line-height: 1.4;">
+            โคลน​จาก <em>บัญชีรายการและสิ่งอุปกรณ์.xlsx</em> แบ่งออกเป็น: 
+            <strong>๑. สิ่งอุปกรณ์ในโรงเก็บปืนใหญ่ (ลำดับ ๑ - ๔๓)</strong> และ 
+            <strong>๒. สิ่งอุปกรณ์ในคลัง บก.โรงเก็บปืนใหญ่ (ลำดับ ๑ - ๒๙)</strong>
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+          <button onclick="openBorrowModal()" class="btn-primary" style="padding: 9px 18px; font-size: 13.5px; cursor: pointer;">
+            ➕ เบิกยืม​สิ่งอุปกรณ์
+          </button>
+          <button onclick="openOverdueModal()" id="btnOverdueAlertsBadge" class="btn-danger" style="padding: 9px 16px; font-size: 13.5px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+            ⚠️ แจ้งเตือน​เกินกำหนด (<span id="overdueCountBadge">0</span>)
+          </button>
+          <a href="/บันทึกข้อความ_รายงานการชำรุดเสียหาย_Rebuild_Thai.html" target="_blank" class="btn-secondary" style="padding: 8px 14px; font-size: 13px;" title="เปิดดูต้นแบบบันทึกข้อความรายงานความชำรุดจากการยืม">
+            📄 ตัวอย่าง​บันทึกข้อความ
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 12px 14px;">
+          <div style="font-size: 12px; color: var(--text-muted);">รายการ​สำรวจ​ทั้งหมด</div>
+          <div style="font-size: 20px; font-weight: 700; color: #fff; margin-top: 4px;" id="metricTotalItems">๑๐๑ รายการ</div>
+          <div style="font-size: 11px; color: #38bdf8; margin-top: 2px;">โรงเก็บ ๕๘ • คลัง บก. ๔๓</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 12px 14px;">
+          <div style="font-size: 12px; color: var(--text-muted);">ยอดที่​มี​จริง (Physical)</div>
+          <div style="font-size: 20px; font-weight: 700; color: #38bdf8; margin-top: 4px;" id="metricPhysicalTotal">-</div>
+          <div style="font-size: 11px; color: var(--text-secondary); margin-top: 2px;">ตรวจนับ​หน้า​คลัง</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 10px; padding: 12px 14px;">
+          <div style="font-size: 12px; color: #fbbf24;">กำลัง​ถูก​เบิกยืม</div>
+          <div style="font-size: 20px; font-weight: 700; color: #fbbf24; margin-top: 4px;" id="metricLoanTotal">0</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">ตัดยอด​จาก​คงเหลือ</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 10px; padding: 12px 14px;">
+          <div style="font-size: 12px; color: #f87171;">ชำรุด / ส่ง​ซ่อม (ตัดยอด)</div>
+          <div style="font-size: 20px; font-weight: 700; color: #f87171; margin-top: 4px;" id="metricRepairTotal">0</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">ย้าย​เข้า​ช่องส่งซ่อม</div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 10px; padding: 12px 14px;">
+          <div style="font-size: 12px; color: #34d399;">คงเหลือ​พร้อม​ใช้งาน</div>
+          <div style="font-size: 20px; font-weight: 700; color: #34d399; margin-top: 4px;" id="metricBalanceTotal">-</div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">พร้อม​เบิกยืม​ทันที</div>
         </div>
       </div>
     </div>
 
-    <footer>
-      <p>กองทัพบก​ไทย • กองพัน​ทหารปืนใหญ่ • Superclone Production-Grade Engine v2.0</p>
-      <p style="margin-top: 4px; opacity: 0.7;">Red Line Standard Signature Alignment • Dual-Copy Parallel Printing Support</p>
-    </footer>
+    <!-- Section Filter Segment Navigation -->
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px; margin-bottom: 16px;">
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="informalSectionTabs">
+        <button onclick="switchInformalSection('gun_shed')" id="btnSecGunShed" class="btn-filter active" style="padding: 9px 18px; border-radius: 8px; font-size: 13.5px; font-weight: 600; cursor: pointer;">
+          🏭 สิ่งอุปกรณ์​ใน​โรงเก็บ​ปืนใหญ่ (ลำดับ ๑ - ๔๓)
+        </button>
+        <button onclick="switchInformalSection('hq_warehouse')" id="btnSecHqWarehouse" class="btn-filter" style="padding: 9px 18px; border-radius: 8px; font-size: 13.5px; font-weight: 600; cursor: pointer;">
+          🏢 สิ่งอุปกรณ์​ใน​คลัง บก.โรงเก็บ​ปืนใหญ่ (ลำดับ ๑ - ๒๙)
+        </button>
+        <button onclick="switchInformalSection('loans_history')" id="btnSecLoans" class="btn-filter" style="padding: 9px 18px; border-radius: 8px; font-size: 13.5px; font-weight: 600; cursor: pointer;">
+          📑 ประวัติ​การ​เบิกยืม & บันทึก​ส่ง​ซ่อม (<span id="loanListBadge">0</span>)
+        </button>
+      </div>
+
+      <!-- Live Search Box -->
+      <div style="position: relative; width: 280px; max-width: 100%;">
+        <input type="text" id="informalSearchInput" oninput="onInformalSearchChange(this.value)" placeholder="🔍 ค้นหาชื่อสิ่งอุปกรณ์..." style="width: 100%; padding: 8px 14px; border-radius: 8px; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 13px;">
+      </div>
+    </div>
+
+    <!-- Section 1 & 2 Equipment Inventory Table -->
+    <div id="informalInventoryTableContainer" class="glass-panel table-container" style="padding: 0; margin-bottom: 24px; overflow-x: auto;">
+      <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 16.5px;">
+        <thead>
+          <tr style="font-size: 16.5px;">
+            <th style="width: 95px; text-align: center; padding: 12px 6px;">ลำดับ</th>
+            <th style="text-align: left; min-width: 250px; padding: 12px 14px;">รายการ</th>
+            <th style="width: 100px; text-align: center; padding: 12px 6px;">ยอดบัญชีคุม</th>
+            <th style="width: 95px; text-align: center; padding: 12px 6px;">ยอดที่มี</th>
+            <th style="width: 75px; text-align: center; padding: 12px 6px;">ขาด</th>
+            <th style="width: 75px; text-align: center; padding: 12px 6px;">เกิน</th>
+            <th style="width: 90px; text-align: center; color: #f87171; padding: 12px 6px;">ส่งซ่อม</th>
+            <th style="width: 90px; text-align: center; color: #fbbf24; padding: 12px 6px;">เบิกยืม</th>
+            <th style="width: 100px; text-align: center; color: #34d399; font-weight: 600; padding: 12px 6px;">คงเหลือ</th>
+            <th style="width: 120px; text-align: center; padding: 12px 8px;">การดำเนินการ</th>
+          </tr>
+        </thead>
+        <tbody id="informalTableBody">
+          <!-- Hydrated by dashboard.js -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Loans and Returns History Table (Hidden by default, shown when loan tab selected) -->
+    <div id="informalLoansTableContainer" class="glass-panel table-container" style="padding: 0; margin-bottom: 24px; display: none; overflow-x: auto;">
+      <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 16px;">
+        <thead>
+          <tr style="font-size: 16px;">
+            <th style="width: 120px; text-align: center; padding: 12px 8px;">รหัสการยืม</th>
+            <th style="text-align: left; min-width: 160px; padding: 12px 12px;">ผู้เบิกยืม (ยศ ชื่อ สกุล)</th>
+            <th style="text-align: left; min-width: 200px; padding: 12px 12px;">สิ่งอุปกรณ์ที่ยืม</th>
+            <th style="width: 75px; text-align: center; padding: 12px 6px;">จำนวน</th>
+            <th style="width: 110px; text-align: center; padding: 12px 6px;">วันที่ยืม</th>
+            <th style="width: 110px; text-align: center; padding: 12px 6px;">กำหนดคืน</th>
+            <th style="width: 110px; text-align: center; padding: 12px 6px;">วันที่คืนจริง</th>
+            <th style="width: 140px; text-align: center; padding: 12px 6px;">สถานะ</th>
+            <th style="width: 170px; text-align: center; padding: 12px 8px;">การดำเนินการ</th>
+          </tr>
+        </thead>
+        <tbody id="informalLoansBody">
+          <!-- Hydrated by dashboard.js -->
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+
+  <!-- ==================================================== -->
+  <!-- MODAL: เบิกยืมสิ่งอุปกรณ์ (BORROW MODAL)                  -->
+  <!-- ==================================================== -->
+  <div id="loanBorrowModal" class="modal-overlay" onclick="closeBorrowModal()">
+    <div class="glass-panel modal-content" onclick="event.stopPropagation()" style="max-width: 540px; padding: 22px;">
+      <div class="modal-header" style="margin-bottom: 16px;">
+        <h3 style="font-size: 17px; font-weight: 600; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+          ➕ บันทึก​การ​เบิกยืม​สิ่งอุปกรณ์ (ตัดยอด​คงคลัง)
+        </h3>
+        <button class="modal-close" onclick="closeBorrowModal()">&times;</button>
+      </div>
+
+      <form id="borrowForm" onsubmit="handleBorrowSubmit(event)">
+        <div style="display: grid; grid-template-columns: 120px 1fr; gap: 12px; margin-bottom: 12px;">
+          <div>
+            <label style="display: block; font-size: 12.5px; color: var(--text-secondary); margin-bottom: 4px;">ยศ:</label>
+            <input type="text" id="borrowerRank" required placeholder="เช่น ส.อ., จ.ส.อ." style="width: 100%; padding: 8px 10px; border-radius: 6px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 13px;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 12.5px; color: var(--text-secondary); margin-bottom: 4px;">ชื่อ - สกุล:</label>
+            <input type="text" id="borrowerName" required placeholder="ระบุชื่อและนามสกุลผู้ยืม" style="width: 100%; padding: 8px 10px; border-radius: 6px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 13px;">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 12.5px; color: var(--text-secondary); margin-bottom: 4px;">ตำแหน่ง / หน้าที่:</label>
+          <input type="text" id="borrowerPos" placeholder="เช่น พลปืน ป.หมู่ 1, ผบ.หมู่" value="พลปืน" style="width: 100%; padding: 8px 10px; border-radius: 6px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 13px;">
+        </div>
+
+        <div style="margin-bottom: 12px;">
+          <label style="display: block; font-size: 12.5px; color: var(--text-secondary); margin-bottom: 4px;">สิ่งอุปกรณ์ที่ยืม:</label>
+          <select id="borrowItemId" required onchange="onBorrowItemSelectChange(this.value)" style="width: 100%; padding: 8px 10px; border-radius: 6px; background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.4); color: #fff; font-size: 13px;">
+            <!-- Populated via JS -->
+          </select>
+          <div id="borrowItemStockHint" style="font-size: 11.5px; color: var(--accent-cyan); margin-top: 4px;">
+            คงเหลือพร้อมให้ยืม: - รายการ
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px;">
+          <div>
+            <label style="display: block; font-size: 12.5px; color: var(--text-secondary); margin-bottom: 4px;">จำนวนที่ยืม:</label>
+            <input type="number" id="borrowQuantity" required min="1" value="1" style="width: 100%; padding: 8px 10px; border-radius: 6px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 13px;">
+          </div>
+          <div>
+            <label style="display: block; font-size: 12.5px; color: var(--text-secondary); margin-bottom: 4px;">วันที่ยืม:</label>
+            <input type="date" id="borrowDate" required style="width: 100%; padding: 8px 10px; border-radius: 6px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 13px;">
+          </div>
+        </div>
+
+        <div style="margin-bottom: 18px;">
+          <label style="display: block; font-size: 12.5px; color: #fbbf24; margin-bottom: 4px;">วันที่ (จะ) คืน:</label>
+          <input type="date" id="borrowExpectedReturn" required style="width: 100%; padding: 8px 10px; border-radius: 6px; background: rgba(0,0,0,0.5); border: 1px solid rgba(245, 158, 11, 0.4); color: #fff; font-size: 13px;">
+          <span style="font-size: 11px; color: var(--text-muted); margin-top: 3px; display: block;">
+            ⚠️ หากพ้นกำหนดวันดังกล่าว ระบบจะมีป๊อปอัปแจ้งเตือนเพื่อติดตามทวงถามอัตโนมัติ
+          </span>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" onclick="closeBorrowModal()" class="btn-secondary" style="padding: 8px 16px;">ยกเลิก</button>
+          <button type="submit" class="btn-primary" style="padding: 8px 20px;">ยืนยันการเบิกยืม</button>
+        </div>
+      </form>
+    </div>
   </div>
 
-  <script>
-    function filterDocs() {
-      const query = document.getElementById('searchInput').value.toLowerCase().trim();
-      const cards = document.querySelectorAll('.doc-card');
-      cards.forEach(card => {
-        const text = (card.getAttribute('data-title') + ' ' + card.innerText).toLowerCase();
-        if (text.includes(query)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    }
-  </script>
+  <!-- ==================================================== -->
+  <!-- MODAL: คืนสิ่งอุปกรณ์ & บันทึกชำรุดเสียหาย (RETURN MODAL)    -->
+  <!-- ==================================================== -->
+  <div id="loanReturnModal" class="modal-overlay" onclick="closeReturnModal()">
+    <div class="glass-panel modal-content" onclick="event.stopPropagation()" style="max-width: 560px; padding: 22px;">
+      <div class="modal-header" style="margin-bottom: 16px;">
+        <h3 style="font-size: 17px; font-weight: 600; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+          📥 บันทึก​การ​คืน​สิ่งอุปกรณ์ & ตรวจสอบ​ความชำรุด
+        </h3>
+        <button class="modal-close" onclick="closeReturnModal()">&times;</button>
+      </div>
+
+      <form id="returnForm" onsubmit="handleReturnSubmit(event)">
+        <input type="hidden" id="returnLoanId">
+
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 12px; margin-bottom: 14px; font-size: 13px; line-height: 1.45;">
+          <div>ผู้ยืม: <strong id="returnSummaryBorrower" style="color: #fff;">-</strong></div>
+          <div>สิ่งอุปกรณ์: <strong id="returnSummaryItem" style="color: #38bdf8;">-</strong></div>
+          <div>จำนวน: <strong id="returnSummaryQty" style="color: #fff;">-</strong> รายการ | วันที่ยืม: <span id="returnSummaryLoanDate">-</span></div>
+          <div>กำหนดคืนเดิม: <span id="returnSummaryExpDate" style="color: #fbbf24;">-</span></div>
+        </div>
+
+        <div style="margin-bottom: 14px;">
+          <label style="display: block; font-size: 12.5px; color: var(--text-secondary); margin-bottom: 4px;">วันที่คืนจริง:</label>
+          <input type="date" id="returnActualDate" required style="width: 100%; padding: 8px 10px; border-radius: 6px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 13px;">
+        </div>
+
+        <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 8px; padding: 12px; margin-bottom: 14px;">
+          <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13.5px; font-weight: 600; color: #f87171;">
+            <input type="checkbox" id="chkHasDamage" onchange="toggleDamageFields(this.checked)" style="width: 17px; height: 17px; accent-color: #ef4444;">
+            พบการชำรุดเสียหายจากการใช้งาน (ตัดยอดไปอยู่ช่องส่งซ่อม)
+          </label>
+          <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 4px; padding-left: 25px;">
+            หากติ๊กเลือก ระบบจะตัดยอดยุทโธปกรณ์เข้าช่อง "ส่งซ่อม" และเปิดสิทธิ์สร้าง "บันทึกข้อความ" รายงาน ผบ.ร้อย ทราบทันที
+          </div>
+        </div>
+
+        <!-- Separate Cause and Symptom Fields -->
+        <div id="damageInputGroup" style="display: none; border-left: 2px solid #ef4444; padding-left: 12px; margin-bottom: 16px;">
+          <div style="margin-bottom: 12px;">
+            <label style="display: block; font-size: 12.5px; color: #f87171; font-weight: 600; margin-bottom: 4px;">
+              ⚡ สาเหตุที่เกิด (Cause):
+            </label>
+            <textarea id="damageCause" rows="2" placeholder="ระบุสาเหตุที่เกิดความชำรุดเสียหาย (เช่น กระทบหินแข็งใต้ผิวดิน, พลัดตกกระแทก)" style="width: 100%; padding: 8px 10px; border-radius: 6px; background: rgba(0,0,0,0.5); border: 1px solid rgba(239, 68, 68, 0.4); color: #fff; font-size: 13px; font-family: inherit; resize: vertical;"></textarea>
+          </div>
+
+          <div>
+            <label style="display: block; font-size: 12.5px; color: #f87171; font-weight: 600; margin-bottom: 4px;">
+              🔧 อาการที่เกิด (Symptoms & Condition):
+            </label>
+            <textarea id="damageSymptom" rows="2" placeholder="ระบุอาการชำรุดเสียหายที่ตรวจพบ (เช่น ด้ามหักสะบั้น, ใบจอบบิดงอผิดรูป, ลั่นไกขัดข้อง)" style="width: 100%; padding: 8px 10px; border-radius: 6px; background: rgba(0,0,0,0.5); border: 1px solid rgba(239, 68, 68, 0.4); color: #fff; font-size: 13px; font-family: inherit; resize: vertical;"></textarea>
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button type="button" onclick="closeReturnModal()" class="btn-secondary" style="padding: 8px 16px;">ยกเลิก</button>
+          <button type="submit" class="btn-primary" style="padding: 8px 20px;">บันทึกการคืน</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================================================== -->
+  <!-- MODAL: รายการเกินกำหนดคืน (OVERDUE ALERTS MODAL)         -->
+  <!-- ==================================================== -->
+  <div id="overdueLoansModal" class="modal-overlay" onclick="closeOverdueModal()">
+    <div class="glass-panel modal-content" onclick="event.stopPropagation()" style="max-width: 640px; padding: 22px;">
+      <div class="modal-header" style="margin-bottom: 14px;">
+        <h3 style="font-size: 17px; font-weight: 600; color: #f87171; margin: 0; display: flex; align-items: center; gap: 8px;">
+          ⚠️ แจ้งเตือน​รายการ​เบิกยืม​เกินกำหนด​คืน (ติดตาม​ทวงถาม)
+        </h3>
+        <button class="modal-close" onclick="closeOverdueModal()">&times;</button>
+      </div>
+
+      <div style="font-size: 13px; color: var(--text-secondary); margin-bottom: 14px;">
+        รายการต่อไปนี้พ้นกำหนดวันที่ (จะ) คืนแล้ว กรุณาประสานเจ้าหน้าที่ผู้เบิกยืมเพื่อส่งคืนสิ่งอุปกรณ์หรือตรวจสอบความชำรุดเสียหาย:
+      </div>
+
+      <div id="overdueListContainer" style="max-height: 340px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;">
+        <!-- Hydrated by JS -->
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; margin-top: 18px;">
+        <button onclick="closeOverdueModal()" class="btn-secondary" style="padding: 8px 18px;">ปิดหน้าต่าง</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================================================== -->
+  <!-- MODAL: พรีวิวบันทึกข้อความรายงานความชำรุด (MEMO PREVIEW)    -->
+  <!-- ==================================================== -->
+  <div id="damageMemoModal" class="modal-overlay" onclick="closeDamageMemoModal()">
+    <div class="glass-panel modal-content" onclick="event.stopPropagation()" style="width: 95%; max-width: 920px; height: 90vh; padding: 18px; display: flex; flex-direction: column;">
+      <div class="modal-header" style="margin-bottom: 10px;">
+        <div>
+          <h3 style="font-size: 17px; font-weight: 600; color: #fff; margin: 0; display: flex; align-items: center; gap: 8px;">
+            📄 บันทึก​ข้อความ: รายงาน​การ​ชำรุด​เสียหาย​ของ​สิ่งและ​อุปกรณ์ จาก​การ​เบิกยืม
+          </h3>
+          <p style="font-size: 12px; color: var(--accent-cyan); margin: 2px 0 0 0;">
+            ระเบียบ​สารบรรณ ทบ. • Red Line Standard ๑๓๐ มม. • พิมพ์​คู่ขนาน ๒ ชุด (ฉบับ​ตัวจริง & สำเนา​คู่ฉบับ)
+          </p>
+        </div>
+        <div style="display: flex; gap: 8px; align-items: center;">
+          <button onclick="printDamageMemoFrame()" class="btn-primary" style="padding: 6px 14px; font-size: 12.5px;">
+            🖨️ สั่งพิมพ์ (Print 300 DPI)
+          </button>
+          <a id="btnOpenMemoExternal" href="#" target="_blank" class="btn-secondary" style="padding: 6px 12px; font-size: 12.5px;">
+            🌐 เปิดแท็บใหม่
+          </a>
+          <button class="modal-close" onclick="closeDamageMemoModal()">&times;</button>
+        </div>
+      </div>
+
+      <div style="flex: 1; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.15); background: #525659;">
+        <iframe id="damageMemoIframe" src="" style="width: 100%; height: 100%; border: none;"></iframe>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Preview Modal (Print-Grade 300 DPI) -->
+  <div id="previewModal" class="modal-overlay" onclick="closePreviewModal()">
+    <div class="glass-panel modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h3 id="modalTitle" style="font-size: 16px; font-weight: 600; color: #fff;">พรีวิว​เอกสาร Print-Grade 300 DPI</h3>
+        <button class="modal-close" onclick="closePreviewModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <img id="modalPreviewImage" class="modal-img" src="" alt="300 DPI Preview">
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/dashboard.js"></script>
 </body>
 </html>
