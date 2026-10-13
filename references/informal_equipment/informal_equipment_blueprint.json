@@ -1,0 +1,60 @@
+{
+  "blueprint_version": "SUPERCLONE-V1.0",
+  "title": "Informal Equipment Survey Blueprint",
+  "source": "บัญชีรายการและสิ่งอุปกรณ์.xlsx",
+  "sections_count": 2,
+  "section_1_count": 58,
+  "section_2_count": 43,
+  "columns": [
+    {
+      "id": "seq",
+      "title": "ลำดับ",
+      "width": "50px"
+    },
+    {
+      "id": "name",
+      "title": "รายการ",
+      "width": "220px"
+    },
+    {
+      "id": "control_amount",
+      "title": "ยอดบัญชีคุม",
+      "width": "80px"
+    },
+    {
+      "id": "physical_amount",
+      "title": "ยอดที่มี",
+      "width": "80px"
+    },
+    {
+      "id": "deficit_amount",
+      "title": "ขาด",
+      "width": "60px"
+    },
+    {
+      "id": "surplus_amount",
+      "title": "เกิน",
+      "width": "60px"
+    },
+    {
+      "id": "repair_amount",
+      "title": "ส่งซ่อม",
+      "width": "60px"
+    },
+    {
+      "id": "loan_amount",
+      "title": "เบิกยืม",
+      "width": "60px"
+    },
+    {
+      "id": "balance_amount",
+      "title": "คงเหลือ",
+      "width": "80px"
+    },
+    {
+      "id": "remarks",
+      "title": "หมายเหตุ",
+      "width": "120px"
+    }
+  ]
+}

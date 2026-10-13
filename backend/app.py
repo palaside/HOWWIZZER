@@ -268,6 +268,60 @@ def reset_inspection_photos():
     return {"status": "SUCCESS", "message": "Reset to default photos"}
 
 
+# --- Informal Equipment Inventory & Loan/Damage Management ---
+from backend.services.informal_equipment_service import (
+    get_inventory_overview,
+    create_loan_record,
+    process_return_record,
+    get_overdue_alerts,
+    generate_damage_memo_html
+)
+
+@app.get("/api/v1/informal-equipment")
+def api_get_informal_equipment():
+    return get_inventory_overview()
+
+@app.get("/api/v1/informal-equipment/overdue-alerts")
+def api_get_overdue_alerts():
+    return {"overdue_loans": get_overdue_alerts()}
+
+@app.post("/api/v1/informal-equipment/loan")
+def api_create_loan(payload: dict = Body(...)):
+    try:
+        return create_loan_record(
+            item_id=payload.get("item_id"),
+            borrower_rank=payload.get("borrower_rank", ""),
+            borrower_name=payload.get("borrower_name", ""),
+            quantity=int(payload.get("quantity", 1)),
+            loan_date=payload.get("loan_date", date.today().isoformat()),
+            expected_return_date=payload.get("expected_return_date", ""),
+            borrower_position=payload.get("borrower_position", "พลปืน")
+        )
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@app.post("/api/v1/informal-equipment/return")
+def api_return_loan(payload: dict = Body(...)):
+    try:
+        return process_return_record(
+            loan_id=payload.get("loan_id"),
+            actual_return_date=payload.get("actual_return_date", date.today().isoformat()),
+            has_damage=bool(payload.get("has_damage", False)),
+            cause=payload.get("cause", ""),
+            symptom=payload.get("symptom", "")
+        )
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@app.get("/api/v1/informal-equipment/report/{loan_id}", response_class=HTMLResponse)
+def api_get_damage_memo(loan_id: str, target_date: Optional[str] = None):
+    try:
+        html = generate_damage_memo_html(loan_id, signing_date_iso=target_date)
+        return HTMLResponse(content=html)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
 # --- Frontend Portal UI ---
 @app.get("/", response_class=HTMLResponse)
 def index():
@@ -275,3 +329,4 @@ def index():
     if template_path.exists():
         return HTMLResponse(template_path.read_text(encoding="utf-8"))
     return HTMLResponse("<h1>Tactical Military Document Automation Suite</h1>")
+

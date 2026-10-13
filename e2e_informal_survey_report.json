@@ -1,0 +1,83 @@
+{
+  "suite": "Informal Equipment Survey & Loan/Damage E2E Test",
+  "timestamp": "2026-10-13",
+  "steps": [
+    {
+      "step": "1.1 Tab 5 Activation",
+      "status": "PASS",
+      "details": "Tab 5 active"
+    },
+    {
+      "step": "2.1 Section 1 Items Render",
+      "status": "PASS",
+      "details": "Found 58 items in Section 1 (Gun Shed)"
+    },
+    {
+      "step": "2.2 Section 1 Boundary Items",
+      "status": "PASS",
+      "details": "Found เต็นท์ (1) and กล้องพาโนรามิค (43)"
+    },
+    {
+      "step": "3.1 Section 2 Items Render",
+      "status": "PASS",
+      "details": "Found 43 items in Section 2 (HQ Warehouse)"
+    },
+    {
+      "step": "3.2 Section 2 Boundary Items",
+      "status": "PASS",
+      "details": "Found เสาปรับผ่อนอากาศ (1) and ลังเครื่องมือช่างซ่อม (29)"
+    },
+    {
+      "step": "4.1 Borrow Modal Open",
+      "status": "PASS",
+      "details": "Borrow modal opened"
+    },
+    {
+      "step": "4.2 Borrow Submission & Stock Deduction",
+      "status": "PASS",
+      "details": "Borrowed item successfully and balance deducted"
+    },
+    {
+      "step": "5.1 Loan History Render",
+      "status": "PASS",
+      "details": "Found 3 loan records"
+    },
+    {
+      "step": "5.2 Return Modal Open",
+      "status": "PASS",
+      "details": "Return modal opened"
+    },
+    {
+      "step": "5.3 Return with Damage (Cut to Repair)",
+      "status": "PASS",
+      "details": "Recorded return and allocated stock into ส่งซ่อม"
+    },
+    {
+      "step": "6.1 Damage Memo Auto-Prompt Open",
+      "status": "PASS",
+      "details": "Modal automatically opened from return confirm prompt"
+    },
+    {
+      "step": "6.2 Damage Memo Modal Open via Button",
+      "status": "PASS",
+      "details": "Damage Memo modal opened with iframe preview via 'เขียนรายงาน' button"
+    },
+    {
+      "step": "6.2 Official Memo Sarabun Content Verification",
+      "status": "PASS",
+      "details": "All official memo header, body, signature & footer elements verified 100%"
+    },
+    {
+      "step": "7.1 Overdue Alert Modal Popup",
+      "status": "PASS",
+      "details": "Overdue alerts modal opened"
+    },
+    {
+      "step": "8.1 Visual Capture E2E",
+      "status": "PASS",
+      "details": "Saved e2e_informal_survey_success.png"
+    }
+  ],
+  "passed": 15,
+  "failed": 0
+}

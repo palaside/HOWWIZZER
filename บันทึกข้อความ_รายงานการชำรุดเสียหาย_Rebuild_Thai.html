@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>บันทึกข้อความ - รายงานการชำรุดเสียหายของสิ่งและอุปกรณ์ จากการเบิกยืม</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #525659;
+      font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', sans-serif !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .a4-page {
+      width: 210mm;
+      min-height: 297mm;
+      padding: 25mm 20mm 20mm 25mm; /* ขอบซ้าย 25mm สำหรับเข้าเล่ม */
+      background-color: #ffffff;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+    @media print {
+      body {
+        background-color: #ffffff;
+        padding: 0;
+      }
+      .a4-page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+      }
+      .no-print {
+        display: none !important;
+      }
+    }
+    .copy-banner {
+      position: absolute;
+      top: 10mm;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 14pt;
+      font-weight: 300;
+      color: #333333;
+    }
+    .memo-garuda-container {
+      position: relative;
+      width: 100%;
+      height: 30mm;
+      margin-top: 2mm;
+    }
+    .memo-garuda {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30mm;
+      height: 30mm;
+      object-fit: contain;
+    }
+    .memo-title {
+      text-align: center;
+      font-size: 29pt;
+      font-weight: 600;
+      line-height: 30mm;
+      letter-spacing: 0.5px;
+    }
+    .meta-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4mm;
+      font-size: 16pt;
+    }
+    .meta-table td {
+      padding: 2.5px 0;
+      vertical-align: bottom;
+    }
+    .meta-label {
+      font-size: 20pt;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .meta-dots {
+      border-bottom: 1px dotted #000;
+      display: inline-block;
+      width: 100%;
+      min-height: 1.1em;
+      line-height: 1.05;
+      padding-bottom: 1.5px;
+      font-weight: 300;
+    }
+    .memo-body {
+      margin-top: 6mm;
+      font-size: 16pt;
+      line-height: 1.25;
+      text-align: justify;
+      text-justify: inter-cluster;
+      font-weight: 300;
+    }
+    .memo-para {
+      text-indent: 25mm; /* ย่อหน้า 2.5 ซม. */
+      margin-bottom: 4mm;
+    }
+    .memo-ref {
+      margin-left: 25mm;
+      margin-bottom: 2mm;
+    }
+    /* Draft review footer 4 cols */
+    .staff-footer-container {
+      margin-top: 22mm;
+      width: 80mm;
+      font-size: 13.5pt;
+      line-height: 1.25;
+      font-weight: 300;
+    }
+    .staff-row {
+      display: flex;
+      align-items: baseline;
+    }
+    .staff-col-rank { width: 26mm; text-align: left; }
+    .staff-col-role { width: 22mm; text-align: left; }
+    .staff-col-day  { width: 8mm; text-align: right; padding-right: 1.5mm; }
+    .staff-col-month{ width: 20mm; text-align: left; }
+  </style>
+</head>
+<body>
+
+  <!-- Controls for Export and Print (Screen Only) -->
+  <div class="no-print" style="width: 210mm; background: #1e293b; padding: 14px 20px; margin: 15px 0; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+    <div style="color: #fff; font-size: 14px; font-weight: 600;">
+      📄 พรีวิวบันทึกข้อความ: รายงานการชำรุดเสียหายจากการเบิกยืม (รหัส LN-2569-001)
+    </div>
+    <div style="display: flex; gap: 10px;">
+      <button onclick="window.print()" style="background: #0ea5e9; color: #fff; border: none; padding: 7px 16px; border-radius: 6px; font-weight: 600; cursor: pointer;">
+        🖨️ สั่งพิมพ์ (Print 300 DPI)
+      </button>
+      <button onclick="window.close()" style="background: rgba(255,255,255,0.1); color: #94a3b8; border: 1px solid rgba(255,255,255,0.2); padding: 7px 14px; border-radius: 6px; cursor: pointer;">
+        ✕ ปิดหน้าต่าง
+      </button>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- 1. ฉบับตัวจริง (ORIGINAL COPY)                             -->
+  <!-- ======================================================== -->
+  <div class="a4-page">
+    <div class="memo-garuda-container">
+      <img src="/garuda.png" alt="ครุฑ" class="memo-garuda" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'113\' height=\'113\'><text y=\'60\' font-size=\'30\'>ครุฑ</text></svg>'">
+      <div class="memo-title">บันทึกข้อความ</div>
+    </div>
+
+    <table class="meta-table">
+      <tr>
+        <td style="width: 105mm;">
+          <span class="meta-label">ส่วนราชการ</span>
+          <span class="meta-dots" style="width: calc(100% - 32mm);">ป.๔ พัน.๔ ร้อย.๒ ( โทร. ๓๑๑๙๓ )</span>
+        </td>
+        <td style="width: 10mm;"></td>
+        <td style="width: 75mm;"></td>
+      </tr>
+      <tr>
+        <td>
+          <span class="meta-label">ที่</span>
+          <span class="meta-dots" style="width: calc(100% - 8mm);">กห ๐๔๘๓.๑.๔.๑/</span>
+        </td>
+        <td></td>
+        <td>
+          <span class="meta-label">วันที่</span>
+          <span class="meta-dots" style="width: calc(100% - 15mm);">๑๒ ตุลาคม ๒๕๖๙</span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <span class="meta-label">เรื่อง</span>
+          <span class="meta-dots" style="width: calc(100% - 14mm);">รายงานการชำรุดเสียหายของสิ่งและอุปกรณ์ จากการเบิกยืม</span>
+        </td>
+      </tr>
+    </table>
+
+    <div class="memo-body">
+      <div style="margin-top: 4mm; margin-bottom: 3mm;">
+        <span class="meta-label" style="font-size: 16pt;">เรียน</span>&nbsp;&nbsp;ผบ.ป.๔ พัน.๔ ร้อย.๒
+      </div>
+
+      <div style="margin-bottom: 2mm;">
+        <span style="font-weight: 600;">อ้างถึง</span>&nbsp;&nbsp;๑. ระเบียบ ทบ. ว่าด้วยการส่งกำลังสิ่งอุปกรณ์ ประเภท ๒ และ ๔ พ.ศ. ๒๕๓๔<br>
+        <span style="display: inline-block; width: 13.5mm;"></span>๒. ระเบียบ ทบ. ว่าด้วยการคุมและปรนนิบัติบำรุงยุทโธปกรณ์ สาย สพ.
+      </div>
+
+      <div style="margin-bottom: 4mm;">
+        <span style="font-weight: 600;">สิ่งที่ส่งมาด้วย</span>&nbsp;&nbsp;รายงานของ ส.อ. สมชาย หมายมั่น จำนวน ๑ ฉบับ
+      </div>
+
+      <!-- ย่อหน้าต้น (เหตุผลและความเป็นมา) -->
+      <div class="memo-para">
+        เนื่องด้วย กระผม จ.ส.อ. ณัฐชัย&nbsp;&nbsp;รักษาวงษ์ ตำแหน่ง ส.หน.สย.ป.๔ พัน.๔ ร้อย.๒ ขอรายงานการชำรุดและเสียหาย โดยเมื่อวัน ๒ พฤศจิกายน ๒๕๖๙ ส.อ. สมชาย หมายมั่น ได้มีการเบิก จอบขุด จำนวน ๑ รายการ ไปใช้งาน และเกิดเหตุ การขุดลอกคูระบายน้ำรอบโรงเก็บปืนใหญ่แล้วกระทบหินแข็งใต้ผิวดินอย่างรุนแรง จึงทำให้ จอบขุด เกิดการชำรุดเสียหาย
+      </div>
+
+      <!-- ย่อหน้ากลาง (รายละเอียดและผลกระทบ) -->
+      <div class="memo-para">
+        จากเหตุการณ์ครั้งนี้ มีการตรวจสอบพบว่า ยุทโธปกรณ์มีอาการด้ามจอบหักสะบั้นและตัวใบจอบบิดงอผิดรูป ไม่สามารถใช้งานขุดต่อได้ จากความเสียหายดังกล่าว ส่งผลให้ไม่สามารถใช้งานได้ตามปกติ จำนวน ๑ รายการ โดยรายละเอียดได้แนบมาพร้อมกับ รายงานความผิด ของ ส.อ. สมชาย หมายมั่น
+      </div>
+
+      <!-- ย่อหน้าท้าย (ข้อพิจารณาและข้อเสนอ) -->
+      <div class="memo-para">
+        ขออนุมัติการดำเนินการส่งซ่อมตามสายการปรนณิบัติบำรุงต่อไป
+      </div>
+
+      <div class="memo-para">
+        จึงเรียนมาเพื่อกรุณาพิจารณา
+      </div>
+
+      <!-- บล็อกการลงนาม (Signature Block) -->
+      
+      <div class="sig-block-container" style="margin-left: 130mm; margin-top: 22mm; font-size: 16pt; line-height: 1.25;">
+        <div style="position: relative; display: inline-block;">
+          <span style="position: absolute; right: 100%; top: 0; white-space: nowrap; font-weight: 300;">ร.อ.</span>
+          <div style="text-align: center; white-space: nowrap; font-weight: 300;">(กฤติน นราพงษ์)</div>
+          <div style="text-align: center; margin-top: 2px; white-space: nowrap; font-weight: 300;">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- 2. สำเนาคู่ฉบับ (DUAL COPY PACKAGE)                        -->
+  <!-- ======================================================== -->
+  <div class="a4-page">
+    <div class="copy-banner">(สำเนาคู่ฉบับ)</div>
+    <div class="memo-garuda-container">
+      <img src="/garuda.png" alt="ครุฑ" class="memo-garuda" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'113\' height=\'113\'><text y=\'60\' font-size=\'30\'>ครุฑ</text></svg>'">
+      <div class="memo-title">บันทึกข้อความ</div>
+    </div>
+
+    <table class="meta-table">
+      <tr>
+        <td style="width: 105mm;">
+          <span class="meta-label">ส่วนราชการ</span>
+          <span class="meta-dots" style="width: calc(100% - 32mm);">ป.๔ พัน.๔ ร้อย.๒ ( โทร. ๓๑๑๙๓ )</span>
+        </td>
+        <td style="width: 10mm;"></td>
+        <td style="width: 75mm;"></td>
+      </tr>
+      <tr>
+        <td>
+          <span class="meta-label">ที่</span>
+          <span class="meta-dots" style="width: calc(100% - 8mm);">กห ๐๔๘๓.๑.๔.๑/</span>
+        </td>
+        <td></td>
+        <td>
+          <span class="meta-label">วันที่</span>
+          <span class="meta-dots" style="width: calc(100% - 15mm);">๑๒ ตุลาคม ๒๕๖๙</span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3">
+          <span class="meta-label">เรื่อง</span>
+          <span class="meta-dots" style="width: calc(100% - 14mm);">รายงานการชำรุดเสียหายของสิ่งและอุปกรณ์ จากการเบิกยืม</span>
+        </td>
+      </tr>
+    </table>
+
+    <div class="memo-body">
+      <div style="margin-top: 4mm; margin-bottom: 3mm;">
+        <span class="meta-label" style="font-size: 16pt;">เรียน</span>&nbsp;&nbsp;ผบ.ป.๔ พัน.๔ ร้อย.๒
+      </div>
+
+      <div style="margin-bottom: 2mm;">
+        <span style="font-weight: 600;">อ้างถึง</span>&nbsp;&nbsp;๑. ระเบียบ ทบ. ว่าด้วยการส่งกำลังสิ่งอุปกรณ์ ประเภท ๒ และ ๔ พ.ศ. ๒๕๓๔<br>
+        <span style="display: inline-block; width: 13.5mm;"></span>๒. ระเบียบ ทบ. ว่าด้วยการคุมและปรนนิบัติบำรุงยุทโธปกรณ์ สาย สพ.
+      </div>
+
+      <div style="margin-bottom: 4mm;">
+        <span style="font-weight: 600;">สิ่งที่ส่งมาด้วย</span>&nbsp;&nbsp;รายงานของ ส.อ. สมชาย หมายมั่น จำนวน ๑ ฉบับ
+      </div>
+
+      <!-- ย่อหน้าต้น -->
+      <div class="memo-para">
+        เนื่องด้วย กระผม จ.ส.อ. ณัฐชัย&nbsp;&nbsp;รักษาวงษ์ ตำแหน่ง ส.หน.สย.ป.๔ พัน.๔ ร้อย.๒ ขอรายงานการชำรุดและเสียหาย โดยเมื่อวัน ๒ พฤศจิกายน ๒๕๖๙ ส.อ. สมชาย หมายมั่น ได้มีการเบิก จอบขุด จำนวน ๑ รายการ ไปใช้งาน และเกิดเหตุ การขุดลอกคูระบายน้ำรอบโรงเก็บปืนใหญ่แล้วกระทบหินแข็งใต้ผิวดินอย่างรุนแรง จึงทำให้ จอบขุด เกิดการชำรุดเสียหาย
+      </div>
+
+      <!-- ย่อหน้ากลาง -->
+      <div class="memo-para">
+        จากเหตุการณ์ครั้งนี้ มีการตรวจสอบพบว่า ยุทโธปกรณ์มีอาการด้ามจอบหักสะบั้นและตัวใบจอบบิดงอผิดรูป ไม่สามารถใช้งานขุดต่อได้ จากความเสียหายดังกล่าว ส่งผลให้ไม่สามารถใช้งานได้ตามปกติ จำนวน ๑ รายการ โดยรายละเอียดได้แนบมาพร้อมกับ รายงานความผิด ของ ส.อ. สมชาย หมายมั่น
+      </div>
+
+      <!-- ย่อหน้าท้าย -->
+      <div class="memo-para">
+        ขออนุมัติการดำเนินการส่งซ่อมตามสายการปรนณิบัติบำรุงต่อไป
+      </div>
+
+      <div class="memo-para">
+        จึงเรียนมาเพื่อกรุณาพิจารณา
+      </div>
+
+      <!-- บล็อกการลงนาม (Signature Block) -->
+      
+      <div class="sig-block-container" style="margin-left: 130mm; margin-top: 22mm; font-size: 16pt; line-height: 1.25;">
+        <div style="position: relative; display: inline-block;">
+          <span style="position: absolute; right: 100%; top: 0; white-space: nowrap; font-weight: 300;">ร.อ.</span>
+          <div style="text-align: center; white-space: nowrap; font-weight: 300;">(กฤติน นราพงษ์)</div>
+          <div style="text-align: center; margin-top: 2px; white-space: nowrap; font-weight: 300;">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+        </div>
+      </div>
+    
+
+      <!-- บล็อกเจ้าหน้าที่ทำหนังสือ (Dual-Axis 4 Columns Footer) -->
+      <div class="staff-footer-container">
+        <div class="staff-row">
+          <div class="staff-col-rank">จ.ส.อ.</div>
+          <div class="staff-col-role">ร่าง/ตรวจ</div>
+          <div class="staff-col-day"></div>
+          <div class="staff-col-month"></div>
+        </div>
+        <div class="staff-row">
+          <div class="staff-col-rank">ส.ท.</div>
+          <div class="staff-col-role">พิมพ์/ทาน</div>
+          <div class="staff-col-day">๑๓</div>
+          <div class="staff-col-month">ต.ค.&nbsp;๖๙</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
