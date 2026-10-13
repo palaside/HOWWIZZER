@@ -528,27 +528,28 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     }}
 
     /* METADATA BLOCK WITH DOTTED UNDERLINE HUGGING */
-    .meta-table {{
+    .meta-section {{
       width: 100%;
-      border-collapse: collapse;
-      margin-top: 3mm;
-      margin-bottom: 4mm;
-      font-size: 16pt;
+      margin-top: 2.5mm;
+      margin-bottom: 3.5mm;
     }}
-    .meta-table td {{
-      padding: 1px 0;
-      vertical-align: bottom;
+    .meta-row {{
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 2mm;
+      font-size: 16pt;
     }}
     .meta-label {{
       font-size: 20pt;
       font-weight: 600;
       white-space: nowrap;
-      padding-right: 2mm;
+      margin-right: 2.5mm;
+      padding-bottom: 1px;
     }}
     .meta-dots {{
+      flex: 1;
       border-bottom: 1px dotted #000;
       display: inline-block;
-      width: 100%;
       min-height: 1.05em;
       line-height: 1.05;
       padding-bottom: 1.5px;
@@ -636,32 +637,30 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     }}
 
     /* STAFF REVIEW FOOTER (RULE-STAFF-REVIEW-FOOTER-V1) */
-    .staff-footer-container {{
+    .memo-footer-staff {{
       margin-top: 22mm; /* 5 Enter ใต้บล็อกลงนาม */
-      width: 80mm;
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }}
+    .staff-grid {{
+      display: grid;
+      grid-template-columns: 26mm 22mm 8mm max-content;
       font-size: 13.5pt;
-      line-height: 1.22;
+      line-height: 1.25;
       font-weight: 300;
     }}
-    .staff-row {{
-      display: flex;
-      align-items: baseline;
-    }}
     .staff-col-rank {{
-      width: 26mm;
       text-align: left;
     }}
     .staff-col-role {{
-      width: 22mm;
       text-align: left;
     }}
     .staff-col-day {{
-      width: 8mm;
       text-align: right;
       padding-right: 1.5mm;
     }}
     .staff-col-month {{
-      width: 20mm;
       text-align: left;
     }}
   </style>
@@ -693,33 +692,31 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     </div>
 
     <!-- Metadata Section -->
-    <table class="meta-table">
-      <tr>
-        <td style="width: 95mm;">
-          <span class="meta-label">ส่วนราชการ</span>
-          <span class="meta-dots" style="width: calc(100% - 32mm);">{agency_val}</span>
-        </td>
-        <td style="width: 10mm;"></td>
-        <td style="width: 55mm;"></td>
-      </tr>
-      <tr>
-        <td>
+    <div class="meta-section">
+      <!-- Row 1: ส่วนราชการ (จุดไข่ปลายาวจนสุดขอบ) -->
+      <div class="meta-row">
+        <span class="meta-label">ส่วนราชการ</span>
+        <div class="meta-dots">{agency_val}</div>
+      </div>
+
+      <!-- Row 2: ที่ & วันที่ (ที่ จุดไข่ปลายาวถึงวันที่) -->
+      <div class="meta-row">
+        <div style="flex: 1.15; display: flex; align-items: flex-end; margin-right: 6mm;">
           <span class="meta-label">ที่</span>
-          <span class="meta-dots" style="width: calc(100% - 8mm);">{doc_num_val}</span>
-        </td>
-        <td></td>
-        <td>
+          <div class="meta-dots">{doc_num_val}</div>
+        </div>
+        <div style="flex: 0.85; display: flex; align-items: flex-end;">
           <span class="meta-label">วันที่</span>
-          <span class="meta-dots" style="width: calc(100% - 16mm);">{date_val}</span>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <span class="meta-label">เรื่อง</span>
-          <span class="meta-dots" style="width: calc(100% - 15mm);">{subject_val}</span>
-        </td>
-      </tr>
-    </table>
+          <div class="meta-dots" style="text-align: center;">{date_val}</div>
+        </div>
+      </div>
+
+      <!-- Row 3: เรื่อง (จุดไข่ปลายาวจนสุดขอบ) -->
+      <div class="meta-row">
+        <span class="meta-label">เรื่อง</span>
+        <div class="meta-dots">{subject_val}</div>
+      </div>
+    </div>
 
     <div class="memo-body">
       <!-- Salutation -->
@@ -774,33 +771,31 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     </div>
 
     <!-- Metadata Section -->
-    <table class="meta-table">
-      <tr>
-        <td style="width: 95mm;">
-          <span class="meta-label">ส่วนราชการ</span>
-          <span class="meta-dots" style="width: calc(100% - 32mm);">{agency_val}</span>
-        </td>
-        <td style="width: 10mm;"></td>
-        <td style="width: 55mm;"></td>
-      </tr>
-      <tr>
-        <td>
+    <div class="meta-section">
+      <!-- Row 1: ส่วนราชการ (จุดไข่ปลายาวจนสุดขอบ) -->
+      <div class="meta-row">
+        <span class="meta-label">ส่วนราชการ</span>
+        <div class="meta-dots">{agency_val}</div>
+      </div>
+
+      <!-- Row 2: ที่ & วันที่ (ที่ จุดไข่ปลายาวถึงวันที่) -->
+      <div class="meta-row">
+        <div style="flex: 1.15; display: flex; align-items: flex-end; margin-right: 6mm;">
           <span class="meta-label">ที่</span>
-          <span class="meta-dots" style="width: calc(100% - 8mm);">{doc_num_val}</span>
-        </td>
-        <td></td>
-        <td>
+          <div class="meta-dots">{doc_num_val}</div>
+        </div>
+        <div style="flex: 0.85; display: flex; align-items: flex-end;">
           <span class="meta-label">วันที่</span>
-          <span class="meta-dots" style="width: calc(100% - 16mm);">{date_val}</span>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="3">
-          <span class="meta-label">เรื่อง</span>
-          <span class="meta-dots" style="width: calc(100% - 15mm);">{subject_val}</span>
-        </td>
-      </tr>
-    </table>
+          <div class="meta-dots" style="text-align: center;">{date_val}</div>
+        </div>
+      </div>
+
+      <!-- Row 3: เรื่อง (จุดไข่ปลายาวจนสุดขอบ) -->
+      <div class="meta-row">
+        <span class="meta-label">เรื่อง</span>
+        <div class="meta-dots">{subject_val}</div>
+      </div>
+    </div>
 
     <div class="memo-body">
       <!-- Salutation -->
@@ -843,14 +838,13 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
       </div>
 
       <!-- บล็อกเจ้าหน้าที่ทำหนังสือ (Dual-Axis 4 Columns Staff Footer, 5 enters) -->
-      <div class="staff-footer-container">
-        <div class="staff-row">
+      <div class="memo-footer-staff">
+        <div class="staff-grid">
           <div class="staff-col-rank">{drafter_rank}</div>
           <div class="staff-col-role">{drafter_role}</div>
           <div class="staff-col-day"></div>
           <div class="staff-col-month">{drafter_my}</div>
-        </div>
-        <div class="staff-row">
+
           <div class="staff-col-rank">{typist_rank}</div>
           <div class="staff-col-role">{typist_role}</div>
           <div class="staff-col-day">{typist_day}</div>
