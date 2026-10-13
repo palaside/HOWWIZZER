@@ -651,31 +651,31 @@ function renderInspectionPhotosGrid(photos) {
     const hasPhoto = !!photoSrc;
 
     return `
-      <div class="photo-slot-card" style="background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.4); transition: all 0.2s;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="photo-slot-card" style="width: calc(2.5in + 20px); background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.4); transition: all 0.2s; box-sizing: border-box;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 4px;">
           <div>
-            <span style="font-weight: 600; font-size: 13.5px; color: #fff;">${slot.title}</span>
-            <div style="font-size: 11.5px; color: var(--accent-cyan); margin-top: 1px;">${slot.desc}</div>
+            <span style="font-weight: 600; font-size: 13px; color: #fff; line-height: 1.25; display: block;">${slot.title}</span>
+            <div style="font-size: 11px; color: var(--accent-cyan); margin-top: 2px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;" title="${slot.desc}">${slot.desc}</div>
           </div>
-          <span class="badge" style="font-size: 11px; padding: 2px 8px; background: ${hasPhoto ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)'}; color: ${hasPhoto ? '#34d399' : '#f87171'}; border: 1px solid ${hasPhoto ? 'rgba(16,185,129,0.35)' : 'rgba(239,68,68,0.35)'};">
-            ${hasPhoto ? '✓ มีภาพพร้อม' : 'รออัพโหลด'}
+          <span class="badge" style="font-size: 10px; padding: 1px 6px; white-space: nowrap; background: ${hasPhoto ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)'}; color: ${hasPhoto ? '#34d399' : '#f87171'}; border: 1px solid ${hasPhoto ? 'rgba(16,185,129,0.35)' : 'rgba(239,68,68,0.35)'};">
+            ${hasPhoto ? '✓ พร้อม' : 'รออัพโหลด'}
           </span>
         </div>
 
-        <div style="position: relative; height: 160px; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(0, 0, 0, 0.5); cursor: pointer;"
+        <div style="position: relative; width: 2.5in; height: 2.5in; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(0, 0, 0, 0.6); cursor: pointer; margin: 0 auto;"
              onclick="document.getElementById('slotPhotoInput-${idx}').click()"
              title="คลิกเพื่อเปลี่ยนภาพตำแหน่งที่ ${idx + 1} (${slot.title})">
           ${hasPhoto ? `
-            <img src="${photoSrc}" alt="${slot.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.25s;" onmouseover="this.style.transform='scale(1.03)'" onmouseout="this.style.transform='scale(1)'">
+            <img src="${photoSrc}" alt="${slot.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.25s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
           ` : `
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-muted); gap: 8px;">
-              <span style="font-size: 28px;">📷</span>
-              <span style="font-size: 12.5px;">คลิกเพื่ออัพโหลดภาพตำแหน่งนี้</span>
+            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-muted); gap: 6px;">
+              <span style="font-size: 26px;">📷</span>
+              <span style="font-size: 12px;">คลิกเพื่ออัพโหลด</span>
             </div>
           `}
-          <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.85)); padding: 6px 10px; display: flex; justify-content: space-between; align-items: center;">
-            <span style="font-size: 11.5px; color: #38bdf8; font-weight: 500;">🔄 คลิกเปลี่ยนภาพ</span>
-            <span style="font-size: 11px; color: #cbd5e1;">ช่องที่ ${idx + 1}</span>
+          <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.88)); padding: 6px 8px; display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 11px; color: #38bdf8; font-weight: 500;">🔄 คลิกเปลี่ยนภาพ</span>
+            <span style="font-size: 10.5px; color: #cbd5e1;">ภาพที่ ${idx + 1}</span>
           </div>
         </div>
 
