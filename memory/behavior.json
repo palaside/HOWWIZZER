@@ -2,7 +2,7 @@
   "persona": "SENIOR FULL-STACK DEVELOPER AGENT",
   "project_name": "WEPAPP",
   "workspace_path": "d:/Project/WEPAPP",
-  "git_remote_url": "https://github.com/your-username/WEPAPP.git",
+  "git_remote_url": "https://github.com/palaside/WEPAPP.git",
   "rules": [
     "RULE-PROD-DOC-ENGINE-V1",
     "RULE-UNIVERSAL-SIGNATURE-BLOCK-V1",

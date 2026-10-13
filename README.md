@@ -47,7 +47,7 @@ playwright install chromium
 ## 🌐 Git Remote Repository & Off-site Backup
 
 - **Branch หลัก:** `main`
-- **Remote Repository URL:** บันทึกไว้ใน `deploy.json` (ตั้งค่าผ่าน `git remote add origin <URL>`)
+- **Remote Repository URL:** `https://github.com/palaside/WEPAPP.git` (บันทึกไว้ใน `deploy.json`)
 - **การสำรองข้อมูล:** ข้อมูลสถานะและพิมพ์เขียวถูกสำรองคู่ขนานไว้ในโฟลเดอร์ `state/` เสมอ
 
 ---

@@ -23,7 +23,7 @@
   },
   "git": {
     "branch": "main",
-    "remote_url": "https://github.com/your-username/WEPAPP.git",
+    "remote_url": "https://github.com/palaside/WEPAPP.git",
     "backup_strategy": "Off-site Git Remote Mirror + state/ directory"
   },
   "active_references": [
