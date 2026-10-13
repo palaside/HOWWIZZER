@@ -93,8 +93,9 @@
   "staff_footer_block": {
     "rule": "RULE-STAFF-REVIEW-FOOTER-V1",
     "enter_gap_from_signature": 5,
-    "columns_mm": [26, 22, 8, 20],
+    "columns_mm": [26, 22, 8, "max-content"],
     "dual_axis_alignment": "แกนดิ่งยศตรงกัน และแกนเดือนปีตรงกัน",
+    "right_flush_content_margin": true,
     "drafter_inspector": {
       "rank": "จ.ส.อ.",
       "role": "ร่าง/ตรวจ",
@@ -106,6 +107,19 @@
       "role": "พิมพ์/ทาน",
       "date": "{day_thai}",
       "month_year": "{month_year_thai}"
+    }
+  },
+  "dual_copy_package": {
+    "rule": "RULE-PROD-DOC-ENGINE-V1 Rule 7",
+    "description": "ระบบพิมพ์แพ็กเกจคู่ขนาน ๒ ชุด: ฉบับตัวจริง + สำเนาคู่ฉบับ",
+    "original": {
+      "copy_banner": false,
+      "staff_footer": false
+    },
+    "dual_copy": {
+      "copy_banner": true,
+      "staff_footer": true,
+      "staff_footer_alignment": "ปี พ.ศ. ขนานกับขอบขวาของเนื้อหาเป๊ะ ๑๐๐% (ไม่ชิดขอบกระดาษ)"
     }
   }
 }
