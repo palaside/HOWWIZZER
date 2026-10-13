@@ -281,12 +281,92 @@
     </div>
 
 
-    <!-- Document Checklist Cards Grid -->
-    <h2 style="font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #fff;">
-      รายการ​เอกสาร​พร้อม​ส่งออก (Export & Print Checklist)
-    </h2>
-    <div id="docsChecklistGrid" class="cards-grid">
-      <!-- Hydrated via dashboard.js -->
+    <!-- ==================================================== -->
+    <!-- MASTER DOCUMENT QUEUE & INTERACTIVE CHECKLIST        -->
+    <!-- ==================================================== -->
+    <div class="glass-panel" style="padding: 24px; margin-top: 24px; border: 1px solid rgba(56, 189, 248, 0.35); box-shadow: 0 8px 32px rgba(0,0,0,0.45); border-radius: 14px;">
+      
+      <!-- Section Header & Progress Stats -->
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 6px;">
+            <h2 style="font-size: 19px; font-weight: 700; color: #fff; margin: 0;">
+              📋 ตรวจสอบ​คิวงาน​และ​สถานะ​เอกสาร​ใน​แผน (Master Document Queue & Checklist)
+            </h2>
+            <span class="badge badge-generated" id="checklistProgressBadge" style="font-size: 12px; padding: 3px 10px;">
+              พร้อมใช้งาน ๑๙/๑๙ ฉบับ (100%)
+            </span>
+          </div>
+          <p style="font-size: 13.5px; color: var(--text-secondary); margin: 0;">
+            แจ้ง​สถานะ​คิวงาน​ถัดไป​ตาม​วงรอบ​สารบรรณ ทบ. พร้อม​เช็คลิสต์​ตรวจสอบ​ความพร้อม​ของ​ไฟล์ (HTML 300 DPI / Word / Excel) และ​การพิมพ์​คู่ขนาน ๒ ชุด
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 10px; align-items: center;">
+          <button type="button" onclick="toggleCheckAllDocs(true)" class="btn-secondary" style="font-size: 12.5px; padding: 7px 12px; cursor: pointer;">
+            ✅ ติ๊กเลือกทั้งหมด
+          </button>
+          <button type="button" onclick="toggleCheckAllDocs(false)" class="btn-secondary" style="font-size: 12.5px; padding: 7px 12px; color: #cbd5e1; cursor: pointer;">
+            🔄 ล้างการติ๊ก
+          </button>
+        </div>
+      </div>
+
+      <!-- Upcoming Work Queue Cards (คิวงานถัดไปตามวงรอบ) -->
+      <div style="margin-bottom: 22px;">
+        <div style="font-size: 14px; font-weight: 600; color: var(--accent-cyan); margin-bottom: 10px; display: flex; align-items: center; gap: 6px;">
+          <span>⏳ ลำดับ​คิวงาน​ถัดไป (Upcoming Work Queue Priority):</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;" id="upcomingQueueGrid">
+          <!-- Hydrated via dashboard.js -->
+        </div>
+      </div>
+
+      <!-- Filter Tabs & Search Bar -->
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 12px 16px; background: rgba(0,0,0,0.3); border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 16px;">
+        <div style="display: flex; gap: 6px; flex-wrap: wrap;" id="checklistFilterTabs">
+          <button type="button" class="btn-filter active" onclick="filterChecklist('all', this)" style="padding: 6px 12px; border-radius: 6px; font-size: 12.5px; cursor: pointer; background: var(--accent-blue); color: #fff; border: 1px solid var(--accent-blue);">
+            ทั้งหมด (๑๙ ฉบับ)
+          </button>
+          <button type="button" class="btn-filter" onclick="filterChecklist('weekly', this)" style="padding: 6px 12px; border-radius: 6px; font-size: 12.5px; cursor: pointer; background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.15);">
+            📌 คิวสัปดาห์นี้ (๒ ฉบับ)
+          </button>
+          <button type="button" class="btn-filter" onclick="filterChecklist('followup', this)" style="padding: 6px 12px; border-radius: 6px; font-size: 12.5px; cursor: pointer; background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.15);">
+            ⏱️ คิวทวงถาม ๔๕/๙๐ วัน (๔ ฉบับ)
+          </button>
+          <button type="button" class="btn-filter" onclick="filterChecklist('periodic', this)" style="padding: 6px 12px; border-radius: 6px; font-size: 12.5px; cursor: pointer; background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.15);">
+            📅 คิวไตรมาส/ปี (๕ ฉบับ)
+          </button>
+          <button type="button" class="btn-filter" onclick="filterChecklist('armory', this)" style="padding: 6px 12px; border-radius: 6px; font-size: 12.5px; cursor: pointer; background: rgba(255,255,255,0.06); color: #94a3b8; border: 1px solid rgba(255,255,255,0.15);">
+            🛡️ คุมคลัง/ประวัติอาวุธ (๘ ฉบับ)
+          </button>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <input type="text" id="checklistSearchInput" placeholder="🔍 ค้นหารหัส, ชื่อเอกสาร..." oninput="onChecklistSearchInput(this.value)" style="padding: 6px 12px; border-radius: 6px; background: rgba(15,23,42,0.8); border: 1px solid rgba(56,189,248,0.3); color: #fff; font-size: 13px; width: 220px; outline: none;">
+          <span style="font-size: 12px; color: var(--text-muted);" id="checkedCountDisplay">เช็คแล้ว 0/๑๙</span>
+        </div>
+      </div>
+
+      <!-- Interactive Checklist Table Container -->
+      <div class="table-container" style="border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; overflow-x: auto;">
+        <table class="data-table" style="width: 100%; font-size: 13.5px;">
+          <thead>
+            <tr>
+              <th style="width: 46px; text-align: center;">ตรวจ</th>
+              <th style="width: 140px;">รหัสเอกสาร</th>
+              <th>ชื่อเอกสารตามระเบียบ ทบ.</th>
+              <th style="width: 180px;">วงรอบ / คิวงาน</th>
+              <th style="width: 180px; text-align: center;">สถานะไฟล์ในระบบ</th>
+              <th style="width: 230px; text-align: center;">เปิดเอกสารต้นฉบับ</th>
+            </tr>
+          </thead>
+          <tbody id="masterChecklistTableBody">
+            <!-- Hydrated via dashboard.js -->
+          </tbody>
+        </table>
+      </div>
+
     </div>
   </section>
 

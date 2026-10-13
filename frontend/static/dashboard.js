@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadExternalIntake();
   loadCadenceGaps();
   initInspectionPhotos();
+  initMasterChecklist();
 });
 
 function initTabs() {
@@ -793,4 +794,501 @@ async function resetInspectionPhotosToDefault() {
     console.error('Reset failed:', err);
   }
   alert('ไม่สามารถดึงภาพต้นฉบับได้ กรุณาลองใหม่อีกครั้ง');
+}
+
+
+// =========================================================================
+// MASTER DOCUMENT INVENTORY & WORK QUEUE CHECKLIST ENGINE (๑๙ ฉบับ)
+// =========================================================================
+const MASTER_DOC_INVENTORY = [
+  {
+    id: 'doc-sd1',
+    code: 'สด.๑',
+    title: 'แบบรายงานผลการตรวจ สด.๑ (สาย สพ. อาวุธ)',
+    desc: 'บันทึกรายงานผลการตรวจประจำสัปดาห์โดยผู้บังคับบัญชา สป.สาย สพ. (อาวุธ) พร้อมตารางสรุปปรนนิบัติบำรุงและภาพถ่าย ๔ ช่อง',
+    category: 'weekly',
+    queueOrder: 1,
+    isUpcoming: true,
+    cadence: 'ประจำสัปดาห์ (ทุกวันพฤหัสบดี)',
+    queueBadge: 'คิวที่ ๑ (ด่วนสัปดาห์นี้)',
+    queueDesc: 'วงรอบ ๒-๖ พ.ย. ๖๙ (เสนอเซ็น พฤ. ๕ พ.ย.)',
+    htmlFile: '/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.html',
+    docxFile: '/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.docx',
+    xlsxFile: '/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-weekly-rep',
+    code: 'WEEKLY-REP',
+    title: 'บันทึกรายงานผลการตรวจประจำสัปดาห์ (ชุดตรวจ)',
+    desc: 'รายงานผลการตรวจสภาพยุทโธปกรณ์ประจำสัปดาห์ พร้อมบล็อกลงนามมาตรฐาน Red Line Standard',
+    category: 'weekly',
+    queueOrder: 2,
+    isUpcoming: true,
+    cadence: 'ประจำสัปดาห์ (ทุกวันพฤหัสบดี)',
+    queueBadge: 'คิวที่ ๒ (ประจำสัปดาห์)',
+    queueDesc: 'วงรอบ ๒-๖ พ.ย. ๖๙ (เสนอเซ็น พฤ. ๕ พ.ย.)',
+    htmlFile: '/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.html',
+    docxFile: '/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.docx',
+    xlsxFile: '/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-followup-45',
+    code: 'ทบ.๔๐๐-๐๗๑ (ก)',
+    title: 'ขอส่งใบติดตามทวงถาม ๔๕ วัน (ทบ.๔๐๐-๐๗๑ แบบ ก)',
+    desc: 'บันทึกข้อความและ ทบ.๔๐๐-๐๗๑ แบบ ก ใบติดตามใบเบิก สิ่งอุปกรณ์สาย สพ. เกินกำหนด ๔๕ วัน',
+    category: 'followup',
+    queueOrder: 3,
+    isUpcoming: true,
+    cadence: 'วงรอบเกิน ๔๕ วัน',
+    queueBadge: 'คิวที่ ๓ (รอบ ๔๕ วัน)',
+    queueDesc: 'ติดตามใบเบิก/ส่งซ่อมเกินกำหนด ๔๕ วัน',
+    htmlFile: '/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.html',
+    docxFile: '/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.docx',
+    xlsxFile: '/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-followup-90',
+    code: 'ทบ.๔๐๐-๐๗๑ (ข)',
+    title: 'ขอส่งใบติดตามทวงถาม ๙๐ วัน (ทบ.๔๐๐-๐๗๑ แบบ ข)',
+    desc: 'บันทึกข้อความและ ทบ.๔๐๐-๐๗๑ แบบ ข ใบติดตามใบเบิก สิ่งอุปกรณ์สาย สพ. เกินกำหนด ๙๐ วัน',
+    category: 'followup',
+    queueOrder: 4,
+    isUpcoming: true,
+    cadence: 'วงรอบเกิน ๙๐ วัน',
+    queueBadge: 'คิวที่ ๔ (รอบ ๙๐ วัน)',
+    queueDesc: 'ติดตามใบเบิก/ส่งซ่อมเกินกำหนด ๙๐ วัน',
+    htmlFile: '/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.html',
+    docxFile: '/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.docx',
+    xlsxFile: '/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-memo-latest',
+    code: 'MEMO-45',
+    title: 'บันทึกข้อความ (ขอส่งใบติดตามใบส่งซ่อมเกิน ๔๕ วัน)',
+    desc: 'บันทึกข้อความราชการ ทบ. นำส่งใบติดตามใบส่งซ่อมเกิน ๔๕ วัน ฟอนต์ Sarabun PSK 16pt / 20pt / 29pt',
+    category: 'followup',
+    queueOrder: 5,
+    isUpcoming: false,
+    cadence: 'วงรอบเกิน ๔๕ วัน',
+    queueBadge: 'เอกสารนำส่ง ๔๕ วัน',
+    queueDesc: 'บันทึกข้อความนำส่งประกอบ ทบ.๔๐๐-๐๗๑',
+    htmlFile: '/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.html',
+    docxFile: '/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.docx',
+    xlsxFile: '/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-memo-90',
+    code: 'MEMO-90',
+    title: 'บันทึกข้อความ (ขอส่งใบติดตามใบส่งซ่อมเกิน ๙๐ วัน)',
+    desc: 'บันทึกข้อความราชการ ทบ. นำส่งใบติดตามใบส่งซ่อมเกิน ๙๐ วัน ฟอนต์ Sarabun PSK 16pt / 20pt / 29pt',
+    category: 'followup',
+    queueOrder: 6,
+    isUpcoming: false,
+    cadence: 'วงรอบเกิน ๙๐ วัน',
+    queueBadge: 'เอกสารนำส่ง ๙๐ วัน',
+    queueDesc: 'บันทึกข้อความนำส่งประกอบ ทบ.๔๐๐-๐๗๑',
+    htmlFile: '/บันทึกข้อความ_90_วัน_Rebuild_Thai.html',
+    docxFile: '/บันทึกข้อความ_90_วัน_Rebuild_Thai.docx',
+    xlsxFile: '/บันทึกข้อความ_90_วัน_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-repair-track-a',
+    code: 'REPAIR-TRACK-A',
+    title: 'ทบ.๔๐๐-๐๗๑ แบบ ก ใบติดตามใบส่งซ่อม (๔๕ - ๙๐ วัน)',
+    desc: 'แบบ ก แนวนอน สำหรับติดตามใบส่งซ่อมสิ่งอุปกรณ์สาย สพ. เกิน ๔๕ - ๙๐ วัน',
+    category: 'followup',
+    queueOrder: 7,
+    isUpcoming: false,
+    cadence: 'วงรอบซ่อมบำรุง',
+    queueBadge: 'แบบ ก แนวนอน',
+    queueDesc: 'ใบติดตามสถานะการส่งซ่อม',
+    htmlFile: '/ใบติดตามใบส่งซ่อมแบบ_ก_Rebuild_Thai.html',
+    docxFile: '/ใบติดตามใบส่งซ่อมแบบ_ก_Rebuild_Thai.docx',
+    xlsxFile: '/ใบติดตามใบส่งซ่อมแบบ_ก_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-repair-track-b',
+    code: 'REPAIR-TRACK-B',
+    title: 'ทบ.๔๐๐-๐๗๑ แบบ ข ใบติดตามใบส่งซ่อม (เกิน ๙๐ วัน)',
+    desc: 'แบบ ข แนวนอน สำหรับติดตามใบส่งซ่อมสิ่งอุปกรณ์สาย สพ. เกิน ๙๐ วัน',
+    category: 'followup',
+    queueOrder: 8,
+    isUpcoming: false,
+    cadence: 'วงรอบซ่อมบำรุง',
+    queueBadge: 'แบบ ข แนวนอน',
+    queueDesc: 'ใบติดตามสถานะการส่งซ่อมค้างนาน',
+    htmlFile: '/ใบติดตามใบส่งซ่อมแบบ_ข_Rebuild_Thai.html',
+    docxFile: '/ใบติดตามใบส่งซ่อมแบบ_ข_Rebuild_Thai.docx',
+    xlsxFile: '/ใบติดตามใบส่งซ่อมแบบ_ข_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-quarterly',
+    code: 'QUARTERLY-REP',
+    title: 'รายงานผลการตรวจสอบอาการถอยและจำลองการยิง ป. (ประจำไตรมาส)',
+    desc: 'รายงานตรวจสอบระบบเครื่องช่วยถอยและจำลองยิง ไฮบริด ๓ หน้า (หน้า ๑-๒ แนวตั้ง, หน้า ๓ แนวนอน)',
+    category: 'periodic',
+    queueOrder: 9,
+    isUpcoming: true,
+    cadence: 'ประจำไตรมาส (ทุก ๓ เดือน)',
+    queueBadge: 'คิวที่ ๕ (ประจำไตรมาส)',
+    queueDesc: 'ตรวจรอบไตรมาส ๑/๖๙ ระบบไฮดรอลิก/ถอย ป.',
+    htmlFile: '/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.html',
+    docxFile: '/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.docx',
+    xlsxFile: '/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-tb400-012',
+    code: 'ทบ.๔๐๐-๐๑๒',
+    title: 'ทบ.๔๐๐-๐๑๒ ใบรายงานผลเปรียบเทียบการตรวจสอบสิ่งอุปกรณ์',
+    desc: 'Legal แนวนอน ๒ หน้า ตรวจสอบยอดคงเหลือสิ่งอุปกรณ์เปรียบเทียบกับบัญชีคุมยอด',
+    category: 'periodic',
+    queueOrder: 10,
+    isUpcoming: false,
+    cadence: 'ประจำเดือน / ไตรมาส',
+    queueBadge: 'คิวตรวจยอดคงเหลือ',
+    queueDesc: 'เปรียบเทียบตรวจนับจริงกับบัญชีคุม',
+    htmlFile: '/ทบ_400_012_Rebuild_Thai.html',
+    docxFile: '/ทบ_400_012_Rebuild_Thai.docx',
+    xlsxFile: '/ทบ_400_012_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-insp-gen2',
+    code: 'INSP-GEN2',
+    title: 'บันทึกผลการตรวจกิจการทั่วไป (ชุดตรวจที่ ๒) ประจำปี ๒๕๖๙',
+    desc: 'เอกสารชุดใหญ่ ๑๘ หน้า (บันทึกข้อความ ๑ หน้า + ทบ.๑๐๕-๐๐๙ รวม ๑๗ หน้า ๖ ชุดตรวจ)',
+    category: 'periodic',
+    queueOrder: 11,
+    isUpcoming: false,
+    cadence: 'ประจำปี ๒๕๖๙',
+    queueBadge: 'ตรวจกิจการทั่วไป',
+    queueDesc: 'รอบการตรวจประจำปีของหน่วย',
+    htmlFile: '/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.html',
+    docxFile: '/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.docx',
+    xlsxFile: '/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-tb468-360',
+    code: 'ทบ.๔๖๘-๓๖๐',
+    title: 'ทบ.๔๖๘-๓๖๐ (สพ.๔๖๐) กำหนดการปรนนิบัติบำรุงยุทธภัณฑ์',
+    desc: 'A4 แนวนอน ๔ หน้า กำหนดการปรนนิบัติบำรุงยุทธภัณฑ์ประจำปีของกองร้อย',
+    category: 'periodic',
+    queueOrder: 12,
+    isUpcoming: false,
+    cadence: 'ประจำปี ๒๕๖๙',
+    queueBadge: 'ตารางปรนนิบัติบำรุง',
+    queueDesc: 'แผนงานบำรุงรักษายุทธภัณฑ์ทั้งปี',
+    htmlFile: '/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.html',
+    docxFile: '/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.docx',
+    xlsxFile: '/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-survey-sp',
+    code: 'ทบ.๔๐๐-๐๑๑',
+    title: 'ทบ.๔๐๐-๐๑๑ ใบสำรวจสิ่งอุปกรณ์ สาย สพ.',
+    desc: 'Legal แนวนอน ๑๒ หน้า (หน้าละ ๒ การ์ด รวม ๒๔ การ์ด) สำรวจสถานภาพสิ่งอุปกรณ์ครบวงจร',
+    category: 'periodic',
+    queueOrder: 13,
+    isUpcoming: false,
+    cadence: 'ประจำปี / รอบสำรวจ',
+    queueBadge: 'สำรวจสิ่งอุปกรณ์',
+    queueDesc: 'สำรวจสภาพยุทธภัณฑ์ประจำปี',
+    htmlFile: '/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.html',
+    docxFile: '/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.docx',
+    xlsxFile: '/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-gun-book',
+    code: 'GUN-BOOK',
+    title: 'สมุดประวัติการใช้ปืนใหญ่ (A4 แนวนอน ๕ หน้า)',
+    desc: 'บันทึกประวัติการใช้ปืนใหญ่ ๕ หมวด (ยิง, ซ่อม, เคลื่อนย้าย, ตรวจสภาพ) หน้าละ ๑ หมวดพอดีเป๊ะ',
+    category: 'armory',
+    queueOrder: 14,
+    isUpcoming: false,
+    cadence: 'ประจำรอบยิง / ปรนนิบัติบำรุง',
+    queueBadge: 'สมุดประวัติปืนใหญ่',
+    queueDesc: 'บันทึกยอดนัดยิงและสภาพลำกล้อง',
+    htmlFile: '/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.html',
+    docxFile: '/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.docx',
+    xlsxFile: '/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-gun-hist',
+    code: 'GUN-HIST',
+    title: 'ประวัติการใช้อาวุธ (ป.หมู่ ๒ ถึง ๖)',
+    desc: 'A4 แนวตั้ง ๕ หน้า บันทึกประวัติการยิงและการปรนนิบัติบำรุงประจำปืนแต่ละกระบอก',
+    category: 'armory',
+    queueOrder: 15,
+    isUpcoming: false,
+    cadence: 'ประจำรอบยิง / คุมปืนหมู่',
+    queueBadge: 'ประวัติการใช้อาวุธ',
+    queueDesc: 'ประวัติ ป.หมู่ ๒ ถึง ๖',
+    htmlFile: '/ประวัติการใช้อาวุธ_Rebuild_Thai.html',
+    docxFile: '/ประวัติการใช้อาวุธ_Rebuild_Thai.docx',
+    xlsxFile: '/ประวัติการใช้อาวุธ_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-pbk-95',
+    code: 'ปบค.๙๕',
+    title: 'บัญชีรายละเอียดหมายเลข ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑ ปรับปรุง',
+    desc: 'A4 แนวนอน ๑ หน้า ควบคุมหมายเลขซีเรียลปืนใหญ่ ทะเบียน และส่วนประกอบหลัก ๖ หมู่',
+    category: 'armory',
+    queueOrder: 16,
+    isUpcoming: false,
+    cadence: 'ทะเบียนคุมอาวุธหลัก',
+    queueBadge: 'ทะเบียน ปบค.๙๕',
+    queueDesc: 'หมายเลขซีเรียลปืนใหญ่ประจำร้อย',
+    htmlFile: '/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.html',
+    docxFile: '/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.docx',
+    xlsxFile: '/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-tb468-204',
+    code: 'ทบ.๔๖๘-๒๐๔',
+    title: 'ทบ.๔๖๘-๒๐๔ (คส.๔) บัญชีหมายเลขอาวุธ',
+    desc: 'A4 แนวตั้ง ๖ หน้า คุมหมายเลขอาวุธประจำกายและอาวุธประจำหน่วยทั้งหมด',
+    category: 'armory',
+    queueOrder: 17,
+    isUpcoming: false,
+    cadence: 'ทะเบียนคุมอาวุธ',
+    queueBadge: 'คส.๔ หมายเลขอาวุธ',
+    queueDesc: 'บัญชีหมายเลขอาวุธประจำกาย/หน่วย',
+    htmlFile: '/ทบ_468_204_Rebuild_Thai.html',
+    docxFile: '/ทบ_468_204_Rebuild_Thai.docx',
+    xlsxFile: '/ทบ_468_204_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-tb400-005',
+    code: 'ทบ.๔๐๐-๐๐๕',
+    title: 'ทบ.๔๐๐-๐๐๕ บัญชีสิ่งอุปกรณ์ของหน่วย',
+    desc: 'A5 แนวตั้ง ๓๑ หน้า (หน้าสารบัญ/รับรอง ๑ หน้า + การ์ดหน้า/หลัง ๑๕ แผ่น) คุมการรับ-จ่าย สป.',
+    category: 'armory',
+    queueOrder: 18,
+    isUpcoming: false,
+    cadence: 'บัญชีคุมสิ่งอุปกรณ์หลัก',
+    queueBadge: 'ทบ.๔๐๐-๐๐๕ บัญชีคุม',
+    queueDesc: 'บัญชีคุมสิ่งอุปกรณ์ของหน่วย',
+    htmlFile: '/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.html',
+    docxFile: '/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.docx',
+    xlsxFile: '/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.xlsx',
+    dualCopy: true
+  },
+  {
+    id: 'doc-cat2-4',
+    code: 'ทบ.CAT2-4',
+    title: 'บัญชีคุมสิ่งอุปกรณ์ ประเภท ๒ และ ๔ (ทบ.๔๐๐-๐๐๕)',
+    desc: 'A5 แนวตั้ง ๑๗๘ หน้า บัญชีคุมสิ่งอุปกรณ์ละเอียด ปก+รับรอง+คำเตือน/ตรวจ+ที่ตั้ง+การ์ด ๘๗ แผ่น',
+    category: 'armory',
+    queueOrder: 19,
+    isUpcoming: false,
+    cadence: 'บัญชีคุม สป.๒ และ ๔',
+    queueBadge: 'คุม สป.๒ และ ๔',
+    queueDesc: 'คุมสิ่งอุปกรณ์ประเภท ๒ และ ๔ ครบ ๘๗ การ์ด',
+    htmlFile: '/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.html',
+    docxFile: '/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.docx',
+    xlsxFile: '/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.xlsx',
+    dualCopy: true
+  }
+];
+
+let currentChecklistFilter = 'all';
+let currentChecklistSearch = '';
+
+function getCheckedDocsMap() {
+  try {
+    const raw = localStorage.getItem('checked_military_docs');
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function saveCheckedDocsMap(map) {
+  try {
+    localStorage.setItem('checked_military_docs', JSON.stringify(map));
+  } catch (e) {}
+}
+
+function initMasterChecklist() {
+  renderUpcomingQueue();
+  renderMasterChecklist();
+}
+
+function renderUpcomingQueue() {
+  const container = document.getElementById('upcomingQueueGrid');
+  if (!container) return;
+
+  const upcomingList = MASTER_DOC_INVENTORY.filter(d => d.isUpcoming).slice(0, 5);
+  
+  container.innerHTML = upcomingList.map((item, idx) => {
+    return `
+      <div style="background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; transition: transform 0.2s;" onmouseover="this.style.borderColor='rgba(56,189,248,0.6)'" onmouseout="this.style.borderColor='rgba(56,189,248,0.25)'">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <span class="badge" style="font-size: 10px; padding: 1px 7px; background: rgba(56, 189, 248, 0.18); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4);">
+              ${item.queueBadge}
+            </span>
+            <span style="font-size: 11px; font-weight: 600; color: var(--accent-gold);">ลำดับ ${idx + 1}</span>
+          </div>
+          <div style="font-weight: 600; font-size: 13.5px; color: #fff; line-height: 1.3;">
+            ${item.title}
+          </div>
+          <div style="font-size: 11.5px; color: var(--accent-cyan); margin-top: 4px; line-height: 1.2;">
+            📅 ${item.queueDesc}
+          </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px; margin-top: 2px;">
+          <span style="font-size: 11px; color: #34d399;">✓ ไฟล์พร้อม ๑๐๐%</span>
+          <a href="${item.htmlFile}" target="_blank" style="font-size: 11.5px; color: #38bdf8; text-decoration: none; font-weight: 500;">
+            เปิดดู ➔
+          </a>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function renderMasterChecklist() {
+  const tbody = document.getElementById('masterChecklistTableBody');
+  const countDisplay = document.getElementById('checkedCountDisplay');
+  if (!tbody) return;
+
+  const checkedMap = getCheckedDocsMap();
+
+  let filtered = MASTER_DOC_INVENTORY;
+  if (currentChecklistFilter !== 'all') {
+    filtered = filtered.filter(d => d.category === currentChecklistFilter);
+  }
+
+  if (currentChecklistSearch.trim()) {
+    const q = currentChecklistSearch.toLowerCase().trim();
+    filtered = filtered.filter(d => 
+      d.code.toLowerCase().includes(q) ||
+      d.title.toLowerCase().includes(q) ||
+      d.desc.toLowerCase().includes(q) ||
+      d.cadence.toLowerCase().includes(q)
+    );
+  }
+
+  const totalCount = MASTER_DOC_INVENTORY.length;
+  const checkedCount = Object.values(checkedMap).filter(Boolean).length;
+  if (countDisplay) {
+    countDisplay.innerText = `เช็คแล้ว ${checkedCount}/${totalCount} ฉบับ`;
+  }
+
+  if (filtered.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="6" style="text-align: center; padding: 24px; color: var(--text-muted);">
+          ไม่พบเอกสารที่ตรงกับเงื่อนไขการค้นหา
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(item => {
+    const isChecked = !!checkedMap[item.id];
+    return `
+      <tr style="background: ${isChecked ? 'rgba(16, 185, 129, 0.05)' : 'transparent'}; transition: background 0.2s;">
+        <td style="text-align: center;">
+          <input type="checkbox" id="chk-${item.id}" ${isChecked ? 'checked' : ''} onchange="toggleDocChecked('${item.id}', this.checked)" style="width: 17px; height: 17px; cursor: pointer; accent-color: var(--accent-blue);">
+        </td>
+        <td>
+          <span class="doc-code" style="font-size: 12px; padding: 2px 7px; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 4px; color: #38bdf8; font-weight: 600;">
+            ${item.code}
+          </span>
+        </td>
+        <td>
+          <div style="font-weight: 600; color: #fff; font-size: 13.5px; line-height: 1.35;">
+            ${item.title}
+          </div>
+          <div style="font-size: 11.5px; color: var(--text-muted); margin-top: 2px; line-height: 1.25;">
+            ${item.desc}
+          </div>
+        </td>
+        <td>
+          <div style="font-size: 12.5px; color: var(--accent-cyan); font-weight: 500;">
+            ${item.cadence}
+          </div>
+          <div style="font-size: 11px; color: var(--text-muted); margin-top: 2px;">
+            ${item.queueDesc}
+          </div>
+        </td>
+        <td style="text-align: center;">
+          <div style="display: flex; gap: 4px; justify-content: center; flex-wrap: wrap;">
+            <span class="badge badge-generated" style="font-size: 10px; padding: 1px 6px;">HTML 300DPI</span>
+            <span class="badge" style="font-size: 10px; padding: 1px 6px; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.35);">Word</span>
+            <span class="badge" style="font-size: 10px; padding: 1px 6px; background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.35);">Excel</span>
+          </div>
+        </td>
+        <td style="text-align: center;">
+          <div style="display: flex; gap: 5px; justify-content: center; align-items: center;">
+            <a href="${item.htmlFile}" target="_blank" class="btn-action btn-html" style="font-size: 11px; padding: 3px 8px; text-decoration: none;" title="เปิดดู HTML Preview คมชัด 300 DPI">
+              🌐 ดู HTML
+            </a>
+            <a href="${item.docxFile}" class="btn-action btn-docx" style="font-size: 11px; padding: 3px 8px; text-decoration: none;" title="ดาวน์โหลด Microsoft Word (.docx) มาตรฐาน Red Line">
+              📘 Word
+            </a>
+            <a href="${item.xlsxFile}" class="btn-action btn-xlsx" style="font-size: 11px; padding: 3px 8px; text-decoration: none;" title="ดาวน์โหลด Microsoft Excel (.xlsx) สูตรคำนวณแท้">
+              📊 Excel
+            </a>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function toggleDocChecked(docId, isChecked) {
+  const map = getCheckedDocsMap();
+  map[docId] = isChecked;
+  saveCheckedDocsMap(map);
+  renderMasterChecklist();
+}
+
+function toggleCheckAllDocs(checkAll) {
+  const map = {};
+  MASTER_DOC_INVENTORY.forEach(d => {
+    map[d.id] = checkAll;
+  });
+  saveCheckedDocsMap(map);
+  renderMasterChecklist();
+}
+
+function filterChecklist(category, btnElem) {
+  currentChecklistFilter = category;
+  const filterBtns = document.querySelectorAll('#checklistFilterTabs .btn-filter');
+  filterBtns.forEach(b => {
+    b.style.background = 'rgba(255,255,255,0.06)';
+    b.style.color = '#94a3b8';
+    b.style.borderColor = 'rgba(255,255,255,0.15)';
+  });
+  if (btnElem) {
+    btnElem.style.background = 'var(--accent-blue)';
+    btnElem.style.color = '#fff';
+    btnElem.style.borderColor = 'var(--accent-blue)';
+  }
+  renderMasterChecklist();
+}
+
+function onChecklistSearchInput(val) {
+  currentChecklistSearch = val || '';
+  renderMasterChecklist();
 }
