@@ -35,3 +35,5 @@ $RECYCLE.BIN/
 *.log
 test-results/
 verified_*.png
+
+.vercel
