@@ -140,7 +140,8 @@ def inject_custom_inspection_photos(html_content: str) -> str:
         return html_content
     try:
         with open(inspection_photos_file, "r", encoding="utf-8") as f:
-            data = json.load(f)
+            if not data.get("is_custom", False):
+                return html_content
             photos = data.get("photos", [])
             if len(photos) >= 4:
                 cards = list(re.finditer(r'<div class="photo-card">\s*<img[^>]*src="[^"]*"[^>]*>\s*</div>', html_content))

@@ -34,3 +34,4 @@ $RECYCLE.BIN/
 # Build and Playwright Artifacts
 *.log
 test-results/
+verified_*.png

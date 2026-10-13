@@ -612,7 +612,8 @@ const INSPECTION_PHOTO_SLOTS = [
   { id: 4, title: 'ตำแหน่งที่ ๔ (ล่าง-ขวา)', desc: 'บอร์ดสถิติ / แผนภูมิการปรนนิบัติ' }
 ];
 
-let currentInspectionPhotos = [];
+const DEFAULT_WEB_PHOTO = '/static/default_inspection_photo.jpg';
+let currentInspectionPhotos = [DEFAULT_WEB_PHOTO, DEFAULT_WEB_PHOTO, DEFAULT_WEB_PHOTO, DEFAULT_WEB_PHOTO];
 
 async function initInspectionPhotos() {
   const grid = document.getElementById('inspectionPhotosGrid');
@@ -622,8 +623,9 @@ async function initInspectionPhotos() {
   try {
     const cached = localStorage.getItem('inspection_photos');
     if (cached) {
-      currentInspectionPhotos = JSON.parse(cached);
-      if (Array.isArray(currentInspectionPhotos) && currentInspectionPhotos.length >= 4) {
+      const parsed = JSON.parse(cached);
+      if (Array.isArray(parsed) && parsed.length >= 4) {
+        currentInspectionPhotos = parsed;
         renderInspectionPhotosGrid(currentInspectionPhotos);
         return;
       }
@@ -642,7 +644,6 @@ async function initInspectionPhotos() {
       const data = await res.json();
       if (data && Array.isArray(data.photos) && data.photos.length >= 4) {
         currentInspectionPhotos = data.photos;
-        localStorage.setItem('inspection_photos', JSON.stringify(currentInspectionPhotos));
         renderInspectionPhotosGrid(currentInspectionPhotos);
         return;
       }
@@ -651,7 +652,8 @@ async function initInspectionPhotos() {
     console.warn('Could not fetch inspection photos from server:', err);
   }
 
-  // Fallback if empty
+  // 3. Fallback to default IMG_1283 image for all 4 slots on web
+  currentInspectionPhotos = [DEFAULT_WEB_PHOTO, DEFAULT_WEB_PHOTO, DEFAULT_WEB_PHOTO, DEFAULT_WEB_PHOTO];
   renderInspectionPhotosGrid(currentInspectionPhotos);
 }
 
@@ -660,15 +662,23 @@ function renderInspectionPhotosGrid(photos) {
   const badge = document.getElementById('photoUploadStatusBadge');
   if (!grid) return;
 
+  const hasPhotos = Array.isArray(photos) && photos.length >= 4;
+  const isCustom = hasPhotos && photos.some(p => p && !p.includes('default_inspection_photo'));
   const validCount = (photos || []).filter(p => !!p).length;
+
   if (badge) {
-    badge.innerText = `พร้อมใช้งาน (${toThaiNum(validCount)}/๔ ภาพ)`;
-    badge.className = validCount >= 4 ? 'badge badge-generated' : 'badge badge-pending';
+    if (isCustom) {
+      badge.innerText = `อัพโหลดแล้ว (${toThaiNum(validCount)}/๔ ภาพ)`;
+      badge.className = 'badge badge-generated';
+    } else {
+      badge.innerText = `ภาพดีฟอลต์บนเว็บ (๔/๔ ภาพ)`;
+      badge.className = 'badge badge-generated';
+    }
   }
 
   grid.innerHTML = INSPECTION_PHOTO_SLOTS.map((slot, idx) => {
-    const photoSrc = photos && photos[idx] ? photos[idx] : '';
-    const hasPhoto = !!photoSrc;
+    let photoSrc = (photos && photos[idx]) ? photos[idx] : DEFAULT_WEB_PHOTO;
+    const isSlotCustom = !!(photoSrc && !photoSrc.includes('default_inspection_photo'));
 
     return `
       <div class="photo-slot-card" style="width: calc(2.5in + 20px); background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 12px; padding: 10px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 4px 14px rgba(0,0,0,0.4); transition: all 0.2s; box-sizing: border-box;">
@@ -677,22 +687,15 @@ function renderInspectionPhotosGrid(photos) {
             <span style="font-weight: 600; font-size: 13px; color: #fff; line-height: 1.25; display: block;">${slot.title}</span>
             <div style="font-size: 11px; color: var(--accent-cyan); margin-top: 2px; line-height: 1.2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 150px;" title="${slot.desc}">${slot.desc}</div>
           </div>
-          <span class="badge" style="font-size: 10px; padding: 1px 6px; white-space: nowrap; background: ${hasPhoto ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)'}; color: ${hasPhoto ? '#34d399' : '#f87171'}; border: 1px solid ${hasPhoto ? 'rgba(16,185,129,0.35)' : 'rgba(239,68,68,0.35)'};">
-            ${hasPhoto ? '✓ พร้อม' : 'รออัพโหลด'}
+          <span class="badge" style="font-size: 10px; padding: 1px 6px; white-space: nowrap; background: ${isSlotCustom ? 'rgba(16,185,129,0.15)' : 'rgba(56,189,248,0.15)'}; color: ${isSlotCustom ? '#34d399' : '#38bdf8'}; border: 1px solid ${isSlotCustom ? 'rgba(16,185,129,0.35)' : 'rgba(56,189,248,0.35)'};">
+            ${isSlotCustom ? '✓ อัพโหลดแล้ว' : 'ภาพดีฟอลต์'}
           </span>
         </div>
 
         <div style="position: relative; width: 2.5in; height: 2.5in; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15); background: rgba(0, 0, 0, 0.6); cursor: pointer; margin: 0 auto;"
              onclick="document.getElementById('slotPhotoInput-${idx}').click()"
              title="คลิกเพื่อเปลี่ยนภาพตำแหน่งที่ ${idx + 1} (${slot.title})">
-          ${hasPhoto ? `
-            <img src="${photoSrc}" alt="${slot.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.25s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-          ` : `
-            <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: var(--text-muted); gap: 6px;">
-              <span style="font-size: 26px;">📷</span>
-              <span style="font-size: 12px;">คลิกเพื่ออัพโหลด</span>
-            </div>
-          `}
+          <img src="${photoSrc}" alt="${slot.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.25s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
           <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.88)); padding: 6px 8px; display: flex; justify-content: space-between; align-items: center;">
             <span style="font-size: 11px; color: #38bdf8; font-weight: 500;">🔄 คลิกเปลี่ยนภาพ</span>
             <span style="font-size: 10.5px; color: #cbd5e1;">ภาพที่ ${idx + 1}</span>
@@ -789,7 +792,21 @@ async function resetInspectionPhotosToDefault() {
   }
 
   try {
-    const res = await fetch('/backend/data/inspection_photos.json');
+    // 1. Try calling backend reset endpoint
+    let res = await fetch(`${API_BASE}/inspection/photos/reset`, { method: 'POST' });
+    if (res.ok) {
+      const resetData = await res.json();
+      if (resetData && Array.isArray(resetData.photos) && resetData.photos.length >= 4) {
+        currentInspectionPhotos = resetData.photos;
+        localStorage.setItem('inspection_photos', JSON.stringify(currentInspectionPhotos));
+        renderInspectionPhotosGrid(currentInspectionPhotos);
+        alert('รีเซ็ตภาพถ่ายโรงเก็บปืนใหญ่กลับเป็นภาพตั้งต้นเรียบร้อยแล้ว');
+        return;
+      }
+    }
+
+    // 2. Fallback to reading backend JSON directly
+    res = await fetch('/backend/data/inspection_photos.json');
     if (res.ok) {
       const data = await res.json();
       if (data && Array.isArray(data.photos) && data.photos.length >= 4) {

@@ -246,7 +246,8 @@ def get_inspection_photos():
                 return json.load(f)
         except Exception as e:
             raise HTTPException(status_code=500, detail=str(e))
-    return {"photos": []}
+    default_slot = "/static/default_inspection_photo.jpg"
+    return {"is_custom": False, "photos": [default_slot, default_slot, default_slot, default_slot]}
 
 @app.post("/api/v1/inspection/photos")
 def update_inspection_photos(payload: dict = Body(...)):
@@ -257,14 +258,25 @@ def update_inspection_photos(payload: dict = Body(...)):
         import json
         INSPECTION_PHOTOS_FILE.parent.mkdir(parents=True, exist_ok=True)
         with open(INSPECTION_PHOTOS_FILE, "w", encoding="utf-8") as f:
-            json.dump({"photos": photos}, f, ensure_ascii=False, indent=2)
-        return {"status": "SUCCESS", "count": len(photos)}
+            json.dump({"is_custom": True, "photos": photos}, f, ensure_ascii=False, indent=2)
+        return {"status": "SUCCESS", "is_custom": True, "count": len(photos)}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+DEFAULT_INSPECTION_PHOTOS_FILE = WORKSPACE_ROOT / "backend" / "data" / "default_inspection_photos.json"
+
 @app.post("/api/v1/inspection/photos/reset")
 def reset_inspection_photos():
-    # If default template exists, restore it
+    try:
+        import json
+        if DEFAULT_INSPECTION_PHOTOS_FILE.exists():
+            with open(DEFAULT_INSPECTION_PHOTOS_FILE, "r", encoding="utf-8") as f:
+                default_data = json.load(f)
+            with open(INSPECTION_PHOTOS_FILE, "w", encoding="utf-8") as f:
+                json.dump(default_data, f, ensure_ascii=False, indent=2)
+            return {"status": "SUCCESS", "message": "Reset to default photos", "photos": default_data.get("photos", [])}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
     return {"status": "SUCCESS", "message": "Reset to default photos"}
 
 
