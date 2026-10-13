@@ -13,6 +13,9 @@ __pycache__/
 *.tmp
 *.temp
 scratch/
+~$*
+~$*.xlsx
+~$*.docx
 
 # Environment Variables & Sensitive Credentials
 .env

@@ -6,13 +6,22 @@
   "rules": [
     "RULE-PROD-DOC-ENGINE-V1",
     "RULE-UNIVERSAL-SIGNATURE-BLOCK-V1",
-    "RULE-PAGEFIT-TUNING-V1"
+    "RULE-STAFF-REVIEW-FOOTER-V1",
+    "RULE-PAGEFIT-TUNING-V1",
+    "RULE-THAI-TYPOGRAPHY-ZWS-V1",
+    "RULE-SARABUN-DOC-STANDARD-V1",
+    "RULE-RTA-MEMO-STANDARD-V1"
   ],
   "preferences": {
     "font_family": "TH Sarabun PSK",
+    "weights": {
+      "heading": 600,
+      "body": 300
+    },
     "thai_numerals": true,
     "signature_alignment": "right: 100% (Universal Red Line Standard)",
-    "verification_strategy": "Playwright automated screenshots + CV measurement"
+    "verification_strategy": "Playwright automated screenshots (300 DPI) + CV measurement",
+    "dual_copy_engine": true
   },
-  "created_at": "2026-10-12T02:50:00+07:00"
+  "created_at": "2026-10-14T00:20:00+07:00"
 }

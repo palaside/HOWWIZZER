@@ -1,55 +1,60 @@
 # 📊 PROJECT STATUS: WEPAPP
 > **Evaluation Mode:** Reverse Engineering & Chain of Thought (CoT)  
 > **Persona:** SENIOR FULL-STACK DEVELOPER AGENT  
-> **Date:** 2026-10-12  
+> **Date:** 2026-10-14  
 
 ---
 
 ## 🏆 Project Overview
-`WEPAPP` เป็นระบบวิศวกรรมเอกสารราชการและทางทหารระดับ Production (SUPERCLONE Production-Grade Engine) รองรับการสร้างเอกสารข้าม 3 แพลตฟอร์มพร้อมกัน (HTML, Word `.docx`, Excel `.xlsx`) โดยยึดมาตรฐานความแม่นยำระดับพิกเซล, การรักษาชนิดข้อมูลตัวเลขใน Excel, OpenType Thai Numeral Engine และ Universal Red Line Standard สำหรับบล็อกการลงนาม
+`WEPAPP` เป็นระบบบริหารจัดการคลังยุทโธปกรณ์และผลิตเอกสารราชการระดับ Production สำหรับกองทัพบก ขับเคลื่อนด้วยสถาปัตยกรรม **SUPERCLONE Engine** และ **Universal Sarabun Gold Standard** รองรับการทำงานทั้งบน Web UI (FastAPI/HTML5/Vanilla JS) และการสร้างเอกสารข้ามแพลตฟอร์ม (HTML, Word `.docx`, Excel `.xlsx`)
 
 ---
 
 ## 📋 Feature Tracking Matrix
 
-### 1. Core Engines
-- [x] **Universal Signature Engine (`signature_engine.py`):**
-  - [x] ตรวจจับบล็อกลงนามอัตโนมัติ (Heuristic Detection)
-  - [x] แนวแกนดิ่ง Red Line Standard (จุด `.` ท้ายยศ ชนวงเล็บเปิด `(` ของชื่อเป๊ะ 100%)
-  - [x] คำกำกับบทบาท/คำรับรอง ("ผู้แก้ไข", "ผู้ตรวจ", "ตรวจถูกต้อง") ชนแกนดิ่งด้านขวาเหนือยศ
-  - [x] Word Tab Stop Anchor & Excel Split-Cell Alignment
-- [x] **Zero-Overflow PageFit Engine (`RULE-PAGEFIT-TUNING-V1`):**
-  - [x] การปรับจูน 4 มิติ (Padding, Font size, Row height, Signature margin)
-  - [x] ทุกหน้าลงพอดี 1 แผ่น A4 100% ไร้การตกหล่น
-- [x] **SSOT Data Schema Protocol:**
-  - [x] แยกชั้นข้อมูลดิบ (Data Layer) ลงใน JSON (`table_layout_*.json`)
-  - [x] คอมไพเลอร์สร้างไฟล์ HTML/DOCX/XLSX โดยอิงข้อมูลจาก JSON 100%
+### 1. Informal Equipment Inventory & Loan Tracking System
+- [x] **Database & Balance Engine (`backend/services/informal_equipment_service.py`):**
+  - [x] Section 1: สิ่งอุปกรณ์ในโรงเก็บปืนใหญ่ (๔๓ รายการ)
+  - [x] Section 2: สิ่งอุปกรณ์ในคลัง บก.โรงเก็บปืนใหญ่ (๒๙ รายการ)
+  - [x] ระบบคำนวณยอดคงเหลือ (Balance Amount), ยอดเบิกยืม (Loan Amount), ยอดส่งซ่อม (Repair Amount)
+  - [x] การตัดสต็อกและบันทึกประวัติการยืม-คืน
+  - [x] ระบบแจ้งเตือนรายการยืมเกินกำหนด (Overdue Loans Alert)
+  - [x] ระบบบันทึกการส่งคืนแยกประเภท: คืนปกติ (นำกลับเข้าคลัง) และคืนชำรุดเสียหาย (ย้ายเข้าหมวดส่งซ่อม)
+  - [x] การสกัดสาเหตุ (Cause) และอาการชำรุด (Symptom) ออกเป็น ๒ ฟิลด์อิสระ
 
-### 2. Approved References (Gold Standard 18 แม่แบบ)
-- [x] `REF-PBK-95-V1` (บัญชีรายละเอียดหมายเลข ปบค.๙๕ - A4 Landscape)
-- [x] `REF-TB-400-012-V1` (ทบ.๔๐๐-๐๑๒ ใบรายงานผลเปรียบเทียบ - Legal Landscape 2 หน้า)
-- [x] `REF-TB-468-204-V1` (ทบ.๔๖๘-๒๐๔ บัญชีหมายเลขอาวุธ - A4 Portrait 6 หน้า)
-- [x] `REF-GUN-HIST-V1` (ประวัติการใช้อาวุธ ป.หมู่ ๒-๖ - A4 Portrait 5 หน้า)
-- [x] `REF-GUN-BOOK-V1` (สมุดประวัติการใช้ปืนใหญ่ - A4 Landscape 5 หน้า)
-- [x] `REF-SURVEY-SP-V1` (ทบ.๔๐๐-๐๑๑ ใบสำรวจ สป.สาย สพ. - Legal Landscape 12 หน้า)
-- [x] `REF-MEMO-LATEST-V1` (บันทึกข้อความติดตามใบส่งซ่อม ๔๕ วัน - A4 Portrait 1 หน้า)
-- [x] `REF-TB-400-005-V1` (ทบ.๔๐๐-๐๐๕ บัญชีสิ่งอุปกรณ์ของหน่วย - A5 Portrait 31 หน้า)
-- [x] `REF-TB-CAT2-4-V1` (บัญชีคุม สป. ประเภท ๒ และ ๔ - A5 Portrait 178 หน้า)
-- [x] `REF-TB-468-360-V1` (ทบ.๔๖๘-๓๖๐ กำหนดการปรนนิบัติบำรุง - A4 Landscape 4 หน้า)
-- [x] `REF-QUARTERLY-REPORT-V1` (รายงานผลการตรวจสอบไตรมาส - A4 Hybrid 3 หน้า)
-- [x] `REF-MEMO-90-V1` (บันทึกข้อความส่งซ่อมเกิน ๙๐ วัน - A4 Portrait 1 หน้า)
-- [x] `REF-MEMO-INQUIRY-90-V1` (ใบติดตามทวงถาม ๙๐ วัน - Hybrid 3 หน้า)
-- [x] `REF-MEMO-INQUIRY-45-V1` (ใบติดตามทวงถาม ๔๕ วัน - Hybrid 3 หน้า)
-- [x] `REF-SD1-WEEKLY-REPORT-V1` (บันทึกรายงาน สด.๑ - Hybrid 5 หน้า)
-- [x] `REF-REPAIR-TRACK-A-V1` (ทบ.๔๐๐-๐๗๑ แบบ ก ใบติดตามใบส่งซ่อม - A4 Landscape 1 หน้า)
-- [x] `REF-INSP-GEN2-V1` (บันทึกผลการตรวจกิจการทั่วไป ชุดตรวจที่ ๒ - A4 Portrait 18 หน้า)
-- [x] `REF-WEEKLY-INSPECTION-JUN-V1` (บันทึกรายงานผลการตรวจประจำสัปดาห์ มิ.ย. ๖๙ - A4 Hybrid 5 หน้า)
+### 2. Universal RTA Memo Standard Engine (`table_layout_damage_memo.json`)
+- [x] **การอ้างอิงตรงจากระเบียบราชการ:**
+  - [x] ระเบียบ ทบ. ว่าด้วยงานสารบรรณ พ.ศ. ๒๕๖๓ ผนวก ก อนุผนวก ๑ (แบบที่ ๑ หน้า ๒๙ - แบบพิมพ์ในโปรแกรมคอมพิวเตอร์)
+  - [x] ระเบียบสำนักนายกรัฐมนตรี ว่าด้วยงานสารบรรณ พ.ศ. ๒๕๒๖ และที่แก้ไขเพิ่มเติม
+- [x] **มิติเรขาคณิตตราครุฑและระยะขอบกระดาษ:**
+  - [x] ตราครุฑ: สูง ๑๕ มม. กว้าง ๑๓.๘ มม. ชิดมุมบนซ้าย ห่างจากขอบกระดาษด้านบน ๑๕ มม.
+  - [x] ขอบกระดาษ: บน ๑๕ มม., ซ้าย ๓๐ มม., ขวา ๒๐ มม., ล่าง ๒๐ มม.
+- [x] **โครงสร้างเนื้อความ ๓ ภาค (3-Tier Paragraph Division):**
+  - [x] `paragraph_1_reason` (ข้อความภาคเหตุ)
+  - [x] `paragraph_2_intention` (ข้อความภาคความประสงค์)
+  - [x] `paragraph_3_summary` (ข้อความภาคสรุป)
+  - [x] ทุกภาคกั้นหน้าย่อหน้า ๒.๕ ซม. (`text-indent: 25mm`) และจัดชิดขอบ inter-cluster
+- [x] **ระบบพิมพ์แพ็กเกจคู่ขนาน ๒ ชุด (Dual-Copy Engine):**
+  - [x] ฉบับตัวจริง: ซ่อนแถบสำเนา และซ่อนบล็อกผู้ร่าง/ตรวจ/พิมพ์/ทาน
+  - [x] สำเนาคู่ฉบับ: แสดงแถบ `(สำเนาคู่ฉบับ)` กึ่งกลางบน และแสดงบล็อกผู้ร่าง/ตรวจ/พิมพ์/ทาน
+- [x] **บล็อกผู้ร่าง/ตรวจ/พิมพ์/ทาน ๔ คอลัมน์ ๒ แกนดิ่ง (Staff Review Footer Dual-Axis):**
+  - [x] โครงสร้าง ๔ คอลัมน์ (ยศ, บทบาท, วันที่, เดือนปี)
+  - [x] แกนตัวอักษรแรกของยศตรงกันเป๊ะ และแกนคำว่าเดือนปีตรงกันเป๊ะ โดยมีปี พ.ศ. ขนานกับขอบขวาของเนื้อหาเป๊ะ ๑๐๐%
+- [x] **ระบบป้องกันคำขาดภาษาไทย (Zero Split Words):**
+  - [x] แทรก Zero-Width Space (`\u200b`) ผ่าน `thai_typography_engine.py` คุ้มครองแท็ก HTML และคำย่อทหาร
+
+### 3. Core Universal Engines & Governance
+- [x] **Universal Signature Engine (`signature_engine.py`):**
+  - [x] Red Line Standard ๑๓๐ มม. จุดท้ายยศชนวงเล็บเปิดของชื่อ ๑๐๐%
+  - [x] ระยะเคาะมาตรฐาน ๕ Enter ใต้ข้อความสุดท้าย
+- [x] **Zero-Overflow PageFit Engine (`RULE-PAGEFIT-TUNING-V1`):**
+  - [x] รับประกันเอกสารฟิตพอดีหน้า A4 หน้าละ ๑ แผ่น ๑๐๐% ปราศจากหน้าขาวส่วนเกิน
+- [x] **One-Click Launchers:**
+  - [x] `run_webapp.bat`: รัน FastAPI และเปิดเบราว์เซอร์อัตโนมัติ
+  - [x] `run_superclone.bat`: คอมไพล์เอกสารออฟไลน์
 
 ---
 
-## 🔍 Visual QA & Verification Results
-- **Page 1 (บันทึกข้อความ):** PASS (Font 17pt, Line-height 1.20, เรื่อง-เรียน ห่าง 1 Enter, ลายเซ็นห่าง 5 Enter, Zero-Overflow)
-- **Page 2 (สด.๑ แผ่น ๑):** PASS (ตาราง 29 แถว บรรจุลงพอดีหน้าเดียว ปลอดภัยจากขอบล่าง 10mm+)
-- **Page 3 (สด.๑ แผ่น ๒):** PASS (ตารางส่วนท้าย + บล็อกลงนามคู่ "ผู้แก้ไข" / "ผู้ตรวจ" เคาะลงมา 3 Enter อิงแกนดิ่ง Red Line Standard)
-- **Page 4 (ภาพถ่ายโรงเก็บปืนใหญ่):** PASS (๔ ภาพคมชัด นำลายเซ็นออกลดความซ้ำซ้อน)
-- **Page 5 (บันทึกผลการตรวจ แนวนอน):** PASS (A4 Landscape, "ตรวจถูกต้อง" ตัว "ง." ตรงกับจุดท้ายยศ "ร.อ.")
+## 🔍 Visual QA & Verification Status
+- **ฉบับตัวจริง (`verified_memo_page1_new_schema.png`):** PASS (ฟิตพอดี ๑ หน้า A4, ตราครุฑ 15x13.8 มม., ระยะขอบเป๊ะตามหน้า ๒๙)
+- **สำเนาคู่ฉบับ (`verified_memo_page2_new_schema.png`):** PASS (ฟิตพอดี ๑ หน้า A4, มีแถบสำเนาคู่ฉบับ, บล็อกผู้ร่าง/ตรวจ/พิมพ์/ทาน ๔ คอลัมน์ พ.ศ. ขนานขอบขวา)

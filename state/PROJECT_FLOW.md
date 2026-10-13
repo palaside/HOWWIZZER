@@ -1,7 +1,7 @@
 # 🔄 PROJECT FLOW: WEPAPP
 > **Language:** English (AI Context Inheritance Standard)  
-> **Architecture Pattern:** Multi-Tier SSOT Compiler & Cross-Platform Forensic Engine  
-> **Revision:** 2026-10-12  
+> **Architecture Pattern:** Multi-Tier SSOT Compiler & Royal Thai Army Production Engine  
+> **Revision:** 2026-10-14  
 
 ---
 
@@ -10,63 +10,75 @@
 ```mermaid
 graph TD
     subgraph Data Layer [Single Source of Truth Layer]
-        JSON[table_layout_*.json<br>Structured Field Data]
-        ASSETS[Image Assets & Logos<br>garuda_tr.png, photos]
+        INV_DB[informal_equipment_inventory.json<br>Real-time Inventory & Loans]
+        MEMO_BP[table_layout_damage_memo.json<br>RTA Sarabun Page 29 Blueprint]
+        TABLE_BP[table_layout_*.json<br>Approved Document Blueprints]
+        ASSETS[garuda_vector_official.png<br>High-Res Military Emblems]
     end
 
-    subgraph Core Engine Layer [Compilation & Governance Engines]
+    subgraph Service & Engine Layer [Core Processing Engines]
+        INV_SRV[informal_equipment_service.py<br>Loan Tracking & Stock Management]
+        MEMO_ENG[Damage Memo HTML Compiler<br>Dual-Copy & Staff Review Footer]
+        TYPO_ENG[thai_typography_engine.py<br>Zero-Width Space ZWS Injection]
         SIG_ENG[signature_engine.py<br>Universal Red Line Standard]
-        PAGEFIT[PageFit Tuning Protocol<br>Zero-Overflow 4D Micro-Budget]
-        BUILDER[build_superclone_*.py<br>Master Document Compiler]
+        BIZ_ENG[business_day_engine.py<br>Official Mon-Thu Signing Cadence]
     end
 
-    subgraph Rendering & Target Layer [Tri-Format Production Targets]
-        HTML[HTML Production Page<br>OpenType Font Engine & CSS Print]
-        DOCX[Word .docx Document<br>Tab Stop Right-Anchor Axis]
-        XLSX[Excel .xlsx Workbook<br>Split-Cell & Thai Numeral Masking]
+    subgraph Presentation & Target Layer [Tri-Format & Web Presentation]
+        FASTAPI[backend/app.py<br>FastAPI Application Server]
+        WEB_UI[Frontend Web Dashboard<br>Inventory Tables & Live Previews]
+        A4_PAGE1[Original Memo A4<br>Print-Grade 300 DPI Clean Copy]
+        A4_PAGE2[Dual-Copy Memo A4<br>Copy Banner + 4-Col Staff Footer]
     end
 
-    subgraph Verification Layer [Visual QA & Automated Verification]
-        PW[Playwright Headless Browser<br>2D Pixel-Level Capture]
-        QA[Quality Assurance Checks<br>Single-Page Fit & Alignment Pass]
-        REF[references/approved_*/<br>Gold Standard Manifest Repository]
+    subgraph Verification & Mirror Layer [Quality Assurance & Archival]
+        PLAYWRIGHT[Playwright Headless Engine<br>device_scale_factor=2.5 Validation]
+        STATE_MIRROR[state/ Redundant Mirror<br>LATEST_CHECKPOINT.md & Behavior]
     end
 
-    JSON --> BUILDER
-    ASSETS --> BUILDER
-    SIG_ENG --> BUILDER
-    PAGEFIT --> BUILDER
+    INV_DB --> INV_SRV
+    MEMO_BP --> MEMO_ENG
+    ASSETS --> MEMO_ENG
 
-    BUILDER --> HTML
-    BUILDER --> DOCX
-    BUILDER --> XLSX
+    INV_SRV --> MEMO_ENG
+    BIZ_ENG --> MEMO_ENG
+    SIG_ENG --> MEMO_ENG
+    MEMO_ENG --> TYPO_ENG
 
-    HTML --> PW
-    PW --> QA
-    QA -->|Passed 100%| REF
+    INV_SRV --> FASTAPI
+    FASTAPI --> WEB_UI
+
+    TYPO_ENG --> A4_PAGE1
+    TYPO_ENG --> A4_PAGE2
+
+    A4_PAGE1 --> PLAYWRIGHT
+    A4_PAGE2 --> PLAYWRIGHT
+    PLAYWRIGHT --> STATE_MIRROR
 ```
 
 ---
 
 ## 🔁 Step-by-Step Execution Workflow
 
-1. **Phase 1: Input Specification Intake**
-   - User inputs specific form requirements or structural modification rules.
-   - System checks `GEMINI.md` governance rules (`RULE-PROD-DOC-ENGINE-V1`, `RULE-UNIVERSAL-SIGNATURE-BLOCK-V1`, `RULE-PAGEFIT-TUNING-V1`).
+1. **Step 1: Inventory Intake & Loan Tracking**
+   - User or operator creates a loan record for equipment in Section 1 (Gun Shed) or Section 2 (HQ Warehouse).
+   - System validates available stock balance and reserves quantities atomically in `informal_equipment_inventory.json`.
 
-2. **Phase 2: Schema Modeling (SSOT)**
-   - All variable fields (memo numbers, dates, topics, inspection findings, signer names/ranks) are isolated into `table_layout.json`.
-   - Structural parameters remain strictly separated from volatile content.
+2. **Step 2: Return & Damage Assessment**
+   - On item return, operator records condition:
+     - **Normal Return:** Stock balance is restored to the primary storage location.
+     - **Damaged Return:** Stock is moved to the repair track (`repair_amount`), recording `cause` and `symptom` separately.
 
-3. **Phase 3: Multi-Platform Compilation**
-   - **HTML Engine:** Renders `@page` responsive stylesheets, sets Thai OpenType numeral feature tags (`locl`, `numr`), and anchors signature elements via `right: 100%`.
-   - **DOCX Engine:** Uses `python-docx` to construct native paragraphs, tables, and tab stops at the exact vertical Red Line axis.
-   - **XLSX Engine:** Generates typed cells with openpyxl, formatting numbers with Thai localization tags (`[$-th-TH,26]#,##0.00`).
+3. **Step 3: Automated RTA Memo Generation**
+   - Service loads `table_layout_damage_memo.json` based on *RTA Sarabun 2563 Appendix A Sub-Appendix 1 (Page 29)*.
+   - Computes official signing date conforming to the Monday-Thursday business day rule.
+   - Interpolates the 3-tier paragraph content (`paragraph_1_reason`, `paragraph_2_intention`, `paragraph_3_summary`).
+   - Compiles dual-copy package (Original Copy + Dual Copy with staff review footer).
 
-4. **Phase 4: Visual QA & Zero-Overflow Validation**
-   - Playwright captures high-resolution screenshots of every page.
-   - Computer vision algorithms analyze vertical projection to ensure 100% zero-overflow across standard A4 boundaries.
+4. **Step 4: Typography & Micro-Layout Optimization**
+   - `thai_typography_engine.py` inserts Zero-Width Space (`\u200b`) between Thai syllables, protecting military abbreviations and HTML tags.
+   - Signature block positions the rank end dot exactly collinear with the open parenthesis of the signatory name (Universal Red Line Standard).
 
-5. **Phase 5: Governance Cataloging**
-   - User reviews and approves the output (`PASS 100%`).
-   - Package is archived under `references/approved_<name>/` with a signed `REFERENCE_MANIFEST.md` and indexed in `GEMINI.md`.
+5. **Step 5: Visual QA Verification & Archival**
+   - Headless browser renders output at 300 DPI (`device_scale_factor = 2.5`).
+   - Ensures strict single-page boundary enforcement without overflow.

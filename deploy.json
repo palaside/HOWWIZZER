@@ -1,17 +1,25 @@
 {
   "project_name": "WEPAPP",
-  "version": "1.0.0",
-  "type": "Production-Grade Document & Forensic Engine",
+  "version": "1.3.0",
+  "type": "Royal Thai Army Production-Grade Document & Armament Inventory Suite",
   "architecture": {
     "engine": "SUPERCLONE Production Engine",
     "signature_system": "Universal Red Line Standard (signature_engine.py)",
-    "data_protocol": "Single Source of Truth (table_layout.json)",
-    "page_fit": "Zero-Overflow Micro-Tuning Budget 4D"
+    "data_protocol": "Single Source of Truth (table_layout.json / memo_layout.json)",
+    "page_fit": "Zero-Overflow Micro-Tuning Budget 4D",
+    "typography": "TH Sarabun PSK (Thin 300 / Bold 600) + Zero-Width Space Engine",
+    "dual_copy_engine": "Dual-Copy Package (Original + Copy with Staff Footer)",
+    "staff_footer": "RULE-STAFF-REVIEW-FOOTER-V1 (Dual-Axis 4-Column)",
+    "sarabun_blueprint": "RTA Sarabun 2563 Appendix A Sub-Appendix 1 (Page 29)"
   },
   "runtime": {
     "python": "3.12+",
-    "launcher": "run_superclone.bat",
-    "build_command": "python build_superclone_weekly_inspection.py"
+    "fastapi_server": "http://127.0.0.1:8000",
+    "launchers": [
+      "run_webapp.bat",
+      "run_superclone.bat"
+    ],
+    "test_command": "pytest tests/"
   },
   "git": {
     "branch": "main",
@@ -36,7 +44,8 @@
     "REF-SD1-WEEKLY-REPORT-V1",
     "REF-REPAIR-TRACK-A-V1",
     "REF-INSP-GEN2-V1",
-    "REF-WEEKLY-INSPECTION-JUN-V1"
+    "REF-WEEKLY-INSPECTION-JUN-V1",
+    "REF-MEMO-DAMAGE-V1"
   ],
-  "last_saved": "2026-10-12T02:49:00+07:00"
+  "last_saved": "2026-10-14T00:20:00+07:00"
 }

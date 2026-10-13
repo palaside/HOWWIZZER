@@ -373,7 +373,22 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
         qty_text = att.get("qty", "จำนวน  ๑  ฉบับ")
         resolved_attachments.append((item_text, qty_text))
 
-    paragraphs = body_block.get("paragraphs", [])
+    # Support structured_paragraphs (3-tier division: reason, intention, summary) or fallback paragraphs
+    structured_paras = body_block.get("structured_paragraphs", {})
+    if structured_paras:
+        p1 = structured_paras.get("paragraph_1_reason", {}).get("content", "")
+        p2 = structured_paras.get("paragraph_2_intention", {}).get("content", "")
+        p3_obj = structured_paras.get("paragraph_3_summary", {})
+        if "content_lines" in p3_obj:
+            p3_lines = p3_obj["content_lines"]
+        elif "content" in p3_obj:
+            p3_lines = [p3_obj["content"]]
+        else:
+            p3_lines = []
+        paragraphs = [p1, p2] + p3_lines
+    else:
+        paragraphs = body_block.get("paragraphs", [])
+
     resolved_paragraphs = []
     for p in paragraphs:
         p_res = (p.replace("{borrower_fullname}", borrower_fullname)
@@ -508,22 +523,23 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     .memo-garuda-container {{
       position: relative;
       width: 100%;
-      height: 25mm;
+      height: {max(18, header_block.get('garuda', {}).get('height_mm', 15) + 3)}mm;
       margin-bottom: 2mm;
     }}
     .memo-garuda {{
       position: absolute;
       left: 0;
       top: 0;
-      height: {header_block.get('garuda', {}).get('height_mm', 18)}mm;
-      width: auto;
+      height: {header_block.get('garuda', {}).get('height_mm', 15)}mm;
+      width: {header_block.get('garuda', {}).get('width_mm', 13.8)}mm;
+      object-fit: contain;
     }}
     .memo-title {{
       text-align: center;
       font-size: 29pt;
       font-weight: 600;
       line-height: 1.1;
-      padding-top: {header_block.get('title_top_mm', 3)}mm;
+      padding-top: {header_block.get('title_top_mm', 0)}mm;
       letter-spacing: 0.5px;
     }}
 
