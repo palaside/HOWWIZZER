@@ -131,6 +131,29 @@ def _replace_staff_footer_element(html_content: str, replacement_html: str) -> s
                 return html_content[:start_pos] + replacement_html + html_content[end_pos:]
     return html_content
 
+def inject_custom_inspection_photos(html_content: str) -> str:
+    """
+    Injects custom uploaded inspection photos into Page 4 (.photo-card) if available.
+    """
+    inspection_photos_file = WORKSPACE_ROOT / "backend" / "data" / "inspection_photos.json"
+    if not inspection_photos_file.exists():
+        return html_content
+    try:
+        with open(inspection_photos_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            photos = data.get("photos", [])
+            if len(photos) >= 4:
+                cards = list(re.finditer(r'<div class="photo-card">\s*<img[^>]*src="[^"]*"[^>]*>\s*</div>', html_content))
+                if len(cards) >= 4:
+                    updated = html_content
+                    for i in reversed(range(4)):
+                        replacement = f'<div class="photo-card">\n                <img id="inspection-photo-{i+1}" src="{photos[i]}" class="photo-img" alt="ภาพถ่ายการตรวจ">\n            </div>'
+                        updated = updated[:cards[i].start()] + replacement + updated[cards[i].end():]
+                    return updated
+    except Exception as e:
+        print(f"Warning: could not inject inspection photos: {e}")
+    return html_content
+
 def compile_dual_copy_package(src_html_path: Path, out_dir: Path, base_name: str, sub_date: date) -> tuple[Path, Path]:
     """
     Compiles dual copies (RULE-PROD-DOC-ENGINE-V1 Rule 7):
@@ -139,6 +162,7 @@ def compile_dual_copy_package(src_html_path: Path, out_dir: Path, base_name: str
     Synchronizes submission date to sub_date (Rule 6).
     """
     content = src_html_path.read_text(encoding="utf-8")
+    content = inject_custom_inspection_photos(content)
     
     thai_day = _to_thai_digit(str(sub_date.day))
     thai_month = THAI_MONTHS[sub_date.month]

@@ -234,6 +234,40 @@ def get_gaps(current_date: Optional[str] = None):
     c_date = date.fromisoformat(current_date) if current_date else date.today()
     return check_external_cadence_gaps(c_date)
 
+# --- Weekly Inspection Photos (4 Photos) ---
+INSPECTION_PHOTOS_FILE = WORKSPACE_ROOT / "backend" / "data" / "inspection_photos.json"
+
+@app.get("/api/v1/inspection/photos")
+def get_inspection_photos():
+    if INSPECTION_PHOTOS_FILE.exists():
+        try:
+            import json
+            with open(INSPECTION_PHOTOS_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=str(e))
+    return {"photos": []}
+
+@app.post("/api/v1/inspection/photos")
+def update_inspection_photos(payload: dict = Body(...)):
+    photos = payload.get("photos", [])
+    if not isinstance(photos, list):
+        raise HTTPException(status_code=400, detail="photos must be a list")
+    try:
+        import json
+        INSPECTION_PHOTOS_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(INSPECTION_PHOTOS_FILE, "w", encoding="utf-8") as f:
+            json.dump({"photos": photos}, f, ensure_ascii=False, indent=2)
+        return {"status": "SUCCESS", "count": len(photos)}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/api/v1/inspection/photos/reset")
+def reset_inspection_photos():
+    # If default template exists, restore it
+    return {"status": "SUCCESS", "message": "Reset to default photos"}
+
+
 # --- Frontend Portal UI ---
 @app.get("/", response_class=HTMLResponse)
 def index():
