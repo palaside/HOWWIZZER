@@ -1519,39 +1519,38 @@ function renderInformalTable() {
     const canBorrow = (itm.balance_amount || 0) > 0;
     
     return `
-      <tr style="background: ${isSub ? 'rgba(255, 255, 255, 0.015)' : 'transparent'}; border-bottom: 1px solid rgba(255,255,255,0.05);">
-        <td style="text-align: center; color: var(--text-secondary); font-weight: ${isSub ? '300' : '600'};">
-          ${isSub ? '' : toThaiNum(itm.seq)}
+      <tr style="background: ${isSub ? 'rgba(255, 255, 255, 0.015)' : 'transparent'}; border-bottom: 1px solid rgba(255,255,255,0.06);">
+        <td style="text-align: center; color: var(--text-secondary); font-weight: ${isSub ? '300' : '600'}; font-size: 16.5px; padding: 10px 6px;">
+          ${isSub ? '' : `ลำดับ.${toThaiNum(itm.seq)}`}
         </td>
-        <td style="padding-left: ${isSub ? '24px' : '10px'};">
-          <div style="display: flex; align-items: center; gap: 6px;">
-            ${isSub ? '<span style="color: var(--accent-cyan); font-size: 11px;">↳</span>' : ''}
-            <span style="font-weight: ${isSub ? '400' : '600'}; color: ${isSub ? '#cbd5e1' : '#fff'};">
+        <td style="padding-left: ${isSub ? '34px' : '14px'}; padding-top: 10px; padding-bottom: 10px;">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-weight: ${isSub ? '300' : '600'}; color: ${isSub ? '#cbd5e1' : '#fff'}; font-size: ${isSub ? '16px' : '17px'};">
               ${itm.name}
             </span>
-            ${itm.remarks ? `<span class="badge" style="font-size: 10px; padding: 0 4px; background: rgba(255,255,255,0.06); color: #94a3b8;">${itm.remarks}</span>` : ''}
+            ${itm.remarks ? `<span class="badge" style="font-size: 12px; padding: 2px 7px; background: rgba(255,255,255,0.08); color: #94a3b8;">${itm.remarks}</span>` : ''}
           </div>
         </td>
-        <td style="text-align: center; color: var(--text-secondary);">${toThaiNum(itm.control_amount || 0)}</td>
-        <td style="text-align: center; color: #38bdf8; font-weight: 500;">${toThaiNum(itm.physical_amount || 0)}</td>
-        <td style="text-align: center; color: ${itm.deficit_amount ? '#f87171' : 'var(--text-muted)'}; font-weight: ${itm.deficit_amount ? '600' : '300'};">${toThaiNum(itm.deficit_amount || 0)}</td>
-        <td style="text-align: center; color: ${itm.surplus_amount ? '#fbbf24' : 'var(--text-muted)'};">${toThaiNum(itm.surplus_amount || 0)}</td>
-        <td style="text-align: center; color: ${itm.repair_amount ? '#f87171' : 'var(--text-muted)'}; font-weight: ${itm.repair_amount ? '600' : '300'};">
+        <td style="text-align: center; color: var(--text-secondary); font-size: 16.5px; font-weight: 300; padding: 10px 6px;">${toThaiNum(itm.control_amount || 0)}</td>
+        <td style="text-align: center; color: #38bdf8; font-weight: 400; font-size: 16.5px; padding: 10px 6px;">${toThaiNum(itm.physical_amount || 0)}</td>
+        <td style="text-align: center; color: ${itm.deficit_amount ? '#f87171' : 'var(--text-muted)'}; font-weight: ${itm.deficit_amount ? '600' : '300'}; font-size: 16.5px; padding: 10px 6px;">${toThaiNum(itm.deficit_amount || 0)}</td>
+        <td style="text-align: center; color: ${itm.surplus_amount ? '#fbbf24' : 'var(--text-muted)'}; font-size: 16.5px; font-weight: 300; padding: 10px 6px;">${toThaiNum(itm.surplus_amount || 0)}</td>
+        <td style="text-align: center; color: ${itm.repair_amount ? '#f87171' : 'var(--text-muted)'}; font-weight: ${itm.repair_amount ? '600' : '300'}; font-size: 16.5px; padding: 10px 6px;">
           ${itm.repair_amount ? `⚠️ ${toThaiNum(itm.repair_amount)}` : '๐'}
         </td>
-        <td style="text-align: center; color: ${itm.loan_amount ? '#fbbf24' : 'var(--text-muted)'}; font-weight: ${itm.loan_amount ? '600' : '300'};">
+        <td style="text-align: center; color: ${itm.loan_amount ? '#fbbf24' : 'var(--text-muted)'}; font-weight: ${itm.loan_amount ? '600' : '300'}; font-size: 16.5px; padding: 10px 6px;">
           ${itm.loan_amount ? `⏳ ${toThaiNum(itm.loan_amount)}` : '๐'}
         </td>
-        <td style="text-align: center; font-weight: 700; color: ${canBorrow ? '#34d399' : '#f87171'};">
+        <td style="text-align: center; font-weight: 700; color: ${canBorrow ? '#34d399' : '#f87171'}; font-size: 17.5px; padding: 10px 6px;">
           ${toThaiNum(itm.balance_amount || 0)}
         </td>
-        <td style="text-align: center;">
+        <td style="text-align: center; padding: 10px 8px;">
           ${canBorrow ? `
-            <button onclick="openBorrowModal('${itm.id}')" class="btn-action btn-html" style="font-size: 11.5px; padding: 3px 8px; cursor: pointer;" title="เบิกยืมสิ่งอุปกรณ์ชิ้นนี้">
+            <button onclick="openBorrowModal('${itm.id}')" class="btn-action btn-html" style="font-size: 13.5px; padding: 5px 12px; cursor: pointer;" title="เบิกยืมสิ่งอุปกรณ์ชิ้นนี้">
               ➕ ยืม
             </button>
           ` : `
-            <span style="font-size: 11px; color: var(--text-muted);">หมดสต็อก</span>
+            <span style="font-size: 13px; color: var(--text-muted);">หมดสต็อก</span>
           `}
         </td>
       </tr>
@@ -1574,7 +1573,7 @@ function renderInformalLoansTable() {
   }
 
   if (filteredLoans.length === 0) {
-    tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; padding: 24px; color: var(--text-muted);">ไม่พบประวัติการเบิกยืมสิ่งอุปกรณ์</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="9" style="text-align: center; padding: 24px; color: var(--text-muted); font-size: 16px;">ไม่พบประวัติการเบิกยืมสิ่งอุปกรณ์</td></tr>`;
     return;
   }
 
@@ -1588,45 +1587,45 @@ function renderInformalLoansTable() {
     let statusHtml = '';
     if (isBorrowed) {
       if (isOverdue) {
-        statusHtml = `<span class="badge" style="background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4); font-size: 11px;">⚠️ เกินกำหนดคืน!</span>`;
+        statusHtml = `<span class="badge" style="background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4); font-size: 13px; padding: 3px 8px;">⚠️ เกินกำหนดคืน!</span>`;
       } else {
-        statusHtml = `<span class="badge" style="background: rgba(245,158,11,0.2); color: #fbbf24; border: 1px solid rgba(245,158,11,0.4); font-size: 11px;">⏳ กำลังเบิกยืม</span>`;
+        statusHtml = `<span class="badge" style="background: rgba(245,158,11,0.2); color: #fbbf24; border: 1px solid rgba(245,158,11,0.4); font-size: 13px; padding: 3px 8px;">⏳ กำลังเบิกยืม</span>`;
       }
     } else if (isDamaged) {
-      statusHtml = `<span class="badge" style="background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4); font-size: 11px;">❌ คืน-ชำรุด (ส่งซ่อม)</span>`;
+      statusHtml = `<span class="badge" style="background: rgba(239,68,68,0.2); color: #f87171; border: 1px solid rgba(239,68,68,0.4); font-size: 13px; padding: 3px 8px;">❌ คืน-ชำรุด (ส่งซ่อม)</span>`;
     } else {
-      statusHtml = `<span class="badge" style="background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid rgba(16,185,129,0.4); font-size: 11px;">✓ คืนปกติ</span>`;
+      statusHtml = `<span class="badge" style="background: rgba(16,185,129,0.2); color: #34d399; border: 1px solid rgba(16,185,129,0.4); font-size: 13px; padding: 3px 8px;">✓ คืนปกติ</span>`;
     }
 
     return `
-      <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); background: ${isOverdue ? 'rgba(239, 68, 68, 0.05)' : 'transparent'};">
-        <td style="text-align: center; font-family: monospace; font-size: 11.5px; color: #94a3b8;">${l.loan_id}</td>
-        <td>
-          <div style="font-weight: 600; color: #fff;">${l.borrower_fullname}</div>
-          <div style="font-size: 11px; color: var(--text-muted);">${l.borrower_position || 'พลปืน'}</div>
+      <tr style="border-bottom: 1px solid rgba(255,255,255,0.06); background: ${isOverdue ? 'rgba(239, 68, 68, 0.05)' : 'transparent'};">
+        <td style="text-align: center; font-family: monospace; font-size: 13.5px; color: #94a3b8; padding: 10px 8px;">${l.loan_id}</td>
+        <td style="padding: 10px 12px;">
+          <div style="font-weight: 600; font-size: 16.5px; color: #fff;">${l.borrower_fullname}</div>
+          <div style="font-size: 13.5px; color: var(--text-muted); font-weight: 300;">${l.borrower_position || 'พลปืน'}</div>
         </td>
-        <td>
-          <div style="font-weight: 600; color: #38bdf8;">${l.item_full_name || l.item_name}</div>
-          <div style="font-size: 11px; color: var(--text-secondary);">${l.section_title}</div>
+        <td style="padding: 10px 12px;">
+          <div style="font-weight: 600; font-size: 16.5px; color: #38bdf8;">${l.item_full_name || l.item_name}</div>
+          <div style="font-size: 13.5px; color: var(--text-secondary); font-weight: 300;">${l.section_title}</div>
         </td>
-        <td style="text-align: center; font-weight: 600; color: #fff;">${toThaiNum(l.quantity)}</td>
-        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">${formatDisplayThaiDate(l.loan_date)}</td>
-        <td style="text-align: center; color: ${isOverdue ? '#f87171' : 'var(--text-secondary)'}; font-weight: ${isOverdue ? '700' : '400'}; font-size: 12px;">
+        <td style="text-align: center; font-weight: 600; font-size: 16.5px; color: #fff; padding: 10px 6px;">${toThaiNum(l.quantity)}</td>
+        <td style="text-align: center; color: var(--text-secondary); font-size: 15px; font-weight: 300; padding: 10px 6px;">${formatDisplayThaiDate(l.loan_date)}</td>
+        <td style="text-align: center; color: ${isOverdue ? '#f87171' : 'var(--text-secondary)'}; font-weight: ${isOverdue ? '700' : '300'}; font-size: 15px; padding: 10px 6px;">
           ${formatDisplayThaiDate(l.expected_return_date)}
         </td>
-        <td style="text-align: center; color: var(--text-secondary); font-size: 12px;">
+        <td style="text-align: center; color: var(--text-secondary); font-size: 15px; font-weight: 300; padding: 10px 6px;">
           ${l.actual_return_date ? formatDisplayThaiDate(l.actual_return_date) : '-'}
         </td>
-        <td style="text-align: center;">${statusHtml}</td>
-        <td style="text-align: center;">
-          <div style="display: flex; gap: 4px; justify-content: center; flex-wrap: wrap;">
+        <td style="text-align: center; padding: 10px 6px;">${statusHtml}</td>
+        <td style="text-align: center; padding: 10px 8px;">
+          <div style="display: flex; gap: 6px; justify-content: center; flex-wrap: wrap;">
             ${isBorrowed ? `
-              <button onclick="openReturnModal('${l.loan_id}')" class="btn-action btn-docx" style="font-size: 11px; padding: 3px 8px; cursor: pointer;">
+              <button onclick="openReturnModal('${l.loan_id}')" class="btn-action btn-docx" style="font-size: 13px; padding: 5px 12px; cursor: pointer;">
                 📥 บันทึกการคืน
               </button>
             ` : ''}
             ${isDamaged ? `
-              <button onclick="openDamageReportModal('${l.loan_id}')" class="btn-action btn-html" style="font-size: 11px; padding: 3px 8px; background: rgba(14, 165, 233, 0.2); color: #38bdf8; border-color: rgba(14, 165, 233, 0.4); cursor: pointer;" title="เปิดบันทึกข้อความรายงานความชำรุดส่ง ผบ.ร้อย">
+              <button onclick="openDamageReportModal('${l.loan_id}')" class="btn-action btn-html" style="font-size: 13px; padding: 5px 12px; background: rgba(14, 165, 233, 0.2); color: #38bdf8; border-color: rgba(14, 165, 233, 0.4); cursor: pointer;" title="เปิดบันทึกข้อความรายงานความชำรุดส่ง ผบ.ร้อย">
                 📝 เขียนรายงาน
               </button>
             ` : ''}

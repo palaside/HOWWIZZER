@@ -9,12 +9,29 @@ Production-grade engine handling:
 """
 import json
 import os
+import base64
 from pathlib import Path
 from datetime import datetime, date, timedelta
 from typing import Dict, Any, List, Optional
 
 WORKSPACE_ROOT = Path(__file__).resolve().parent.parent.parent
 DATA_FILE = WORKSPACE_ROOT / "backend" / "data" / "informal_equipment_inventory.json"
+
+def get_garuda_base64() -> str:
+    """Loads and base64-encodes authentic military Garuda emblem."""
+    candidates = [
+        WORKSPACE_ROOT / "garuda_vector_official.png",
+        WORKSPACE_ROOT / "garuda_memo.png",
+        WORKSPACE_ROOT / "weekly_assets" / "garuda_weekly.png"
+    ]
+    for p in candidates:
+        if p.exists():
+            try:
+                with open(p, "rb") as f:
+                    return base64.b64encode(f.read()).decode("utf-8")
+            except Exception:
+                pass
+    return ""
 
 THAI_MONTHS = [
     "", "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.",
@@ -331,6 +348,9 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
       </div>
     '''
 
+    garuda_b64 = get_garuda_base64()
+    garuda_src = f"data:image/png;base64,{garuda_b64}" if garuda_b64 else "/garuda.png"
+
     memo_html = f"""<!DOCTYPE html>
 <html lang="th">
 <head>
@@ -391,22 +411,22 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     .memo-garuda-container {{
       position: relative;
       width: 100%;
-      height: 30mm;
-      margin-top: 2mm;
+      height: 25mm;
+      margin-bottom: 2mm;
     }}
     .memo-garuda {{
       position: absolute;
       left: 0;
       top: 0;
-      width: 30mm;
-      height: 30mm;
-      object-fit: contain;
+      height: 18mm;
+      width: auto;
     }}
     .memo-title {{
       text-align: center;
       font-size: 29pt;
       font-weight: 600;
-      line-height: 30mm;
+      line-height: 1.1;
+      padding-top: 3mm;
       letter-spacing: 0.5px;
     }}
     .meta-table {{
@@ -489,7 +509,7 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
   <!-- ======================================================== -->
   <div class="a4-page">
     <div class="memo-garuda-container">
-      <img src="/garuda.png" alt="ครุฑ" class="memo-garuda" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'113\\' height=\\'113\\'><text y=\\'60\\' font-size=\\'30\\'>ครุฑ</text></svg>'">
+      <img src="{garuda_src}" alt="ตราครุฑ" class="memo-garuda">
       <div class="memo-title">บันทึกข้อความ</div>
     </div>
 
@@ -565,7 +585,7 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
   <div class="a4-page">
     <div class="copy-banner">(สำเนาคู่ฉบับ)</div>
     <div class="memo-garuda-container">
-      <img src="/garuda.png" alt="ครุฑ" class="memo-garuda" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'113\\' height=\\'113\\'><text y=\\'60\\' font-size=\\'30\\'>ครุฑ</text></svg>'">
+      <img src="{garuda_src}" alt="ตราครุฑ" class="memo-garuda">
       <div class="memo-title">บันทึกข้อความ</div>
     </div>
 
