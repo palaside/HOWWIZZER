@@ -57,10 +57,18 @@ def generate_html(output_path, is_copy=True):
     title_suffix = " (สำเนาคู่ฉบับ)" if is_copy else " (ฉบับตัวจริง)"
     copy_label_html = f'<div class="memo-copy-label">{p1["copy_type"]}</div>' if is_copy else ''
     routing_footer_html = f"""
-        <!-- ROUTING FOOTER -->
-        <div class="memo-footer-routing">
-            <div>{p1["routing_footer"][0]["rank"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][0]["action"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][0]["date"]}</div>
-            <div>{p1["routing_footer"][1]["rank"]} {p1["routing_footer"][1]["name"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][1]["action"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][1]["date"]}</div>
+        <!-- BOTTOM RIGHT STAFF INITIALS (RULE-STAFF-REVIEW-FOOTER-V1) -->
+        <div class="memo-footer-staff">
+            <div class="staff-grid">
+                <div>{p1["routing_footer"][0]["rank"]}</div>
+                <div>{p1["routing_footer"][0]["action"]}</div>
+                <div></div>
+                <div>{p1["routing_footer"][0]["date"]}</div>
+                <div>{p1["routing_footer"][1]["rank"]} {p1["routing_footer"][1]["name"]}</div>
+                <div>{p1["routing_footer"][1]["action"]}</div>
+                <div style="text-align: right; padding-right: 2.5mm;">๓๐</div>
+                <div>{p1["routing_footer"][1]["date"]}</div>
+            </div>
         </div>""" if is_copy else ""
 
     # Page 2 Rows HTML
@@ -159,13 +167,13 @@ def generate_html(output_path, is_copy=True):
             margin: 0;
             padding: 20px 0;
             background-color: #525659;
-            font-family: 'Sarabun', 'TH Sarabun PSK', 'THSarabunNew', sans-serif;
-            font-size: 12pt;
+            font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', sans-serif;
+            font-size: 17pt;
             font-weight: 300; /* ตัวบาง (Light / Thin) */
             font-feature-settings: "locl" 1, "numr" 1;
             font-variant-numeric: tabular-nums;
             color: #000000;
-            line-height: 1.5;
+            line-height: 1.25;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -178,9 +186,11 @@ def generate_html(output_path, is_copy=True):
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
             position: relative;
             page-break-after: always;
-            padding: 20mm 15mm 15mm 25mm; /* ขอบบน 2cm, ขวา 1.5cm, ล่าง 1.5cm, ซ้าย 2.5cm มาตรฐานงานสารบรรณ */
+            padding: 15mm 15mm 15mm 25mm; /* ขอบบน 1.5cm, ขวา 1.5cm, ล่าง 1.5cm, ซ้าย 2.5cm มาตรฐานงานสารบรรณ */
             overflow: hidden;
             page: portrait-page;
+            font-size: 17pt;
+            line-height: 1.25;
         }}
         .page-landscape {{
             width: 297mm;
@@ -210,7 +220,7 @@ def generate_html(output_path, is_copy=True):
         .text-center {{ text-align: center; }}
         .text-left {{ text-align: left; }}
         .text-right {{ text-align: right; }}
-        .font-bold {{ font-weight: bold; }}
+        .font-bold {{ font-weight: 600; }}
         .font-normal {{ font-weight: normal; }}
         .text-danger {{ color: #d32f2f; }}
 
@@ -221,14 +231,14 @@ def generate_html(output_path, is_copy=True):
             left: 0;
             right: 0;
             text-align: center;
-            font-size: 12pt;
+            font-size: 13pt;
             line-height: 1.5;
         }}
         .memo-header-container {{
             position: relative;
             width: 100%;
             height: 30mm;
-            margin-top: -2mm;
+            margin-top: 0mm;
         }}
         .memo-garuda {{
             position: absolute;
@@ -244,54 +254,63 @@ def generate_html(output_path, is_copy=True):
             right: 0;
             top: 6mm;
             text-align: center;
-            font-size: 24pt;
-            font-weight: bold;
+            font-size: 29pt;
+            font-weight: 600;
             line-height: 1;
             font-family: 'TH Sarabun PSK', 'THSarabunNew', 'Sarabun', sans-serif;
         }}
         .memo-meta-table {{
             width: 100%;
             border-collapse: collapse;
-            font-size: 12pt;
-            line-height: 1.5;
-            margin-top: 2mm;
+            font-size: 17pt;
+            line-height: 1.15;
+            margin-top: 1mm;
+            margin-bottom: 1mm;
         }}
         .memo-meta-table td {{
-            padding: 1mm 0;
+            padding: 0 0 1.5px 0;
             vertical-align: bottom;
         }}
         .memo-meta-label {{
-            font-size: 14pt;
-            font-weight: bold;
+            font-size: 20pt;
+            font-weight: 600;
+            line-height: 1.05;
+            padding-bottom: 1.5px;
             white-space: nowrap;
         }}
         .memo-meta-dots {{
             border-bottom: 1px dotted #000;
             padding-left: 2mm;
+            padding-bottom: 1.5px;
+            font-size: 17pt;
+            line-height: 1.05;
         }}
         .memo-content {{
-            margin-top: 3mm;
-            font-size: 12pt;
-            line-height: 1.5;
+            margin-top: 2mm;
+            font-size: 17pt;
+            line-height: 1.25;
         }}
         .memo-p {{
             text-indent: 2.5cm;
-            margin: 0 0 2.5mm 0;
+            margin: 0 0 1.5mm 0;
             text-align: justify;
             text-justify: inter-cluster;
-            line-height: 1.5;
-            font-size: 12pt;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+            line-height: 1.25;
+            font-size: 17pt;
         }}
         .memo-att-container {{
-            margin: 0 0 2.5mm 0;
-            font-size: 12pt;
-            line-height: 1.5;
+            margin: 0 0 1.5mm 0;
+            font-size: 17pt;
+            line-height: 1.25;
         }}
         .memo-att-row {{
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             width: 100%;
+            margin-bottom: 0.8mm;
         }}
         .memo-att-unit {{
             padding-left: 0;
@@ -308,38 +327,37 @@ def generate_html(output_path, is_copy=True):
         .sig-block {{
             display: inline-flex;
             flex-direction: column;
-            align-items: flex-start; /* คำรับรองชิดซ้ายของบล็อก */
+            align-items: flex-start;
             position: relative;
             min-width: 220px;
-            margin-right: 25mm;
-            font-size: 12pt;
+            font-size: 17pt;
             line-height: 1.0;
         }}
         .sig-verify {{
-            margin-bottom: 24pt; /* 1 Enter พร้อมระยะห่างหลังย่อหน้าตามแบบฉบับราชการ */
-            font-size: 12pt;
+            margin-bottom: 24pt;
+            font-size: 17pt;
             line-height: 1.0;
             text-align: left;
         }}
         .sig-name-pos-group {{
             display: inline-flex;
             flex-direction: column;
-            align-items: center; /* ชื่อและตำแหน่งจัดกึ่งกลางร่วมกัน */
+            align-items: center;
             position: relative;
-            margin-left: 65px; /* เยื้องกลุ่มชื่อ-ตำแหน่งเข้ามาทางขวาให้สัมพันธ์กับคำรับรอง */
+            margin-left: 0;
         }}
         .sig-name-wrapper {{
             position: relative;
             display: inline-block;
             white-space: nowrap;
-            margin-top: 24pt; /* พื้นที่สำหรับลงลายมือชื่อจริง */
+            margin-top: 22pt;
         }}
         .sig-rank-anchor {{
             position: absolute;
-            right: 100%; /* จุด . ท้ายยศ ชนขอบซ้ายของกรอบชื่อ ซึ่งคือ ( พอดีเป๊ะ 100% */
+            right: 100%;
             bottom: calc(100% + 18px);
             white-space: nowrap;
-            font-size: 12pt;
+            font-size: 17pt;
             line-height: 1.0;
         }}
         .sig-name {{
@@ -347,7 +365,7 @@ def generate_html(output_path, is_copy=True):
             line-height: 1.15;
             text-align: center;
             white-space: nowrap;
-            font-size: 12pt;
+            font-size: 17pt;
             display: block;
         }}
         .sig-pos {{
@@ -355,7 +373,7 @@ def generate_html(output_path, is_copy=True):
             line-height: 1.15;
             text-align: center;
             white-space: nowrap;
-            font-size: 12pt;
+            font-size: 17pt;
             display: block;
         }}
         .sig-date {{
@@ -363,17 +381,23 @@ def generate_html(output_path, is_copy=True):
             line-height: 1.15;
             text-align: center;
             white-space: nowrap;
-            font-size: 12pt;
+            font-size: 17pt;
             display: block;
         }}
 
-        /* PAGE 1 ROUTING FOOTER */
-        .memo-footer-routing {{
-            position: absolute;
-            bottom: 20mm;
-            right: 20mm;
-            font-size: 12pt;
+        /* PAGE 1 ROUTING FOOTER (RULE-STAFF-REVIEW-FOOTER-V1) */
+        .memo-footer-staff {{
+            margin-top: 22mm;
+            display: flex;
+            justify-content: flex-end;
+        }}
+        .staff-grid {{
+            display: grid;
+            grid-template-columns: 26mm 22mm 8mm 20mm;
+            column-gap: 0;
+            font-size: 13.5pt;
             line-height: 1.5;
+            font-weight: 300;
         }}
 
         /* ================= PAGE 2: LEVELS ================= */
@@ -385,16 +409,16 @@ def generate_html(output_path, is_copy=True):
             table-layout: fixed;
             border-collapse: collapse;
             margin-top: 5mm;
-            font-size: 12pt;
+            font-size: 15pt;
             line-height: 1.5;
         }}
         .p2-table th, .p2-table td {{
             border: 1px solid #000;
             padding: 1.5mm 1mm;
-            height: 9mm;
+            height: 13mm;
         }}
         .p2-table th {{
-            font-weight: normal;
+            font-weight: 600;
             background-color: #fcfcfc;
         }}
         .p2-date-col {{
@@ -403,7 +427,7 @@ def generate_html(output_path, is_copy=True):
         }}
         .p2-gun-th {{
             width: 12.0%;
-            font-size: 12pt;
+            font-size: 14.5pt;
             line-height: 1.2;
         }}
         .p2-item-col {{
@@ -415,90 +439,160 @@ def generate_html(output_path, is_copy=True):
         }}
         .p2-examiner-cell {{
             vertical-align: middle;
-            font-size: 12pt;
+            font-size: 15pt;
         }}
         .p2-title-box {{
             margin-top: 14mm;
             text-align: center;
-            font-size: 12pt;
+            font-size: 16.5pt;
+            font-weight: 600;
             line-height: 1.5;
             width: 100%;
         }}
 
         /* ================= PAGE 3: RECOIL ================= */
+        #page-3 {{
+            padding: 12mm 15mm 15mm 15mm;
+        }}
         .p3-title-container {{
             text-align: center;
-            margin-bottom: 4mm;
-            line-height: 1.5;
+            margin-bottom: 5mm;
+            line-height: 1.35;
         }}
         .p3-auth-title {{
-            font-size: 12pt;
+            font-size: 16pt;
+            font-weight: 300;
         }}
         .p3-main-title {{
-            font-size: 12pt;
+            font-size: 20pt;
+            font-weight: 600;
+            margin-top: 1.5mm;
+            margin-bottom: 1mm;
         }}
         .p3-unit-title {{
-            font-size: 12pt;
+            font-size: 18pt;
+            font-weight: 600;
         }}
         .p3-table {{
             width: 100%;
             border-collapse: collapse;
-            font-size: 12pt;
-            line-height: 1.5;
+            font-size: 16pt;
+            line-height: 1.3;
         }}
         .p3-table th, .p3-table td {{
             border: 1px solid #000;
             padding: 1.5mm 1mm;
         }}
         .p3-table th {{
-            font-weight: normal;
+            font-weight: 600;
             vertical-align: middle;
             background-color: #fafafa;
         }}
         .p3-gun-th {{
             line-height: 1.2;
-            font-size: 12pt;
+            font-size: 17pt;
+            font-weight: 600;
         }}
         .p3-sub-th {{
-            font-size: 12pt;
+            font-size: 15pt;
+            font-weight: 300;
         }}
         .p3-serial {{
-            font-size: 12pt;
+            font-size: 16.5pt;
+            font-weight: 300;
         }}
         .p3-cmd-th {{
-            font-size: 12pt;
+            font-size: 17pt;
+            font-weight: 600;
         }}
         .p3-val-cell {{
-            height: 18mm;
+            height: 30mm;
             vertical-align: middle;
-            font-size: 12pt;
-            line-height: 1.4;
+            font-size: 17pt;
+            line-height: 1.3;
         }}
         .p3-cell-date {{
-            margin-bottom: 1.5mm;
+            margin-bottom: 2.5mm;
             white-space: nowrap;
-            font-size: 12pt;
+            font-size: 16pt;
+            font-weight: 300;
         }}
         .p3-officer-cell {{
-            height: 22mm;
+            height: 38mm;
             vertical-align: top;
-            padding: 1.5mm 1mm;
-            font-size: 9pt;
-            line-height: 1.15;
+            padding: 3mm 1mm;
+            font-size: 16pt;
+            line-height: 1.2;
         }}
         .p3-officer-rank {{
             text-align: left;
-            font-size: 9pt;
-            padding-left: 1mm;
-            line-height: 1.15;
+            font-size: 16pt;
+            font-weight: 300;
+            padding-left: 2.5mm;
+            line-height: 1.2;
         }}
         .p3-officer-name {{
             text-align: center;
-            font-size: 9pt;
-            margin-top: 8mm;
+            font-size: 15pt;
+            font-weight: 300;
+            margin-top: 14mm;
             white-space: nowrap;
             letter-spacing: -0.2px;
-            line-height: 1.15;
+            line-height: 1.2;
+        }}
+    </style>
+    <!-- UNIFIED MILITARY SARABUN FONT-ENGINE & RULE 9 THIN/LIGHT STANDARD -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <style id="rta-universal-thin-font-engine">
+        @font-face {{
+            font-family: 'TH Sarabun PSK';
+            font-style: normal;
+            font-weight: 400;
+            src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+                 url('/fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('../fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('../../fonts/THSarabunPSK.ttf') format('truetype');
+        }}
+        @font-face {{
+            font-family: 'TH Sarabun PSK';
+            font-style: normal;
+            font-weight: 300;
+            src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+                 url('/fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('../fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('../../fonts/THSarabunPSK.ttf') format('truetype');
+        }}
+        @font-face {{
+            font-family: 'TH Sarabun PSK';
+            font-style: normal;
+            font-weight: 600;
+            src: local('TH Sarabun PSK Bold'), local('THSarabunPSK-Bold'),
+                 url('/fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+                 url('fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+                 url('../fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+                 url('../../fonts/THSarabunPSK-Bold.ttf') format('truetype');
+        }}
+        body, div, p, span, td, li, a, input, textarea, label, select, button,
+        section, article, main, header, footer,
+        .memo-p, .memo-body, .memo-closing, .memo-content, .memo-text, .content-para,
+        .memo-meta-dots, .meta-fill-dotted, .dotted-line, .memo-att-row, .memo-att-desc, .memo-att-qty,
+        .salutation-row, .salutation, .reference-section, .attachment-section, .attachment-row, .attachment-item,
+        .sig-name, .sig-pos, .sig-date, .sig-rank-anchor,
+        .staff-grid, .staff-grid div, .staff-col, .form-table td, table td {{
+            font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', Tahoma, sans-serif !important;
+            font-weight: 300 !important;
+        }}
+        b, strong, .font-bold, .bold, th, table th,
+        .memo-title, .doc-title, .meta-label, .memo-meta-label,
+        .form-header-title, .form-header-sub, .form-title,
+        .photo-cert-text, .sig-verify,
+        h1, h2, h3, h4, h5, h6 {{
+            font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', Tahoma, sans-serif !important;
+            font-weight: 600 !important;
         }}
     </style>
 </head>
@@ -513,7 +607,7 @@ def generate_html(output_path, is_copy=True):
             <div class="memo-title">{p1["title"]}</div>
         </div>
 
-        <div style="margin-top: 2mm; font-size: 12pt; line-height: 1.5;">
+        <div style="margin-top: 2mm; font-size: 17pt; line-height: 1.25;">
             <div style="display: flex; align-items: baseline; margin-bottom: 1.5mm;">
                 <span class="memo-meta-label" style="margin-right: 2mm;">{p1["official_department"]}</span>
                 <div class="memo-meta-dots" style="flex: 1;">{p1["department_value"]}</div>
@@ -530,46 +624,46 @@ def generate_html(output_path, is_copy=True):
             </div>
             <div style="display: flex; align-items: baseline; margin-bottom: 1.5mm;">
                 <span class="memo-meta-label" style="margin-right: 2mm;">{p1["subject_label"]}</span>
-                <div style="flex: 1; padding-left: 2mm;">รายงานผลการตรวจสอบอาการถอยและจำลองการยิง ป. และเครื่องให้ทาง สูง-ต่ำ ซ้าย-ขวา ป.</div>
+                <div class="memo-meta-dots" style="flex: 1;">รายงานผลการตรวจสอบอาการถอยและจำลองการยิง ป. และเครื่องให้ทาง สูง-ต่ำ ซ้าย-ขวา ป.</div>
             </div>
         </div>
 
-        <div class="memo-content">
-            <div style="margin-bottom: 2mm;">
+        <div class="memo-content" style="font-size: 17pt; line-height: 1.25;">
+            <div style="margin-bottom: 2mm; font-size: 17pt;">
                 <span class="font-bold">{p1["recipient_label"]}</span>&nbsp;&nbsp;{p1["recipient_value"]}
             </div>
-            <div style="margin-bottom: 2mm;">
+            <div style="margin-bottom: 2mm; font-size: 17pt;">
                 <span class="font-bold">{p1["reference_label"]}</span>&nbsp;&nbsp;{p1["reference_value"]}
             </div>
 
             <div class="memo-att-container">
-                <table style="width: 100%; border-collapse: collapse; font-size: 12pt; line-height: 1.5;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 17pt; line-height: 1.25;">
                     <tr>
-                        <td style="width: 28mm; vertical-align: top; white-space: nowrap;"><span class="font-bold">สิ่งที่ส่งมาด้วย</span></td>
-                        <td style="vertical-align: top;">๑. ตารางการทดสอบอาการถอย ป.</td>
-                        <td style="width: 28mm; vertical-align: top; text-align: right; white-space: nowrap;">จำนวน  ๑  ฉบับ</td>
+                        <td style="width: 32mm; vertical-align: top; white-space: nowrap;"><span class="font-bold">สิ่งที่ส่งมาด้วย</span></td>
+                        <td style="vertical-align: top; font-size: 17pt;">๑. ตารางการทดสอบอาการถอย ป.</td>
+                        <td style="width: 35mm; vertical-align: top; text-align: right; white-space: nowrap; font-size: 17pt;">จำนวน  ๑  ฉบับ</td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td style="vertical-align: top; padding-top: 1mm;">๒. ผลการตรวจระดับเครื่องให้ทาง สูง-ต่ำ, ซ้าย-ขวา</td>
-                        <td style="vertical-align: top; text-align: right; white-space: nowrap; padding-top: 1mm;">จำนวน  ๑  ฉบับ</td>
+                        <td style="vertical-align: top; padding-top: 1mm; font-size: 17pt;">๒. ผลการตรวจระดับเครื่องให้ทาง สูง-ต่ำ, ซ้าย-ขวา</td>
+                        <td style="vertical-align: top; text-align: right; white-space: nowrap; padding-top: 1mm; font-size: 17pt;">จำนวน  ๑  ฉบับ</td>
                     </tr>
                 </table>
             </div>
 
-            <p class="memo-p">ตามอ้างถึง ป.๔ พัน.๔ ร้อย.๒ ได้ดำเนินการทดสอบอาการถอย ป. และตรวจระดับเครื่องช่วยให้ทาง สูง-ต่ำ, ซ้าย-ขวา ห้วงระหว่าง ก.ค. – ก.ย. ๖๙ เมื่อ ๓๐ ก.ย. ๖๙ เพื่อรายงานให้หน่วยเหนือทราบ รายละเอียดตามสิ่งที่ส่งมาด้วย</p>
-            <p class="memo-p">จึงเรียนมาเพื่อกรุณาทราบ</p>
+            <p class="memo-p" style="font-size: 17pt; line-height: 1.25;">ตามอ้างถึง ป.๔ พัน.๔ ร้อย.๒ ได้ดำเนินการทดสอบอาการถอย ป. และตรวจระดับเครื่องช่วยให้ทาง สูง-ต่ำ, ซ้าย-ขวา ห้วงระหว่าง ก.ค. – ก.ย. ๖๙ เมื่อ ๓๐ ก.ย. ๖๙ เพื่อรายงานให้หน่วยเหนือทราบ รายละเอียดตามสิ่งที่ส่งมาด้วย</p>
+            <p class="memo-p" style="font-size: 17pt; line-height: 1.25;">จึงเรียนมาเพื่อกรุณาทราบ</p>
         </div>
 
         <!-- SIGNATURE BLOCK (พิกัด 130 มม. นับจากขอบซ้าย A4 210 มม., เคาะ 5 Enter จากบรรทัดสุดท้าย) -->
         <div style="margin-top: 55pt; padding-left: 105mm;">
-            <div class="sig-block" style="margin-right: 0;">
+            <div class="sig-block" style="margin-right: 0; font-size: 17pt; line-height: 1.0;">
                 <div class="sig-name-pos-group" style="margin-left: 0;">
-                    <div class="sig-name-wrapper" style="margin-top: 18pt;">
-                        <span class="sig-rank-anchor">{p1["signature"]["rank"]}</span>
-                        <div class="sig-name">({p1["signature"]["name"]})</div>
+                    <div class="sig-name-wrapper" style="margin-top: 22pt;">
+                        <span class="sig-rank-anchor" style="font-size: 17pt;">{p1["signature"]["rank"]}</span>
+                        <div class="sig-name" style="font-size: 17pt;">({p1["signature"]["name"]})</div>
                     </div>
-                    <div class="sig-pos">{p1["signature"]["position"]}</div>
+                    <div class="sig-pos" style="font-size: 17pt;">{p1["signature"]["position"]}</div>
                 </div>
             </div>
         </div>
@@ -628,7 +722,7 @@ def generate_html(output_path, is_copy=True):
             <tbody>
                 <tr>
                     <td class="text-center font-bold">{r1["seq"]}</td>
-                    <td class="text-center">
+                    <td class="text-center font-bold">
                         <div>{r1["date_label"]}</div>
                         <div>{r1["result_label"]}</div>
                     </td>
@@ -642,17 +736,17 @@ def generate_html(output_path, is_copy=True):
             </tbody>
         </table>
 
-        <!-- SIGNATURE BLOCK (เลื่อนชิดมาทางขวา พิกัดอิง 250 มม. / ขอบขวา 20 มม.) -->
-        <div style="position: absolute; right: 20mm; top: 125mm;">
-            <div class="sig-block" style="margin-right: 0;">
-                <div class="sig-verify">{p3["signature"]["certified"]}</div>
+        <!-- SIGNATURE BLOCK (ใต้เส้นตาราง เว้นระยะ 10mm ชิดขวามาตรฐานแนวนอน) -->
+        <div style="display: flex; justify-content: flex-end; margin-top: 10mm; padding-right: 15mm;">
+            <div class="sig-block" style="margin-right: 0; font-size: 17pt;">
+                <div class="sig-verify" style="font-size: 17pt; font-weight: 600; margin-bottom: 24pt;">{p3["signature"]["certified"]}</div>
                 <div class="sig-name-pos-group">
                     <div class="sig-name-wrapper">
-                        <span class="sig-rank-anchor">{p3["signature"]["rank"]}</span>
-                        <div class="sig-name">({p3["signature"]["name"]})</div>
+                        <span class="sig-rank-anchor" style="font-size: 17pt;">{p3["signature"]["rank"]}</span>
+                        <div class="sig-name" style="font-size: 17pt;">({p3["signature"]["name"]})</div>
                     </div>
-                    <div class="sig-pos">{p3["signature"]["position"]}</div>
-                    <div class="sig-date">{p3["signature"]["date"]}</div>
+                    <div class="sig-pos" style="font-size: 17pt;">{p3["signature"]["position"]}</div>
+                    <div class="sig-date" style="font-size: 17pt;">{p3["signature"]["date"]}</div>
                 </div>
             </div>
         </div>
