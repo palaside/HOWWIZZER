@@ -851,6 +851,9 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.html',
     docxFile: '/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.docx',
     xlsxFile: '/แบบรายงานผลการตรวจ_สด_1_Rebuild_Thai.xlsx',
+    hasDualCopy: true,
+    origFile: '/static/docs/แบบรายงานผลการตรวจ_สด_1_ฉบับจริง.html',
+    copyFile: '/static/docs/แบบรายงานผลการตรวจ_สด_1_สำเนาคู่ฉบับ.html',
     dualCopy: true
   },
   {
@@ -883,6 +886,9 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.html',
     docxFile: '/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.docx',
     xlsxFile: '/ขอส่งใบติดตามทวงถาม_45_วัน_Rebuild_Thai.xlsx',
+    hasDualCopy: true,
+    origFile: '/static/docs/ขอส่งใบติดตามทวงถาม_45_วัน_ฉบับจริง.html',
+    copyFile: '/static/docs/ขอส่งใบติดตามทวงถาม_45_วัน_สำเนาคู่ฉบับ.html',
     dualCopy: true
   },
   {
@@ -899,6 +905,9 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.html',
     docxFile: '/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.docx',
     xlsxFile: '/ขอส่งใบติดตามทวงถาม_90_วัน_Rebuild_Thai.xlsx',
+    hasDualCopy: true,
+    origFile: '/static/docs/ขอส่งใบติดตามทวงถาม_90_วัน_ฉบับจริง.html',
+    copyFile: '/static/docs/ขอส่งใบติดตามทวงถาม_90_วัน_สำเนาคู่ฉบับ.html',
     dualCopy: true
   },
   {
@@ -915,6 +924,9 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.html',
     docxFile: '/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.docx',
     xlsxFile: '/บันทึกข้อความล่าสุดสุด_Rebuild_Thai.xlsx',
+    hasDualCopy: true,
+    origFile: '/static/docs/บันทึกข้อความล่าสุดสุด_ฉบับจริง.html',
+    copyFile: '/static/docs/บันทึกข้อความล่าสุดสุด_สำเนาคู่ฉบับ.html',
     dualCopy: true
   },
   {
@@ -931,6 +943,9 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/บันทึกข้อความ_90_วัน_Rebuild_Thai.html',
     docxFile: '/บันทึกข้อความ_90_วัน_Rebuild_Thai.docx',
     xlsxFile: '/บันทึกข้อความ_90_วัน_Rebuild_Thai.xlsx',
+    hasDualCopy: true,
+    origFile: '/static/docs/บันทึกข้อความ_90_วัน_ฉบับจริง.html',
+    copyFile: '/static/docs/บันทึกข้อความ_90_วัน_สำเนาคู่ฉบับ.html',
     dualCopy: true
   },
   {
@@ -947,6 +962,7 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/ใบติดตามใบส่งซ่อมแบบ_ก_Rebuild_Thai.html',
     docxFile: '/ใบติดตามใบส่งซ่อมแบบ_ก_Rebuild_Thai.docx',
     xlsxFile: '/ใบติดตามใบส่งซ่อมแบบ_ก_Rebuild_Thai.xlsx',
+    hasDualCopy: false,
     dualCopy: true
   },
   {
@@ -963,6 +979,7 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/ใบติดตามใบส่งซ่อมแบบ_ข_Rebuild_Thai.html',
     docxFile: '/ใบติดตามใบส่งซ่อมแบบ_ข_Rebuild_Thai.docx',
     xlsxFile: '/ใบติดตามใบส่งซ่อมแบบ_ข_Rebuild_Thai.xlsx',
+    hasDualCopy: false,
     dualCopy: true
   },
   {
@@ -979,6 +996,9 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.html',
     docxFile: '/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.docx',
     xlsxFile: '/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.xlsx',
+    hasDualCopy: true,
+    origFile: '/static/docs/รายงานผลการตรวจสอบ_ไตรมาส_ฉบับจริง.html',
+    copyFile: '/static/docs/รายงานผลการตรวจสอบ_ไตรมาส_สำเนาคู่ฉบับ.html',
     dualCopy: true
   },
   {
@@ -995,6 +1015,7 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/ทบ_400_012_Rebuild_Thai.html',
     docxFile: '/ทบ_400_012_Rebuild_Thai.docx',
     xlsxFile: '/ทบ_400_012_Rebuild_Thai.xlsx',
+    hasDualCopy: false,
     dualCopy: true
   },
   {
@@ -1011,6 +1032,9 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.html',
     docxFile: '/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.docx',
     xlsxFile: '/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.xlsx',
+    hasDualCopy: true,
+    origFile: '/static/docs/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_ฉบับจริง.html',
+    copyFile: '/static/docs/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_สำเนาคู่ฉบับ.html',
     dualCopy: true
   },
   {
@@ -1027,6 +1051,7 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.html',
     docxFile: '/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.docx',
     xlsxFile: '/ทบ_468_360_ปรนนิบัติบำรุง_Rebuild_Thai.xlsx',
+    hasDualCopy: false,
     dualCopy: true
   },
   {
@@ -1043,6 +1068,7 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.html',
     docxFile: '/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.docx',
     xlsxFile: '/ใบสำรวจสิ่งอุปกรณ์_สาย_สพ_Rebuild_Thai.xlsx',
+    hasDualCopy: false,
     dualCopy: true
   },
   {
@@ -1059,6 +1085,7 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.html',
     docxFile: '/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.docx',
     xlsxFile: '/สมุดประวัติการใช้ปืนใหญ่_Rebuild_Thai.xlsx',
+    hasDualCopy: false,
     dualCopy: true
   },
   {
@@ -1075,6 +1102,7 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/ประวัติการใช้อาวุธ_Rebuild_Thai.html',
     docxFile: '/ประวัติการใช้อาวุธ_Rebuild_Thai.docx',
     xlsxFile: '/ประวัติการใช้อาวุธ_Rebuild_Thai.xlsx',
+    hasDualCopy: false,
     dualCopy: true
   },
   {
@@ -1091,6 +1119,7 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.html',
     docxFile: '/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.docx',
     xlsxFile: '/บัญชีรายละเอียดหมายเลข_ปบค_Rebuild_Thai.xlsx',
+    hasDualCopy: false,
     dualCopy: true
   },
   {
@@ -1107,6 +1136,7 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/ทบ_468_204_Rebuild_Thai.html',
     docxFile: '/ทบ_468_204_Rebuild_Thai.docx',
     xlsxFile: '/ทบ_468_204_Rebuild_Thai.xlsx',
+    hasDualCopy: false,
     dualCopy: true
   },
   {
@@ -1123,6 +1153,7 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.html',
     docxFile: '/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.docx',
     xlsxFile: '/บัญชีคุมสิ่งอุปกรณ์ของหน่วยทบ400_005_Rebuild_Thai.xlsx',
+    hasDualCopy: false,
     dualCopy: true
   },
   {
@@ -1139,6 +1170,7 @@ const MASTER_DOC_INVENTORY = [
     htmlFile: '/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.html',
     docxFile: '/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.docx',
     xlsxFile: '/บัญชีคุมสิ่งอุปกรณ์ประเภท_2_และ_4_Rebuild_Thai.xlsx',
+    hasDualCopy: false,
     dualCopy: true
   }
 ];
@@ -1191,9 +1223,14 @@ function renderUpcomingQueue() {
         </div>
         <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 8px; margin-top: 2px;">
           <span style="font-size: 11px; color: #34d399;">✓ ไฟล์พร้อม ๑๐๐%</span>
-          <a href="${item.htmlFile}" target="_blank" style="font-size: 11.5px; color: #38bdf8; text-decoration: none; font-weight: 500;">
-            เปิดดู ➔
-          </a>
+          <div style="display: flex; gap: 4px; align-items: center;">
+            ${item.hasDualCopy ? `
+              <a href="${item.origFile}" target="_blank" class="btn-action btn-orig" style="font-size: 11px; padding: 2px 7px; text-decoration: none;">📄 ฉบับจริง</a>
+              <a href="${item.copyFile}" target="_blank" class="btn-action btn-copy" style="font-size: 11px; padding: 2px 7px; text-decoration: none;">📑 สำเนาคู่ฉบับ</a>
+            ` : `
+              <a href="${item.htmlFile}" target="_blank" class="btn-action btn-html" style="font-size: 11.5px; text-decoration: none; font-weight: 500;">เปิดดู ➔</a>
+            `}
+          </div>
         </div>
       </div>
     `;
@@ -1270,21 +1307,27 @@ function renderMasterChecklist() {
         <td style="text-align: center;">
           <div style="display: flex; gap: 4px; justify-content: center; flex-wrap: wrap;">
             <span class="badge badge-generated" style="font-size: 10px; padding: 1px 6px;">HTML 300DPI</span>
-            <span class="badge" style="font-size: 10px; padding: 1px 6px; background: rgba(59,130,246,0.15); color: #60a5fa; border: 1px solid rgba(59,130,246,0.35);">Word</span>
-            <span class="badge" style="font-size: 10px; padding: 1px 6px; background: rgba(16,185,129,0.15); color: #34d399; border: 1px solid rgba(16,185,129,0.35);">Excel</span>
+            ${item.hasDualCopy ? `
+              <span class="badge" style="font-size: 10px; padding: 1px 6px; background: rgba(56, 189, 248, 0.18); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4);">คู่ขนาน ๒ ชุด</span>
+            ` : `
+              <span class="badge" style="font-size: 10px; padding: 1px 6px; background: rgba(255, 255, 255, 0.06); color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.15);">แบบฟอร์ม ทบ.</span>
+            `}
           </div>
         </td>
         <td style="text-align: center;">
-          <div style="display: flex; gap: 5px; justify-content: center; align-items: center;">
-            <a href="${item.htmlFile}" target="_blank" class="btn-action btn-html" style="font-size: 11px; padding: 3px 8px; text-decoration: none;" title="เปิดดู HTML Preview คมชัด 300 DPI">
-              🌐 ดู HTML
-            </a>
-            <a href="${item.docxFile}" class="btn-action btn-docx" style="font-size: 11px; padding: 3px 8px; text-decoration: none;" title="ดาวน์โหลด Microsoft Word (.docx) มาตรฐาน Red Line">
-              📘 Word
-            </a>
-            <a href="${item.xlsxFile}" class="btn-action btn-xlsx" style="font-size: 11px; padding: 3px 8px; text-decoration: none;" title="ดาวน์โหลด Microsoft Excel (.xlsx) สูตรคำนวณแท้">
-              📊 Excel
-            </a>
+          <div style="display: flex; gap: 5px; justify-content: center; align-items: center; flex-wrap: wrap;">
+            ${item.hasDualCopy ? `
+              <a href="${item.origFile}" target="_blank" class="btn-action btn-orig" style="font-size: 11px; padding: 3px 8px; text-decoration: none;" title="เปิดดูฉบับตัวจริง (ไม่มีข้อความสำเนาคู่ฉบับ และซ่อนบล็อกผู้ร่าง/ตรวจ/พิมพ์/ทาน)">
+                📄 ฉบับตัวจริง
+              </a>
+              <a href="${item.copyFile}" target="_blank" class="btn-action btn-copy" style="font-size: 11px; padding: 3px 8px; text-decoration: none;" title="เปิดดูสำเนาคู่ฉบับ (มีข้อความสำเนาคู่ฉบับ และตารางผู้ร่าง/ตรวจ/พิมพ์/ทาน)">
+                📑 สำเนาคู่ฉบับ
+              </a>
+            ` : `
+              <a href="${item.htmlFile}" target="_blank" class="btn-action btn-html" style="font-size: 11px; padding: 3px 12px; text-decoration: none;" title="เปิดดู HTML Preview คมชัด 300 DPI">
+                🌐 ดู HTML
+              </a>
+            `}
           </div>
         </td>
       </tr>

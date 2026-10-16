@@ -760,6 +760,33 @@ h1, h2, h3, h4, h5, h6, th, b, strong,
   color: #fff;
 }
 
+/* Dual-Copy Buttons (RULE-PROD-DOC-ENGINE-V1: ฉบับตัวจริง vs สำเนาคู่ฉบับ) */
+.btn-orig {
+  background: rgba(56, 189, 248, 0.14);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  font-weight: 500 !important;
+}
+.btn-orig:hover {
+  background: rgba(56, 189, 248, 0.28);
+  border-color: #38bdf8;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.btn-copy {
+  background: rgba(245, 158, 11, 0.14);
+  color: #fbbf24;
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  font-weight: 500 !important;
+}
+.btn-copy:hover {
+  background: rgba(245, 158, 11, 0.28);
+  border-color: #fbbf24;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+}
+
 
 
 /* ========================================================================= */
