@@ -49,10 +49,19 @@ with open(GARUDA_PATH, "rb") as f:
 # -----------------------------------------------------------------------------
 # 1. GENERATE HTML (Pixel-Perfect Mixed Portrait / Landscape)
 # -----------------------------------------------------------------------------
-def generate_html(output_path):
+def generate_html(output_path, is_copy=True):
     p1 = bp["page_1_memo"]
     p2 = bp["page_2_levels_inspection"]
     p3 = bp["page_3_recoil_inspection"]
+
+    title_suffix = " (สำเนาคู่ฉบับ)" if is_copy else " (ฉบับตัวจริง)"
+    copy_label_html = f'<div class="memo-copy-label">{p1["copy_type"]}</div>' if is_copy else ''
+    routing_footer_html = f"""
+        <!-- ROUTING FOOTER -->
+        <div class="memo-footer-routing">
+            <div>{p1["routing_footer"][0]["rank"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][0]["action"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][0]["date"]}</div>
+            <div>{p1["routing_footer"][1]["rank"]} {p1["routing_footer"][1]["name"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][1]["action"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][1]["date"]}</div>
+        </div>""" if is_copy else ""
 
     # Page 2 Rows HTML
     p2_rows_html = ""
@@ -128,7 +137,7 @@ def generate_html(output_path):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{bp["document_title"]}</title>
+    <title>{bp["document_title"]}{title_suffix}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -497,7 +506,7 @@ def generate_html(output_path):
 
     <!-- PAGE 1: MEMO (A4 PORTRAIT) -->
     <div class="page-portrait" id="page-1">
-        <div class="memo-copy-label">{p1["copy_type"]}</div>
+        {copy_label_html}
         
         <div class="memo-header-container">
             <img class="memo-garuda" src="data:image/png;base64,{GARUDA_B64}" alt="ครุฑ">
@@ -564,12 +573,7 @@ def generate_html(output_path):
                 </div>
             </div>
         </div>
-
-        <!-- ROUTING FOOTER -->
-        <div class="memo-footer-routing">
-            <div>{p1["routing_footer"][0]["rank"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][0]["action"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][0]["date"]}</div>
-            <div>{p1["routing_footer"][1]["rank"]} {p1["routing_footer"][1]["name"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][1]["action"]}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;30&nbsp;&nbsp;&nbsp;&nbsp;{p1["routing_footer"][1]["date"]}</div>
-        </div>
+{routing_footer_html}
     </div>
 
     <!-- PAGE 2: LEVELS (A4 PORTRAIT) -->
@@ -1265,11 +1269,27 @@ def generate_xlsx(output_path):
 # -----------------------------------------------------------------------------
 if __name__ == "__main__":
     html_file = os.path.join(os.path.dirname(__file__), "รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.html")
+    html_real = os.path.join(os.path.dirname(__file__), "รายงานผลการตรวจสอบ_ไตรมาส_ฉบับจริง.html")
+    html_copy = os.path.join(os.path.dirname(__file__), "รายงานผลการตรวจสอบ_ไตรมาส_สำเนาคู่ฉบับ.html")
     docx_file = os.path.join(os.path.dirname(__file__), "รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.docx")
     xlsx_file = os.path.join(os.path.dirname(__file__), "รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.xlsx")
 
-    generate_html(html_file)
+    generate_html(html_file, is_copy=True)
+    generate_html(html_copy, is_copy=True)
+    generate_html(html_real, is_copy=False)
     generate_docx(docx_file)
     generate_xlsx(xlsx_file)
 
-    print("\nAll formats compiled successfully!")
+    # Sync dual copies to docs and reference folders
+    import shutil
+    for src in [html_real, html_copy]:
+        fname = os.path.basename(src)
+        for dest_dir in [
+            os.path.join(os.path.dirname(__file__), "static", "docs"),
+            os.path.join(os.path.dirname(__file__), "frontend", "static", "docs"),
+            os.path.join(os.path.dirname(__file__), "references", "approved_quarterly_report"),
+        ]:
+            os.makedirs(dest_dir, exist_ok=True)
+            shutil.copy2(src, os.path.join(dest_dir, fname))
+
+    print("\nAll formats and dual copies compiled & synced successfully!")

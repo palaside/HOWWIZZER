@@ -16,10 +16,12 @@
 ---
 
 ## 📂 ไฟล์ต้นแบบและเอกสารอ้างอิง
-1. **[HTML Template](file:///d:/Project/WEPAPP/references/approved_quarterly_report/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.html)**
-2. **[Microsoft Word (DOCX)](file:///d:/Project/WEPAPP/references/approved_quarterly_report/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.docx)**
-3. **[Microsoft Excel (XLSX)](file:///d:/Project/WEPAPP/references/approved_quarterly_report/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.xlsx)**
-4. **[SSOT Blueprint (JSON)](file:///d:/Project/WEPAPP/references/approved_quarterly_report/table_layout_quarterly_report.json)**
+1. **[HTML Template (ต้นแบบ)](file:///d:/Project/WEPAPP/references/approved_quarterly_report/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.html)**
+2. **[HTML ฉบับตัวจริง](file:///d:/Project/WEPAPP/references/approved_quarterly_report/รายงานผลการตรวจสอบ_ไตรมาส_ฉบับจริง.html)** (ไม่มีข้อความสำเนาคู่ฉบับ และซ่อนบล็อกผู้ร่าง/ตรวจ/พิมพ์/ทาน)
+3. **[HTML สำเนาคู่ฉบับ](file:///d:/Project/WEPAPP/references/approved_quarterly_report/รายงานผลการตรวจสอบ_ไตรมาส_สำเนาคู่ฉบับ.html)** (มีข้อความสำเนาคู่ฉบับ และแสดงบล็อกผู้ร่าง/ตรวจ/พิมพ์/ทานครบถ้วน)
+4. **[Microsoft Word (DOCX)](file:///d:/Project/WEPAPP/references/approved_quarterly_report/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.docx)**
+5. **[Microsoft Excel (XLSX)](file:///d:/Project/WEPAPP/references/approved_quarterly_report/รายงานผลการตรวจสอบ_ไตรมาส_Rebuild_Thai.xlsx)**
+6. **[SSOT Blueprint (JSON)](file:///d:/Project/WEPAPP/references/approved_quarterly_report/table_layout_quarterly_report.json)**
 
 ---
 
