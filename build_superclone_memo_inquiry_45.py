@@ -58,9 +58,9 @@ def generate_html(output_path):
                     <td class="text-left">{r["note"]}</td>
                 </tr>
             """
-        # Fill empty rows up to 10 rows for clean government format
+        # Fill empty rows up to 7 rows (deleting bottom 3 rows as requested)
         current_rows = len(tbl["rows"])
-        for _ in range(max(0, 10 - current_rows)):
+        for _ in range(max(0, 7 - current_rows)):
             rows_html += """
                 <tr>
                     <td>&nbsp;</td>
@@ -72,34 +72,59 @@ def generate_html(output_path):
                 </tr>
             """
 
-        # HTML Signature Blocks via signature_engine.py
-        sig_cdr_html = signature_engine.render_signature_html(sig_cdr, margin_left_px=45, gap_pt=22)
-        sig_insp_html = signature_engine.render_signature_html(sig_insp, margin_left_px=45, gap_pt=22)
+        # HTML Signature Blocks via signature_engine.py with font_size_pt=17
+        sig_cdr_html = f"""
+        <div class="sig-block" style="font-size: 17pt; line-height: 1.0;">
+            <div style="height: 17pt; margin-bottom: 18pt; visibility: hidden;">&nbsp;</div>
+            <div class="sig-name-pos-group" style="margin-left: 45px;">
+                <div class="sig-name-wrapper" style="margin-top: 18pt;">
+                    <span class="sig-rank-anchor" style="font-size: 17pt;">{sig_cdr['rank']}</span>
+                    <div class="sig-name" style="font-size: 17pt;">({sig_cdr['name']})</div>
+                </div>
+                <div class="sig-pos" style="font-size: 17pt;">{sig_cdr['position']}</div>
+                <div class="sig-date" style="margin-top: 4px; font-size: 17pt; text-align: center; white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{sig_cdr['date']}</div>
+            </div>
+        </div>
+        """.strip()
+
+        sig_insp_html = f"""
+        <div class="sig-block" style="font-size: 17pt; line-height: 1.0;">
+            <div class="sig-verify" style="font-weight: 600; margin-bottom: 18pt; font-size: 17pt; text-align: left;">{sig_insp.get('label', 'ผู้ตรวจสอบ')}</div>
+            <div class="sig-name-pos-group" style="margin-left: 45px;">
+                <div class="sig-name-wrapper" style="margin-top: 18pt;">
+                    <span class="sig-rank-anchor" style="font-size: 17pt;">{sig_insp['rank']}</span>
+                    <div class="sig-name" style="font-size: 17pt;">({sig_insp['name']})</div>
+                </div>
+                <div class="sig-pos" style="font-size: 17pt;">{sig_insp['position']}</div>
+                <div class="sig-date" style="margin-top: 4px; font-size: 17pt; text-align: center; white-space: nowrap;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{sig_insp['date']}</div>
+            </div>
+        </div>
+        """.strip()
 
         return f"""
         <div class="page-legal-landscape" id="{page_id}">
             <!-- Form Top Header -->
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2mm;">
                 <div></div>
-                <div style="font-size: 18pt; font-weight: bold; text-align: center; margin-left: 60mm;">
+                <div style="font-size: 20pt; font-weight: 600; text-align: center; margin-left: 60mm;">
                     {p_data["title"]}
                 </div>
-                <div style="text-align: right; font-size: 12pt; line-height: 1.2;">
-                    <div style="font-weight: bold;">{p_data["form_code"]}</div>
+                <div style="text-align: right; font-size: 14pt; line-height: 1.2;">
+                    <div style="font-weight: 600;">{p_data["form_code"]}</div>
                     <div>{p_data["form_subcode"]}</div>
                 </div>
             </div>
 
             <!-- Meta block -->
-            <div style="margin-bottom: 3mm; font-size: 12pt; line-height: 1.5;">
+            <div style="margin-bottom: 3mm; font-size: 17pt; line-height: 1.35;">
                 <div style="margin-bottom: 1mm;">{h["doc_number"]}</div>
                 <div style="margin-bottom: 1mm;">{h["subject"]}</div>
                 <div style="margin-bottom: 1mm;">
-                    <span style="font-weight: bold; display: inline-block; width: 12mm;">{h["to_label"]}</span>
+                    <span style="font-weight: 600; display: inline-block; width: 14mm;">{h["to_label"]}</span>
                     <span>{h["to_value"]}</span>
                 </div>
                 <div style="margin-bottom: 2mm;">
-                    <span style="font-weight: bold; display: inline-block; width: 12mm;">{h["from_label"]}</span>
+                    <span style="font-weight: 600; display: inline-block; width: 14mm;">{h["from_label"]}</span>
                     <span>{h["from_value"]}</span>
                 </div>
                 <div style="padding-left: 20mm; margin-top: 2mm; margin-bottom: 3mm;">
@@ -111,12 +136,12 @@ def generate_html(output_path):
             <table class="grid-table">
                 <thead>
                     <tr>
-                        <th style="width: 5%;">ลำดับ</th>
-                        <th style="width: 24%;">รายการ สป.</th>
-                        <th style="width: 22%;">หมายเลข สป.</th>
-                        <th style="width: 15%;">ที่ใบเบิก ที่ทะเบียนหน่วย<br>จ่าย</th>
-                        <th style="width: 16%;">วันที่ส่งหรือวางใบเบิก</th>
-                        <th style="width: 18%;">หมายเหตุ  (บันทึกโดยหน่วยจ่าย)</th>
+                        <th style="width: 4.5%;">ลำดับ</th>
+                        <th style="width: 20%;">รายการ สป.</th>
+                        <th style="width: 17.5%;">หมายเลข สป.</th>
+                        <th style="width: 22.5%; white-space: nowrap;">ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย</th>
+                        <th style="width: 16.5%;">วันที่ส่งหรือวางใบเบิก</th>
+                        <th style="width: 19%;">หมายเหตุ  (บันทึกโดยหน่วยจ่าย)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -125,7 +150,7 @@ def generate_html(output_path):
             </table>
 
             <!-- Double Signature Block (Universal Red Line Standard) -->
-            <div style="display: flex; justify-content: space-between; margin-top: 12mm; padding: 0 20mm;">
+            <div style="display: flex; justify-content: space-between; margin-top: 6mm; padding: 0 20mm;">
                 <!-- Left: Commander (ผบ.ร้อย / นยส.) -->
                 <div style="width: 45%; display: flex; justify-content: center;">
                     {sig_cdr_html}
@@ -138,7 +163,7 @@ def generate_html(output_path):
             </div>
 
             <!-- Footer note (เลื่อนขึ้นมา 1 บรรทัด) -->
-            <div style="text-align: center; margin-top: 4mm; font-size: 10.5pt;">
+            <div style="text-align: center; margin-top: 4mm; font-size: 12pt;">
                 {p_data["footer_note"]}
             </div>
         </div>
@@ -147,23 +172,32 @@ def generate_html(output_path):
     p2_html = render_tracking_page(p2, "page-2")
     p3_html = render_tracking_page(p3, "page-3")
 
-    sig1_html = signature_engine.render_signature_html(sig1, margin_left_px=45, gap_pt=22)
+    sig1_html = f"""
+    <div class="sig-block" style="font-size: 17pt; line-height: 1.0;">
+        <div class="sig-name-pos-group" style="margin-left: 45px;">
+            <div class="sig-name-wrapper" style="margin-top: 22pt;">
+                <span class="sig-rank-anchor" style="font-size: 17pt;">{sig1['rank']}</span>
+                <div class="sig-name" style="font-size: 17pt;">({sig1['name']})</div>
+            </div>
+            <div class="sig-pos" style="font-size: 17pt;">{sig1['position']}</div>
+        </div>
+    </div>
+    """.strip()
 
-    # Admin footer on page 1
+    # Admin footer on page 1 - RULE-STAFF-REVIEW-FOOTER-V1: exactly 5 Enter (22mm) under commander signature
     admin_footer_html = f"""
-    <div style="position: absolute; right: 15mm; bottom: 15mm; font-size: 11pt; line-height: 1.3; text-align: left;">
-        <table style="border-collapse: collapse; font-size: 11pt;">
-            <tr>
-                <td style="padding-right: 4mm;">{c1["admin_footer"][0]["rank"]}</td>
-                <td style="padding-right: 4mm;">{c1["admin_footer"][0]["role"]}</td>
-                <td>{c1["admin_footer"][0]["date"]}</td>
-            </tr>
-            <tr>
-                <td style="padding-right: 4mm;">{c1["admin_footer"][1]["rank"]}</td>
-                <td style="padding-right: 4mm;">{c1["admin_footer"][1]["role"]}&nbsp;&nbsp;&nbsp;&nbsp;{c1["admin_footer"][1]["day"]}</td>
-                <td>{c1["admin_footer"][1]["date"]}</td>
-            </tr>
-        </table>
+    <div class="memo-footer-staff">
+        <div class="staff-grid">
+            <div>{c1["admin_footer"][0]["rank"]}</div>
+            <div>{c1["admin_footer"][0]["role"]}</div>
+            <div style="text-align: right;"></div>
+            <div style="padding-left: 2mm;">{c1["admin_footer"][0]["date"]}</div>
+
+            <div>{c1["admin_footer"][1]["rank"]}</div>
+            <div>{c1["admin_footer"][1]["role"]}</div>
+            <div style="text-align: right;">{c1["admin_footer"][1]["day"]}</div>
+            <div style="padding-left: 2mm;">{c1["admin_footer"][1]["date"]}</div>
+        </div>
     </div>
     """
 
@@ -175,8 +209,52 @@ def generate_html(output_path):
     <title>{bp["document_title"]}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <style>
+        /* ======================================================== */
+        /* OFFICIAL GOVERNMENT TH SARABUN PSK ENGINE (PRIMARY SSOT) */
+        /* ======================================================== */
+        @font-face {{
+            font-family: 'TH Sarabun PSK';
+            font-style: normal;
+            font-weight: 400;
+            src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+                 url('/fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('../fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('../../fonts/THSarabunPSK.ttf') format('truetype');
+        }}
+        @font-face {{
+            font-family: 'TH Sarabun PSK';
+            font-style: normal;
+            font-weight: 300;
+            src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+                 url('/fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('../fonts/THSarabunPSK.ttf') format('truetype'),
+                 url('../../fonts/THSarabunPSK.ttf') format('truetype');
+        }}
+        @font-face {{
+            font-family: 'TH Sarabun PSK';
+            font-style: normal;
+            font-weight: 600;
+            src: local('TH Sarabun PSK Bold'), local('THSarabunPSK-Bold'),
+                 url('/fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+                 url('fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+                 url('../fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+                 url('../../fonts/THSarabunPSK-Bold.ttf') format('truetype');
+        }}
+        @font-face {{
+            font-family: 'TH Sarabun PSK';
+            font-style: normal;
+            font-weight: 700;
+            src: local('TH Sarabun PSK Bold'), local('THSarabunPSK-Bold'),
+                 url('/fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+                 url('fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+                 url('../fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+                 url('../../fonts/THSarabunPSK-Bold.ttf') format('truetype');
+        }}
+
         @page portrait-page {{
             size: A4 portrait;
             margin: 0;
@@ -189,19 +267,19 @@ def generate_html(output_path):
             box-sizing: border-box;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
-            font-family: 'TH Sarabun PSK', 'THSarabunNew', 'Sarabun', sans-serif;
+            font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', sans-serif;
         }}
         body {{
             margin: 0;
             padding: 20px 0;
             background-color: #525659;
-            font-family: 'TH Sarabun PSK', 'THSarabunNew', 'Sarabun', sans-serif;
-            font-size: 14pt;
+            font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', sans-serif;
+            font-size: 17pt;
             font-weight: normal;
             font-feature-settings: "locl" 1, "numr" 1;
             font-variant-numeric: tabular-nums;
             color: #000000;
-            line-height: 1.15;
+            line-height: 1.25;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -219,8 +297,8 @@ def generate_html(output_path):
             overflow: hidden;
             page-break-after: always;
             page: portrait-page;
-            font-size: 12pt;
-            line-height: 1.5;
+            font-size: 17pt;
+            line-height: 1.25;
         }}
 
         /* PAGE 2 & 3: LEGAL LANDSCAPE */
@@ -235,6 +313,8 @@ def generate_html(output_path):
             overflow: hidden;
             page-break-after: always;
             page: landscape-page;
+            font-size: 17pt;
+            line-height: 1.25;
         }}
 
         @media print {{
@@ -257,12 +337,12 @@ def generate_html(output_path):
         .text-center {{ text-align: center; }}
         .text-left {{ text-align: left; }}
         .text-right {{ text-align: right; }}
-        .font-bold {{ font-weight: bold; }}
+        .font-bold {{ font-weight: 600; }}
 
         /* MEMO HEADER */
         .memo-copy-label {{
             text-align: center;
-            font-size: 11pt;
+            font-size: 13pt;
             margin-bottom: 2mm;
         }}
         .memo-header-container {{
@@ -285,32 +365,37 @@ def generate_html(output_path):
             right: 0;
             top: 6mm;
             text-align: center;
-            font-size: 24pt;
-            font-weight: bold;
+            font-size: 29pt;
+            font-weight: 600;
             line-height: 1;
             font-family: 'TH Sarabun PSK', 'THSarabunNew', 'Sarabun', sans-serif;
         }}
         .memo-meta-label {{
-            font-size: 14pt;
-            font-weight: bold;
+            font-size: 20pt;
+            font-weight: 600;
+            line-height: 1.05;
+            padding-bottom: 1.5px;
             white-space: nowrap;
         }}
         .memo-meta-dots {{
             border-bottom: 1px dotted #000;
             padding-left: 2mm;
+            padding-bottom: 1.5px;
+            font-size: 17pt;
+            line-height: 1.05;
         }}
         .memo-content {{
-            margin-top: 3mm;
-            font-size: 12pt;
-            line-height: 1.5;
+            margin-top: 2mm;
+            font-size: 17pt;
+            line-height: 1.25;
         }}
         .memo-p {{
             text-indent: 2.5cm;
-            margin: 0 0 2.5mm 0;
+            margin: 0 0 1.5mm 0;
             text-align: justify;
-            text-justify: inter-cluster;
-            line-height: 1.5;
-            font-size: 12pt;
+            text-justify: inter-cluster; word-break: keep-all; overflow-wrap: break-word;
+            line-height: 1.25;
+            font-size: 17pt;
         }}
 
         /* UNIVERSAL SIGNATURE BLOCK (RULE-UNIVERSAL-SIGNATURE-BLOCK-V1) */
@@ -320,8 +405,8 @@ def generate_html(output_path):
             align-items: flex-start;
             position: relative;
             min-width: 220px;
-            font-size: 12pt;
-            line-height: 1.0;
+            font-size: 17pt;
+            line-height: 1.2;
         }}
         .sig-name-pos-group {{
             display: inline-flex;
@@ -341,42 +426,72 @@ def generate_html(output_path):
             right: 100%;
             bottom: calc(100% + 18px);
             white-space: nowrap;
-            font-size: 12pt;
-            line-height: 1.0;
+            font-size: 17pt;
+            line-height: 1.2;
         }}
         .sig-name {{
             margin: 0;
-            line-height: 1.15;
+            line-height: 1.2;
             text-align: center;
             white-space: nowrap;
-            font-size: 12pt;
+            font-size: 17pt;
             display: block;
         }}
         .sig-pos {{
             margin: 0;
-            line-height: 1.15;
+            line-height: 1.2;
             text-align: center;
             white-space: nowrap;
-            font-size: 12pt;
+            font-size: 17pt;
             display: block;
         }}
 
-        /* TABLE STYLES (LEGAL LANDSCAPE) */
+        /* STAFF INITIALS FOOTER (RULE-STAFF-REVIEW-FOOTER-V1: Mandatory 4-Column Dual-Axis) */
+        .memo-footer-staff {{
+            margin-top: 22mm; /* อยู่ใต้ ผบ.ป.๔ พัน.๔ ร้อย.๒ ๕ เอนเตอร์ */
+            display: flex;
+            justify-content: flex-end;
+        }}
+        .staff-grid {{
+            display: grid;
+            grid-template-columns: 26mm 22mm 8mm 20mm;
+            font-size: 13.5pt;
+            font-weight: 300;
+            line-height: 1.25;
+            text-align: left;
+        }}
+
+        /* TABLE STYLES (LEGAL LANDSCAPE) - Scaled down 5% to prevent signature overflow */
         table.grid-table {{
             width: 100%;
             border-collapse: collapse;
-            font-size: 11pt;
+            font-size: 16.15pt;
             margin-top: 2mm;
         }}
         table.grid-table th, table.grid-table td {{
             border: 1px solid #000000;
-            padding: 1.5mm 1.5mm;
+            padding: 1.1mm 1.5mm;
             vertical-align: middle;
         }}
         table.grid-table th {{
             text-align: center;
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 16.15pt;
             background-color: #ffffff;
+        }}
+        table.grid-table td {{
+            font-size: 16.15pt;
+        }}
+
+        /* RULE 9: THIN FONT-WEIGHT STANDARD (font-weight: 300 for non-headings) */
+        p, span, td, .memo-p, .memo-content, .memo-att-row, .memo-att-desc, .memo-att-qty,
+        .sig-rank-anchor, .sig-name, .sig-pos, .staff-grid, .staff-grid div {{
+            font-weight: 300;
+        }}
+
+        .memo-title, .memo-meta-label, th, table.grid-table th,
+        .font-bold, b, strong, .sig-verify {{
+            font-weight: 600;
         }}
     </style>
 </head>
@@ -390,50 +505,50 @@ def generate_html(output_path):
             <div class="memo-title">{c1["title"]}</div>
         </div>
 
-        <div style="margin-top: 1mm; font-size: 12pt; line-height: 1.5;">
+        <div style="margin-top: 1mm; font-size: 17pt; line-height: 1.25;">
             <!-- ส่วนราชการ -->
             <div style="display: flex; align-items: baseline; margin-bottom: 1.5mm;">
                 <span class="memo-meta-label" style="margin-right: 2mm;">{c1["official_department"]}</span>
-                <div style="flex: 1; border-bottom: 1px dotted #000; padding-left: 2mm; padding-bottom: 1px;">{c1["department_value"]}</div>
+                <div style="flex: 1; border-bottom: 1px dotted #000; padding-left: 2mm; padding-bottom: 1.5px; font-size: 17pt;">{c1["department_value"]}</div>
             </div>
             <!-- ที่ และ วันที่ -->
             <div style="display: flex; align-items: baseline; margin-bottom: 1.5mm;">
                 <div style="display: flex; align-items: baseline; width: 45%;">
                     <span class="memo-meta-label" style="margin-right: 2mm;">{c1["doc_number_label"]}</span>
-                    <div style="flex: 1; border-bottom: 1px dotted #000; padding-left: 2mm; padding-bottom: 1px;">{c1["doc_number_value"]}</div>
+                    <div style="flex: 1; border-bottom: 1px dotted #000; padding-left: 2mm; padding-bottom: 1.5px; font-size: 17pt;">{c1["doc_number_value"]}</div>
                 </div>
                 <div style="display: flex; align-items: baseline; width: 55%; padding-left: 10mm;">
                     <span class="memo-meta-label" style="margin-right: 2mm;">{c1["doc_date_label"]}</span>
-                    <div style="flex: 1; border-bottom: 1px dotted #000; padding-left: 2mm; padding-bottom: 1px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{c1["doc_date_month_year"]}</div>
+                    <div style="flex: 1; border-bottom: 1px dotted #000; padding-left: 2mm; padding-bottom: 1.5px; font-size: 17pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{c1["doc_date_month_year"]}</div>
                 </div>
             </div>
             <!-- เรื่อง -->
             <div style="display: flex; align-items: baseline; margin-bottom: 1.5mm;">
                 <span class="memo-meta-label" style="margin-right: 2mm;">{c1["subject_label"]}</span>
-                <div style="flex: 1; border-bottom: 1px dotted #000; padding-left: 2mm; padding-bottom: 1px;">{c1["subject_value"]}</div>
+                <div style="flex: 1; border-bottom: 1px dotted #000; padding-left: 2mm; padding-bottom: 1.5px; font-size: 17pt;">{c1["subject_value"]}</div>
             </div>
         </div>
 
-        <div class="memo-content">
-            <div style="margin-bottom: 2mm;">
+        <div class="memo-content" style="font-size: 17pt; line-height: 1.25;">
+            <div style="margin-bottom: 2mm; font-size: 17pt;">
                 <span class="font-bold">{c1["recipient_label"]}</span>&nbsp;&nbsp;{c1["recipient_value"]}
             </div>
-            <div style="margin-bottom: 2mm;">
+            <div style="margin-bottom: 2mm; font-size: 17pt;">
                 <span class="font-bold">{c1["reference_label"]}</span>&nbsp;&nbsp;{c1["reference_value"]}
             </div>
 
-            <div style="margin: 0 0 2.5mm 0; font-size: 12pt; line-height: 1.5;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 12pt; line-height: 1.5;">
+            <div style="margin: 0 0 2.5mm 0; font-size: 17pt; line-height: 1.25;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 17pt; line-height: 1.25;">
                     <tr>
-                        <td style="width: 28mm; vertical-align: top; white-space: nowrap;"><span class="font-bold">{c1["attachments_label"]}</span></td>
-                        <td style="vertical-align: top;">{c1["attachments"][0]["title"]}</td>
-                        <td style="width: 35mm; vertical-align: top; text-align: right; white-space: nowrap;">{c1["attachments"][0]["quantity"]}</td>
+                        <td style="width: 32mm; vertical-align: top; white-space: nowrap;"><span class="font-bold">{c1["attachments_label"]}</span></td>
+                        <td style="vertical-align: top; font-size: 17pt;">{c1["attachments"][0]["title"]}</td>
+                        <td style="width: 35mm; vertical-align: top; text-align: right; white-space: nowrap; font-size: 17pt;">{c1["attachments"][0]["quantity"]}</td>
                     </tr>
                 </table>
             </div>
 
-            <p class="memo-p">{c1["paragraphs"][0]}</p>
-            <p class="memo-p">{c1["paragraphs"][1]}</p>
+            <p class="memo-p" style="font-size: 17pt; line-height: 1.25;">{c1["paragraphs"][0]}</p>
+            <p class="memo-p" style="font-size: 17pt; line-height: 1.25;">{c1["paragraphs"][1]}</p>
         </div>
 
         <!-- SIGNATURE BLOCK (RULE: เคาะ 5 Enter จากบรรทัดสุดท้าย, พิกัดซ้าย 130 มม. - Margin ซ้าย 25 มม. = padding-left 105 มม.) -->
@@ -654,12 +769,12 @@ def generate_docx(output_path):
             set_run_font(r_it, "TH Sarabun PSK", 12)
 
         # Grid Table (6 columns)
-        cols_w = [Inches(0.6), Inches(3.2), Inches(2.7), Inches(1.9), Inches(1.9), Inches(2.5)]
+        cols_w = [Inches(0.6), Inches(2.6), Inches(2.2), Inches(2.8), Inches(2.0), Inches(2.6)]
         t_form = doc.add_table(rows=1, cols=6)
         t_form.alignment = WD_TABLE_ALIGNMENT.CENTER
         
         # Header Row
-        headers = ["ลำดับ", "รายการ สป.", "หมายเลข สป.", "ที่ใบเบิก ที่ทะเบียนหน่วย\nจ่าย", "วันที่ส่งหรือวางใบเบิก", "หมายเหตุ (บันทึกโดยหน่วยจ่าย)"]
+        headers = ["ลำดับ", "รายการ สป.", "หมายเลข สป.", "ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย", "วันที่ส่งหรือวางใบเบิก", "หมายเหตุ (บันทึกโดยหน่วยจ่าย)"]
         for c_i, h_txt in enumerate(headers):
             cell = t_form.cell(0, c_i)
             cell.width = cols_w[c_i]
@@ -690,7 +805,7 @@ def generate_docx(output_path):
                                       right={"val": "single", "sz": "4", "color": "000000"})
 
         # Pad rows
-        for _ in range(max(0, 10 - len(tbl_data["rows"]))):
+        for _ in range(max(0, 7 - len(tbl_data["rows"]))):
             row = t_form.add_row()
             for c_i in range(6):
                 cell = row.cells[c_i]
@@ -914,10 +1029,10 @@ def generate_xlsx(output_path):
         ws[f"B{start_sig_row + 4}"].alignment = align_center
         ws.merge_cells(f"B{start_sig_row + 4}:F{start_sig_row + 4}")
 
-        ws.column_dimensions["A"].width = 8
-        ws.column_dimensions["B"].width = 30
-        ws.column_dimensions["C"].width = 28
-        ws.column_dimensions["D"].width = 24
+        ws.column_dimensions["A"].width = 7
+        ws.column_dimensions["B"].width = 25
+        ws.column_dimensions["C"].width = 22
+        ws.column_dimensions["D"].width = 30
         ws.column_dimensions["E"].width = 22
         ws.column_dimensions["F"].width = 28
 

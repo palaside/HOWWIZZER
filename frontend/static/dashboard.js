@@ -854,19 +854,19 @@ const MASTER_DOC_INVENTORY = [
     dualCopy: true
   },
   {
-    id: 'doc-weekly-rep',
-    code: 'WEEKLY-REP',
-    title: 'บันทึกรายงานผลการตรวจประจำสัปดาห์ (ชุดตรวจ)',
-    desc: 'รายงานผลการตรวจสภาพยุทโธปกรณ์ประจำสัปดาห์ พร้อมบล็อกลงนามมาตรฐาน Red Line Standard',
+    id: 'doc-equip-list',
+    code: 'EQUIP-LIST',
+    title: 'บัญชีรายการและสิ่งอุปกรณ์',
+    desc: 'บัญชีรายการและสิ่งอุปกรณ์ พร้อมบล็อกลงนามมาตรฐาน Red Line Standard',
     category: 'weekly',
     queueOrder: 2,
     isUpcoming: true,
     cadence: 'ประจำสัปดาห์ (ทุกวันพฤหัสบดี)',
     queueBadge: 'คิวที่ ๒ (ประจำสัปดาห์)',
     queueDesc: 'วงรอบ ๒-๖ พ.ย. ๖๙ (เสนอเซ็น พฤ. ๕ พ.ย.)',
-    htmlFile: '/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.html',
-    docxFile: '/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.docx',
-    xlsxFile: '/บันทึกรายงานผลการตรวจประจำสัปดาห์_Rebuild_Thai.xlsx',
+    htmlFile: '/บัญชีรายการและสิ่งอุปกรณ์_Rebuild_Thai.html',
+    docxFile: '/บัญชีรายการและสิ่งอุปกรณ์_Rebuild_Thai.docx',
+    xlsxFile: '/บัญชีรายการและสิ่งอุปกรณ์_Rebuild_Thai.xlsx',
     dualCopy: true
   },
   {

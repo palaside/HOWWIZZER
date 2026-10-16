@@ -84,12 +84,12 @@
       },
       "table": {
         "columns": [
-          { "index": 0, "name": "ลำดับ", "width_pct": 5, "align": "center" },
-          { "index": 1, "name": "รายการ สป.", "width_pct": 24, "align": "left" },
-          { "index": 2, "name": "หมายเลข สป.", "width_pct": 22, "align": "center" },
-          { "index": 3, "name": "ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย", "width_pct": 15, "align": "center" },
-          { "index": 4, "name": "วันที่ส่งหรือวางใบเบิก", "width_pct": 16, "align": "center" },
-          { "index": 5, "name": "หมายเหตุ  (บันทึกโดยหน่วยจ่าย)", "width_pct": 18, "align": "left" }
+          { "index": 0, "name": "ลำดับ", "width_pct": 4.5, "align": "center" },
+          { "index": 1, "name": "รายการ สป.", "width_pct": 20, "align": "left" },
+          { "index": 2, "name": "หมายเลข สป.", "width_pct": 17.5, "align": "center" },
+          { "index": 3, "name": "ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย", "width_pct": 22.5, "align": "center" },
+          { "index": 4, "name": "วันที่ส่งหรือวางใบเบิก", "width_pct": 16.5, "align": "center" },
+          { "index": 5, "name": "หมายเหตุ  (บันทึกโดยหน่วยจ่าย)", "width_pct": 19, "align": "left" }
         ],
         "rows": [
           {
@@ -169,12 +169,12 @@
       },
       "table": {
         "columns": [
-          { "index": 0, "name": "ลำดับ", "width_pct": 5, "align": "center" },
-          { "index": 1, "name": "รายการ สป.", "width_pct": 24, "align": "left" },
-          { "index": 2, "name": "หมายเลข สป.", "width_pct": 22, "align": "center" },
-          { "index": 3, "name": "ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย", "width_pct": 15, "align": "center" },
-          { "index": 4, "name": "วันที่ส่งหรือวางใบเบิก", "width_pct": 16, "align": "center" },
-          { "index": 5, "name": "หมายเหตุ  (บันทึกโดยหน่วยจ่าย)", "width_pct": 18, "align": "left" }
+          { "index": 0, "name": "ลำดับ", "width_pct": 4.5, "align": "center" },
+          { "index": 1, "name": "รายการ สป.", "width_pct": 20, "align": "left" },
+          { "index": 2, "name": "หมายเลข สป.", "width_pct": 17.5, "align": "center" },
+          { "index": 3, "name": "ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย", "width_pct": 22.5, "align": "center" },
+          { "index": 4, "name": "วันที่ส่งหรือวางใบเบิก", "width_pct": 16.5, "align": "center" },
+          { "index": 5, "name": "หมายเหตุ  (บันทึกโดยหน่วยจ่าย)", "width_pct": 19, "align": "left" }
         ],
         "rows": [
           {
