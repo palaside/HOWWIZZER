@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>บัญชี​รายละเอียด​หมายเลข ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑ ปรับปรุง</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4 landscape;
+            margin: 8mm 10mm;
+        }
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+        body {
+            font-family: 'TH Sarabun PSK', 'TH Sarabun New', 'Sarabun', 'Angsana New', sans-serif;
+            font-size: 16pt;
+            line-height: 1.25;
+            color: #000;
+            background-color: #f5f5f7;
+            margin: 0;
+            padding: 20px;
+            font-feature-settings: "locl" 1, "numr" 1;
+            -webkit-font-smoothing: antialiased;
+        }
+        .page-landscape {
+            width: 297mm;
+            min-height: 210mm;
+            margin: 0 auto;
+            padding: 12mm 14mm 10mm 14mm;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        .doc-header {
+            text-align: center;
+            margin-bottom: 0;
+        }
+        .doc-title {
+            font-size: 18pt;
+            font-weight: bold;
+            margin: 0 0 2px 0;
+            letter-spacing: 0.3px;
+        }
+        .doc-unit {
+            font-size: 16pt;
+            font-weight: bold;
+            margin: 0 0 18px 0; /* ห่าง 1 เคาะ (1 บรรทัด) กับหัวตาราง */
+            line-height: 1.3;
+        }
+        table.military-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+            margin-bottom: 20px;
+            border: 1px solid #000;
+        }
+        table.military-table th,
+        table.military-table td {
+            border: 1px solid #000;
+            padding: 4px 2px;
+            vertical-align: middle;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        table.military-table th {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14pt;
+            background-color: #fff;
+            line-height: 1.2;
+            height: 64px;
+        }
+        table.military-table td {
+            font-size: 14pt;
+            height: 46px;
+            text-align: center;
+            line-height: 1.25;
+        }
+        .tire-cell {
+            padding: 2px 2px !important;
+        }
+        .tire-text {
+            font-size: 12.5pt;
+            line-height: 1.18;
+            display: block;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: clip;
+        }
+
+        /* ========================================================= */
+        /* SIGNATURE BLOCK ENGINE v1.0 — TRUE RED LINE ALIGNMENT     */
+        /* ท้ายยศชนวงเล็บเปิด: จุด . ของ จ.ส.อ. ชนเส้นแนวดิ่งเดียวกับ ( ของชื่อ */
+        /* ========================================================= */
+        .doc-footer-grid {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 25px;
+            padding: 0 45px 0 0;
+        }
+        .sig-block {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            font-size: 16pt;
+            line-height: 1.0;
+        }
+        .sig-verify {
+            margin-bottom: 8px;
+            font-size: 16pt;
+            line-height: 1.0;
+        }
+        
+        /* กล่องชื่อและตำแหน่ง */
+        .sig-name-pos-group {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin-left: 95px;
+        }
+
+        /* กรอบชื่อ: ตัวยึดแนววงเล็บเปิด ( */
+        .sig-name-wrapper {
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+            margin-top: 30px; /* พื้นที่สำหรับลงลายมือชื่อจริง */
+        }
+
+        /* บรรทัดยศ: จุด . ท้ายยศ ชนขอบซ้ายของกรอบชื่อ ซึ่งคือ ( พอดีเป๊ะ 100% */
+        .sig-rank-anchor {
+            position: absolute;
+            right: 100%; /* ชนแนวเส้นดิ่งเดียวกับ ( พอดีเป๊ะ */
+            bottom: calc(100% + 20px);
+            white-space: nowrap;
+            font-size: 16pt;
+            line-height: 1.0;
+        }
+
+        /* ชื่อและตำแหน่ง: จัดกึ่งกลางร่วมกัน 1 enter ไม่มีระยะย่อหน้า */
+        .sig-name {
+            margin: 0;
+            line-height: 1.15;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 16pt;
+            display: block;
+        }
+        .sig-pos {
+            margin: 0;
+            line-height: 1.15;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 16pt;
+            display: block;
+        }
+
+        @media print {
+            body { background: transparent; padding: 0; }
+            .page-landscape { padding: 0; width: 100%; box-shadow: none; }
+        }
+    </style>
+<!-- UNIFIED MILITARY SARABUN FONT-ENGINE & RULE 9 THIN/LIGHT STANDARD -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<style id="rta-universal-thin-font-engine">
+    /* ======================================================== */
+    /* OFFICIAL GOVERNMENT TH SARABUN PSK ENGINE (PRIMARY SSOT) */
+    /* ======================================================== */
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 400;
+        src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+             url('/fonts/THSarabunPSK.ttf') format('truetype'),
+             url('fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 300;
+        src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+             url('/fonts/THSarabunPSK.ttf') format('truetype'),
+             url('fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 100;
+        src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+             url('/fonts/THSarabunPSK.ttf') format('truetype'),
+             url('fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 600;
+        src: local('TH Sarabun PSK Bold'), local('THSarabunPSK-Bold'),
+             url('/fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK-Bold.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 700;
+        src: local('TH Sarabun PSK Bold'), local('THSarabunPSK-Bold'),
+             url('/fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK-Bold.ttf') format('truetype');
+    }
+
+    /* Fallback: TH Sarabun New */
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 400;
+        src: local('TH Sarabun New'), local('THSarabunNew'),
+             url('/fonts/THSarabunNew.ttf') format('truetype'),
+             url('fonts/THSarabunNew.ttf') format('truetype'),
+             url('../fonts/THSarabunNew.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 300;
+        src: local('TH Sarabun New'), local('THSarabunNew'),
+             url('/fonts/THSarabunNew.ttf') format('truetype'),
+             url('fonts/THSarabunNew.ttf') format('truetype'),
+             url('../fonts/THSarabunNew.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 600;
+        src: local('TH Sarabun New Bold'), local('THSarabunNew-Bold'),
+             url('/fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew-Bold.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 700;
+        src: local('TH Sarabun New Bold'), local('THSarabunNew-Bold'),
+             url('/fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew-Bold.ttf') format('truetype');
+    }
+
+    /* RULE 9: THIN FONT-WEIGHT MANDATE (Non-headings = 300 Thin/Light, Headings = 600 Bold) */
+    body, div, p, span, td, li, a, input, textarea, label, select, button,
+    section, article, main, header, footer,
+    .memo-p, .memo-body, .memo-closing, .memo-content, .memo-text, .content-para,
+    .memo-meta-dots, .meta-fill-dotted, .dotted-line, .memo-att-row, .memo-att-desc, .memo-att-qty,
+    .salutation-row, .salutation, .reference-section, .attachment-section, .attachment-row, .attachment-item,
+    .sig-name, .sig-pos, .sig-date, .sig-rank-anchor,
+    .staff-grid, .staff-grid div, .staff-col, .form-table td, table td,
+    .doc-desc, .stat-pill, .btn-action, .meta-row, .meta-half-col,
+    .meta-fill-dotted div {
+        font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', Tahoma, sans-serif !important;
+        font-weight: 300 !important;
+    }
+
+    /* Headings & Important Labels: Word-Standard Bold (font-weight: 600/Bold) */
+    b, strong, .font-bold, .bold, th, table th,
+    .memo-title, .doc-title, .meta-label, .memo-meta-label,
+    .form-header-title, .form-header-sub, .form-title,
+    .photo-cert-text, .sig-verify,
+    .brand-title, .brand-badge, .badge, .doc-code,
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', Tahoma, sans-serif !important;
+        font-weight: 600 !important;
+    }
+</style>
+
+
+
+</head>
+<body>
+    <div class="page-landscape">
+        
+        <div class="doc-header">
+            <div class="doc-title">บัญชี​รายละเอียด​หมายเลข ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม ๑๐๑ เอ ๑ ปรับปรุง</div>
+            <div class="doc-unit">ป.๔ พัน.๔ ร้อย.๒</div>
+        </div>
+
+        <table class="military-table">
+            <thead>
+<tr>
+    <th style="width: 4.74%;">ลำดับ</th>
+    <th style="width: 7.12%;">หมายเลข<br>ปบค.๙๕</th>
+    <th style="width: 5.87%;">ลำกล้อง<br>ปืน</th>
+    <th style="width: 6.99%;">รถ​รอง​ปืน<br>(เปล​ปืน)</th>
+    <th style="width: 7.12%;">เครื่องรับ<br>แรง​ถอย</th>
+    <th style="width: 17.73%;">ยาง​ซ้าย</th>
+    <th style="width: 16.85%;">ยาง​ขวา</th>
+    <th style="width: 7.12%;">ฐาน​กล้อง<br>เล็ง<br>M.๒๑ A.๑</th>
+    <th style="width: 6.12%;">เครื่อง​ให้<br>ระ​ยิง<br>M.๔ A.๑</th>
+    <th style="width: 7.99%;">ฐาน​กล้อง<br>ข้อศอก M.๒๓</th>
+    <th style="width: 5.37%;">ค่า ตร.</th>
+    <th style="width: 6.99%;">หมายเหตุ</th>
+</tr>
+            </thead>
+            <tbody>
+<tr>
+    <td>๑</td>
+    <td>๒๔๐๘๐</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td class="tire-cell"><span class="tire-text"></span></td>
+    <td class="tire-cell"><span class="tire-text"></span></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>ส่ง​ซ่อม</td>
+</tr>
+<tr>
+    <td>๒</td>
+    <td>๑๙๖๐๙</td>
+    <td>๑๔๐๔๑</td>
+    <td>๓๑๖๖</td>
+    <td>๑๓๗๔๐</td>
+    <td class="tire-cell"><span class="tire-text">Superstone  LA๐๗๐๗๐๖<br>(๒๘  ๑๙)</span></td>
+    <td class="tire-cell"><span class="tire-text">SuperstoneLA๐๗๐๑๔๗<br>(๒๙  ๑๙)</span></td>
+    <td>๐๒๘๓</td>
+    <td>๑๙๓๒</td>
+    <td>๙๒๘๒</td>
+    <td>-๗.๙๐</td>
+    <td></td>
+</tr>
+<tr>
+    <td>๓</td>
+    <td>๒๐๖๗๐</td>
+    <td>๑๔๑๓๙</td>
+    <td>๑๒๔๐๕</td>
+    <td>๘๓๙</td>
+    <td class="tire-cell"><span class="tire-text">Superstone NP๐๙๐๒๙๗<br>(๓๘  ๒๓)</span></td>
+    <td class="tire-cell"><span class="tire-text">Superstone NP๐๙๐๐๔๙<br>(๓๖  ๒๓)</span></td>
+    <td>๐๒๙๐</td>
+    <td>๒๑๕๑๐</td>
+    <td>๑๑๒๒</td>
+    <td>-๘.๒๑</td>
+    <td></td>
+</tr>
+<tr>
+    <td>๔</td>
+    <td>๒๓๕๕๔</td>
+    <td>๑๔๑๘๐</td>
+    <td>๑๐๗๘๐</td>
+    <td>๑๒๓๑</td>
+    <td class="tire-cell"><span class="tire-text">Superstone HC๐๙๐๑๑๙<br>(๓๘  ๒๑)</span></td>
+    <td class="tire-cell"><span class="tire-text">Superstone HC๐๗๐๑๔๗<br>(๓๘  ๒๑)</span></td>
+    <td>๐๔๒๔</td>
+    <td>๒๔๐๙๙</td>
+    <td>๒๐๙๒๕</td>
+    <td>-๘.๔๑</td>
+    <td></td>
+</tr>
+<tr>
+    <td>๕</td>
+    <td>๒๔๒๘๐</td>
+    <td>๑๕๓๒๕</td>
+    <td>๑๒๕๙๕</td>
+    <td>๓๔๕๖</td>
+    <td class="tire-cell"><span class="tire-text">Superstone AA๐๒๐๓๕๘<br>(๐๙  ๑๔)</span></td>
+    <td class="tire-cell"><span class="tire-text">Superstone AA๐๓๐๒๙๘<br>(๑๐  ๑๔)</span></td>
+    <td>๐๔๓๕</td>
+    <td>๒๓๑๗๓</td>
+    <td>๘๓๑๒</td>
+    <td>-๙.๐๖</td>
+    <td></td>
+</tr>
+<tr>
+    <td>๖</td>
+    <td>๘๕๑๖</td>
+    <td>๑๔๐๓๖</td>
+    <td>๖๙๕๕</td>
+    <td>๑๒๐๙</td>
+    <td class="tire-cell"><span class="tire-text">Superstone AA๐๓๐๒๙๐<br>(๑๑  ๑๔)</span></td>
+    <td class="tire-cell"><span class="tire-text">Superstone AA๐๓๐๓๔๕<br>(๑๑  ๑๔)</span></td>
+    <td>๐๔๓๑</td>
+    <td>๒๔๙๖๑</td>
+    <td>๒๑๙๖๗</td>
+    <td>-๙.๑๒</td>
+    <td></td>
+</tr>
+
+            </tbody>
+        </table>
+
+        <div class="doc-footer-grid">
+            <div class="sig-block">
+                <div class="sig-verify">ตรวจถูกต้อง</div>
+                <div class="sig-name-pos-group">
+                    <div class="sig-name-wrapper">
+                        <span class="sig-rank-anchor">จ.ส.อ.</span>
+                        <div class="sig-name">(ณัฐ​ชัย   รักษา​วงษ์)</div>
+                    </div>
+                    <div class="sig-pos">ส.หน.สย. ป.๔ พัน.๔ ร้อย.๒</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

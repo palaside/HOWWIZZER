@@ -1,0 +1,122 @@
+/* global_doc_style.css – Central stylesheet for all generated documents
+   Conforms to RULE‑UNIVERSAL‑SIGNATURE‑BLOCK‑V1 and RULE‑SARABUN‑DOC‑STANDARD‑V1 */
+
+/* ============================================================= */
+/* Typography – TH Sarabun PSK (primary) */
+/* ============================================================= */
+body {
+  font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', sans-serif !important;
+  font-weight: 300; /* Thin for body text */
+  font-size: 16pt; /* Default body size */
+  line-height: 1.18;
+  color: #000;
+}
+
+h1, .heading-primary {
+  font-size: 29pt;
+  font-weight: 600; /* Bold for main heading */
+  margin: 0 0 12px 0;
+}
+
+h2, .heading-secondary {
+  font-size: 20pt;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+h3, .heading-tertiary {
+  font-size: 17pt;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+/* ============================================================= */
+/* Signature Block – Red Line Standard */
+/* ============================================================= */
+.sig-block {
+  position: relative;
+  font-size: 12pt; /* can be overridden via render function */
+  line-height: 1.0;
+}
+
+.sig-rank-anchor {
+  position: absolute;
+  right: 100%; /* aligns the final '.' of the rank with the opening '(' of the name */
+  top: 0;
+  font-weight: normal;
+}
+
+.sig-name-wrapper {
+  margin-left: 55px; /* default left margin – matches margin_left_px in engine */
+  margin-top: 22pt; /* gap before first line */
+}
+
+.sig-name {
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+.sig-pos {
+  font-weight: 300;
+  text-align: center; /* centered under the name */
+}
+
+.sig-label-anchor,
+.sig-role-anchor {
+  position: absolute;
+  right: 100%;
+  bottom: calc(100% + 22pt + 18pt); /* gap + line height */
+  font-weight: bold;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.sig-date {
+  margin-top: 4pt;
+  font-size: 12pt;
+  text-align: center;
+}
+
+/* ============================================================= */
+/* Card Layout – ensure uniform styling of doc cards */
+/* ============================================================= */
+.doc-card {
+  background: rgba(0,0,0,0.04);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.doc-card .card-header-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13.5pt;
+  font-weight: 600; /* heading style for code and format tag */
+}
+
+.doc-card .doc-title {
+  font-size: 16pt;
+  font-weight: 300;
+  margin: 4px 0;
+}
+
+.doc-card .doc-desc {
+  font-size: 14pt;
+  font-weight: 300;
+  color: #555;
+}
+
+/* ============================================================= */
+/* Utility classes */
+/* ============================================================= */
+.btn-action {
+  font-size: 13.5pt;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  background: rgba(255,255,255,0.05);
+  color: var(--accent-gold);
+  border: 1px solid rgba(245,158,11,0.4);
+}

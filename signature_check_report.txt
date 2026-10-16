@@ -1,0 +1,7 @@
+Signature Block Check Report
+==============================
+
+Total HTML files scanned: 67
+Files with passing signature blocks: 67
+Files with failing signature blocks: 0
+

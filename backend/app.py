@@ -352,3 +352,29 @@ def index():
         return HTMLResponse(root_index.read_text(encoding="utf-8"))
     return HTMLResponse("<h1>Tactical Military Document Automation Suite</h1>")
 
+
+# --- Root Document Fallback Serving ---
+@app.get("/{filename:path}")
+def serve_root_docs(filename: str):
+    import urllib.parse
+    decoded = urllib.parse.unquote(filename).strip("/")
+    base_name = Path(decoded).name
+
+    candidates = [
+        FRONTEND_DIR / "static" / "docs" / base_name,
+        WORKSPACE_ROOT / base_name,
+        FRONTEND_DIR / "static" / decoded,
+        WORKSPACE_ROOT / decoded,
+        WORKSPACE_ROOT / "static" / "docs" / base_name,
+    ]
+
+    for cand in candidates:
+        if cand.is_file():
+            suf = cand.suffix.lower()
+            if suf == ".html":
+                return HTMLResponse(content=cand.read_text(encoding="utf-8"))
+            return FileResponse(cand)
+
+    raise HTTPException(status_code=404, detail=f"File '{decoded}' not found")
+
+

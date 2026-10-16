@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ทบ. ๔๖๘-๒๐๔ บัญชี​หมายเลข​อาวุธ (คส. ๔)</title>
+    <style>
+        @page {
+            size: A4 portrait;
+            margin: 15mm 15mm;
+        }
+        * {
+            box-sizing: border-box;
+            font-family: 'TH Sarabun PSK', Sarabun, sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #e2e8f0;
+            color: #000;
+            font-size: 16pt;
+            line-height: 1.15;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+            font-feature-settings: "locl" 1, "numr" 1;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .sheet-container {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 30px auto;
+            background: #fff;
+            padding: 18mm 18mm 20mm 18mm;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: relative;
+            page-break-after: always;
+        }
+
+        /* Top Right Header */
+        .top-form-header {
+            text-align: right;
+            font-size: 16pt;
+            line-height: 1.25;
+            margin-bottom: 12px;
+            padding-right: 2px;
+        }
+
+        /* Center Title */
+        .form-title {
+            text-align: center;
+            font-size: 16pt;
+            font-weight: bold;
+            margin-top: 6px;
+            margin-bottom: 24px; /* เว้น 1 Enter อย่างชัดเจน (ประมาณ 20-24pt) */
+        }
+
+        /* Main 3-Column Table */
+        .military-weapon-table {
+            width: 100%;
+            table-layout: fixed;
+            border-collapse: collapse;
+            border: 1px solid #000;
+            font-size: 16pt;
+        }
+        .military-weapon-table th, .military-weapon-table td {
+            border-left: 1px solid #000;
+            border-right: 1px solid #000;
+            padding: 4px 8px;
+            vertical-align: top;
+            line-height: 1.2;
+        }
+        .military-weapon-table thead th {
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+            font-weight: normal; /* ตัวปกติ ตามมาตรฐาน */
+            font-size: 16pt;
+            text-align: center;
+            padding: 6px 4px;
+        }
+
+        /* Data Rows */
+        .data-row td {
+            border-bottom: none;
+            height: 26px;
+        }
+
+        /* Empty space row for Cert & Sig */
+        .cert-sig-row td {
+            border-bottom: 1px solid #000;
+            min-height: 480px;
+            padding-bottom: 30px;
+        }
+
+        /* Certification Block */
+        .cert-cell {
+            padding-top: 36px !important;
+        }
+        .cert-block {
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.35;
+            font-size: 16pt;
+        }
+        .cert-line {
+            margin: 0;
+            text-align: center;
+        }
+        .cert-title {
+            white-space: nowrap;
+        }
+
+        /* Universal Signature Engine (RULE-UNIVERSAL-SIGNATURE-BLOCK-V1) */
+        .sig-section {
+            margin-top: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .sig-name-pos-group {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            margin-left: 45px;
+        }
+        .sig-name-wrapper {
+            position: relative;
+            display: inline-block;
+            white-space: nowrap;
+            margin-top: 24px;
+        }
+        .sig-rank-anchor {
+            position: absolute;
+            right: 100%;
+            bottom: calc(100% + 8px);
+            white-space: nowrap;
+            font-size: 16pt;
+            line-height: 1.0;
+        }
+        .sig-name {
+            margin: 0;
+            line-height: 1.15;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 16pt;
+            display: block;
+        }
+        .sig-pos {
+            margin: 0;
+            margin-top: 0; /* Space After 0 pt / 1 Enter */
+            line-height: 1.15;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 16pt;
+        }
+
+        .font-bold { font-weight: bold; }
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        @media print {
+            body { background: transparent; padding: 0; }
+            .sheet-container {
+                box-shadow: none;
+                margin: 0;
+                padding: 10mm 12mm;
+                width: 100%;
+                min-height: auto;
+            }
+        }
+    </style>
+<!-- UNIFIED MILITARY SARABUN FONT-ENGINE & RULE 9 THIN/LIGHT STANDARD -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100;1,300;1,400;1,700&display=swap" rel="stylesheet">
+<style id="rta-universal-thin-font-engine">
+    /* ======================================================== */
+    /* OFFICIAL GOVERNMENT TH SARABUN PSK ENGINE (PRIMARY SSOT) */
+    /* ======================================================== */
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 400;
+        src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+             url('/fonts/THSarabunPSK.ttf') format('truetype'),
+             url('fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 300;
+        src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+             url('/fonts/THSarabunPSK.ttf') format('truetype'),
+             url('fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 100;
+        src: local('TH Sarabun PSK'), local('THSarabunPSK'),
+             url('/fonts/THSarabunPSK.ttf') format('truetype'),
+             url('fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 600;
+        src: local('TH Sarabun PSK Bold'), local('THSarabunPSK-Bold'),
+             url('/fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK-Bold.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun PSK';
+        font-style: normal;
+        font-weight: 700;
+        src: local('TH Sarabun PSK Bold'), local('THSarabunPSK-Bold'),
+             url('/fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunPSK-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunPSK-Bold.ttf') format('truetype');
+    }
+
+    /* Fallback: TH Sarabun New */
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 400;
+        src: local('TH Sarabun New'), local('THSarabunNew'),
+             url('/fonts/THSarabunNew.ttf') format('truetype'),
+             url('fonts/THSarabunNew.ttf') format('truetype'),
+             url('../fonts/THSarabunNew.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 300;
+        src: local('TH Sarabun New'), local('THSarabunNew'),
+             url('/fonts/THSarabunNew.ttf') format('truetype'),
+             url('fonts/THSarabunNew.ttf') format('truetype'),
+             url('../fonts/THSarabunNew.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 600;
+        src: local('TH Sarabun New Bold'), local('THSarabunNew-Bold'),
+             url('/fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew-Bold.ttf') format('truetype');
+    }
+    @font-face {
+        font-family: 'TH Sarabun New';
+        font-style: normal;
+        font-weight: 700;
+        src: local('TH Sarabun New Bold'), local('THSarabunNew-Bold'),
+             url('/fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../fonts/THSarabunNew-Bold.ttf') format('truetype'),
+             url('../../fonts/THSarabunNew-Bold.ttf') format('truetype');
+    }
+
+    /* RULE 9: THIN FONT-WEIGHT MANDATE (Non-headings = 300 Thin/Light, Headings = 600 Bold) */
+    body, div, p, span, td, li, a, input, textarea, label, select, button,
+    section, article, main, header, footer,
+    .memo-p, .memo-body, .memo-closing, .memo-content, .memo-text, .content-para,
+    .memo-meta-dots, .meta-fill-dotted, .dotted-line, .memo-att-row, .memo-att-desc, .memo-att-qty,
+    .salutation-row, .salutation, .reference-section, .attachment-section, .attachment-row, .attachment-item,
+    .sig-name, .sig-pos, .sig-date, .sig-rank-anchor,
+    .staff-grid, .staff-grid div, .staff-col, .form-table td, table td,
+    .doc-desc, .stat-pill, .btn-action, .meta-row, .meta-half-col,
+    .meta-fill-dotted div {
+        font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', Tahoma, sans-serif !important;
+        font-weight: 300 !important;
+    }
+
+    /* Headings & Important Labels: Word-Standard Bold (font-weight: 600/Bold) */
+    b, strong, .font-bold, .bold, th, table th,
+    .memo-title, .doc-title, .meta-label, .memo-meta-label,
+    .form-header-title, .form-header-sub, .form-title,
+    .photo-cert-text, .sig-verify,
+    .brand-title, .brand-badge, .badge, .doc-code,
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'TH Sarabun PSK', 'THSarabunPSK', 'TH Sarabun New', 'THSarabunNew', 'Sarabun', Tahoma, sans-serif !important;
+        font-weight: 600 !important;
+    }
+</style>
+
+
+
+</head>
+<body>
+    
+        <div class="sheet-container">
+            <!-- หัวมุมบนขวา: ทบ. ๔๖๘ – ๒๐๔ / ( คส. ๔ ) -->
+            <div class="top-form-header">
+                <div>ทบ. ๔๖๘ – ๒๐๔</div>
+                <div>( คส. ๔ )</div>
+            </div>
+
+            <!-- ชื่อแบบฟอร์ม: บัญชีหมายเลขอาวุธ -->
+            <div class="form-title font-bold text-center">
+                บัญชี​หมายเลข​อาวุธ
+            </div>
+
+            <!-- ตารางหลัก 3 คอลัมน์: ห่าง 1 Enter จากชื่อแบบฟอร์ม -->
+            <table class="military-weapon-table">
+                <colgroup>
+                    <col style="width: 20%;">
+                    <col style="width: 65%;">
+                    <col style="width: 15%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th class="col-num">หมายเลข</th>
+                        <th class="col-desc">รายการ</th>
+                        <th class="col-remark">หมายเหตุ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr class="data-row">
+                <td class="col-num text-center">๒๔๐๘๐</td>
+                <td class="col-desc text-center">ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม. ๑๐๑ เอ. ๑</td>
+                <td class="col-remark text-center">(ส่ง​ซ่อม)</td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๑๙๖๐๙</td>
+                <td class="col-desc text-center">ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม. ๑๐๑ เอ. ๑</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๒๐๖๗๐</td>
+                <td class="col-desc text-center">ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม. ๑๐๑ เอ. ๑</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๒๓๕๕๔</td>
+                <td class="col-desc text-center">ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม. ๑๐๑ เอ. ๑</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๒๔๒๘๐</td>
+                <td class="col-desc text-center">ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม. ๑๐๑ เอ. ๑</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๘๕๑๖</td>
+                <td class="col-desc text-center">ปบค.๙๕ ขนาด ๑๐๕ มม. เอ็ม. ๑๐๑ เอ. ๑</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+                    <!-- พื้นที่เนื้อหาด้านล่าง: คำรับรอง + ลายเซ็น -->
+                    <tr class="cert-sig-row">
+                        <td class="col-num"></td>
+                        <td class="col-desc cert-cell">
+                            
+        <div class="cert-block text-center">
+            <div class="cert-line">หมด​รายการ​รวม ๖ กระบอก ขอ​รับรอง​ว่า</div>
+            <div class="cert-line cert-title">ปบค.๙๕ ขนาด ๑๐๕ มม. แบบ เอ็ม. ๑๐๑ เอ. ๑</div>
+            <div class="cert-line">จำนวน ๖ กระบอก ตาม​หมายเลข</div>
+            <div class="cert-line">อยู่​ครบถ้วน ถูกต้อง ทุก​หมายเลข</div>
+        </div>
+        
+                            
+        <div class="sig-section">
+            <div class="sig-name-pos-group">
+                <div class="sig-name-wrapper">
+                    <span class="sig-rank-anchor val">ร.อ.</span>
+                    <div class="sig-name val">(กฤ​ติ​น  นรา​พงษ์)</div>
+                </div>
+                <div class="sig-pos val">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+            </div>
+        </div>
+        
+                        </td>
+                        <td class="col-remark"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="sheet-container">
+            <!-- หัวมุมบนขวา: ทบ. ๔๖๘ – ๒๐๔ / ( คส. ๔ ) -->
+            <div class="top-form-header">
+                <div>ทบ. ๔๖๘ – ๒๐๔</div>
+                <div>( คส. ๔ )</div>
+            </div>
+
+            <!-- ชื่อแบบฟอร์ม: บัญชีหมายเลขอาวุธ -->
+            <div class="form-title font-bold text-center">
+                บัญชี​หมายเลข​อาวุธ
+            </div>
+
+            <!-- ตารางหลัก 3 คอลัมน์: ห่าง 1 Enter จากชื่อแบบฟอร์ม -->
+            <table class="military-weapon-table">
+                <colgroup>
+                    <col style="width: 20%;">
+                    <col style="width: 65%;">
+                    <col style="width: 15%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th class="col-num">หมายเลข</th>
+                        <th class="col-desc">รายการ</th>
+                        <th class="col-remark">หมายเหตุ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr class="data-row">
+                <td class="col-num text-center">๐๒๙๔</td>
+                <td class="col-desc text-center">กล้อง​เล็ง​พา​โนรา​มิค</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๐๒๙๖</td>
+                <td class="col-desc text-center">กล้อง​เล็ง​พา​โนรา​มิค</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๐๒๙๘</td>
+                <td class="col-desc text-center">กล้อง​เล็ง​พา​โนรา​มิค</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๐๒๙๙</td>
+                <td class="col-desc text-center">กล้อง​เล็ง​พา​โนรา​มิค</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๒๔๑๖๕</td>
+                <td class="col-desc text-center">กล้อง​เล็ง​พา​โนรา​มิค</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๕๗๗๕๖</td>
+                <td class="col-desc text-center">กล้อง​เล็ง​พา​โนรา​มิค</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๔๓๕</td>
+                <td class="col-desc text-center">กล้อง​เล็ง​พา​โนรา​มิค</td>
+                <td class="col-remark text-center">อะไหล่</td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๔๓๑</td>
+                <td class="col-desc text-center">กล้อง​เล็ง​พา​โนรา​มิค</td>
+                <td class="col-remark text-center">อะไหล่</td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๔๙๒๙๕</td>
+                <td class="col-desc text-center">กล้อง​เล็ง​พา​โนรา​มิค</td>
+                <td class="col-remark text-center">อะไหล่</td>
+            </tr>
+                    <!-- พื้นที่เนื้อหาด้านล่าง: คำรับรอง + ลายเซ็น -->
+                    <tr class="cert-sig-row">
+                        <td class="col-num"></td>
+                        <td class="col-desc cert-cell">
+                            
+        <div class="cert-block text-center">
+            <div class="cert-line">หมด​รายการ​รวม ๙ กล้อง ขอ​รับรอง​ว่า</div>
+            <div class="cert-line cert-title">กล้อง​พา​โนรา​มิค</div>
+            <div class="cert-line">จำนวน ๙ กล้อง ตาม​หมายเลข</div>
+            <div class="cert-line">อยู่​ครบถ้วน ถูกต้อง ทุก​หมายเลข</div>
+        </div>
+        
+                            
+        <div class="sig-section">
+            <div class="sig-name-pos-group">
+                <div class="sig-name-wrapper">
+                    <span class="sig-rank-anchor val">ร.อ.</span>
+                    <div class="sig-name val">(กฤ​ติ​น  นรา​พงษ์)</div>
+                </div>
+                <div class="sig-pos val">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+            </div>
+        </div>
+        
+                        </td>
+                        <td class="col-remark"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="sheet-container">
+            <!-- หัวมุมบนขวา: ทบ. ๔๖๘ – ๒๐๔ / ( คส. ๔ ) -->
+            <div class="top-form-header">
+                <div>ทบ. ๔๖๘ – ๒๐๔</div>
+                <div>( คส. ๔ )</div>
+            </div>
+
+            <!-- ชื่อแบบฟอร์ม: บัญชีหมายเลขอาวุธ -->
+            <div class="form-title font-bold text-center">
+                บัญชี​หมายเลข​อาวุธ
+            </div>
+
+            <!-- ตารางหลัก 3 คอลัมน์: ห่าง 1 Enter จากชื่อแบบฟอร์ม -->
+            <table class="military-weapon-table">
+                <colgroup>
+                    <col style="width: 20%;">
+                    <col style="width: 65%;">
+                    <col style="width: 15%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th class="col-num">หมายเลข</th>
+                        <th class="col-desc">รายการ</th>
+                        <th class="col-remark">หมายเหตุ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr class="data-row">
+                <td class="col-num text-center">๑๓๘๒๗</td>
+                <td class="col-desc text-center">กล้อง​ข้อศอก</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๒๖๕๓</td>
+                <td class="col-desc text-center">กล้อง​ข้อศอก</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๓๕๘๙๗</td>
+                <td class="col-desc text-center">กล้อง​ข้อศอก</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๓๖๐๐๘</td>
+                <td class="col-desc text-center">กล้อง​ข้อศอก</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๓๖๔๗๔</td>
+                <td class="col-desc text-center">กล้อง​ข้อศอก</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๒๓๓๒</td>
+                <td class="col-desc text-center">กล้อง​ข้อศอก</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๓๖๐๗๓</td>
+                <td class="col-desc text-center">กล้อง​ข้อศอก</td>
+                <td class="col-remark text-center">อะไหล่</td>
+            </tr>
+                    <!-- พื้นที่เนื้อหาด้านล่าง: คำรับรอง + ลายเซ็น -->
+                    <tr class="cert-sig-row">
+                        <td class="col-num"></td>
+                        <td class="col-desc cert-cell">
+                            
+        <div class="cert-block text-center">
+            <div class="cert-line">หมด​รายการ​รวม ๗ กล้อง ขอ​รับรอง​ว่า</div>
+            <div class="cert-line cert-title">กล้อง​ข้อศอก</div>
+            <div class="cert-line">จำนวน ๗ กล้อง ตาม​หมายเลข</div>
+            <div class="cert-line">อยู่​ครบถ้วน ถูกต้อง ทุก​หมายเลข</div>
+        </div>
+        
+                            
+        <div class="sig-section">
+            <div class="sig-name-pos-group">
+                <div class="sig-name-wrapper">
+                    <span class="sig-rank-anchor val">ร.อ.</span>
+                    <div class="sig-name val">(กฤ​ติ​น  นรา​พงษ์)</div>
+                </div>
+                <div class="sig-pos val">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+            </div>
+        </div>
+        
+                        </td>
+                        <td class="col-remark"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="sheet-container">
+            <!-- หัวมุมบนขวา: ทบ. ๔๖๘ – ๒๐๔ / ( คส. ๔ ) -->
+            <div class="top-form-header">
+                <div>ทบ. ๔๖๘ – ๒๐๔</div>
+                <div>( คส. ๔ )</div>
+            </div>
+
+            <!-- ชื่อแบบฟอร์ม: บัญชีหมายเลขอาวุธ -->
+            <div class="form-title font-bold text-center">
+                บัญชี​หมายเลข​อาวุธ
+            </div>
+
+            <!-- ตารางหลัก 3 คอลัมน์: ห่าง 1 Enter จากชื่อแบบฟอร์ม -->
+            <table class="military-weapon-table">
+                <colgroup>
+                    <col style="width: 20%;">
+                    <col style="width: 65%;">
+                    <col style="width: 15%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th class="col-num">หมายเลข</th>
+                        <th class="col-desc">รายการ</th>
+                        <th class="col-remark">หมายเหตุ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr class="data-row">
+                <td class="col-num text-center">๑๗๙๑๐๒</td>
+                <td class="col-desc text-center">เครื่องตั้ง​มุม​ยิง​ประณีต</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๓๐๑๙๒</td>
+                <td class="col-desc text-center">เครื่องตั้ง​มุม​ยิง​ประณีต</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๒๘๑๘๙</td>
+                <td class="col-desc text-center">เครื่องตั้ง​มุม​ยิง​ประณีต</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๙๖๑๕๗</td>
+                <td class="col-desc text-center">เครื่องตั้ง​มุม​ยิง​ประณีต</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๑๔๗๘๓๐</td>
+                <td class="col-desc text-center">เครื่องตั้ง​มุม​ยิง​ประณีต</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๑๔๗๓๔๙</td>
+                <td class="col-desc text-center">เครื่องตั้ง​มุม​ยิง​ประณีต</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+                    <!-- พื้นที่เนื้อหาด้านล่าง: คำรับรอง + ลายเซ็น -->
+                    <tr class="cert-sig-row">
+                        <td class="col-num"></td>
+                        <td class="col-desc cert-cell">
+                            
+        <div class="cert-block text-center">
+            <div class="cert-line">หมด​รายการ​รวม ๖ เครื่อง ขอ​รับรอง​ว่า</div>
+            <div class="cert-line cert-title">เครื่องตั้ง​มุม​ยิง​ประณีต</div>
+            <div class="cert-line">จำนวน ๖ เครื่อง ตาม​หมายเลข</div>
+            <div class="cert-line">อยู่​ครบถ้วน ถูกต้อง ทุก​หมายเลข</div>
+        </div>
+        
+                            
+        <div class="sig-section">
+            <div class="sig-name-pos-group">
+                <div class="sig-name-wrapper">
+                    <span class="sig-rank-anchor val">ร.อ.</span>
+                    <div class="sig-name val">(กฤ​ติ​น  นรา​พงษ์)</div>
+                </div>
+                <div class="sig-pos val">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+            </div>
+        </div>
+        
+                        </td>
+                        <td class="col-remark"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="sheet-container">
+            <!-- หัวมุมบนขวา: ทบ. ๔๖๘ – ๒๐๔ / ( คส. ๔ ) -->
+            <div class="top-form-header">
+                <div>ทบ. ๔๖๘ – ๒๐๔</div>
+                <div>( คส. ๔ )</div>
+            </div>
+
+            <!-- ชื่อแบบฟอร์ม: บัญชีหมายเลขอาวุธ -->
+            <div class="form-title font-bold text-center">
+                บัญชี​หมายเลข​อาวุธ
+            </div>
+
+            <!-- ตารางหลัก 3 คอลัมน์: ห่าง 1 Enter จากชื่อแบบฟอร์ม -->
+            <table class="military-weapon-table">
+                <colgroup>
+                    <col style="width: 20%;">
+                    <col style="width: 65%;">
+                    <col style="width: 15%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th class="col-num">หมายเลข</th>
+                        <th class="col-desc">รายการ</th>
+                        <th class="col-remark">หมายเหตุ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr class="data-row">
+                <td class="col-num text-center">๐๒๙๑</td>
+                <td class="col-desc text-center">ฐาน​กล้อง​เล็ง</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๐๒๘๓</td>
+                <td class="col-desc text-center">ฐาน​กล้อง​เล็ง</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">0290</td>
+                <td class="col-desc text-center">ฐาน​กล้อง​เล็ง</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๐๔๒๔</td>
+                <td class="col-desc text-center">ฐาน​กล้อง​เล็ง</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๐๔๓๕</td>
+                <td class="col-desc text-center">ฐาน​กล้อง​เล็ง</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๐๔๓๑</td>
+                <td class="col-desc text-center">ฐาน​กล้อง​เล็ง</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๑๒๐๓๓</td>
+                <td class="col-desc text-center">ฐาน​กล้อง​เล็ง</td>
+                <td class="col-remark text-center">อะไหล่</td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๒๗๐๒๖</td>
+                <td class="col-desc text-center">ฐาน​กล้อง​เล็ง</td>
+                <td class="col-remark text-center">อะไหล่</td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๗๑๑๕</td>
+                <td class="col-desc text-center">ฐาน​กล้อง​เล็ง</td>
+                <td class="col-remark text-center">อะไหล่</td>
+            </tr>
+                    <!-- พื้นที่เนื้อหาด้านล่าง: คำรับรอง + ลายเซ็น -->
+                    <tr class="cert-sig-row">
+                        <td class="col-num"></td>
+                        <td class="col-desc cert-cell">
+                            
+        <div class="cert-block text-center">
+            <div class="cert-line">หมด​รายการ​รวม ๙ อัน ขอ​รับรอง​ว่า</div>
+            <div class="cert-line cert-title">ฐาน​กล้อง​เล็ง</div>
+            <div class="cert-line">จำนวน ๙ อัน ตาม​หมายเลข</div>
+            <div class="cert-line">อยู่​ครบถ้วน ถูกต้อง ทุก​หมายเลข</div>
+        </div>
+        
+                            
+        <div class="sig-section">
+            <div class="sig-name-pos-group">
+                <div class="sig-name-wrapper">
+                    <span class="sig-rank-anchor val">ร.อ.</span>
+                    <div class="sig-name val">(กฤ​ติ​น  นรา​พงษ์)</div>
+                </div>
+                <div class="sig-pos val">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+            </div>
+        </div>
+        
+                        </td>
+                        <td class="col-remark"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="sheet-container">
+            <!-- หัวมุมบนขวา: ทบ. ๔๖๘ – ๒๐๔ / ( คส. ๔ ) -->
+            <div class="top-form-header">
+                <div>ทบ. ๔๖๘ – ๒๐๔</div>
+                <div>( คส. ๔ )</div>
+            </div>
+
+            <!-- ชื่อแบบฟอร์ม: บัญชีหมายเลขอาวุธ -->
+            <div class="form-title font-bold text-center">
+                บัญชี​หมายเลข​อาวุธ
+            </div>
+
+            <!-- ตารางหลัก 3 คอลัมน์: ห่าง 1 Enter จากชื่อแบบฟอร์ม -->
+            <table class="military-weapon-table">
+                <colgroup>
+                    <col style="width: 20%;">
+                    <col style="width: 65%;">
+                    <col style="width: 15%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th class="col-num">หมายเลข</th>
+                        <th class="col-desc">รายการ</th>
+                        <th class="col-remark">หมายเหตุ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr class="data-row">
+                <td class="col-num text-center">๙๑๔๘</td>
+                <td class="col-desc text-center">คอ​ล​ลิ​เม​เตอร์</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๙๗๗๔</td>
+                <td class="col-desc text-center">คอ​ล​ลิ​เม​เตอร์</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๙๓๕๐</td>
+                <td class="col-desc text-center">คอ​ล​ลิ​เม​เตอร์</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๑๘๘๒</td>
+                <td class="col-desc text-center">คอ​ล​ลิ​เม​เตอร์</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+            <tr class="data-row">
+                <td class="col-num text-center">๑๘๘๓</td>
+                <td class="col-desc text-center">คอ​ล​ลิ​เม​เตอร์</td>
+                <td class="col-remark text-center"></td>
+            </tr>
+                    <!-- พื้นที่เนื้อหาด้านล่าง: คำรับรอง + ลายเซ็น -->
+                    <tr class="cert-sig-row">
+                        <td class="col-num"></td>
+                        <td class="col-desc cert-cell">
+                            
+        <div class="cert-block text-center">
+            <div class="cert-line">หมด​รายการ​รวม ๕ เครื่อง ขอ​รับรอง​ว่า</div>
+            <div class="cert-line cert-title">คอ​ล​ลิ​เม​เตอร์</div>
+            <div class="cert-line">จำนวน ๕ เครื่อง ตาม​หมายเลข</div>
+            <div class="cert-line">อยู่​ครบถ้วน ถูกต้อง ทุก​หมายเลข</div>
+        </div>
+        
+                            
+        <div class="sig-section">
+            <div class="sig-name-pos-group">
+                <div class="sig-name-wrapper">
+                    <span class="sig-rank-anchor val">ร.อ.</span>
+                    <div class="sig-name val">(กฤ​ติ​น  นรา​พงษ์)</div>
+                </div>
+                <div class="sig-pos val">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+            </div>
+        </div>
+        
+                        </td>
+                        <td class="col-remark"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+</body>
+</html>
+    
