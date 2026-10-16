@@ -30,7 +30,7 @@
         "attachments_label": "สิ่งที่ส่งมาด้วย",
         "attachments": [
           {
-            "title": "- ใบติดตามใบเบิก",
+            "title": "ใบติดตามใบเบิก",
             "quantity": "จำนวน ๒ ฉบับ"
           }
         ],
@@ -45,7 +45,11 @@
           "rank": "ร.อ.",
           "name": "กฤติน  นราพงษ์",
           "position": "ผบ.ป.พัน.๔ ร้อย.๒"
-        }
+        },
+        "admin_footer": [
+          { "rank": "จ.ส.อ.", "role": "ร่าง/ตรวจ", "day": "", "date": "มิ.ย. ๕๔" },
+          { "rank": "ส.อ. เสน่ห์ ฯ", "role": "พิมพ์", "day": "", "date": "มิ.ย. ๕๔" }
+        ]
       }
     },
     {
@@ -69,13 +73,13 @@
       },
       "table": {
         "columns": [
-          { "index": 0, "name": "ลำดับ", "width_pct": 5, "align": "center" },
-          { "index": 1, "name": "รายการ สป.", "width_pct": 20, "align": "left" },
-          { "index": 2, "name": "หมายเลข สป.", "width_pct": 18, "align": "center" },
-          { "index": 3, "name": "ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย", "width_pct": 14, "align": "center" },
+          { "index": 0, "name": "ลำดับ", "width_pct": 4, "align": "center" },
+          { "index": 1, "name": "รายการ สป.", "width_pct": 18, "align": "left" },
+          { "index": 2, "name": "หมายเลข สป.", "width_pct": 16, "align": "center" },
+          { "index": 3, "name": "ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย", "width_pct": 20, "align": "center" },
           { "index": 4, "name": "วันที่ส่งหรือวางใบเบิก", "width_pct": 13, "align": "center" },
           { "index": 5, "name": "วันติดตามใบเบิกครั้งที่ ๒๐", "width_pct": 14, "align": "center" },
-          { "index": 6, "name": "หมายเหตุ (บันทึกโดยหน่วยจ่าย)", "width_pct": 16, "align": "left" }
+          { "index": 6, "name": "หมายเหตุ (บันทึกโดยหน่วยจ่าย)", "width_pct": 15, "align": "left" }
         ],
         "rows": [
           {
@@ -175,13 +179,13 @@
       },
       "table": {
         "columns": [
-          { "index": 0, "name": "ลำดับ", "width_pct": 5, "align": "center" },
-          { "index": 1, "name": "รายการ สป.", "width_pct": 20, "align": "left" },
-          { "index": 2, "name": "หมายเลข สป.", "width_pct": 18, "align": "center" },
-          { "index": 3, "name": "ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย", "width_pct": 14, "align": "center" },
+          { "index": 0, "name": "ลำดับ", "width_pct": 4, "align": "center" },
+          { "index": 1, "name": "รายการ สป.", "width_pct": 18, "align": "left" },
+          { "index": 2, "name": "หมายเลข สป.", "width_pct": 16, "align": "center" },
+          { "index": 3, "name": "ที่ใบเบิก ที่ทะเบียนหน่วยจ่าย", "width_pct": 20, "align": "center" },
           { "index": 4, "name": "วันที่ส่งหรือวางใบเบิก", "width_pct": 13, "align": "center" },
           { "index": 5, "name": "วันติดตามใบเบิกครั้งที่ ๘", "width_pct": 14, "align": "center" },
-          { "index": 6, "name": "หมายเหตุ (บันทึกโดยหน่วยจ่าย)", "width_pct": 16, "align": "left" }
+          { "index": 6, "name": "หมายเหตุ (บันทึกโดยหน่วยจ่าย)", "width_pct": 15, "align": "left" }
         ],
         "rows": [
           {
