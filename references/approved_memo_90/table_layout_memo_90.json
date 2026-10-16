@@ -16,14 +16,14 @@
   "typography": {
     "font_family": "TH Sarabun PSK",
     "fallback_fonts": ["THSarabunNew", "Sarabun", "sans-serif"],
-    "font_size_pt": 12,
+    "font_size_pt": 17,
     "font_weight": 300,
-    "line_height": 1.5,
-    "header_title_size_pt": 24,
-    "label_size_pt": 14
+    "line_height": 1.25,
+    "header_title_size_pt": 29,
+    "label_size_pt": 20
   },
   "content": {
-    "copy_type": "(สำเนาคู่ฉบับ)",
+    "copy_type": "( สำเนาคู่ฉบับ )",
     "title": "บันทึกข้อความ",
     "official_department": "ส่วนราชการ",
     "department_value": "ป.๔ พัน.๔ ร้อย.๒  (โทร ๓๑๑๙๓)",
@@ -60,13 +60,13 @@
     "routing_footer": [
       {
         "rank": "จ.ส.อ.",
-        "action": "ร่าง/ตรวจ",
+        "role": "ร่าง/ตรวจ",
+        "day": "",
         "date": "ก.ย. ๖๙"
       },
       {
-        "rank": "ส.อ.",
-        "name": "อวิวัฒน์ฯ",
-        "action": "พิมพ์/ทาน",
+        "rank": "ส.อ. อวิวัฒน์ฯ",
+        "role": "พิมพ์/ทาน",
         "day": "๑๘",
         "date": "ก.ย. ๖๙"
       }
