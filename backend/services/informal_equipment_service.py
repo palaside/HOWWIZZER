@@ -339,7 +339,7 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     day_thai = to_thai_digits(candidate.day)
     short_month_thai = THAI_MONTHS[candidate.month]
     short_year_thai = to_thai_digits(str(candidate.year + 543)[-2:])
-    date_display_thai = f"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{short_month_thai} {short_year_thai}"
+    date_display_thai = f"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{short_month_thai} {short_year_thai}"
     month_year_display_thai = f"{short_month_thai} {short_year_thai}"
 
     # 4. Resolve Blueprint Data
@@ -600,10 +600,28 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
     }}
     .att-section {{
       margin-bottom: 3.5mm;
+      display: flex;
+      align-items: baseline;
+      width: 100%;
     }}
     .att-label {{
       font-weight: 600;
       white-space: nowrap;
+      margin-right: 3mm;
+    }}
+    .att-content {{
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }}
+    .att-desc {{
+      font-weight: 300;
+    }}
+    .att-qty {{
+      font-weight: 300;
+      white-space: nowrap;
+      text-align: right;
     }}
     .memo-para {{
       text-indent: 25mm; /* กั้นหน้าย่อหน้า 2.5 ซม. */
@@ -767,7 +785,11 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
 
       <!-- Attachments (สิ่งที่ส่งมาด้วย) -->
       <div class="att-section">
-        <span class="att-label">สิ่งที่ส่งมาด้วย</span>&nbsp;&nbsp;<span style="font-weight: 300;">{resolved_attachments[0][0] if resolved_attachments else ''}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300;">{resolved_attachments[0][1] if resolved_attachments else ''}</span>
+        <span class="att-label">สิ่งที่ส่งมาด้วย</span>
+        <div class="att-content">
+          <span class="att-desc">{resolved_attachments[0][0] if resolved_attachments else ''}</span>
+          <span class="att-qty">{resolved_attachments[0][1] if resolved_attachments else ''}</span>
+        </div>
       </div>
 
       <!-- Content Paragraphs -->
@@ -850,7 +872,11 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
 
       <!-- Attachments (สิ่งที่ส่งมาด้วย) -->
       <div class="att-section">
-        <span class="att-label">สิ่งที่ส่งมาด้วย</span>&nbsp;&nbsp;<span style="font-weight: 300;">{resolved_attachments[0][0] if resolved_attachments else ''}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300;">{resolved_attachments[0][1] if resolved_attachments else ''}</span>
+        <span class="att-label">สิ่งที่ส่งมาด้วย</span>
+        <div class="att-content">
+          <span class="att-desc">{resolved_attachments[0][0] if resolved_attachments else ''}</span>
+          <span class="att-qty">{resolved_attachments[0][1] if resolved_attachments else ''}</span>
+        </div>
       </div>
 
       <!-- Content Paragraphs -->

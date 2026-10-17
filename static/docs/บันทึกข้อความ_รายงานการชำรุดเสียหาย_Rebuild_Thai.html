@@ -181,10 +181,28 @@
     }
     .att-section {
       margin-bottom: 3.5mm;
+      display: flex;
+      align-items: baseline;
+      width: 100%;
     }
     .att-label {
       font-weight: 600;
       white-space: nowrap;
+      margin-right: 3mm;
+    }
+    .att-content {
+      flex: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .att-desc {
+      font-weight: 300;
+    }
+    .att-qty {
+      font-weight: 300;
+      white-space: nowrap;
+      text-align: right;
     }
     .memo-para {
       text-indent: 25mm; /* กั้นหน้าย่อหน้า 2.5 ซม. */
@@ -323,7 +341,7 @@
         </div>
         <div style="flex: 0.85; display: flex; align-items: flex-end;">
           <span class="meta-label">วันที่</span>
-          <div class="meta-dots" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ต.ค. ๖๙</div>
+          <div class="meta-dots" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ต.ค. ๖๙</div>
         </div>
       </div>
 
@@ -348,7 +366,11 @@
 
       <!-- Attachments (สิ่งที่ส่งมาด้วย) -->
       <div class="att-section">
-        <span class="att-label">สิ่งที่ส่งมาด้วย</span>&nbsp;&nbsp;<span style="font-weight: 300;">รายงานของ ส.อ. สมชาย หมายมั่น</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300;">จำนวน  ๑  ฉบับ</span>
+        <span class="att-label">สิ่งที่ส่งมาด้วย</span>
+        <div class="att-content">
+          <span class="att-desc">รายงานของ ส.อ. สมชาย หมายมั่น</span>
+          <span class="att-qty">จำนวน  ๑  ฉบับ</span>
+        </div>
       </div>
 
       <!-- Content Paragraphs -->
@@ -406,7 +428,7 @@
         </div>
         <div style="flex: 0.85; display: flex; align-items: flex-end;">
           <span class="meta-label">วันที่</span>
-          <div class="meta-dots" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ต.ค. ๖๙</div>
+          <div class="meta-dots" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ต.ค. ๖๙</div>
         </div>
       </div>
 
@@ -431,7 +453,11 @@
 
       <!-- Attachments (สิ่งที่ส่งมาด้วย) -->
       <div class="att-section">
-        <span class="att-label">สิ่งที่ส่งมาด้วย</span>&nbsp;&nbsp;<span style="font-weight: 300;">รายงานของ ส.อ. สมชาย หมายมั่น</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight: 300;">จำนวน  ๑  ฉบับ</span>
+        <span class="att-label">สิ่งที่ส่งมาด้วย</span>
+        <div class="att-content">
+          <span class="att-desc">รายงานของ ส.อ. สมชาย หมายมั่น</span>
+          <span class="att-qty">จำนวน  ๑  ฉบับ</span>
+        </div>
       </div>
 
       <!-- Content Paragraphs -->
