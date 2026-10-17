@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "vite",
-    "build": "echo 'Python serverless build'"
+    "build": "node build.js"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^7.0.1",
