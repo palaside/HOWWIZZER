@@ -1,62 +1,57 @@
-# 🏛️ WEPAPP: Royal Thai Army Production Document & Armament Inventory Suite
-> **Engineering Blueprint, Universal Sarabun Standards, and Automated Inventory Management System**
+# 🏛️ WEPAPP - Royal Thai Army Production Document & Armament Inventory Suite
+> **Software Preservation & Reproducibility Standard (Immortal Project Protocol)**  
+> **Official Git Remote Repository:** [https://github.com/palaside/HOWWIZZER.git](https://github.com/palaside/HOWWIZZER.git)  
+> **Production Cloud Live (Vercel):** [https://howwizzer-five.vercel.app](https://howwizzer-five.vercel.app)
 
 ---
 
-## 📌 Executive Summary (บทสรุปโครงการ)
-
-`WEPAPP` เป็นระบบบริหารจัดการคลังยุทโธปกรณ์และระบบผลิตเอกสารราชการระดับ Production สำหรับกองทัพบก (RTA) พัฒนาขึ้นด้วยสถาปัตยกรรม **SUPERCLONE Production Engine** และ **Universal Sarabun Gold Standard** ครอบคลุม:
-1. **ระบบคลังสิ่งอุปกรณ์และติดตามการเบิกยืม/ส่งซ่อม (Informal Equipment Inventory Engine):**
-   - จัดการสิ่งอุปกรณ์ในโรงเก็บปืนใหญ่ (ลำดับ ๑ - ๔๓) และคลัง บก. (ลำดับ ๑ - ๒๙)
-   - หักยอดคงเหลืออัตโนมัติ ติดตามสถานะยืม-คืน แจ้งเตือนรายการค้างส่งคืน (Overdue Alert)
-   - รองรับการรายงานความชำรุดเสียหาย แยกอาการ (Symptom) และสาเหตุ (Cause) พร้อมส่งต่อสายส่งซ่อม
-2. **ระบบสร้างบันทึกข้อความมาตรฐานทองคำ (Universal RTA Memo Standard):**
-   - อ้างอิงตรงจาก **ระเบียบ ทบ. ว่าด้วยงานสารบรรณ พ.ศ. ๒๕๖๓ ผนวก ก อนุผนวก ๑ (แบบที่ ๑ หน้า ๒๙ แบบพิมพ์ในโปรแกรมคอมพิวเตอร์)**
-   - มิติเรขาคณิตตราครุฑ: สูง ๑๕ มม. กว้าง ๑๓.๘ มม. ขอบบน ๑๕ มม., ซ้าย ๓๐ มม., ขวา ๒๐ มม., ล่าง ๒๐ มม.
-   - การจำแนกเนื้อความ ๓ ภาค: ภาคเหตุ (`paragraph_1_reason`), ภาคความประสงค์ (`paragraph_2_intention`), ภาคสรุป (`paragraph_3_summary`)
-   - ระบบพิมพ์คู่ขนาน ๒ ชุด (Dual-Copy Engine): ฉบับตัวจริง + สำเนาคู่ฉบับ
-   - บล็อกผู้ร่าง/ตรวจ/พิมพ์/ทาน ๔ คอลัมน์ ๒ แกนดิ่งคู่ขนาน (Staff Review Footer Dual-Axis Alignment)
-   - ฟอนต์ราชการ TH Sarabun PSK (Thin 300 / Bold 600) พร้อมระบบตัดคำภาษาไทย ZWS ป้องกันคำขาดครึ่งท่อน ๑๐๐%
-3. **ระบบบล็อกการลงนามสากล (Universal Red Line Standard):**
-   - พิกัดยึดแกนดิ่ง: จุด `.` ท้ายสุดของยศ ตรงกับเครื่องหมายวงเล็บเปิด `(` ของชื่อ ๑๐๐%
+## 📌 บทนำและภาพรวมของระบบ (Project Overview)
+**WEPAPP (HOWWIZZER)** คือระบบบริหารจัดการยุทโธปกรณ์ คลังสิ่งอุปกรณ์ และระบบคอมไพล์เอกสารแบบฟอร์มราชการกองทัพบกไทยระดับ Production เกรดเอ (Pixel-Perfect Superclone Production Engine) พัฒนาตาม **ระเบียบงานสารบรรณสำนักนายกรัฐมนตรี พ.ศ. ๒๕๒๖ / ระเบียบกองทัพบก พ.ศ. ๒๕๖๓** รองรับการส่งออกคู่ขนานทั้ง **HTML, Microsoft Word (.docx), และ Microsoft Excel (.xlsx)** โดยควบคุมความแม่นยำระดับพิกเซลและรักษาความสมบูรณ์ของสูตรคำนวณและตัวเลขไทย ๑๐๐%
 
 ---
 
-## 🚀 Quick Start & One-Click Launchers (การเริ่มต้นใช้งานคลิกเดียว)
+## 🚀 การสั่งงานแบบคลิกเดียว (Zero-Command Launcher)
+ไม่ต้องจำคำสั่งคอนโซลหรือพิมพ์คำสั่งผ่าน Terminal:
 
-ระบบมีสคริปต์สั่งงานอัตโนมัติแบบ Zero-Command Launcher โดยไม่ต้องจำคำสั่งคอนโซล:
-
-1. **เปิดแดชบอร์ดระบบเว็บแอปพลิเคชัน (FastAPI Server):**
-   - ดับเบิลคลิกไฟล์ **`run_webapp.bat`**
-   - ระบบจะเปิดเบราว์เซอร์ไปที่ `http://127.0.0.1:8000` พร้อมเริ่มรันเซิร์ฟเวอร์ทันที
-2. **รันตัวคอมไพล์เอกสารออฟไลน์ (SUPERCLONE Compiler):**
-   - ดับเบิลคลิกไฟล์ **`run_superclone.bat`**
-   - ระบบจะคอมไพล์เอกสารตรวจประจำสัปดาห์ออกมาเป็น HTML, DOCX, และ XLSX อัตโนมัติ
+1. **ดับเบิลคลิกไฟล์:** `run_webapp.bat`
+   - ระบบจะเปิดเบราว์เซอร์อัตโนมัติไปที่ `http://127.0.0.1:8000`
+   - รัน FastAPI / Uvicorn Server อัตโนมัติ รองรับ hot-reload
+2. **สำหรับคอมไพล์เอกสารแบบฟอร์ม Batch:**
+   - ดับเบิลคลิกไฟล์: `run_superclone.bat`
 
 ---
 
-## 📦 Dependency Installation (การติดตั้งแพ็กเกจ)
+## 🏛️ สถาปัตยกรรมหลัก ๔ เสา (The 4 Architectural Pillars)
+1. **Universal Red Line Standard (`signature_engine.py`):**
+   - มาตรฐานการจัดบล็อกลงนามราชการระดับสากล ยศและวงเล็บเปิดของชื่อชนแกนดิ่งเดียวกันเป๊ะ ๑๐๐% (`right: 100%`) ห่างจากขอบกระดาษซ้าย ๑๓๐ มม. (แนวตั้ง) และเคาะลงมา ๕ Enter จากเนื้อความสุดท้าย
+2. **Dual-Copy Package Engine (ตัวจริง + สำเนาคู่ฉบับ):**
+   - ๑ คำสั่งพิมพ์ เรนเดอร์คู่ขนานทั้งฉบับตัวจริง และฉบับสำเนาคู่ฉบับที่มีตารางผู้ร่าง/ตรวจ/พิมพ์/ทาน แกนดิ่งคู่ขนาน ๔ คอลัมน์ (ตาม `RULE-STAFF-REVIEW-FOOTER-V1`)
+3. **Typography & OpenType PSK Standard:**
+   - ฟอนต์หลัก `TH Sarabun PSK` (Bold 600 สำหรับหัวข้อ / Thin 300 สำหรับเนื้อหาและผลการตรวจ) พร้อมระบบตัดคำภาษาไทย Zero-Width Space ป้องกันคำขาดครึ่งท่อน
+4. **Single Source of Truth (SSOT Blueprints):**
+   - ควบคุมโครงสร้างเอกสารผ่าน JSON Blueprint (`table_layout.json`, `memo_layout.json`, `table_layout_damage_memo.json`) ป้องกัน Layout Drift ๑๐๐%
 
+---
+
+## 📦 การติดตั้งและการรันระบบ (Installation & Runtime)
+
+### ความต้องการของระบบ:
+- **Python:** 3.12 ขึ้นไป
+- **Node.js:** v18+ (สำหรับ build/dev tools)
+
+### ติดตั้ง Dependencies:
 ```powershell
 pip install -r requirements.txt
-playwright install chromium
+```
+
+### การรันระบบ Local:
+```powershell
+uvicorn backend.app:app --host 127.0.0.1 --port 8000 --reload
 ```
 
 ---
 
-## 🌐 Git Remote Repository & Off-site Backup
-
-- **Branch หลัก:** `main`
-- **Remote Repository URL:** `https://github.com/palaside/WEPAPP.git` (บันทึกไว้ใน `deploy.json`)
-- **การสำรองข้อมูล:** ข้อมูลสถานะและพิมพ์เขียวถูกสำรองคู่ขนานไว้ในโฟลเดอร์ `state/` เสมอ
-
----
-
-## 🏛️ System Architecture & Governance
-
-โครงการนี้อยู่ภายใต้การควบคุมของ **GEMINI.md** และระเบียบมาตรฐาน:
-- **`RULE-RTA-MEMO-STANDARD-V1`**: มาตรฐานบันทึกข้อความ ทบ. และพิมพ์เขียว JSON SSOT
-- **`RULE-SARABUN-DOC-STANDARD-V1`**: มาตรฐานฟอนต์ TH Sarabun PSK ตัวหนา 600 และเนื้อหาตัวบาง 300
-- **`RULE-UNIVERSAL-SIGNATURE-BLOCK-V1`**: บล็อกการลงนาม Red Line Standard 130 มม. 5 Enter
-- **`RULE-STAFF-REVIEW-FOOTER-V1`**: บล็อกผู้ร่าง/ตรวจ/พิมพ์/ทาน ๔ คอลัมน์ ๒ แกนดิ่งคู่ขนาน
-- **`RULE-PAGEFIT-TUNING-V1`**: สกิลบีบอัดเอกสารพอดีหน้า A4 แบบ Zero-Overflow Micro-Tuning
+## 🌐 Cloud Production Deployment (Vercel Serverless)
+- **Production URL:** [https://howwizzer-five.vercel.app](https://howwizzer-five.vercel.app)
+- **Runtime:** Python 3.12 Serverless + Static Assets CDN
+- **Deploy Command:** `vercel --prod`

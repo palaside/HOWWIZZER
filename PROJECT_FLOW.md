@@ -1,84 +1,84 @@
-# 🔄 PROJECT FLOW: WEPAPP
-> **Language:** English (AI Context Inheritance Standard)  
-> **Architecture Pattern:** Multi-Tier SSOT Compiler & Royal Thai Army Production Engine  
-> **Revision:** 2026-10-14  
+# 🔄 PROJECT ARCHITECTURAL FLOW & DATA PIPELINE (PROJECT_FLOW.md)
+> **Language Mandate:** 100% English Version for Context Window Preservation  
+> **System:** Royal Thai Army Production Document & Armament Inventory Suite (WEPAPP / HOWWIZZER)  
+> **Last Updated:** 2026-10-17  
 
 ---
 
-## 🏛️ System Architecture Diagram
+## 🏗️ High-Level System Interaction Map
 
 ```mermaid
 graph TD
-    subgraph Data Layer [Single Source of Truth Layer]
-        INV_DB[informal_equipment_inventory.json<br>Real-time Inventory & Loans]
-        MEMO_BP[table_layout_damage_memo.json<br>RTA Sarabun Page 29 Blueprint]
-        TABLE_BP[table_layout_*.json<br>Approved Document Blueprints]
-        ASSETS[garuda_vector_official.png<br>High-Res Military Emblems]
+    User["👤 User / Quartermaster"] -->|HTTP / Local Browser| UI["🌐 Frontend Interface (FastAPI / Jinja2)"]
+    UI -->|API Requests| Backend["⚙️ Backend Controller (backend/app.py)"]
+    
+    subgraph "Core Business Logic & Services"
+        Backend --> Service["📦 Equipment Damage Service (informal_equipment_service.py)"]
+        Service --> SSOT["📋 SSOT JSON Blueprint (table_layout_damage_memo.json)"]
+        Service --> SigEngine["✍️ Universal Signature Engine (signature_engine.py)"]
+        Service --> ThaiEngine["🇹🇭 Thai Typography Engine (thai_typography_engine.py)"]
     end
 
-    subgraph Service & Engine Layer [Core Processing Engines]
-        INV_SRV[informal_equipment_service.py<br>Loan Tracking & Stock Management]
-        MEMO_ENG[Damage Memo HTML Compiler<br>Dual-Copy & Staff Review Footer]
-        TYPO_ENG[thai_typography_engine.py<br>Zero-Width Space ZWS Injection]
-        SIG_ENG[signature_engine.py<br>Universal Red Line Standard]
-        BIZ_ENG[business_day_engine.py<br>Official Mon-Thu Signing Cadence]
+    subgraph "Dual-Copy Document Rendering Pipeline"
+        SSOT --> RenderEngine["🖨️ Document Compiler"]
+        SigEngine --> RenderEngine
+        ThaiEngine --> RenderEngine
+        RenderEngine --> Original["📄 Original Copy (Clean Memo)"]
+        RenderEngine --> DualCopy["📑 Dual Copy (with Staff Review Footer)"]
     end
 
-    subgraph Presentation & Target Layer [Tri-Format & Web Presentation]
-        FASTAPI[backend/app.py<br>FastAPI Application Server]
-        WEB_UI[Frontend Web Dashboard<br>Inventory Tables & Live Previews]
-        A4_PAGE1[Original Memo A4<br>Print-Grade 300 DPI Clean Copy]
-        A4_PAGE2[Dual-Copy Memo A4<br>Copy Banner + 4-Col Staff Footer]
+    subgraph "Multi-Format Export Targets"
+        RenderEngine --> HTML["🌐 HTML (300 DPI Print CSS)"]
+        RenderEngine --> DOCX["📝 Word (.docx)"]
+        RenderEngine --> XLSX["📊 Excel (.xlsx preserved numbers)"]
     end
 
-    subgraph Verification & Mirror Layer [Quality Assurance & Archival]
-        PLAYWRIGHT[Playwright Headless Engine<br>device_scale_factor=2.5 Validation]
-        STATE_MIRROR[state/ Redundant Mirror<br>LATEST_CHECKPOINT.md & Behavior]
+    subgraph "Production Cloud Deployment"
+        Git["🐙 GitHub (palaside/HOWWIZZER)"] --> Vercel["▲ Vercel Cloud Serverless (api/index.py)"]
+        Vercel --> Live["🚀 Live Production (howwizzer-five.vercel.app)"]
     end
-
-    INV_DB --> INV_SRV
-    MEMO_BP --> MEMO_ENG
-    ASSETS --> MEMO_ENG
-
-    INV_SRV --> MEMO_ENG
-    BIZ_ENG --> MEMO_ENG
-    SIG_ENG --> MEMO_ENG
-    MEMO_ENG --> TYPO_ENG
-
-    INV_SRV --> FASTAPI
-    FASTAPI --> WEB_UI
-
-    TYPO_ENG --> A4_PAGE1
-    TYPO_ENG --> A4_PAGE2
-
-    A4_PAGE1 --> PLAYWRIGHT
-    A4_PAGE2 --> PLAYWRIGHT
-    PLAYWRIGHT --> STATE_MIRROR
 ```
 
 ---
 
-## 🔁 Step-by-Step Execution Workflow
+## 🔄 Step-by-Step End-to-End Processing Flow
 
-1. **Step 1: Inventory Intake & Loan Tracking**
-   - User or operator creates a loan record for equipment in Section 1 (Gun Shed) or Section 2 (HQ Warehouse).
-   - System validates available stock balance and reserves quantities atomically in `informal_equipment_inventory.json`.
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Quartermaster / User
+    participant Web as Web Dashboard
+    participant API as FastAPI Backend (backend/app.py)
+    participant Svc as Equipment Service
+    participant Sig as Signature Engine
+    participant Vercel as Vercel Edge CDN
 
-2. **Step 2: Return & Damage Assessment**
-   - On item return, operator records condition:
-     - **Normal Return:** Stock balance is restored to the primary storage location.
-     - **Damaged Return:** Stock is moved to the repair track (`repair_amount`), recording `cause` and `symptom` separately.
+    User->>Web: 1. Fill damage report form (upload_form.html)
+    Web->>API: 2. Submit form payload (Borrower, Item, Cause, Signer)
+    API->>Svc: 3. Resolve Blueprint and Thai Calendar dates
+    Svc->>Sig: 4. Construct Universal Red Line Signature block
+    Sig-->>Svc: 5. Return strictly aligned signature markup
+    Svc-->>API: 6. Compile Dual-Copy Memo (Page 1: Original, Page 2: Copy)
+    API-->>Web: 7. Deliver high-fidelity HTML preview
+    User->>Web: 8. Trigger Print / PDF export (window.print)
+    Note over Web: 9. 300 DPI Print-Grade CSS applied with Zero Overflow
+    API->>Vercel: 10. Automated Serverless execution via Cloud
+```
 
-3. **Step 3: Automated RTA Memo Generation**
-   - Service loads `table_layout_damage_memo.json` based on *RTA Sarabun 2563 Appendix A Sub-Appendix 1 (Page 29)*.
-   - Computes official signing date conforming to the Monday-Thursday business day rule.
-   - Interpolates the 3-tier paragraph content (`paragraph_1_reason`, `paragraph_2_intention`, `paragraph_3_summary`).
-   - Compiles dual-copy package (Original Copy + Dual Copy with staff review footer).
+---
 
-4. **Step 4: Typography & Micro-Layout Optimization**
-   - `thai_typography_engine.py` inserts Zero-Width Space (`\u200b`) between Thai syllables, protecting military abbreviations and HTML tags.
-   - Signature block positions the rank end dot exactly collinear with the open parenthesis of the signatory name (Universal Red Line Standard).
+## ⚖️ Business Logic Constraints & Invariants
 
-5. **Step 5: Visual QA Verification & Archival**
-   - Headless browser renders output at 300 DPI (`device_scale_factor = 2.5`).
-   - Ensures strict single-page boundary enforcement without overflow.
+1. **Working Day Signature Rule:**
+   - Official memorandum submission and signature dates must strictly fall between **Monday and Thursday** (excluding official holidays and never on Fridays).
+2. **Universal Red Line Signature Rule:**
+   - The end period `.` of the rank MUST align vertically with the opening parenthesis `(` of the name (`right: 100%`).
+   - Rank is positioned above the signature line (`bottom: calc(100% + 18px)`).
+   - In portrait memos, the signature block is indented **130 mm** from the left page margin and spaced **5 Enters** below the concluding paragraph.
+3. **Dual-Copy Package Constraint:**
+   - Every memo compile command outputs both the Original copy (no staff footer) and the Staff Copy (with the 4-column dual-axis review footer).
+4. **Thai Typography Standard:**
+   - Primary font: `TH Sarabun PSK` (Bold 600 for headings, Thin 300 for body texts and inspection results).
+   - Zero-Width Space insertion prevents word-breaking halfway through syllables.
+5. **Vercel Serverless Bundle Limit:**
+   - Lambda package must remain under **225 MB** by excluding dev/testing packages (`pytest`) and heavy static documentation directories from deployment.

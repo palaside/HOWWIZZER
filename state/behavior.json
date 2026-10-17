@@ -1,8 +1,10 @@
 {
   "persona": "SENIOR FULL-STACK DEVELOPER AGENT",
   "project_name": "WEPAPP",
+  "app_alias": "HOWWIZZER",
   "workspace_path": "d:/Project/WEPAPP",
-  "git_remote_url": "https://github.com/palaside/WEPAPP.git",
+  "git_remote_url": "https://github.com/palaside/HOWWIZZER.git",
+  "vercel_live_url": "https://howwizzer-five.vercel.app",
   "rules": [
     "RULE-PROD-DOC-ENGINE-V1",
     "RULE-UNIVERSAL-SIGNATURE-BLOCK-V1",
@@ -23,5 +25,5 @@
     "verification_strategy": "Playwright automated screenshots (300 DPI) + CV measurement",
     "dual_copy_engine": true
   },
-  "created_at": "2026-10-14T00:20:00+07:00"
+  "updated_at": "2026-10-17T11:02:00+07:00"
 }
