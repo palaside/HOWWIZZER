@@ -15,10 +15,12 @@
 ---
 
 ## 📂 รายการไฟล์ต้นแบบ (Approved Artifacts)
-1. **HTML:** [`บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.html`](file:///d:/Project/WEPAPP/references/approved_general_inspection_2/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.html)
-2. **DOCX:** [`บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.docx`](file:///d:/Project/WEPAPP/references/approved_general_inspection_2/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.docx)
-3. **XLSX:** [`บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.xlsx`](file:///d:/Project/WEPAPP/references/approved_general_inspection_2/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.xlsx)
-4. **SSOT Blueprint (JSON):** [`table_layout_general_inspection_2.json`](file:///d:/Project/WEPAPP/references/approved_general_inspection_2/table_layout_general_inspection_2.json)
+1. **HTML (ไฟล์ต้นแบบหลัก):** [`บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.html`](file:///d:/Project/WEPAPP/references/approved_general_inspection_2/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.html)
+2. **HTML (ฉบับตัวจริง):** [`บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_ฉบับจริง.html`](file:///d:/Project/WEPAPP/references/approved_general_inspection_2/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_ฉบับจริง.html)
+3. **HTML (สำเนาคู่ฉบับ):** [`บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_สำเนาคู่ฉบับ.html`](file:///d:/Project/WEPAPP/references/approved_general_inspection_2/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_สำเนาคู่ฉบับ.html)
+4. **DOCX:** [`บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.docx`](file:///d:/Project/WEPAPP/references/approved_general_inspection_2/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.docx)
+5. **XLSX:** [`บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.xlsx`](file:///d:/Project/WEPAPP/references/approved_general_inspection_2/บันทึกผลการตรวจกิจการทั่วไป_ชุดตรวจที่_2_Rebuild_Thai.xlsx)
+6. **SSOT Blueprint (JSON):** [`table_layout_general_inspection_2.json`](file:///d:/Project/WEPAPP/references/approved_general_inspection_2/table_layout_general_inspection_2.json)
 
 ---
 

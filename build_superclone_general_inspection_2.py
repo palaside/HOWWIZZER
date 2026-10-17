@@ -247,12 +247,12 @@ def build_html():
         }
 
         .memo-meta-label {
-            font-weight: bold;
-            font-size: 17.5pt;
-            line-height: 1.0;
+            font-weight: 600;
+            font-size: 20pt;
+            line-height: 1.05;
             white-space: nowrap;
-            margin-right: 2.5mm;
-            padding-bottom: 1px;
+            margin-right: 0;
+            padding-bottom: 1.5px;
         }
 
         .memo-meta-fill {
@@ -260,8 +260,9 @@ def build_html():
             border-bottom: 1px dotted #444;
             display: flex;
             align-items: flex-end;
-            padding-bottom: 1px;
-            font-size: 15.5pt;
+            padding-left: 2ch;
+            padding-bottom: 1.5px;
+            font-size: 16pt;
             line-height: 1.15;
         }
 
@@ -609,14 +610,17 @@ def build_html():
                 </div>
                 <div class="memo-meta-row" style="align-items: flex-start;">
                     <span class="memo-meta-label">อ้างถึง</span>
-                    <div class="memo-meta-fill" style="flex-direction: column; align-items: flex-start; border-bottom: none;">
+                    <div style="flex: 1; display: flex; flex-direction: column; align-items: flex-start; padding-left: 2ch; font-size: 16pt; line-height: 1.25;">
                         <div>{h['references'][0]}</div>
                         <div>{h['references'][1]}</div>
                     </div>
                 </div>
-                <div class="memo-meta-row">
+                <div class="memo-meta-row" style="align-items: flex-start;">
                     <span class="memo-meta-label">สิ่งที่ส่งมาด้วย</span>
-                    <div class="memo-meta-fill">{h['attachments']}</div>
+                    <div style="flex: 1; display: flex; justify-content: space-between; align-items: baseline; padding-left: 2ch; font-size: 16pt; line-height: 1.25;">
+                        <div>บันทึกผลการตรวจของนายทหารจเร ทบ. ๑๐๕-๐๐๙</div>
+                        <div style="white-space: nowrap;">จำนวน  ๖  ชุด</div>
+                    </div>
                 </div>
             </div>
 
@@ -626,8 +630,17 @@ def build_html():
             </div>
         </div>
 
-        <div style="margin-top: 18mm; margin-bottom: 20mm;">
-            {sig_html}
+        <!-- SIGNATURE BLOCK (เลื่อนมาทางซ้าย ให้เลข ๙ ตรงกับแนวขวาของเนื้อหา) -->
+        <div style="margin-top: 55pt; display: flex; justify-content: flex-end;">
+            <div class="sig-block" style="margin-right: 0; font-size: 16pt; line-height: 1.2;">
+                <div class="sig-name-pos-group" style="margin-left: 0;">
+                    <div class="sig-name-wrapper" style="margin-top: 22pt;">
+                        <span class="sig-rank-anchor" style="font-size: 16pt; right: 100%; bottom: 0; padding-right: 4px;">{sig['rank']}</span>
+                        <div class="sig-name" style="font-size: 16pt;">({sig['name']})</div>
+                    </div>
+                    <div class="sig-pos" style="font-size: 16pt; margin-top: 2px;">{sig['position']}</div>
+                </div>
+            </div>
         </div>
     </div>
 """)
