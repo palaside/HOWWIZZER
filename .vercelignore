@@ -14,8 +14,7 @@ tests
 .cache
 scratch
 *.log
-hotfolder/FolderIN
-hotfolder/ready_to_print/*.png
-hotfolder/ready_to_print/*.docx
-hotfolder/ready_to_print/*.xlsx
-references/scans
+hotfolder
+references
+docs
+.antigravity-ide
