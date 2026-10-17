@@ -3,7 +3,11 @@ from pathlib import Path
 from datetime import date, datetime
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException, Body
+# Added for performance enhancements
+from fastapi.middleware.gzip import GZipMiddleware
+from starlette.responses import Response
+
+from fastapi import FastAPI, HTTPException, Body, UploadFile, File, Header, Depends, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, HTMLResponse
@@ -36,6 +40,12 @@ from backend.services.external_intake_service import (
 )
 
 WORKSPACE_ROOT = Path(__file__).parent.parent
+AWAITING_RECORDS_FILE = WORKSPACE_ROOT / "backend" / "data" / "awaiting_service_records.json"
+# Ensure the data directory exists
+(AWAITING_RECORDS_FILE.parent).mkdir(parents=True, exist_ok=True)
+# Initialise empty JSON array if file does not exist
+if not AWAITING_RECORDS_FILE.exists():
+    AWAITING_RECORDS_FILE.write_text("[]", encoding="utf-8")
 FRONTEND_DIR = WORKSPACE_ROOT / "frontend"
 
 app = FastAPI(
@@ -43,6 +53,20 @@ app = FastAPI(
     description="ระบบบริหารจัดการและจัดทำเอกสารราชการทหารอัตโนมัติ (ทบ. ๒๕๖๓)",
     version="1.0.0"
 )
+
+# Enable GZip compression for responses larger than 500 bytes
+app.add_middleware(GZipMiddleware, minimum_size=500)
+
+# Simple Cache‑Control middleware (adds a short‑term public cache header)
+@app.middleware("http")
+async def add_cache_control(request, call_next):
+    response: Response = await call_next(request)
+    # Static assets can be cached for 1 hour; HTML for 5 minutes
+    if request.url.path.startswith(('/static/', '/docs/', '/frontend/static/')):
+        response.headers["Cache-Control"] = "public, max-age=3600"
+    else:
+        response.headers["Cache-Control"] = "public, max-age=300"
+    return response
 
 app.add_middleware(
     CORSMiddleware,
@@ -62,6 +86,14 @@ for d in [HOTFOLDER_OUT, HOTFOLDER_IN, FRONTEND_DIR / "static", FRONTEND_DIR / "
 if (FRONTEND_DIR / "static").exists():
     app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR / "static")), name="static")
     app.mount("/frontend/static", StaticFiles(directory=str(FRONTEND_DIR / "static")), name="frontend_static")
+
+# Serve pre‑generated document HTML/CSS/images via a dedicated static route
+if (WORKSPACE_ROOT / "static" / "docs").exists():
+    app.mount(
+        "/docs",
+        StaticFiles(directory=str(WORKSPACE_ROOT / "static" / "docs"), html=True),
+        name="docs",
+    )
 
 if HOTFOLDER_OUT.exists():
     app.mount("/hotfolder/ready", StaticFiles(directory=str(HOTFOLDER_OUT)), name="hotfolder_ready")
@@ -285,6 +317,52 @@ def reset_inspection_photos():
     return {"status": "SUCCESS", "message": "Reset to default photos"}
 
 
+# --- Awaiting service: Upload defect photos ---
+@app.post("/api/v1/Awaiting service")
+def upload_defect_photo(
+    file: UploadFile = File(...),
+    printer_rank: str = Form(""),
+    printer_name: str = Form(""),
+    printer_position: str = Form(""),
+    approver_rank: str = Form(""),
+    approver_name: str = Form(""),
+    approver_position: str = Form(""),
+    report_date: str = Form(""),
+    cause: str = Form(""),
+    symptoms: str = Form(""),
+    role: str = Form("owner")
+):
+    """Endpoint to upload defect photos with metadata and store a record in SSOT."""
+    import json, uuid, datetime
+    # Save uploaded file
+    dest_dir = Path(__file__).resolve().parent.parent / "static" / "uploads" / "defect_photos"
+    dest_dir.mkdir(parents=True, exist_ok=True)
+    file_path = dest_dir / file.filename
+    with open(file_path, "wb") as out_file:
+        out_file.write(file.file.read())
+    # Build record dictionary with the 2 sections (printer/reviewer & approver)
+    record = {
+        "id": str(uuid.uuid4()),
+        "timestamp": datetime.datetime.utcnow().isoformat() + "Z",
+        "file": file.filename,
+        "printer": {"rank": printer_rank, "name": printer_name, "position": printer_position},
+        "approver": {"rank": approver_rank, "name": approver_name, "position": approver_position},
+        "report_date": report_date,
+        "cause": cause,
+        "symptoms": symptoms,
+        "uploader_role": role
+    }
+    # Append to JSON SSOT file
+    try:
+        existing = json.loads(AWAITING_RECORDS_FILE.read_text(encoding="utf-8"))
+    except Exception:
+        existing = []
+    existing.append(record)
+    AWAITING_RECORDS_FILE.write_text(json.dumps(existing, ensure_ascii=False, indent=2), encoding="utf-8")
+    return {"status": "SUCCESS", "record_id": record["id"], "filename": file.filename}
+
+
+
 # --- Informal Equipment Inventory & Loan/Damage Management ---
 from backend.services.informal_equipment_service import (
     get_inventory_overview,
@@ -352,6 +430,14 @@ def index():
         return HTMLResponse(root_index.read_text(encoding="utf-8"))
     return HTMLResponse("<h1>Tactical Military Document Automation Suite</h1>")
 
+@app.get("/upload_form.html", response_class=HTMLResponse)
+@app.get("/upload-form", response_class=HTMLResponse)
+def serve_upload_form():
+    template_path = FRONTEND_DIR / "templates" / "upload_form.html"
+    if template_path.exists():
+        return HTMLResponse(template_path.read_text(encoding="utf-8"))
+    raise HTTPException(status_code=404, detail="Upload form template not found")
+
 
 # --- Root Document Fallback Serving ---
 @app.get("/{filename:path}")
@@ -360,18 +446,23 @@ def serve_root_docs(filename: str):
     decoded = urllib.parse.unquote(filename).strip("/")
     base_name = Path(decoded).name
 
+    # Prefer the dedicated /docs static mount for document assets
+    docs_path = WORKSPACE_ROOT / "static" / "docs" / base_name
+    if docs_path.is_file():
+        if docs_path.suffix.lower() == ".html":
+            return HTMLResponse(content=docs_path.read_text(encoding="utf-8"))
+        return FileResponse(docs_path)
+
+    # Fallback to generic locations (kept for backward compatibility)
     candidates = [
         FRONTEND_DIR / "static" / "docs" / base_name,
         WORKSPACE_ROOT / base_name,
         FRONTEND_DIR / "static" / decoded,
         WORKSPACE_ROOT / decoded,
-        WORKSPACE_ROOT / "static" / "docs" / base_name,
     ]
-
     for cand in candidates:
         if cand.is_file():
-            suf = cand.suffix.lower()
-            if suf == ".html":
+            if cand.suffix.lower() == ".html":
                 return HTMLResponse(content=cand.read_text(encoding="utf-8"))
             return FileResponse(cand)
 

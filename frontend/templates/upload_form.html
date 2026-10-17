@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ระบุสาเหตุและอาการความชำรุดเสียหาย & อัปโหลดภาพข้อบกพร่อง</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-gradient: radial-gradient(circle at top left, #0f172a 0%, #020617 100%);
+      --glass-bg: rgba(15, 23, 42, 0.75);
+      --glass-border: rgba(255, 255, 255, 0.12);
+      --glass-border-focus: rgba(56, 189, 248, 0.5);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-red: #ef4444;
+      --accent-amber: #f59e0b;
+      --accent-green: #10b981;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      font-family: 'Sarabun', 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .form-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      max-width: 760px;
+      width: 100%;
+      padding: 32px 36px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.1);
+    }
+
+    .form-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 18px;
+    }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(239, 68, 68, 0.15);
+      color: #fca5a5;
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      margin-bottom: 6px;
+    }
+
+    .form-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-subtitle {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .btn-back {
+      padding: 8px 16px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+    .btn-back:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .section-fieldset {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 20px;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .section-legend {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      padding: 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 640px) {
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .field-group {
+      margin-bottom: 16px;
+    }
+
+    .field-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+
+    .field-label.highlight-red {
+      color: #fca5a5;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .field-input, .field-textarea, .field-select {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-family: inherit;
+      font-size: 13.5px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .field-input:focus, .field-textarea:focus {
+      outline: none;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+    }
+
+    .field-textarea.red-focus:focus {
+      border-color: var(--accent-red);
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+    }
+
+    .damage-highlight-box {
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 22px;
+    }
+
+    .approval-box {
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-approve {
+      padding: 10px 22px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      transition: all 0.2s;
+    }
+
+    .btn-approve:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 12px 24px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+      transition: all 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+      transform: translateY(-1px);
+    }
+
+    .success-alert {
+      display: none;
+      padding: 14px 18px;
+      border-radius: 8px;
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6ee7b7;
+      margin-bottom: 18px;
+      font-size: 13.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-card">
+    <div class="form-header">
+      <div>
+        <span class="badge-tag">⚡ เชื่อมโยงระบบบันทึกความชำรุดเสียหาย & รอการซ่อม</span>
+        <h1 class="form-title">📝 บันทึกระบุสาเหตุ & อาการชำรุดเสียหาย</h1>
+        <p class="form-subtitle">เชื่อมโยงกับรายงานการชำรุดเสียหายของสิ่งและอุปกรณ์ จากการเบิกยืม (ไม่มีข้อมูลภาษี)</p>
+      </div>
+      <a href="/" class="btn-back">⬅ กลับหน้าหลัก</a>
+    </div>
+
+    <div id="successAlert" class="success-alert"></div>
+
+    <form id="defectUploadForm" method="post" action="/api/v1/Awaiting service" enctype="multipart/form-data" onsubmit="handleDefectSubmit(event)">
+
+      <!-- ส่วนที่ 1: ผู้พิมพ์ / ตรวจสอบขั้นต้น -->
+      <fieldset class="section-fieldset">
+        <legend class="section-legend">๑. ผู้พิมพ์ / ตรวจสอบขั้นต้น</legend>
+        <div class="grid-3">
+          <div>
+            <label class="field-label" for="printer_rank">ยศ / คำนำหน้า</label>
+            <input type="text" id="printer_rank" name="printer_rank" class="field-input" placeholder="เช่น ส.ท." value="ส.ท." required>
+          </div>
+          <div>
+            <label class="field-label" for="printer_name">ชื่อ - สกุล</label>
+            <input type="text" id="printer_name" name="printer_name" class="field-input" placeholder="เช่น วรากร สมบูรณ์" value="วรากร สมบูรณ์" required>
+          </div>
+          <div>
+            <label class="field-label" for="printer_position">ตำแหน่ง</label>
+            <input type="text" id="printer_position" name="printer_position" class="field-input" placeholder="เช่น พลปืน" value="พลปืน" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- ส่วนที่ 2: ส่วนผู้อนุมัติ -->
+      <fieldset class="section-fieldset">
+        <legend class="section-legend">๒. ส่วนผู้อนุมัติ (ส.หน.สย.)</legend>
+        <div class="grid-3">
+          <div>
+            <label class="field-label" for="approver_rank">ยศ / คำนำหน้า</label>
+            <input type="text" id="approver_rank" name="approver_rank" class="field-input" placeholder="เช่น ส.หน.สย." value="ส.หน.สย." required>
+          </div>
+          <div>
+            <label class="field-label" for="approver_name">ชื่อ - สกุล</label>
+            <input type="text" id="approver_name" name="approver_name" class="field-input" placeholder="เช่น พงศธรรมหะ" value="พงศธรรมหะ" required>
+          </div>
+          <div>
+            <label class="field-label" for="approver_position">ตำแหน่ง</label>
+            <input type="text" id="approver_position" name="approver_position" class="field-input" placeholder="เช่น ส.หน.สย." value="ส.หน.สย." required>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- กล่องระบุสาเหตุ และ อาการ ชัดเจนเด่นชัด -->
+      <div class="damage-highlight-box">
+        <div style="font-size: 15px; font-weight: 700; color: #f87171; margin-bottom: 14px; display: flex; align-items: center; gap: 8px;">
+          ⚡ รายละเอียดความชำรุดเสียหาย (เชื่อมโยงรายงานการเบิกยืม)
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="report_date">📅 วันที่ของรายงานเสียหาย / วันที่ลงข้อมูล:</label>
+          <input type="date" id="report_date" name="report_date" class="field-input" style="max-width: 260px;" required>
+        </div>
+
+        <!-- 1. กล่องระบุสาเหตุ -->
+        <div class="field-group">
+          <label class="field-label highlight-red" for="cause">
+            ⚡ สาเหตุที่เกิดความชำรุดเสียหาย (Cause):
+          </label>
+          <textarea id="cause" name="cause" class="field-textarea red-focus" rows="3" placeholder="ระบุสาเหตุที่เกิดความชำรุดเสียหาย เช่น กระทบหินแข็งใต้ผิวดินระหว่างขุดสนามเพลาะ, เคลื่อนย้ายพลัดตกกระแทกพื้นหิน" required></textarea>
+        </div>
+
+        <!-- 2. กล่องระบุอาการ -->
+        <div class="field-group" style="margin-bottom: 0;">
+          <label class="field-label highlight-red" for="symptoms">
+            🔧 อาการที่เกิด / สภาพชำรุด (Symptoms & Condition):
+          </label>
+          <textarea id="symptoms" name="symptoms" class="field-textarea red-focus" rows="3" placeholder="ระบุอาการชำรุดเสียหายที่ตรวจพบ เช่น ด้ามหักสะบั้น, ใบจอบบิดงอผิดรูป, เกลียวยึดแตกร้าว, ปลอกแกนคดงอ" required></textarea>
+        </div>
+      </div>
+
+      <!-- แนบภาพข้อบกพร่อง -->
+      <div class="field-group">
+        <label class="field-label" for="file">📷 ภาพถ่ายข้อบกพร่อง / สภาพความเสียหาย (JPEG/PNG):</label>
+        <input type="file" id="file" name="file" accept="image/*" class="field-input" required>
+      </div>
+
+      <!-- สิทธิ์การอนุมัติ (เจ้าของ) -->
+      <div class="approval-box">
+        <div>
+          <div style="font-size: 14px; font-weight: 600; color: #34d399;">🛡️ สิทธิ์การอนุมัติ: เจ้าของระบบ (Owner Approval)</div>
+          <div style="font-size: 12px; color: var(--text-muted); margin-top: 2px;">คลิกปุ่มด้านขวาเพื่อรับรองและอนุมัติการตัดยอดเข้าคลังส่งซ่อม</div>
+        </div>
+        <button type="button" id="btnOwnerApprove" class="btn-approve" onclick="toggleOwnerApproval()">
+          ✓ อนุมัติแล้ว (สิทธิ์เจ้าของ)
+        </button>
+        <input type="hidden" id="role" name="role" value="owner">
+      </div>
+
+      <button type="submit" id="btnSubmitForm" class="btn-submit">
+        💾 บันทึกและส่งข้อมูลความชำรุดเสียหายเข้าสู่ระบบ
+      </button>
+    </form>
+  </div>
+
+  <script>
+    // ตั้งค่าเริ่มต้นวันที่ปัจจุบัน
+    document.getElementById('report_date').value = new Date().toISOString().split('T')[0];
+
+    let isApproved = true;
+    function toggleOwnerApproval() {
+      isApproved = !isApproved;
+      const btn = document.getElementById('btnOwnerApprove');
+      const roleInput = document.getElementById('role');
+      if (isApproved) {
+        btn.innerText = '✓ อนุมัติแล้ว (สิทธิ์เจ้าของ)';
+        btn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        roleInput.value = 'owner';
+      } else {
+        btn.innerText = '⏳ รอดำเนินการอนุมัติ';
+        btn.style.background = 'linear-gradient(135deg, #64748b 0%, #475569 100%)';
+        roleInput.value = 'viewer';
+      }
+    }
+
+    async function handleDefectSubmit(e) {
+      e.preventDefault();
+      const form = document.getElementById('defectUploadForm');
+      const formData = new FormData(form);
+      const alertBox = document.getElementById('successAlert');
+      const submitBtn = document.getElementById('btnSubmitForm');
+
+      submitBtn.disabled = true;
+      submitBtn.innerText = '⏳ กำลังบันทึกข้อมูล...';
+
+      try {
+        const res = await fetch('/api/v1/Awaiting service', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await res.json();
+        if (res.ok) {
+          alertBox.style.display = 'block';
+          alertBox.innerHTML = `✅ <strong>บันทึกข้อมูลสำเร็จ!</strong> รหัสบันทึก: <code>${data.record_id}</code> พร้อมเชื่อมโยงตัดยอดส่งซ่อมเรียบร้อย`;
+          form.reset();
+          document.getElementById('report_date').value = new Date().toISOString().split('T')[0];
+        } else {
+          alert('เกิดข้อผิดพลาด: ' + (data.detail || 'ไม่สามารถบันทึกได้'));
+        }
+      } catch (err) {
+        alert('เกิดข้อผิดพลาดในการเชื่อมต่อ: ' + err.message);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = '💾 บันทึกและส่งข้อมูลความชำรุดเสียหายเข้าสู่ระบบ';
+      }
+    }
+  </script>
+</body>
+</html>

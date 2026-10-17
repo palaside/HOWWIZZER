@@ -49,8 +49,8 @@
           "deficit_amount": 0,
           "surplus_amount": 0,
           "repair_amount": 0,
-          "loan_amount": 0,
-          "balance_amount": 12,
+          "loan_amount": 1,
+          "balance_amount": 11,
           "remarks": ""
         },
         {
@@ -1945,6 +1945,31 @@
     }
   },
   "loans": [
+    {
+      "loan_id": "LN-261017-070428",
+      "item_id": "gs-01-1",
+      "item_name": "หน้าจั่ว",
+      "item_full_name": "เต็นท์ (หน้าจั่ว)",
+      "section": "gun_shed",
+      "section_title": "สิ่งอุปกรณ์ในโรงเก็บปืนใหญ่",
+      "borrower_rank": "ส.อ.",
+      "borrower_name": "เสกสรรค์  จันบ้านคลอง",
+      "borrower_fullname": "ส.อ. เสกสรรค์  จันบ้านคลอง",
+      "borrower_position": "พลปืน",
+      "quantity": 1,
+      "loan_date": "2026-10-17",
+      "expected_return_date": "2026-10-20",
+      "actual_return_date": null,
+      "status": "borrowed",
+      "is_overdue": false,
+      "damage_info": {
+        "has_damage": false,
+        "cause": "",
+        "symptom": "",
+        "reported_to_commander": false,
+        "memo_generated": false
+      }
+    },
     {
       "loan_id": "LN-261013-184129",
       "item_id": "gs-20",
