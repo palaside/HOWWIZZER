@@ -1,4 +1,5 @@
 {
+  "installCommand": "echo 'skip'",
   "outputDirectory": "dist",
   "rewrites": [
     {
