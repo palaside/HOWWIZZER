@@ -173,6 +173,39 @@
       box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
     }
 
+    .floating-readonly {
+      background: rgba(15, 23, 42, 0.45) !important;
+      border: 1px dashed rgba(56, 189, 248, 0.45) !important;
+      color: #7dd3fc !important;
+      font-size: 14.5px !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), 0 0 12px rgba(56, 189, 248, 0.15) !important;
+      text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+      cursor: default !important;
+      caret-color: transparent !important;
+      user-select: none;
+      transition: all 0.2s ease;
+    }
+
+    .floating-readonly:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35), 0 0 16px rgba(56, 189, 248, 0.3) !important;
+      border-color: rgba(56, 189, 248, 0.7) !important;
+    }
+
+    .badge-locked {
+      font-size: 11.5px;
+      font-weight: 500;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 9999px;
+      padding: 2px 10px;
+      margin-left: 8px;
+      letter-spacing: 0.3px;
+    }
+
     .damage-highlight-box {
       background: rgba(239, 68, 68, 0.08);
       border: 1px solid rgba(239, 68, 68, 0.35);
@@ -278,21 +311,26 @@
         </div>
       </fieldset>
 
-      <!-- ส่วนที่ 2: ส่วนผู้อนุมัติ -->
-      <fieldset class="section-fieldset">
-        <legend class="section-legend">๒. ส่วนผู้อนุมัติ (ส.หน.สย.)</legend>
+      <!-- ส่วนที่ 2: ส่วนผู้อนุมัติ (ส.หน.สย.) ตัวอักษรลอย ไม่ต้องมีการปรับแก้ -->
+      <fieldset class="section-fieldset" style="border-color: rgba(56, 189, 248, 0.35); background: rgba(56, 189, 248, 0.03);">
+        <legend class="section-legend">
+          ๒. ส่วนผู้อนุมัติ (ส.หน.สย.)
+          <span class="badge-locked">
+            🔒 กำหนดอัตโนมัติ (ตัวอักษรลอย ไม่ต้องปรับแก้)
+          </span>
+        </legend>
         <div class="grid-3">
           <div>
             <label class="field-label" for="approver_rank">ยศ / คำนำหน้า</label>
-            <input type="text" id="approver_rank" name="approver_rank" class="field-input" placeholder="เช่น ส.หน.สย." value="ส.หน.สย." required>
+            <input type="text" id="approver_rank" name="approver_rank" class="field-input floating-readonly" value="จ.ส.อ." readonly tabindex="-1" title="ยศผู้อนุมัติ (ตัวอักษรลอย ไม่ต้องปรับแก้)">
           </div>
           <div>
             <label class="field-label" for="approver_name">ชื่อ - สกุล</label>
-            <input type="text" id="approver_name" name="approver_name" class="field-input" placeholder="เช่น พงศธรรมหะ" value="พงศธรรมหะ" required>
+            <input type="text" id="approver_name" name="approver_name" class="field-input floating-readonly" value="ณัฐชัย   รักษาวงษ์" readonly tabindex="-1" title="ชื่อผู้อนุมัติ (ตัวอักษรลอย ไม่ต้องปรับแก้)">
           </div>
           <div>
             <label class="field-label" for="approver_position">ตำแหน่ง</label>
-            <input type="text" id="approver_position" name="approver_position" class="field-input" placeholder="เช่น ส.หน.สย." value="ส.หน.สย." required>
+            <input type="text" id="approver_position" name="approver_position" class="field-input floating-readonly" value="ส.หน.สย." readonly tabindex="-1" title="ตำแหน่งผู้อนุมัติ (ตัวอักษรลอย ไม่ต้องปรับแก้)">
           </div>
         </div>
       </fieldset>
@@ -390,6 +428,9 @@
           alertBox.innerHTML = `✅ <strong>บันทึกข้อมูลสำเร็จ!</strong> รหัสบันทึก: <code>${data.record_id}</code> พร้อมเชื่อมโยงตัดยอดส่งซ่อมเรียบร้อย`;
           form.reset();
           document.getElementById('report_date').value = new Date().toISOString().split('T')[0];
+          document.getElementById('approver_rank').value = 'จ.ส.อ.';
+          document.getElementById('approver_name').value = 'ณัฐชัย   รักษาวงษ์';
+          document.getElementById('approver_position').value = 'ส.หน.สย.';
         } else {
           alert('เกิดข้อผิดพลาด: ' + (data.detail || 'ไม่สามารถบันทึกได้'));
         }

@@ -206,28 +206,50 @@
       justify-content: flex-start;
     }
     .sig-block {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 16pt;
+      line-height: 1.0;
+    }
+    .sig-name-pos-group {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center; /* ชื่อและตำแหน่งจัดกึ่งกลางร่วมกัน */
+      position: relative;
+    }
+    .sig-name-wrapper {
       position: relative;
       display: inline-block;
-      font-size: 16pt;
-      line-height: 1.22;
+      white-space: nowrap;
+      margin-top: 24pt; /* พื้นที่สำหรับลงลายมือชื่อจริง (Signature Gap) */
     }
     .sig-rank-anchor {
       position: absolute;
       right: 100%;
-      top: 0;
+      bottom: calc(100% + 18px); /* อยู่คนละบรรทัด ลอยเหนือลายมือชื่อ โดยจุด . ชนแนวเส้นดิ่ง ( พอดีเป๊ะ 100% */
       white-space: nowrap;
+      font-size: 16pt;
+      line-height: 1.0;
       font-weight: 300;
     }
     .sig-name {
+      margin: 0;
+      line-height: 1.15;
       text-align: center;
       white-space: nowrap;
+      font-size: 16pt;
       font-weight: 300;
+      display: block;
     }
     .sig-pos {
+      margin: 0;
+      line-height: 1.15;
       text-align: center;
-      margin-top: 0;
       white-space: nowrap;
+      font-size: 16pt;
       font-weight: 300;
+      display: block;
     }
 
     /* STAFF REVIEW FOOTER (RULE-STAFF-REVIEW-FOOTER-V1) */
@@ -301,7 +323,7 @@
         </div>
         <div style="flex: 0.85; display: flex; align-items: flex-end;">
           <span class="meta-label">วันที่</span>
-          <div class="meta-dots" style="text-align: center;">๑๒ ตุลาคม ๒๕๖๙</div>
+          <div class="meta-dots" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ต.ค. ๖๙</div>
         </div>
       </div>
 
@@ -346,9 +368,13 @@
       <!-- Universal Signature Block (130mm from page left, 5 enters) -->
       <div class="sig-container">
         <div class="sig-block">
-          <span class="sig-rank-anchor">ร.อ.</span>
-          <div class="sig-name">(กฤติน  นราพงษ์)</div>
-          <div class="sig-pos">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+          <div class="sig-name-pos-group">
+            <div class="sig-name-wrapper">
+              <span class="sig-rank-anchor">ร.อ.</span>
+              <div class="sig-name">(กฤติน  นราพงษ์)</div>
+            </div>
+            <div class="sig-pos">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+          </div>
         </div>
       </div>
     </div>
@@ -380,7 +406,7 @@
         </div>
         <div style="flex: 0.85; display: flex; align-items: flex-end;">
           <span class="meta-label">วันที่</span>
-          <div class="meta-dots" style="text-align: center;">๑๒ ตุลาคม ๒๕๖๙</div>
+          <div class="meta-dots" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ต.ค. ๖๙</div>
         </div>
       </div>
 
@@ -425,9 +451,13 @@
       <!-- Universal Signature Block (130mm from page left, 5 enters) -->
       <div class="sig-container">
         <div class="sig-block">
-          <span class="sig-rank-anchor">ร.อ.</span>
-          <div class="sig-name">(กฤติน  นราพงษ์)</div>
-          <div class="sig-pos">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+          <div class="sig-name-pos-group">
+            <div class="sig-name-wrapper">
+              <span class="sig-rank-anchor">ร.อ.</span>
+              <div class="sig-name">(กฤติน  นราพงษ์)</div>
+            </div>
+            <div class="sig-pos">ผบ.ป.๔ พัน.๔ ร้อย.๒</div>
+          </div>
         </div>
       </div>
 

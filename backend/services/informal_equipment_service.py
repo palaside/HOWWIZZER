@@ -337,12 +337,9 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
         candidate -= timedelta(days=1)
 
     day_thai = to_thai_digits(candidate.day)
-    month_thai = THAI_FULL_MONTHS[candidate.month]
-    year_thai = to_thai_digits(candidate.year + 543)
-    date_display_thai = f"{day_thai} {month_thai} {year_thai}"
-
     short_month_thai = THAI_MONTHS[candidate.month]
     short_year_thai = to_thai_digits(str(candidate.year + 543)[-2:])
+    date_display_thai = f"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{short_month_thai} {short_year_thai}"
     month_year_display_thai = f"{short_month_thai} {short_year_thai}"
 
     # 4. Resolve Blueprint Data
@@ -628,28 +625,50 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
       justify-content: flex-start;
     }}
     .sig-block {{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 16pt;
+      line-height: 1.0;
+    }}
+    .sig-name-pos-group {{
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center; /* ชื่อและตำแหน่งจัดกึ่งกลางร่วมกัน */
+      position: relative;
+    }}
+    .sig-name-wrapper {{
       position: relative;
       display: inline-block;
-      font-size: 16pt;
-      line-height: 1.22;
+      white-space: nowrap;
+      margin-top: 24pt; /* พื้นที่สำหรับลงลายมือชื่อจริง (Signature Gap) */
     }}
     .sig-rank-anchor {{
       position: absolute;
       right: 100%;
-      top: 0;
+      bottom: calc(100% + 18px); /* อยู่คนละบรรทัด ลอยเหนือลายมือชื่อ โดยจุด . ชนแนวเส้นดิ่ง ( พอดีเป๊ะ 100% */
       white-space: nowrap;
+      font-size: 16pt;
+      line-height: 1.0;
       font-weight: 300;
     }}
     .sig-name {{
+      margin: 0;
+      line-height: 1.15;
       text-align: center;
       white-space: nowrap;
+      font-size: 16pt;
       font-weight: 300;
+      display: block;
     }}
     .sig-pos {{
+      margin: 0;
+      line-height: 1.15;
       text-align: center;
-      margin-top: 0;
       white-space: nowrap;
+      font-size: 16pt;
       font-weight: 300;
+      display: block;
     }}
 
     /* STAFF REVIEW FOOTER (RULE-STAFF-REVIEW-FOOTER-V1) */
@@ -768,9 +787,13 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
       <!-- Universal Signature Block (130mm from page left, 5 enters) -->
       <div class="sig-container">
         <div class="sig-block">
-          <span class="sig-rank-anchor">{sig_rank}</span>
-          <div class="sig-name">{sig_name}</div>
-          <div class="sig-pos">{sig_pos}</div>
+          <div class="sig-name-pos-group">
+            <div class="sig-name-wrapper">
+              <span class="sig-rank-anchor">{sig_rank}</span>
+              <div class="sig-name">{sig_name}</div>
+            </div>
+            <div class="sig-pos">{sig_pos}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -847,9 +870,13 @@ def generate_damage_memo_html(loan_id: str, signing_date_iso: Optional[str] = No
       <!-- Universal Signature Block (130mm from page left, 5 enters) -->
       <div class="sig-container">
         <div class="sig-block">
-          <span class="sig-rank-anchor">{sig_rank}</span>
-          <div class="sig-name">{sig_name}</div>
-          <div class="sig-pos">{sig_pos}</div>
+          <div class="sig-name-pos-group">
+            <div class="sig-name-wrapper">
+              <span class="sig-rank-anchor">{sig_rank}</span>
+              <div class="sig-name">{sig_name}</div>
+            </div>
+            <div class="sig-pos">{sig_pos}</div>
+          </div>
         </div>
       </div>
 
